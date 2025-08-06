@@ -49,7 +49,7 @@ You can install `glow` using a package manager:
 ## 📝 Tip Format
 Each tip should follow this format in your tips file:
 
-```
+````markdown
 # Title: My Tip Title
 # Category: Navigation
 # Tags: motion, cursor
@@ -60,10 +60,12 @@ This is a description of what the tip does.
 normal-mode-command
 ```
 ===
-```
+````
+
+Description of the tip starts with --- and ends with ===. Description supports markdown syntax and will be rendered accordingly.
 
 ## ✅ Example
-```
+````markdown
 # Title: Save the file
 # Category: File
 # Tags: write, command
@@ -74,7 +76,7 @@ Use `:w` to write changes.
 :w
 ```
 ===
-```
+````
 
 ## 📁 Default File Locations
 - Built-in tips: `data/builtin_tips.txt`
