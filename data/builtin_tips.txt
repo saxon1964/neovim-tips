@@ -1,0 +1,22 @@
+# Title: Move cursor one line up
+# Category: Cursor Movement
+# Tags: normal mode, navigation
+---
+Use `k` in normal mode to move the cursor one line up.
+
+```vim
+k
+```
+===
+
+# Title: Save file
+# Category: File
+# Tags: command, write
+---
+Use `:w` to write (save) the current file.
+
+```vim
+:w
+```
+===
+

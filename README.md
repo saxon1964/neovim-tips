@@ -1,2 +1,87 @@
-# nvim.tips
-A small plugin to collect and display various nvim command, tips and tricks
+
+# Neovim Tips Plugin
+
+A Lua plugin for Neovim that helps you organize and search helpful tips, tricks, and shortcuts via a fuzzy search interface.
+
+## ✨ Features
+- Search tips using `fzf-lua`
+- Preview rendered descriptions in Markdown using [glow](https://github.com/charmbracelet/glow)
+- Support for categories, tags, and rich text
+- Add or edit personal tips stored in a configurable file
+
+## 📦 Installation
+
+**Using lazy.nvim**:
+```lua
+{
+  "yourname/neovim-tips",
+  dependencies = { "ibhagwan/fzf-lua" },
+  config = function()
+    require("neovim_tips").setup()
+  end,
+},
+```
+
+> You’ll also need to install [`glow`](https://github.com/charmbracelet/glow) for Markdown previews.
+
+### 🔧 Installing Glow
+You can install `glow` using a package manager:
+
+- macOS (Homebrew):
+  ```sh
+  brew install glow
+  ```
+- Arch Linux:
+  ```sh
+  pacman -S glow
+  ```
+- Debian/Ubuntu:
+  ```sh
+  sudo apt install glow
+  ```
+- Or download from [releases](https://github.com/charmbracelet/glow/releases)
+
+## 🔧 Commands
+- `:NeovimTips` — Open searchable list of tips
+- `:NeovimTipsEdit` — Edit your personal tips file
+- `:NeovimTipsAdd` — Insert a new tip template into your personal file
+
+## 📝 Tip Format
+Each tip should follow this format in your tips file:
+
+```
+# Title: My Tip Title
+# Category: Navigation
+# Tags: motion, cursor
+---
+This is a description of what the tip does.
+
+```vim
+normal-mode-command
+```
+===
+```
+
+## ✅ Example
+```
+# Title: Save the file
+# Category: File
+# Tags: write, command
+---
+Use `:w` to write changes.
+
+```vim
+:w
+```
+===
+```
+
+## 📁 Default File Locations
+- Built-in tips: `data/builtin_tips.txt`
+- User tips: `~/.config/nvim/neovim_tips/user_tips.txt`
+
+## 🔄 Roadmap Ideas
+- Category filtering
+- Search descriptions
+- Multiple tip sources
+
