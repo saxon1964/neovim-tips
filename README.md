@@ -14,7 +14,7 @@ A Lua plugin for Neovim that helps you organize and search helpful tips, tricks,
 **Using lazy.nvim**:
 ```lua
 {
-  "saxon1964/neovim_tips",
+  "saxon1964/neovim-tips",
   dependencies = { "ibhagwan/fzf-lua" },
   opts = {
     -- This following setting is optional.
