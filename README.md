@@ -14,11 +14,14 @@ A Lua plugin for Neovim that helps you organize and search helpful tips, tricks,
 **Using lazy.nvim**:
 ```lua
 {
-  "yourname/neovim-tips",
+  "saxon1964/neovim_tips",
   dependencies = { "ibhagwan/fzf-lua" },
-  config = function()
-    require("neovim_tips").setup()
-  end,
+  opts = {
+    -- This following setting is optional.
+    -- Remove the next line if you are ok with the default location:
+    -- ~/.config/nvim/neovim_tips/user_tips.txt
+    user_file = ~/path/to/your/tips/file.txt
+  }
 },
 ```
 
@@ -86,4 +89,6 @@ Use `:w` to write changes.
 - Category filtering
 - Search descriptions
 - Multiple tip sources
+
+All pull requests are welcome! Send me your tips and I will add them to built-in collection with proper credits.
 
