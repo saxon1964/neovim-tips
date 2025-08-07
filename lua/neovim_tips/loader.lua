@@ -66,7 +66,10 @@ function M.load()
   local builtin = read_tip_file(builtin_path)
   ensure_user_file(config.options.user_file)
   local user = read_tip_file(config.options.user_file)
-  tips.set(vim.tbl_extend("force", builtin, user))
+  local all_tips = {}
+  vim.list_extend(all_tips, builtin)
+  vim.list_extend(all_tips, user)
+  tips.set(all_tips)
 end
 
 return M
