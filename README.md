@@ -92,3 +92,7 @@ Use `:w` to write changes.
 
 All pull requests are welcome! Send me your tips and I will add them to built-in collection with proper credits.
 
+## ⚖️ License
+
+- Unlicense. You can find more details in the license file or [here](https://unlicense.org) 
+
