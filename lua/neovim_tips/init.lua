@@ -21,6 +21,7 @@ function M.setup(opts)
       "# Tags: ",
       "---",
       "",  -- description placeholder
+      "",  -- description placeholder
       "```vim",
       "",  -- code placeholder
       "```",

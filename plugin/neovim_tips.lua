@@ -1,0 +1,1 @@
+-- require("neovim_tips").setup()

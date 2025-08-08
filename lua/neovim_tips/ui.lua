@@ -10,31 +10,38 @@ function M.show_fzf()
 
   local fzf_lua = require("fzf-lua")
   local items = {}
-  local desc_lookup = {}
+  local descriptions = {}
+  local tmpName = vim.fn.expand("~/tmp.md")
 
   for _, tip in ipairs(entries) do
-    local line = string.format("%s [%s] (%s)", tip.title, table.concat(tip.tags, ", "), tip.category)
+    local line = string.format("%s [%s] (%s)", tip.title, tip.category, table.concat(tip.tags, ","))
     table.insert(items, line)
-    desc_lookup[line] = tip.description
+    descriptions[line] = tip.description
   end
 
   table.sort(items)
+  print(vim.inspect(descriptions))
 
   fzf_lua.fzf_exec(items, {
-    prompt = "Neovim Tips> ",
-    previewer = "glow",
-    preview = function(item)
-      local tip_md = desc_lookup[item] or "No description"
-      local tmp = vim.fn.tempname() .. ".md"
-      local f = io.open(tmp, "w")
-      if f then
-        f:write(tip_md)
-        f:close()
-        return string.format("sh -c 'glow -s dark %s; rm -f %s'", tmp, tmp)
-      else
-        return "echo 'Failed to render preview'"
-      end
-    end,
+    fzf_opts = {
+      ["--prompt"] = "Neovim Tips> ",
+      ["--preview"] = {
+        type = "cmd",
+        fn = function(selected)
+          local item = selected[1]
+          local descrption = descriptions[item] or "No description"
+          -- local tmpName = vim.fn.tempname() .. ".md"
+          local f = io.open(tmpName, "w")
+          if f then
+            f:write(descrption)
+            f:close()
+            return string.format("CLICOLOR_FORCE=1 COLORTERM=truecolor glow %s", tmpName)
+          else
+            return "echo 'Failed to render preview'"
+          end
+        end
+      },
+    },
   })
 end
 
