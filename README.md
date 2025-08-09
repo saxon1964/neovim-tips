@@ -17,10 +17,13 @@ A Lua plugin for Neovim that helps you organize and search helpful tips, tricks,
   "saxon1964/neovim-tips",
   dependencies = { "ibhagwan/fzf-lua" },
   opts = {
-    -- This following setting is optional.
-    -- Remove the next line if you are ok with the default location:
-    -- ~/.config/nvim/neovim_tips/user_tips.txt
-    user_file = ~/path/to/your/tips/file.txt
+    -- ALL SETTINGS ARE OPTIONAL. DEFAULTS SHOWN BELOW
+    -- Location of user defined tips
+    user_file = vim.fn.stdpath("config") .. "/neovim_tips/user_tips.txt",
+    -- Command used to render markdown file (%s placeholder)
+    md_preview_cmd = "CLICOLOR_FORCE=1 COLORTERM=truecolor glow %s",
+    -- Temporary file. Deleted on neovim exit
+    tmp_file = vim.fn.expand("~/neovim_tips_tmp.md")
   }
 },
 ```

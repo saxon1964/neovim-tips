@@ -2,6 +2,8 @@ local M = {}
 
 M.options = {
   user_file = vim.fn.stdpath("config") .. "/neovim_tips/user_tips.txt",
+  md_preview_cmd = "CLICOLOR_FORCE=1 COLORTERM=truecolor glow %s",
+  tmp_file = vim.fn.expand("~/tmp.md")
 }
 
 function M.setup(opts)
