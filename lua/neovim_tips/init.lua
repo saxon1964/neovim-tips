@@ -20,10 +20,10 @@ function M.setup(opts)
       "# Category: ",
       "# Tags: ",
       "---",
-      "",  -- description placeholder
-      "",  -- description placeholder
+      "", -- description placeholder
+      "", -- description placeholder
       "```vim",
-      "",  -- code placeholder
+      "", -- code placeholder
       "```",
       "===",
       ""
@@ -32,6 +32,13 @@ function M.setup(opts)
     vim.api.nvim_buf_set_lines(0, -1, -1, false, lines)
     vim.cmd("normal G")
   end, {})
+
+  vim.api.nvim_create_autocmd("VimLeave", {
+    callback = function()
+      -- you can safely ignore possible errors
+      os.remove(config.options.tmp_file)
+    end,
+  })
 end
 
 return M

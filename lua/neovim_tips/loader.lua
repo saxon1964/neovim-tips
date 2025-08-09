@@ -1,4 +1,5 @@
 local M = {}
+
 local config = require("neovim_tips.config")
 local tips = require("neovim_tips.tips")
 
@@ -8,9 +9,12 @@ local function parse_tip_blocks(content)
   local body_lines = {}
   local titles_seen = {}
 
-  for line in content:gmatch("[^\r\n]+") do
-    if line:match("^#%s*Title:%s*(.+)") then
-      local title = line:match("^#%s*Title:%s*(.+)")
+  for line in content:gmatch("([^\r\n]*)\r?\n?") do
+    local title = line:match("^#%s*Title:%s*(.+)")
+    local category = line:match("^#%s*Category:%s*(.+)")
+    local tags = line:match("^#%s*Tags:%s*(.+)")
+
+    if title then
       if titles_seen[title] then
         vim.notify("Duplicate tip title found: " .. title, vim.log.levels.WARN)
         current = {} -- Skip adding this duplicate tip
@@ -18,10 +22,9 @@ local function parse_tip_blocks(content)
         current.title = title
         titles_seen[title] = true
       end
-    elseif line:match("^#%s*Category:%s*(.+)") then
-      current.category = line:match("^#%s*Category:%s*(.+)")
-    elseif line:match("^#%s*Tags:%s*(.+)") then
-      local tags = line:match("^#%s*Tags:%s*(.+)")
+    elseif category then
+      current.category = category
+    elseif tags then
       current.tags = vim.split(tags, ",%s*")
     elseif line == "---" then
       body_lines = {}
@@ -73,4 +76,3 @@ function M.load()
 end
 
 return M
-

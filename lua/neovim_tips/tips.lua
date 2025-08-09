@@ -1,12 +1,29 @@
 local M = {}
-local _tips = {}
 
-function M.set(tip_list)
-  _tips = tip_list
+local items = {}
+local descriptions = {}
+local all_tips = {}
+
+function M.set(tips)
+  all_tips = tips
+  for _, tip in ipairs(tips) do
+    local line = string.format("%s [%s] (%s)", tip.title, tip.category, table.concat(tip.tags, ","))
+    table.insert(items, line)
+    descriptions[line] = tip.description
+  end
+  table.sort(items)
 end
 
-function M.get_all()
-  return _tips
+function M.get_tips()
+  return all_tips
+end
+
+function M.get_items()
+  return items
+end
+
+function M.get_description(item)
+  return descriptions[item]
 end
 
 return M
