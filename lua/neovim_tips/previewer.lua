@@ -24,12 +24,12 @@ function MdPreviewer:new(o, opts, fzf_win)
 end
 
 -- Create temporary file with markdown content
-function MdPreviewer:parse_entry(item)
+function MdPreviewer:parse_entry(title)
   remove_tmp_file()
   tmp_file = os.tmpname() .. ".md"
   local file = io.open(tmp_file, "w")
   if file then
-    local content = tips.get_description(item)
+    local content = tips.get_description(title)
     file:write(content)
     file:close()
   else
