@@ -1,22 +1,69 @@
-# Title: Move cursor one line up
-# Category: Navigation
-# Tags: cursor
+# Title: Help
+# Category: Global
+# Tags: help
 ---
-Use `k` in normal mode to move the cursor one line up.
+Use `:h[elp] keyword` to open help for a give keyword
+
+#### Example
 
 ```vim
-k
+:h sandbox 
 ```
 ===
 
-# Title: Save file
+# Title: Save as 
 # Category: File
-# Tags: save, write
+# Tags: save, file
 ---
-Use `:w` in normal mode to write (save) the current file.
+Use `:sav[eas] filepath` to save file under a different name
+ 
+#### Example
 
 ```vim
-:w
+:sav ~/tmp/work.txt
+```
+===
+
+# Title: Close current pane 
+# Category: Global
+# Tags: close, pane
+---
+Use `:clo[se]` to close the current pane. 
+
+**Note**: The last window cannot be closed. 
+
+#### Example
+
+```vim
+:clo
+```
+===
+
+# Title: Open terminal 
+# Category: Global
+# Tags: terminal
+---
+Use `:ter[minal]` to open a terminal window. When the window shows up, press `i` to enter the insert mode and start typing shell commands. Type `exit` to close the terminal window. 
+
+**TIP**: Once in terminal, type `vimtutor` for a nice vim tutorial, excellent for starters.
+
+#### Example
+
+```vim
+:ter
+```
+===
+
+# Title: Open documentation for word under the cursor 
+# Category: Global
+# Tags: man pages, documentation, help
+---
+Use `K` to open a man page or other type of available documentation for the word under the cursor. 
+
+#### Example
+
+```vim
+K
 ```
 ===
 
