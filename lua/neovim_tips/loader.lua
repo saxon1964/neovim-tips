@@ -38,7 +38,7 @@ local function parse_tip_blocks(content)
       end
       current = {}
       body_lines = {}
-    else
+    elseif current.title then
       table.insert(body_lines, line)
     end
   end
@@ -59,7 +59,7 @@ local function ensure_user_file()
   if not fd then
     local wf = io.open(user_file, "w")
     if wf then
-      wf:write("-- Your personal Neovim tips\n")
+      wf:write("# Your personal Neovim tips\n\n")
       wf:close()
     end
   else
