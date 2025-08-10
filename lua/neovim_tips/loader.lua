@@ -3,6 +3,9 @@ local M = {}
 local config = require("neovim_tips.config")
 local tips = require("neovim_tips.tips")
 
+local builtin_file = config.options.builtin_file
+local user_file = config.options.user_file
+
 local function parse_tip_blocks(content)
   local parsed_tips = {}
   local current = {}
@@ -51,10 +54,10 @@ local function read_tip_file(path)
   return parse_tip_blocks(content)
 end
 
-local function ensure_user_file(path)
-  local fd = io.open(path, "r")
+local function ensure_user_file()
+  local fd = io.open(user_file, "r")
   if not fd then
-    local wf = io.open(path, "w")
+    local wf = io.open(user_file, "w")
     if wf then
       wf:write("-- Your personal Neovim tips\n")
       wf:close()
@@ -65,13 +68,13 @@ local function ensure_user_file(path)
 end
 
 function M.load()
-  local builtin_path = debug.getinfo(1, "S").source:sub(2):gsub("loader.lua", "../../data/builtin_tips.txt")
-  local builtin = read_tip_file(builtin_path)
-  ensure_user_file(config.options.user_file)
-  local user = read_tip_file(config.options.user_file)
+  local builtin_tips = read_tip_file(builtin_file)
+  ensure_user_file()
+  local user_tips = read_tip_file(user_file)
   local all_tips = {}
-  vim.list_extend(all_tips, builtin)
-  vim.list_extend(all_tips, user)
+  vim.list_extend(all_tips, builtin_tips)
+  vim.list_extend(all_tips, user_tips)
+  vim.notify("Loaded " .. #all_tips .. " tips", vim.log.levels.INFO)
   tips.set(all_tips)
 end
 
