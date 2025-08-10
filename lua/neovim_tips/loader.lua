@@ -2,6 +2,7 @@ local M = {}
 
 local config = require("neovim_tips.config")
 local tips = require("neovim_tips.tips")
+local utils = require("neovim_tips.utils")
 
 local builtin_file = config.options.builtin_file
 local user_file = config.options.user_file
@@ -18,6 +19,7 @@ local function parse_tip_blocks(content)
     local tags = line:match("^#%s*Tags:%s*(.+)")
 
     if title then
+      title = utils.trim(title)
       if titles_seen[title] then
         vim.notify("Duplicate tip title found: " .. title, vim.log.levels.WARN)
         current = {} -- Skip adding this duplicate tip
@@ -26,13 +28,15 @@ local function parse_tip_blocks(content)
         titles_seen[title] = true
       end
     elseif category then
-      current.category = category
+      current.category = utils.trim(category)
     elseif tags then
-      current.tags = vim.split(tags, ",%s*")
+      local tags_table = vim.split(tags, ",%s*")
+      local tags_table_trimmed = vim.tbl_map(utils.trim, tags_table)
+      current.tags = vim.tbl_filter(function(t) return t ~= "" end, tags_table_trimmed)
     elseif line == "---" then
       body_lines = {}
     elseif line == "===" then
-      current.description = table.concat(body_lines, "\n")
+      current.description = utils.trim(table.concat(body_lines, "\n"))
       if current.title then -- Ensure tip has a title and wasn't skipped
         table.insert(parsed_tips, current)
       end

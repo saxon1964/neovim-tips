@@ -9,7 +9,13 @@ function M.set(tips)
   items = {}
   descriptions = {}
   for _, tip in ipairs(tips) do
-    local line = string.format("%s [%s] (%s)", tip.title, tip.category, table.concat(tip.tags, ","))
+    local line = tip.title
+    if tip.category and #tip.category > 0 then
+      line = string.format("%s [%s]", line, tip.category)
+    end
+    if tip.tags and #tip.tags > 0 then
+      line = string.format("%s (%s)", line, table.concat(tip.tags, ","))
+    end
     table.insert(items, line)
     descriptions[line] = tip.description
   end

@@ -1,11 +1,8 @@
 local M = {}
 
-local config = require("neovim_tips.config")
 local tips = require("neovim_tips.tips")
 local fzf_lua = require("fzf-lua")
-
-local tmp_file = config.options.tmp_file
-local md_preview_cmd = config.options.md_preview_cmd
+local MdPreviewer = require("neovim_tips.previewer")
 
 function M.show_fzf()
   local items = tips.get_items()
@@ -15,24 +12,8 @@ function M.show_fzf()
   end
 
   fzf_lua.fzf_exec(items, {
-    fzf_opts = {
-      ["--prompt"] = "Neovim Tips> ",
-      ["--preview"] = {
-        type = "cmd",
-        fn = function(selected)
-          local item = selected[1]
-          local description = tips.get_description(item) or "No description"
-          local file = io.open(tmp_file, "w")
-          if file then
-            file:write(description)
-            file:close()
-            return string.format(md_preview_cmd, tmp_file)
-          else
-            return "echo 'Failed to render preview'"
-          end
-        end
-      },
-    },
+    previewer = MdPreviewer,
+    prompt = "Search Tips> ",
   })
 end
 
