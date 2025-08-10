@@ -9,13 +9,11 @@ local md_preview_cmd = config.options.md_preview_cmd
 
 function M.show_fzf()
   local items = tips.get_items()
-  vim.notify("Tips class returned " .. #items .. " tips", vim.log.levels.INFO)
   if #items == 0 then
     vim.notify("No tips available", vim.log.levels.INFO)
     return
   end
 
-  vim.notify("Showing " .. #items .. " tips", vim.log.levels.INFO)
   fzf_lua.fzf_exec(items, {
     fzf_opts = {
       ["--prompt"] = "Neovim Tips> ",

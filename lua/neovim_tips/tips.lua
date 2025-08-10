@@ -14,7 +14,6 @@ function M.set(tips)
     descriptions[line] = tip.description
   end
   table.sort(items)
-  vim.notify("Tips sorted " .. #items .. " tips", vim.log.levels.INFO)
 end
 
 function M.get_tips()

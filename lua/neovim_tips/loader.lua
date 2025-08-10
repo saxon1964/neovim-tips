@@ -74,7 +74,6 @@ function M.load()
   local all_tips = {}
   vim.list_extend(all_tips, builtin_tips)
   vim.list_extend(all_tips, user_tips)
-  vim.notify("Loaded " .. #all_tips .. " tips", vim.log.levels.INFO)
   tips.set(all_tips)
 end
 
