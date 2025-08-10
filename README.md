@@ -184,7 +184,7 @@ return {
 - `:NeovimTipsEdit` — Edit your personal tips file
 - `:NeovimTipsAdd` — Insert a new tip template into your personal file and start editing
 
-## 📝 Tip Format
+## 📝 Tips
 
 Each tip should follow this format in your tips file:
 
@@ -210,13 +210,15 @@ Description of the tip starts with --- and ends with ===. There is **NO** predef
 # Category: Edit
 # Tags: delete, word, cursor
 ---
-In normal mode use `:diw` to delete the wrd under the cursor.
+In normal mode use `:diw` to delete the word under the cursor.
 
 ```vim
 :diw
 ```
 ===
 ````
+
+Initial tips were collected from an excellent vim cheat sheet that can be found [here](https://vim.rtorr.com/). 
 
 ## 📁 Default File Locations
 
