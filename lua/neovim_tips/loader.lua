@@ -58,22 +58,8 @@ local function read_tip_file(path)
   return parse_tip_blocks(content)
 end
 
-local function prepare_user_file()
-  local fd = io.open(user_file, "r")
-  if not fd then
-    local wf = io.open(user_file, "w")
-    if wf then
-      wf:write("# Your personal Neovim tips\n\n")
-      wf:close()
-    end
-  else
-    fd:close()
-  end
-end
-
 function M.load()
   local builtin_tips = read_tip_file(builtin_file)
-  prepare_user_file()
   local user_tips = read_tip_file(user_file)
   local all_tips = {}
   vim.list_extend(all_tips, builtin_tips)
@@ -82,3 +68,4 @@ function M.load()
 end
 
 return M
+
