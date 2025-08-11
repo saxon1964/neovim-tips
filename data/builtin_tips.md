@@ -1018,20 +1018,6 @@ Append `zz` after navigation commands to center the line. Works with searches, l
 ```
 ===
 
-# Title: Quick comment toggle
-# Category: Neovim Features
-# Tags: comment, toggle, modern
----
-Use `gcc` to toggle comment on current line, or `gc` in visual mode to toggle comments on selection (requires comment plugin).
-
-#### Example
-
-```vim
-gcc  " toggle line comment
-gc   " toggle visual selection comment
-```
-===
-
 # Title: Multiple cursors simulation
 # Category: Neovim Features
 # Tags: cursor, multiple, editing
@@ -1116,6 +1102,1270 @@ Use `Ctrl+w s` for horizontal split, `Ctrl+w v` for vertical split, `Ctrl+w w` t
 Ctrl+w s  " horizontal split
 Ctrl+w v  " vertical split
 Ctrl+w w  " cycle windows
+```
+===
+
+# Title: Text objects - inside brackets
+# Category: Text Objects
+# Tags: textobject, brackets, inside
+---
+Use `ci(`, `ci[`, `ci{` to change inside parentheses, square brackets, or curly braces. Works with `d`, `y`, `v` too.
+
+#### Example
+
+```vim
+ci(  " change inside parentheses
+di[  " delete inside square brackets
+yi{  " yank inside curly braces
+```
+===
+
+# Title: Text objects - around brackets
+# Category: Text Objects
+# Tags: textobject, brackets, around
+---
+Use `ca(`, `ca[`, `ca{` to change around parentheses, square brackets, or curly braces including the brackets.
+
+#### Example
+
+```vim
+ca(  " change around parentheses
+da[  " delete around square brackets
+ya{  " yank around curly braces
+```
+===
+
+# Title: Text objects - sentences and paragraphs
+# Category: Text Objects
+# Tags: textobject, sentence, paragraph
+---
+Use `is`/`as` for inside/around sentence and `ip`/`ap` for inside/around paragraph.
+
+#### Example
+
+```vim
+cis  " change inside sentence
+das  " delete around sentence
+vip  " select inside paragraph
+yap  " yank around paragraph
+```
+===
+
+# Title: Text objects - word variations
+# Category: Text Objects
+# Tags: textobject, word, inner
+---
+Use `iw` for inside word, `aw` for around word (includes space), `iW` for inside WORD, `aW` for around WORD.
+
+#### Example
+
+```vim
+ciw  " change inside word
+daw  " delete around word (includes space)
+yiW  " yank inside WORD (space-separated)
+```
+===
+
+# Title: Toggle fold
+# Category: Folding
+# Tags: fold, toggle, code
+---
+Use `za` to toggle fold under cursor open/closed.
+
+#### Example
+
+```vim
+za  " toggle fold under cursor
+```
+===
+
+# Title: Open and close folds
+# Category: Folding
+# Tags: fold, open, close
+---
+Use `zo` to open fold under cursor and `zc` to close fold under cursor.
+
+#### Example
+
+```vim
+zo  " open fold
+zc  " close fold
+```
+===
+
+# Title: Open and close all folds
+# Category: Folding
+# Tags: fold, all, global
+---
+Use `zR` to open all folds in buffer and `zM` to close all folds in buffer.
+
+#### Example
+
+```vim
+zR  " open all folds
+zM  " close all folds
+```
+===
+
+# Title: Create fold from selection
+# Category: Folding
+# Tags: fold, create, selection
+---
+Use `zf` to create a fold from visual selection or with motion (e.g., `zf5j` to fold 5 lines down).
+
+#### Example
+
+```vim
+zf5j  " create fold 5 lines down
+zf    " create fold from visual selection
+```
+===
+
+# Title: Fold levels
+# Category: Folding
+# Tags: fold, level, depth
+---
+Use `zm` to increase fold level (close more folds) and `zr` to reduce fold level (open more folds).
+
+#### Example
+
+```vim
+zm  " increase fold level
+zr  " reduce fold level
+```
+===
+
+# Title: Search word boundaries
+# Category: Search
+# Tags: search, word, boundary
+---
+Use `\<word\>` to search for whole word only, preventing partial matches.
+
+#### Example
+
+```vim
+/\<hello\>  " search for whole word 'hello' only
+```
+===
+
+# Title: Search word under cursor
+# Category: Search
+# Tags: search, cursor, word
+---
+Use `*` to search forward for word under cursor and `#` to search backward for word under cursor.
+
+#### Example
+
+```vim
+*  " search forward for word under cursor
+#  " search backward for word under cursor
+```
+===
+
+# Title: Very magic search mode
+# Category: Search
+# Tags: search, regex, magic
+---
+Use `\v` at start of search pattern for "very magic" mode, making regex more intuitive (similar to other languages).
+
+#### Example
+
+```vim
+/\v(hello|world)  " search for 'hello' or 'world'
+/\vd+             " search for one or more digits
+```
+===
+
+# Title: Search backward
+# Category: Search
+# Tags: search, backward, reverse
+---
+Use `?pattern` to search backward for a pattern. Press `n` to go to next match and `N` for previous.
+
+#### Example
+
+```vim
+?hello  " search backward for 'hello'
+n       " next match (backward)
+N       " previous match (forward)
+```
+===
+
+# Title: Command history navigation
+# Category: Command Line
+# Tags: command, history, navigation
+---
+Use `Ctrl+p` to go to previous command in history and `Ctrl+n` to go to next command while in command mode.
+
+#### Example
+
+```vim
+:Ctrl+p  " previous command in history
+:Ctrl+n  " next command in history
+```
+===
+
+# Title: Command completion
+# Category: Command Line
+# Tags: command, completion, tab
+---
+Use `Tab` for command completion and `Ctrl+d` to list all possible completions.
+
+#### Example
+
+```vim
+:ed<Tab>   " complete to :edit
+:h vim<Tab>  " complete help topics
+:set nu<Ctrl+d>  " list all options starting with 'nu'
+```
+===
+
+# Title: Insert word under cursor in command
+# Category: Command Line
+# Tags: command, word, cursor
+---
+Use `Ctrl+r Ctrl+w` to insert the word under cursor into command line.
+
+#### Example
+
+```vim
+:Ctrl+r Ctrl+w  " insert word under cursor
+```
+===
+
+# Title: Command line editing
+# Category: Command Line
+# Tags: command, edit, navigation
+---
+Use `Ctrl+b` to go to beginning of line, `Ctrl+e` to end, `Ctrl+h` to delete character, `Ctrl+w` to delete word.
+
+#### Example
+
+```vim
+:Ctrl+b  " go to beginning of command line
+:Ctrl+e  " go to end of command line
+:Ctrl+h  " delete character backward
+:Ctrl+w  " delete word backward
+```
+===
+
+# Title: Equalize window sizes
+# Category: Window Management
+# Tags: window, resize, equalize
+---
+Use `Ctrl+w =` to make all windows equal in size.
+
+#### Example
+
+```vim
+Ctrl+w =  " equalize window sizes
+```
+===
+
+# Title: Maximize window dimensions
+# Category: Window Management
+# Tags: window, maximize, resize
+---
+Use `Ctrl+w _` to maximize current window height and `Ctrl+w |` to maximize current window width.
+
+#### Example
+
+```vim
+Ctrl+w _  " maximize window height
+Ctrl+w |  " maximize window width
+```
+===
+
+# Title: Resize windows incrementally
+# Category: Window Management
+# Tags: window, resize, increment
+---
+Use `Ctrl+w +` to increase height, `Ctrl+w -` to decrease height, `Ctrl+w >` to increase width, `Ctrl+w <` to decrease width.
+
+#### Example
+
+```vim
+Ctrl+w +  " increase window height
+Ctrl+w -  " decrease window height
+Ctrl+w >  " increase window width
+Ctrl+w <  " decrease window width
+```
+===
+
+# Title: Rotate windows
+# Category: Window Management
+# Tags: window, rotate, move
+---
+Use `Ctrl+w r` to rotate windows clockwise and `Ctrl+w R` to rotate windows counter-clockwise.
+
+#### Example
+
+```vim
+Ctrl+w r  " rotate windows clockwise
+Ctrl+w R  " rotate windows counter-clockwise
+```
+===
+
+# Title: Move windows
+# Category: Window Management
+# Tags: window, move, position
+---
+Use `Ctrl+w H/J/K/L` to move current window to far left/bottom/top/right.
+
+#### Example
+
+```vim
+Ctrl+w H  " move window to far left
+Ctrl+w J  " move window to bottom
+Ctrl+w K  " move window to top  
+Ctrl+w L  " move window to far right
+```
+===
+
+# Title: Jump list navigation
+# Category: Navigation
+# Tags: jump, list, position
+---
+Use `Ctrl+o` to jump to older position in jump list and `Ctrl+i` to jump to newer position.
+
+#### Example
+
+```vim
+Ctrl+o  " jump to older position
+Ctrl+i  " jump to newer position
+```
+===
+
+# Title: View jump list
+# Category: Navigation
+# Tags: jump, list, view
+---
+Use `:jumps` to show the jump list with all stored positions.
+
+#### Example
+
+```vim
+:jumps  " show jump list
+```
+===
+
+# Title: Go to file under cursor
+# Category: Navigation
+# Tags: file, cursor, goto
+---
+Use `gf` to open the file whose name is under the cursor.
+
+#### Example
+
+```vim
+gf  " go to file under cursor
+```
+===
+
+# Title: LSP go to definition
+# Category: Navigation
+# Tags: lsp, definition, goto
+---
+Use `gd` to go to definition of symbol under cursor (requires LSP server).
+
+#### Example
+
+```vim
+gd  " go to definition
+```
+===
+
+# Title: LSP go to references
+# Category: Navigation
+# Tags: lsp, references, goto
+---
+Use `gr` to go to references of symbol under cursor (requires LSP server).
+
+#### Example
+
+```vim
+gr  " go to references
+```
+===
+
+# Title: Go to declaration
+# Category: Navigation
+# Tags: lsp, declaration, goto
+---
+Use `gD` to go to declaration of symbol under cursor.
+
+#### Example
+
+```vim
+gD  " go to declaration
+```
+===
+
+# Title: Toggle case of character
+# Category: Text Manipulation
+# Tags: case, toggle, character
+---
+Use `~` to toggle case of character under cursor.
+
+#### Example
+
+```vim
+~  " toggle character case
+```
+===
+
+# Title: Lowercase/uppercase current line
+# Category: Text Manipulation
+# Tags: case, line, transform
+---
+Use `guu` to lowercase current line or `gUU` to uppercase current line.
+
+#### Example
+
+```vim
+guu  " lowercase current line
+gUU  " uppercase current line
+```
+===
+
+# Title: Uppercase current word
+# Category: Text Manipulation
+# Tags: case, word, uppercase
+---
+Use `gUw` to uppercase current word.
+
+#### Example
+
+```vim
+gUw  " uppercase current word
+```
+===
+
+# Title: Sort paragraph
+# Category: Text Manipulation
+# Tags: sort, paragraph, formatting
+---
+Use `!}sort` to sort the next paragraph.
+
+#### Example
+
+```vim
+!}sort  " sort next paragraph
+```
+===
+
+# Title: Sort with remove duplicates
+# Category: Text Manipulation
+# Tags: sort, duplicates, unique
+---
+Use `:sort u` to sort selected lines and remove duplicates.
+
+#### Example
+
+```vim
+:sort u  " sort and remove duplicates
+```
+===
+
+# Title: Insert current date
+# Category: File Operations
+# Tags: date, insert, command
+---
+Use `:r !date` to insert current date at cursor position.
+
+#### Example
+
+```vim
+:r !date  " insert current date
+```
+===
+
+# Title: Insert file contents
+# Category: File Operations
+# Tags: insert, file, read
+---
+Use `:r filename` to insert contents of another file at cursor position.
+
+#### Example
+
+```vim
+:r file.txt  " insert contents of file.txt
+```
+===
+
+# Title: Format paragraph
+# Category: Text Manipulation
+# Tags: format, paragraph, wrap
+---
+Use `gqap` to format/wrap a paragraph according to textwidth.
+
+#### Example
+
+```vim
+gqap  " format around paragraph
+```
+===
+
+# Title: Jump to last edit location
+# Category: Navigation
+# Tags: edit, location, jump
+---
+Use `` `. `` to jump to the exact location of the last edit.
+
+#### Example
+
+```vim
+`.  " jump to last edit location
+```
+===
+
+# Title: List jump locations
+# Category: Navigation
+# Tags: jump, list, history
+---
+Use `:ju` to list all jump locations in the jump list.
+
+#### Example
+
+```vim
+:ju  " list jump locations
+```
+===
+
+# Title: Screen position navigation
+# Category: Movement
+# Tags: screen, position, navigation
+---
+Use `H` to move cursor to top of screen and `L` to move cursor to bottom of screen.
+
+#### Example
+
+```vim
+H  " move to top of screen
+L  " move to bottom of screen
+```
+===
+
+# Title: Search help by pattern
+# Category: Help
+# Tags: help, search, pattern
+---
+Use `:help pattern` to search help documentation for specific keywords or patterns.
+
+#### Example
+
+```vim
+:help pattern  " search help for 'pattern'
+```
+===
+
+# Title: Recursive file search
+# Category: Search
+# Tags: vimgrep, recursive, files
+---
+Use `:vimgrep /pattern/ **/*.ext` to search for pattern recursively in files with specific extension.
+
+#### Example
+
+```vim
+:vimgrep /pattern/ **/*.lua  " search in all .lua files
+```
+===
+
+# Title: Navigate quickfix list
+# Category: Navigation
+# Tags: quickfix, navigation, errors
+---
+Use `:cnext` to go to next item in quickfix list and `:cprev` to go to previous item.
+
+#### Example
+
+```vim
+:cnext  " next quickfix item
+:cprev  " previous quickfix item
+```
+===
+
+# Title: Jump to block boundaries
+# Category: Navigation
+# Tags: block, boundaries, jump
+---
+Use `[{` to jump to start of current block and `]}` to jump to end of current block.
+
+#### Example
+
+```vim
+[{  " jump to block start
+]}  " jump to block end
+```
+===
+
+# Title: Paste last yanked text
+# Category: Registers
+# Tags: paste, yank, register
+---
+Use `"0p` to paste the last yanked text (ignoring deletions).
+
+#### Example
+
+```vim
+"0p  " paste last yanked text
+```
+===
+
+# Title: Delete without affecting register
+# Category: Registers
+# Tags: delete, register, blackhole
+---
+Use `"_d` to delete text without affecting the default register (sends to blackhole register).
+
+#### Example
+
+```vim
+"_d  " delete to blackhole register
+```
+===
+
+# Title: Set register manually
+# Category: Registers
+# Tags: register, set, manual
+---
+Use `:let @a='text'` to manually set the contents of register a.
+
+#### Example
+
+```vim
+:let @a='hello world'  " set register a to 'hello world'
+```
+===
+
+# Title: Advanced search and replace with regex
+# Category: Search
+# Tags: replace, regex, advanced
+---
+Use `:%s/\v(foo|bar)/baz/g` to replace either 'foo' or 'bar' with 'baz' using very magic mode.
+
+#### Example
+
+```vim
+:%s/\v(foo|bar)/baz/g  " replace foo or bar with baz
+```
+===
+
+# Title: Repeat last search in substitution
+# Category: Search
+# Tags: substitute, repeat, search
+---
+Use `:%s//replacement/g` to use the last search pattern in substitution command.
+
+#### Example
+
+```vim
+:%s//new_text/g  " replace last searched pattern with new_text
+```
+===
+
+# Title: Replace newlines with spaces
+# Category: Text Manipulation
+# Tags: newlines, replace, spaces
+---
+Use `:%s/\n/ /g` to replace all newlines with spaces.
+
+#### Example
+
+```vim
+:%s/\n/ /g  " replace newlines with spaces
+```
+===
+
+# Title: Remove trailing whitespace
+# Category: Text Manipulation
+# Tags: whitespace, trailing, clean
+---
+Use `:%s/\s\+$//` to remove trailing whitespace from all lines.
+
+#### Example
+
+```vim
+:%s/\s\+$//  " remove trailing whitespace
+```
+===
+
+# Title: Delete blank lines
+# Category: Text Manipulation
+# Tags: delete, blank, lines
+---
+Use `:g/^$/d` to delete all blank/empty lines in the buffer.
+
+#### Example
+
+```vim
+:g/^$/d  " delete blank lines
+```
+===
+
+# Title: Delete non-matching lines
+# Category: Text Manipulation
+# Tags: delete, pattern, inverse
+---
+Use `:v/pattern/d` to delete all lines that do NOT match the pattern.
+
+#### Example
+
+```vim
+:v/TODO/d  " delete lines that don't contain 'TODO'
+```
+===
+
+# Title: Select inside quotes
+# Category: Text Objects
+# Tags: select, quotes, inside
+---
+Use `vi"` to select text inside double quotes or `vi'` for single quotes.
+
+#### Example
+
+```vim
+vi"  " select inside double quotes
+vi'  " select inside single quotes
+```
+===
+
+# Title: Select around parentheses
+# Category: Text Objects
+# Tags: select, parentheses, around
+---
+Use `va(` to select text around parentheses (including the parentheses).
+
+#### Example
+
+```vim
+va(  " select around parentheses
+```
+===
+
+# Title: Toggle invisible characters
+# Category: Display
+# Tags: invisible, characters, toggle
+---
+Use `:set list!` to toggle display of invisible characters (tabs, spaces, etc.).
+
+#### Example
+
+```vim
+:set list!  " toggle invisible characters
+```
+===
+
+# Title: Toggle cursor line highlight
+# Category: Display
+# Tags: cursorline, highlight, toggle
+---
+Use `:set cursorline!` to toggle highlighting of the current cursor line.
+
+#### Example
+
+```vim
+:set cursorline!  " toggle cursor line highlight
+```
+===
+
+# Title: Open command history
+# Category: Command Line
+# Tags: history, command, window
+---
+Use `q:` to open command history in a searchable window.
+
+#### Example
+
+```vim
+q:  " open command history window
+```
+===
+
+# Title: Open search history
+# Category: Search
+# Tags: history, search, window
+---
+Use `q/` to open search history in a searchable window.
+
+#### Example
+
+```vim
+q/  " open search history window
+```
+===
+
+# Title: Save file with sudo
+# Category: File Operations
+# Tags: sudo, save, permissions
+---
+Use `:w !sudo tee %` to save current file with sudo privileges when you forgot to open with sudo.
+
+#### Example
+
+```vim
+:w !sudo tee %  " save with sudo
+```
+===
+
+# Title: Reload file from disk
+# Category: File Operations
+# Tags: reload, file, refresh
+---
+Use `:e!` to reload current file from disk, discarding unsaved changes.
+
+#### Example
+
+```vim
+:e!  " reload file from disk
+```
+===
+
+# Title: Time-based undo navigation
+# Category: Edit
+# Tags: undo, time, history
+---
+Use `:earlier 10m` to revert buffer to state 10 minutes ago, or `:later 5m` to go forward 5 minutes.
+
+#### Example
+
+```vim
+:earlier 10m  " revert to 10 minutes ago
+:later 5m     " go forward 5 minutes
+```
+===
+
+# Title: Run inline Lua code
+# Category: Lua
+# Tags: lua, inline, execute
+---
+Use `:lua` to run Lua code directly in Neovim.
+
+#### Example
+
+```vim
+:lua print("Hello from Lua!")
+```
+===
+
+# Title: Format with Treesitter
+# Category: Formatting
+# Tags: treesitter, format, syntax
+---
+Use `=ap` to format syntax-aware regions using Treesitter (when available).
+
+#### Example
+
+```vim
+=ap  " format around paragraph with Treesitter
+```
+===
+
+# Title: Debug Lua values
+# Category: Lua
+# Tags: lua, debug, inspect
+---
+Use `vim.inspect()` to debug and pretty-print Lua values.
+
+#### Example
+
+```vim
+:lua print(vim.inspect(vim.fn.getbufinfo()))
+```
+===
+
+# Title: Run current Lua file
+# Category: Lua
+# Tags: lua, file, execute
+---
+Use `:luafile %` to execute the current Lua file inside Neovim.
+
+#### Example
+
+```vim
+:luafile %  " run current Lua file
+```
+===
+
+# Title: Lua keymaps
+# Category: Lua
+# Tags: lua, keymap, mapping
+---
+Use `vim.keymap.set()` to create keymaps with inline Lua functions.
+
+#### Example
+
+```vim
+:lua vim.keymap.set("n", "<leader>hi", function() print("Hello!") end)
+```
+===
+
+# Title: Treesitter text objects
+# Category: Text Objects
+# Tags: treesitter, textobject, function
+---
+Use `vac` to select around class or `vic` for inside class with Treesitter text objects enabled.
+
+#### Example
+
+```vim
+vac  " select around class
+vic  " select inside class
+```
+===
+
+# Title: Jump between functions
+# Category: Navigation
+# Tags: function, jump, treesitter
+---
+Use `]m` to jump to next function start and `[m` to jump to previous function start.
+
+#### Example
+
+```vim
+]m  " next function start
+[m  " previous function start
+```
+===
+
+# Title: LSP implementation
+# Category: LSP
+# Tags: lsp, implementation, goto
+---
+Use `gi` to jump to implementation of symbol under cursor.
+
+#### Example
+
+```vim
+gi  " jump to implementation
+```
+===
+
+# Title: System clipboard sync
+# Category: Clipboard
+# Tags: clipboard, system, sync
+---
+Use `vim.opt.clipboard="unnamedplus"` to sync yank/paste with system clipboard automatically.
+
+#### Example
+
+```vim
+:lua vim.opt.clipboard = "unnamedplus"
+```
+===
+
+# Title: Yank highlighting
+# Category: Visual
+# Tags: yank, highlight, autocmd
+---
+Create an autocmd to highlight yanked text briefly for visual feedback.
+
+#### Example
+
+```vim
+:lua vim.api.nvim_create_autocmd("TextYankPost", {callback = function() vim.highlight.on_yank() end})
+```
+===
+
+# Title: Set system clipboard from Lua
+# Category: Clipboard
+# Tags: clipboard, lua, register
+---
+Use `vim.fn.setreg("+", "text")` to set system clipboard content from Lua.
+
+#### Example
+
+```vim
+:lua vim.fn.setreg("+", "hello world")
+```
+===
+
+# Title: LSP rename
+# Category: LSP
+# Tags: lsp, rename, refactor
+---
+Use `:lua vim.lsp.buf.rename()` to rename symbol under cursor across the project.
+
+#### Example
+
+```vim
+:lua vim.lsp.buf.rename()
+```
+===
+
+# Title: Floating terminal
+# Category: Terminal
+# Tags: terminal, floating, window
+---
+Create floating terminal using `vim.api.nvim_open_term()`.
+
+#### Example
+
+```vim
+:lua vim.api.nvim_open_term(0, {})
+```
+===
+
+# Title: Floating diagnostics
+# Category: LSP
+# Tags: diagnostics, floating, popup
+---
+Use `vim.diagnostic.open_float()` to show diagnostics in a floating window.
+
+#### Example
+
+```vim
+:lua vim.diagnostic.open_float()
+```
+===
+
+# Title: Treesitter inspection
+# Category: Treesitter
+# Tags: treesitter, inspect, debug
+---
+Use `:Inspect` to see syntax node under cursor or `:InspectTree` to open full syntax tree.
+
+#### Example
+
+```vim
+:Inspect      " inspect node under cursor
+:InspectTree  " open full syntax tree
+```
+===
+
+# Title: Custom statusline
+# Category: UI
+# Tags: statusline, custom, display
+---
+Use `vim.opt.statusline` to set a custom statusline format.
+
+#### Example
+
+```vim
+:lua vim.opt.statusline = "%f %y %m %= %l:%c"
+```
+===
+
+# Title: Run macro over visual selection
+# Category: Macros
+# Tags: macro, visual, selection
+---
+Use `:'<,'>normal @q` to run macro q over visual selection.
+
+#### Example
+
+```vim
+:'<,'>normal @q  " run macro q on selection
+```
+===
+
+# Title: Session management
+# Category: Session
+# Tags: session, save, restore
+---
+Use `:mksession!` to save session and `:source Session.vim` to restore it.
+
+#### Example
+
+```vim
+:mksession!        " save session
+:source Session.vim " restore session
+```
+===
+
+# Title: Lua autocommands
+# Category: Lua
+# Tags: autocommand, lua, event
+---
+Use `vim.api.nvim_create_autocmd()` to create autocommands in Lua.
+
+#### Example
+
+```vim
+:lua vim.api.nvim_create_autocmd("BufWritePost", {pattern = "*.lua", callback = function() print("Saved!") end})
+```
+===
+
+# Title: Reload configuration
+# Category: Configuration
+# Tags: config, reload, source
+---
+Use `:source $MYVIMRC` to reload your Neovim configuration.
+
+#### Example
+
+```vim
+:source $MYVIMRC  " reload config
+```
+===
+
+# Title: Edit configuration
+# Category: Configuration
+# Tags: config, edit, vimrc
+---
+Use `:e $MYVIMRC` to quickly edit your Neovim configuration file.
+
+#### Example
+
+```vim
+:e $MYVIMRC  " edit config file
+```
+===
+
+# Title: Async shell commands
+# Category: System
+# Tags: async, shell, lua
+---
+Use `vim.loop.spawn()` to run shell commands asynchronously without blocking Neovim.
+
+#### Example
+
+```vim
+:lua vim.loop.spawn("ls", {args={"-la"}}, function() print("Done!") end)
+```
+===
+
+# Title: Split terminal
+# Category: Terminal
+# Tags: terminal, split, window
+---
+Use `:sp | terminal` to open terminal in a horizontal split.
+
+#### Example
+
+```vim
+:sp | terminal  " terminal in horizontal split
+```
+===
+
+# Title: Send commands to terminal
+# Category: Terminal
+# Tags: terminal, command, send
+---
+Use `vim.api.nvim_chan_send()` to send commands to terminal buffer from Lua.
+
+#### Example
+
+```vim
+:lua vim.api.nvim_chan_send(terminal_job_id, "ls\n")
+```
+===
+
+# Title: Profile startup time
+# Category: Performance
+# Tags: profile, startup, performance
+---
+Use `nvim --startuptime profile.log` to profile Neovim startup time.
+
+#### Example
+
+```bash
+nvim --startuptime profile.log
+```
+===
+
+# Title: View loaded Lua modules
+# Category: Lua
+# Tags: modules, loaded, debug
+---
+Use `package.loaded` to view all loaded Lua modules.
+
+#### Example
+
+```vim
+:lua print(vim.inspect(package.loaded))
+```
+===
+
+# Title: Check highlight groups
+# Category: UI
+# Tags: highlight, groups, colors
+---
+Use `:hi` to view all highlight groups and their current settings.
+
+#### Example
+
+```vim
+:hi  " show all highlight groups
+```
+===
+
+# Title: Health diagnostics
+# Category: Diagnostics
+# Tags: health, check, diagnostics
+---
+Use `:checkhealth` to run health diagnostics for your Neovim setup.
+
+#### Example
+
+```vim
+:checkhealth  " run health diagnostics
+```
+===
+
+# Title: View runtime paths
+# Category: Configuration
+# Tags: runtime, path, debug
+---
+Use `:echo &runtimepath` to see all runtime paths Neovim is using.
+
+#### Example
+
+```vim
+:echo &runtimepath  " show runtime paths
+```
+===
+
+# Title: View messages
+# Category: Diagnostics
+# Tags: messages, log, history
+---
+Use `:messages` to view past messages and notifications.
+
+#### Example
+
+```vim
+:messages  " view past messages
+```
+===
+
+# Title: Find mapping source
+# Category: Diagnostics
+# Tags: mapping, verbose, source
+---
+Use `:verbose map <key>` to see where a specific mapping was defined.
+
+#### Example
+
+```vim
+:verbose map <leader>f  " see where <leader>f was mapped
+```
+===
+
+# Title: Find option source
+# Category: Diagnostics
+# Tags: option, verbose, source
+---
+Use `:verbose set option?` to see where a specific option was last set.
+
+#### Example
+
+```vim
+:verbose set number?  " see where 'number' option was set
+```
+===
+
+# Title: Master help index
+# Category: Help
+# Tags: help, index, reference
+---
+Use `:h index.txt` to access the master help index with all available commands.
+
+#### Example
+
+```vim
+:h index.txt  " master help index
 ```
 ===
 
