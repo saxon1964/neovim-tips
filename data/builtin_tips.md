@@ -156,49 +156,8 @@ zb  " line to bottom
 ```
 ===
 
-# Title: Insert text
-# Category: Edit
-# Tags: insert, text, editing
----
-Use `i` to insert before the cursor, `I` to insert at the beginning of the line, `a` to append after the cursor, and `A` to append at the end of the line.
 
-#### Example
 
-```vim
-i  " insert before cursor
-I  " insert at line start
-a  " append after cursor
-A  " append at line end
-```
-===
-
-# Title: New lines
-# Category: Edit
-# Tags: line, new, editing
----
-Use `o` to open a new line below the current line and `O` to open a new line above the current line.
-
-#### Example
-
-```vim
-o  " new line below
-O  " new line above
-```
-===
-
-# Title: Delete in insert mode
-# Category: Edit
-# Tags: delete, insert, editing
----
-Use `Ctrl+h` to delete the character before the cursor and `Ctrl+w` to delete the word before the cursor while in insert mode.
-
-#### Example
-
-```vim
-Ctrl+h  " delete char before cursor
-Ctrl+w  " delete word before cursor
-```
-===
 
 # Title: Exit insert mode
 # Category: Edit
@@ -255,61 +214,9 @@ Ctrl+r  " redo
 ```
 ===
 
-# Title: Repeat command
-# Category: Edit
-# Tags: repeat, command, editing
----
-Use `.` to repeat the last command or edit.
 
-#### Example
 
-```vim
-.  " repeat last command
-```
-===
 
-# Title: Visual selection
-# Category: Visual
-# Tags: visual, selection, mode
----
-Use `v` for character-wise visual mode, `V` for line-wise visual mode, and `Ctrl+v` for block visual mode.
-
-#### Example
-
-```vim
-v       " character visual
-V       " line visual
-Ctrl+v  " block visual
-```
-===
-
-# Title: Indent text
-# Category: Visual
-# Tags: indent, text, formatting
----
-Use `>` to shift selected text right and `<` to shift selected text left in visual mode.
-
-#### Example
-
-```vim
->  " shift right
-<  " shift left
-```
-===
-
-# Title: Yank and delete in visual
-# Category: Visual
-# Tags: yank, delete, visual
----
-Use `y` to yank (copy) selected text and `d` to delete selected text in visual mode.
-
-#### Example
-
-```vim
-y  " yank selection
-d  " delete selection
-```
-===
 
 # Title: View registers
 # Category: Registers
@@ -324,19 +231,6 @@ Use `:registers` to show the contents of all registers.
 ```
 ===
 
-# Title: Yank to specific register
-# Category: Registers
-# Tags: yank, register, clipboard
----
-Use `"xy` to yank text into register x, where x is any letter.
-
-#### Example
-
-```vim
-"ay  " yank to register a
-"by  " yank to register b
-```
-===
 
 # Title: System clipboard
 # Category: Registers
@@ -367,120 +261,13 @@ N       " previous match
 ```
 ===
 
-# Title: Search and replace
-# Category: Search
-# Tags: replace, substitute, search
----
-Use `:%s/old/new/g` to replace all occurrences of 'old' with 'new' in the entire file.
 
-#### Example
 
-```vim
-:%s/foo/bar/g  " replace all 'foo' with 'bar'
-```
-===
 
-# Title: Clear search highlighting
-# Category: Search
-# Tags: highlight, search, clear
----
-Use `:nohl` to remove search result highlighting.
 
-#### Example
 
-```vim
-:nohl
-```
-===
 
-# Title: Basic cursor movement
-# Category: Movement
-# Tags: cursor, movement, navigation
----
-Use `h`, `j`, `k`, `l` to move cursor left, down, up, and right respectively. This is the foundation of Vim navigation.
 
-#### Example
-
-```vim
-h  " move left
-j  " move down
-k  " move up
-l  " move right
-```
-===
-
-# Title: Word movement
-# Category: Movement
-# Tags: word, movement, navigation
----
-Use `w` to jump to start of next word, `e` to jump to end of word, and `b` to jump backwards to start of word.
-
-#### Example
-
-```vim
-w  " next word start
-e  " end of word
-b  " previous word start
-```
-===
-
-# Title: Line navigation
-# Category: Movement
-# Tags: line, navigation, movement
----
-Use `0` to jump to line start, `^` to jump to first non-blank character, and `$` to jump to line end.
-
-#### Example
-
-```vim
-0  " beginning of line
-^  " first non-blank character
-$  " end of line
-```
-===
-
-# Title: Document navigation
-# Category: Movement
-# Tags: document, navigation, movement
----
-Use `gg` to go to first line of document and `G` to go to last line of document.
-
-#### Example
-
-```vim
-gg " first line
-G  " last line
-```
-===
-
-# Title: Screen scrolling
-# Category: Movement
-# Tags: scroll, screen, movement
----
-Use `Ctrl+e` to scroll screen down and `Ctrl+y` to scroll screen up without moving the cursor.
-
-#### Example
-
-```vim
-Ctrl+e  " scroll down
-Ctrl+y  " scroll up
-```
-===
-
-# Title: Center cursor on screen
-# Category: Movement
-# Tags: center, screen, cursor
----
-Use `zz` to center cursor on screen, `zt` to move cursor to top of screen, and `zb` to move cursor to bottom of screen.
-
-#### Example
-
-```vim
-zz " center cursor
-zt " cursor to top
-zb " cursor to bottom
-```
-===
 
 # Title: Insert modes
 # Category: Insert
@@ -526,60 +313,9 @@ Ctrl+w  " delete word
 ```
 ===
 
-# Title: Exit insert mode
-# Category: Insert
-# Tags: exit, insert, mode
----
-Use `Esc` or `Ctrl+c` to exit insert mode and return to normal mode.
 
-#### Example
 
-```vim
-Esc     " exit insert mode
-Ctrl+c  " exit insert mode
-```
-===
 
-# Title: Replace character
-# Category: Editing
-# Tags: replace, character, editing
----
-Use `r` to replace a single character under the cursor.
-
-#### Example
-
-```vim
-r  " replace single character
-```
-===
-
-# Title: Join lines
-# Category: Editing
-# Tags: join, lines, editing
----
-Use `J` to join current line with next line (with space) or `gJ` to join without adding space.
-
-#### Example
-
-```vim
-J   " join with space
-gJ  " join without space
-```
-===
-
-# Title: Undo and redo
-# Category: Editing
-# Tags: undo, redo, editing
----
-Use `u` to undo last change and `Ctrl+r` to redo.
-
-#### Example
-
-```vim
-u      " undo
-Ctrl+r " redo
-```
-===
 
 # Title: Repeat last command
 # Category: Editing
@@ -637,18 +373,6 @@ d  " delete selected text
 ```
 ===
 
-# Title: View registers
-# Category: Registers
-# Tags: registers, view, clipboard
----
-Use `:registers` to show the contents of all registers.
-
-#### Example
-
-```vim
-:registers
-```
-===
 
 # Title: Use specific register
 # Category: Registers
@@ -664,34 +388,7 @@ Use `"xy` to yank into specific register x. Replace x with any letter or number.
 ```
 ===
 
-# Title: System clipboard
-# Category: Registers
-# Tags: clipboard, system, yank
----
-Use `"+y` to yank to system clipboard and `"+p` to paste from system clipboard.
 
-#### Example
-
-```vim
-"+y  " yank to system clipboard
-"+p  " paste from system clipboard
-```
-===
-
-# Title: Search forward
-# Category: Search
-# Tags: search, find, pattern
----
-Use `/pattern` to search forward for a pattern. Press `n` to go to next match and `N` for previous match.
-
-#### Example
-
-```vim
-/hello  " search for 'hello'
-n       " next match
-N       " previous match
-```
-===
 
 # Title: Global search and replace
 # Category: Search
