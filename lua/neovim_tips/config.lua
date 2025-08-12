@@ -1,7 +1,7 @@
 local M = {}
 
 M.options = {
-  builtin_file = debug.getinfo(1, "S").source:sub(2):gsub("config.lua", "../../data/builtin_tips.md"),
+  builtin_dir = debug.getinfo(1, "S").source:sub(2):gsub("config.lua", "../../data"),
   user_file = vim.fn.stdpath("config") .. "/neovim_tips/user_tips.md",
 }
 

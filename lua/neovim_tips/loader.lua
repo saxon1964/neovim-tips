@@ -4,7 +4,7 @@ local config = require("neovim_tips.config")
 local tips = require("neovim_tips.tips")
 local utils = require("neovim_tips.utils")
 
-local builtin_file = config.options.builtin_file
+local builtin_dir = config.options.builtin_dir
 local user_file = config.options.user_file
 
 local function parse_tip_blocks(content)
@@ -58,8 +58,29 @@ local function read_tip_file(path)
   return parse_tip_blocks(content)
 end
 
+local function read_tips_from_directory(dir_path)
+  local all_tips = {}
+  local handle = vim.loop.fs_scandir(dir_path)
+  if not handle then
+    return all_tips
+  end
+  
+  while true do
+    local name, type = vim.loop.fs_scandir_next(handle)
+    if not name then break end
+    
+    if type == "file" and name:match("%.md$") and name ~= "builtin_tips.md.backup" then
+      local file_path = dir_path .. "/" .. name
+      local tips = read_tip_file(file_path)
+      vim.list_extend(all_tips, tips)
+    end
+  end
+  
+  return all_tips
+end
+
 function M.load()
-  local builtin_tips = read_tip_file(builtin_file)
+  local builtin_tips = read_tips_from_directory(builtin_dir)
   local user_tips = read_tip_file(user_file)
   local all_tips = {}
   vim.list_extend(all_tips, builtin_tips)
