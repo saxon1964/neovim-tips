@@ -241,6 +241,8 @@ In normal mode use `:diw` to delete the word under the cursor.
 
 - Category filtering
 - Search descriptions
+- Support for other popular pickers (telescope, snacks, mini...)
+- Lazy loading
 - Multiple tip sources
 
 ## ⚖️ License
