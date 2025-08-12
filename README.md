@@ -1,6 +1,20 @@
 # Neovim Tips Plugin
 
-A Lua plugin for Neovim that helps you organize and search helpful tips, tricks, and shortcuts via a fuzzy search interface.
+*A Lua plugin for Neovim that helps you organize and search helpful tips, tricks, and shortcuts via a fuzzy search interface.*
+
+![Neovim tips plugin screenshot](saxon1964.neovim-tips.png)
+
+## 🎯 Purpose
+
+I started to work on this little plugin because I **love** neovim and I still remember how difficult it was to learn the basic commands. I was like that [Twitter guy](https://x.com/iamdevloper/status/435555976687923200) who said: 
+
+*"I've been using Vim for about 2 years now, mostly because I can't figure out how to exit it."*
+
+The plugin should help you to learn some basic (:wq, write and quit) and some not so basic commands (ddp, move line down) related to neovim. 
+
+## 🤝 Let's Collaborate
+
+I have provided a solid initial batch of tips and if you have your favorite one that is not listed, I will be happy to include it in the next release **with proper credits**. Send your commands, tips and tricks to me, create an issue or submit a pull request. You can also add your own tips and tricks that will be stored on your local computer, you don't have to share anything with me.  
 
 ## ✨ Features
 - Search tips using ultra-fast `fzf-lua` plugin
@@ -218,20 +232,16 @@ In normal mode use `:diw` to delete the word under the cursor.
 ===
 ````
 
-Initial tips were collected from an excellent vim cheat sheet that can be found [here](https://vim.rtorr.com/). 
-
 ## 📁 Default File Locations
 
-- Built-in tips: `<plugin_directory>/data/builtin_tips.txt`
-- User tips: `~/.config/nvim/neovim_tips/user_tips.txt`
+- Built-in tips: `<plugin_directory>/data/`
+- User tips: `~/.config/nvim/neovim_tips/user_tips.md`
 
 ## 🔄 Roadmap Ideas
 
 - Category filtering
 - Search descriptions
 - Multiple tip sources
-
-**All ideas and pull requests are welcome!** Send me your tips and I will add them to built-in tips collection with proper credits.
 
 ## ⚖️ License
 
