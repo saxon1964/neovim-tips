@@ -54,7 +54,7 @@ use {
   "saxon1964/neovim-tips",
   requires = { "ibhagwan/fzf-lua" },
   config = function()
-    require("neovim-tips").setup {
+    require("neovim_tips").setup {
       user_file = vim.fn.stdpath("config") .. "/neovim_tips/user_tips.txt",
     }
 
@@ -73,7 +73,7 @@ Plug 'ibhagwan/fzf-lua'
 Plug 'saxon1964/neovim-tips'
 
 lua << EOF
-require("neovim-tips").setup {
+require("neovim_tips").setup {
   user_file = vim.fn.stdpath("config") .. "/neovim_tips/user_tips.txt",
 }
 
@@ -92,7 +92,7 @@ call minpac#add('ibhagwan/fzf-lua')
 call minpac#add('saxon1964/neovim-tips')
 
 lua << EOF
-require("neovim-tips").setup {
+require("neovim_tips").setup {
   user_file = vim.fn.stdpath("config") .. "/neovim_tips/user_tips.txt",
 }
 
@@ -111,7 +111,7 @@ require "paq" {
   "saxon1964/neovim-tips";
 }
 
-require("neovim-tips").setup {
+require("neovim_tips").setup {
   user_file = vim.fn.stdpath("config") .. "/neovim_tips/user_tips.txt",
 }
 
@@ -132,7 +132,7 @@ call dein#add('saxon1964/neovim-tips')
 call dein#end()
 
 lua << EOF
-require("neovim-tips").setup {
+require("neovim_tips").setup {
   user_file = vim.fn.stdpath("config") .. "/neovim_tips/user_tips.txt",
 }
 
