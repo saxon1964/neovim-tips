@@ -26,21 +26,6 @@ ddkP  " move line up
 ```
 ===
 
-Duplicate line
-# Title: Duplicate line
-# Category: Clever Tricks
-# Tags: line, duplicate, copy
----
-Use `yyp` to duplicate current line below, or `yyP` to duplicate above.
-
-#### Example
-
-```vim
-yyp  " duplicate line below
-yyP  " duplicate line above
-```
-===
-
 Swap two characters
 # Title: Swap two characters
 # Category: Clever Tricks
@@ -52,6 +37,79 @@ Use `xp` to swap current character with next character.
 
 ```vim
 xp  " swap characters
+```
+===
+
+Display character information
+# Title: Display character information
+# Category: Clever Tricks
+# Tags: character, ascii, hex, info
+---
+Use `ga` to display ASCII/hex value of character under cursor, or `g8` to display UTF-8 bytes.
+
+#### Example
+
+```vim
+ga  " show ASCII/hex value
+g8  " show UTF-8 byte sequence
+```
+===
+
+Auto-indent entire document
+# Title: Auto-indent entire document
+# Category: Clever Tricks
+# Tags: indent, format, document, auto
+---
+Use `gg=G` to auto-indent entire document from top to bottom.
+
+#### Example
+
+```vim
+gg=G  " auto-indent entire file
+```
+===
+
+Auto-indent current block
+# Title: Auto-indent current block
+# Category: Clever Tricks
+# Tags: indent, block, braces, auto
+---
+Use `=%` when cursor is on opening brace to auto-indent entire block.
+
+#### Example
+
+```vim
+=%  " auto-indent current block/braces
+```
+===
+
+Open file under cursor
+# Title: Open file under cursor
+# Category: Clever Tricks
+# Tags: file, open, cursor, path
+---
+Use `gf` to open file whose name is under cursor. Use `gF` to go to specific line number.
+
+#### Example
+
+```vim
+gf   " open file under cursor
+gF   " open file and go to line number
+```
+===
+
+Line completion in insert mode
+# Title: Line completion in insert mode
+# Category: Clever Tricks
+# Tags: completion, line, insert, auto
+---
+Use `Ctrl+X Ctrl+L` in insert mode to complete entire lines from current buffer.
+
+#### Example
+
+```vim
+" In insert mode:
+Ctrl+X Ctrl+L  " complete entire line
 ```
 ===
 

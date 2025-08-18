@@ -200,3 +200,143 @@ Use `q/` to open search history in a searchable window.
 q/  " open search history window
 ```
 ===
+
+Search with line numbers
+# Title: Search with line numbers
+# Category: Search
+# Tags: search, linenumber, range, between
+---
+Use `/pattern/;+5` to search for pattern and show 5 lines after, or `/pattern1/,/pattern2/` to search between patterns.
+
+#### Example
+
+```vim
+/TODO/;+5        " show 5 lines after TODO
+/function/,/end/ " search between function and end
+```
+===
+
+Delete lines containing pattern
+# Title: Delete lines containing pattern
+# Category: Search
+# Tags: delete, pattern, global, lines
+---
+Use `:g/pattern/d` to delete all lines containing a pattern, or `:g!/pattern/d` to delete lines NOT containing pattern.
+
+#### Example
+
+```vim
+:g/pattern/d     " delete all lines containing 'pattern'
+:g!/error/d      " delete lines NOT containing 'error'
+:g/^\s*$/d       " delete empty or whitespace-only lines
+```
+===
+
+Global command with pattern
+# Title: Global command with pattern
+# Category: Search
+# Tags: global, command, execute, pattern
+---
+Use `:g/pattern/command` to execute a command on all lines matching pattern.
+
+#### Example
+
+```vim
+:g/TODO/d        " delete all lines containing TODO
+:g/function/p    " print all lines containing 'function'
+:g/error/s/old/new/g " replace 'old' with 'new' on lines with 'error'
+```
+===
+
+Search word boundaries with very magic
+# Title: Search word boundaries with very magic
+# Category: Search
+# Tags: search, regex, word, boundary, magic
+---
+Use `\v` for very magic mode to make regex more intuitive, or `\<word\>` for exact word boundaries.
+
+#### Example
+
+```vim
+/\v(hello|world)  " search for 'hello' or 'world' (very magic)
+/\<function\>     " search for exact word 'function'
+/\vd+             " search for one or more digits
+```
+===
+
+Search and execute command
+# Title: Search and execute command
+# Category: Search
+# Tags: search, execute, global, command
+---
+Use `:g/pattern/command` to execute command on all lines matching pattern.
+
+#### Example
+
+```vim
+:g/TODO/d        " delete all lines containing TODO
+:g/^$/d          " delete all empty lines
+:g/pattern/p     " print all lines matching pattern
+```
+===
+
+Negative search (inverse)
+# Title: Negative search (inverse)
+# Category: Search
+# Tags: search, negative, inverse, exclude
+---
+Use `:v/pattern/command` or `:g!/pattern/command` to execute command on lines NOT matching pattern.
+
+#### Example
+
+```vim
+:v/pattern/d     " delete lines NOT containing pattern
+:g!/TODO/p       " print lines NOT containing TODO
+```
+===
+
+Multi-line search pattern
+# Title: Multi-line search pattern
+# Category: Search
+# Tags: search, multiline, pattern, regex
+---
+Use `\_s` for whitespace including newlines, `\_.*` to match across lines in search patterns.
+
+#### Example
+
+```vim
+/function\_s*name    " function followed by whitespace/newlines
+/start\_.*end        " match start to end across lines
+```
+===
+
+Search with offset
+# Title: Search with offset
+# Category: Search
+# Tags: search, offset, cursor, position
+---
+Use `/pattern/+n` to position cursor n lines after match, or `/pattern/-n` for n lines before.
+
+#### Example
+
+```vim
+/function/+2     " position cursor 2 lines after 'function'
+/end/-1          " position cursor 1 line before 'end'
+```
+===
+
+Delete lines containing pattern
+# Title: Delete lines containing pattern
+# Category: Search
+# Tags: delete, pattern, global, lines
+---
+Use `:g/pattern/d` to delete all lines containing pattern, or `:g!/pattern/d` to delete lines NOT containing pattern.
+
+#### Example
+
+```vim
+:g/profile/d        " delete lines containing 'profile'
+:g/^\s*$/d          " delete empty or whitespace-only lines
+:g!/error\|warn/d   " delete lines NOT containing 'error' or 'warn'
+```
+===

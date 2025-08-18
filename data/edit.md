@@ -27,36 +27,6 @@ ra  " replace with 'a'
 ```
 ===
 
-Join lines
-# Title: Join lines
-# Category: Edit
-# Tags: join, lines, editing
----
-Use `J` to join the current line with the next line (adds space), or `gJ` to join without adding space.
-
-#### Example
-
-```vim
-J   " join with space
-gJ  " join without space
-```
-===
-
-Undo and redo
-# Title: Undo and redo
-# Category: Edit
-# Tags: undo, redo, history
----
-Use `u` to undo the last change and `Ctrl+r` to redo.
-
-#### Example
-
-```vim
-u       " undo
-Ctrl+r  " redo
-```
-===
-
 Time-based undo navigation
 # Title: Time-based undo navigation
 # Category: Edit

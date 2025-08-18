@@ -71,3 +71,70 @@ zm  " increase fold level
 zr  " reduce fold level
 ```
 ===
+
+Fold by indentation
+# Title: Fold by indentation
+# Category: Folding
+# Tags: fold, indent, automatic, method
+---
+Automatically fold code based on indentation levels using foldmethod=indent.
+
+#### Example
+
+```vim
+set foldmethod=indent   " fold based on indentation
+set foldlevelstart=1    " start with some folds open
+set foldnestmax=3       " limit nested fold depth
+```
+===
+
+Syntax-based folding
+# Title: Syntax-based folding
+# Category: Folding
+# Tags: fold, syntax, automatic, language
+---
+Use syntax-aware folding for programming languages that support fold markers in syntax files.
+
+#### Example
+
+```vim
+set foldmethod=syntax   " fold based on file syntax
+set foldlevel=2         " set initial fold level
+```
+===
+
+Fold navigation shortcuts
+# Title: Fold navigation shortcuts
+# Category: Folding
+# Tags: fold, navigation, movement, shortcuts
+---
+Navigate efficiently between folds using specialized movement commands.
+
+#### Example
+
+```vim
+zj              " move to start of next fold
+zk              " move to end of previous fold
+[z              " move to start of current open fold
+]z              " move to end of current open fold
+```
+===
+
+Keep folds when inserting
+# Title: Keep folds when inserting
+# Category: Folding
+# Tags: fold, insert, preserve, maintain
+---
+Configure Vim to maintain fold state when entering insert mode.
+
+#### Example
+
+```vim
+" Prevent folds from opening when inserting
+set foldopen-=insert
+
+" Mapping to toggle fold with F9
+nnoremap <F9> za
+vnoremap <F9> zf
+```
+===

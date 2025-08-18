@@ -41,20 +41,6 @@ gf  " go to file under cursor
 ```
 ===
 
-LSP go to definition
-# Title: LSP go to definition
-# Category: Navigation
-# Tags: lsp, definition, goto
----
-Use `gd` to go to definition of symbol under cursor (requires LSP server).
-
-#### Example
-
-```vim
-gd  " go to definition
-```
-===
-
 LSP go to references
 # Title: LSP go to references
 # Category: Navigation
@@ -153,5 +139,118 @@ Use `]m` to jump to next function start and `[m` to jump to previous function st
 ```vim
 ]m  " next function start
 [m  " previous function start
+```
+===
+
+Jump to tag under cursor
+# Title: Jump to tag under cursor
+# Category: Navigation
+# Tags: tags, jump, definition, ctags
+---
+Use `Ctrl+]` to jump to tag under cursor, or `Ctrl+T` to jump back. Requires tags file.
+
+#### Example
+
+```vim
+Ctrl+]  " jump to tag
+Ctrl+T  " jump back
+```
+===
+
+Navigate to alternate file
+# Title: Navigate to alternate file
+# Category: Navigation
+# Tags: alternate, file, header, source
+---
+Use `:A` to switch to alternate file (e.g., .h to .c), or `Ctrl+^` to switch to previous buffer.
+
+#### Example
+
+```vim
+:A      " alternate file
+Ctrl+^  " previous buffer
+```
+===
+
+Jump to definition with split
+# Title: Jump to definition with split
+# Category: Navigation
+# Tags: definition, split, window, tags
+---
+Use `Ctrl+W ]` to open tag definition in new split window.
+
+#### Example
+
+```vim
+Ctrl+W ]  " open tag in split
+```
+===
+
+Buffer switching shortcuts
+# Title: Buffer switching shortcuts
+# Category: Navigation
+# Tags: buffer, switching, shortcuts, quick
+---
+Use `:ls` to list buffers, `:b#` for previous buffer, or create mappings for quick buffer navigation.
+
+#### Example
+
+```vim
+:ls         " list all buffers
+:b#         " switch to previous buffer
+Ctrl+^      " alternate between current and previous buffer
+:b partial  " switch to buffer matching partial name
+```
+===
+
+Jump to random line
+# Title: Jump to random line
+# Category: Navigation
+# Tags: random, line, jump, goto
+---
+Use `:{number}G` or `:{number}` to jump to specific line, or `:echo line('$')` to see total lines.
+
+#### Example
+
+```vim
+:42G        " jump to line 42
+:42         " jump to line 42 (alternative)
+G           " jump to last line
+:echo line('$')  " show total number of lines
+```
+===
+
+Fast buffer access
+# Title: Fast buffer access
+# Category: Navigation
+# Tags: buffer, fast, access, number
+---
+Create mappings to quickly access first nine buffers using leader key combinations.
+
+#### Example
+
+```vim
+nnoremap <leader>1 :1b<CR>
+nnoremap <leader>2 :2b<CR>
+nnoremap <leader>3 :3b<CR>
+nnoremap <leader>4 :4b<CR>
+nnoremap <leader>5 :5b<CR>
+" Continue for buffers 6-9
+```
+===
+
+Jump to matching brace
+# Title: Jump to matching brace
+# Category: Navigation
+# Tags: brace, bracket, matching, jump
+---
+Use `%` to jump to matching brace/bracket/parenthesis, works with (), [], {}, and more.
+
+#### Example
+
+```vim
+%   " jump to matching brace/bracket/parenthesis
+[%  " jump to previous unmatched (
+]%  " jump to next unmatched )
 ```
 ===

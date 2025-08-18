@@ -44,3 +44,51 @@ Ctrl+h  " delete character
 Ctrl+w  " delete word
 ```
 ===
+
+Insert mode movement
+# Title: Insert mode movement
+# Category: Insert
+# Tags: movement, insert, cursor, navigation
+---
+Use `Ctrl+o` in insert mode to execute one normal mode command, then return to insert mode.
+
+#### Example
+
+```vim
+" In insert mode:
+Ctrl+o w     " move to next word and return to insert
+Ctrl+o dw    " delete word and return to insert
+```
+===
+
+Paste in insert mode
+# Title: Paste in insert mode
+# Category: Insert
+# Tags: paste, insert, register, clipboard
+---
+Use `Ctrl+r "` to paste from default register, or `Ctrl+r a` to paste from register 'a' while in insert mode.
+
+#### Example
+
+```vim
+" In insert mode:
+Ctrl+r "     " paste from default register
+Ctrl+r a     " paste from register 'a'
+```
+===
+
+Insert literal character
+# Title: Insert literal character
+# Category: Insert
+# Tags: literal, character, special, escape
+---
+Use `Ctrl+v` followed by character to insert literal/special characters in insert mode.
+
+#### Example
+
+```vim
+" In insert mode:
+Ctrl+v Tab   " insert literal tab character
+Ctrl+v Esc   " insert literal escape character
+```
+===

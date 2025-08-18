@@ -91,18 +91,3 @@ Use `va(` to select text around parentheses (including the parentheses).
 va(  " select around parentheses
 ```
 ===
-
-Treesitter text objects
-# Title: Treesitter text objects
-# Category: Text Objects
-# Tags: treesitter, textobject, function
----
-Use `vac` to select around class or `vic` for inside class with Treesitter text objects enabled.
-
-#### Example
-
-```vim
-vac  " select around class
-vic  " select inside class
-```
-===

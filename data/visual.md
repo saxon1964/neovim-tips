@@ -57,3 +57,49 @@ Create an autocmd to highlight yanked text briefly for visual feedback.
 :lua vim.api.nvim_create_autocmd("TextYankPost", {callback = function() vim.highlight.on_yank() end})
 ```
 ===
+
+Visual block append
+# Title: Visual block append
+# Category: Visual
+# Tags: visual, block, append, column
+---
+Use `Ctrl+v` to select visual block, then `A` to append text to end of each selected line.
+
+#### Example
+
+```vim
+Ctrl+v  " select visual block
+A       " append to end of all lines
+text    " type text to append
+Esc     " apply to all lines
+```
+===
+
+Reselect last visual selection
+# Title: Reselect last visual selection
+# Category: Visual
+# Tags: visual, reselect, selection, repeat
+---
+Use `gv` to reselect the last visual selection area.
+
+#### Example
+
+```vim
+gv  " reselect last visual selection
+```
+===
+
+Sort visual selection
+# Title: Sort visual selection
+# Category: Visual
+# Tags: visual, sort, selection, lines
+---
+Select lines in visual mode, then use `:sort` to sort only the selected lines.
+
+#### Example
+
+```vim
+V         " select lines
+:'<,'>sort  " sort selected lines
+```
+===
