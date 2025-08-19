@@ -236,3 +236,304 @@ Append `zz` after navigation commands to center the line. Works with searches, l
 /foozz  " search for 'foo' and center
 ```
 ===
+# Title: G-commands - cursor position info
+# Category: Clever Tricks
+# Tags: cursor, position, info, stats
+---
+Use `g Ctrl+g` to show detailed cursor position information including line, column, byte count, and percentage.
+
+#### Example
+
+```vim
+g Ctrl+g  " show detailed cursor position info
+```
+===
+# Title: G-commands - search variations
+# Category: Clever Tricks  
+# Tags: search, variations, boundaries
+---
+Use `g*` and `g#` to search for word under cursor without word boundaries (matches partial words).
+
+#### Example
+
+```vim
+g*  " search forward for word without boundaries
+g#  " search backward for word without boundaries
+```
+===
+# Title: G-commands - change list navigation
+# Category: Clever Tricks
+# Tags: change, list, navigation, history
+---
+Use `g;` and `g,` to navigate through the change list (locations where you made edits).
+
+#### Example
+
+```vim
+g;  " go to older change position
+g,  " go to newer change position
+```
+===
+# Title: G-commands - undo branches
+# Category: Clever Tricks
+# Tags: undo, branch, time, state
+---
+Use `g-` and `g+` to navigate through undo branches by time.
+
+#### Example
+
+```vim
+g-  " go to older text state
+g+  " go to newer text state
+```
+===
+# Title: G-commands - screen line movement
+# Category: Clever Tricks
+# Tags: screen, line, wrap, movement
+---
+Use `gj` and `gk` to move by screen lines when text is wrapped, `g0` and `g$` for screen line start/end.
+
+#### Example
+
+```vim
+gj  " move down by screen line (with wrap)
+gk  " move up by screen line (with wrap)
+g0  " go to start of screen line
+g$  " go to end of screen line
+```
+===
+# Title: G-commands - middle of line
+# Category: Clever Tricks
+# Tags: middle, line, screen, text
+---
+Use `gm` to go to middle of screen line and `gM` to go to middle of text line.
+
+#### Example
+
+```vim
+gm  " go to middle of screen line
+gM  " go to middle of text line
+```
+===
+# Title: G-commands - case conversion
+# Category: Clever Tricks
+# Tags: case, convert, upper, lower
+---
+Use `gU{motion}` for uppercase, `gu{motion}` for lowercase, and `g~{motion}` to toggle case.
+
+#### Example
+
+```vim
+gUw   " uppercase word
+guu   " lowercase current line
+g~iw  " toggle case of word under cursor
+```
+===
+# Title: G-commands - join without space
+# Category: Clever Tricks
+# Tags: join, line, space
+---
+Use `gJ` to join lines without inserting a space between them.
+
+#### Example
+
+```vim
+gJ  " join lines without adding space
+```
+===
+# Title: G-commands - special insert modes
+# Category: Clever Tricks
+# Tags: insert, mode, column, mark
+---
+Use `gI` to insert at column 1 regardless of indentation, `gi` to insert at last insert position.
+
+#### Example
+
+```vim
+gI  " insert at column 1 (ignore indent)
+gi  " insert at last insert position
+```
+===
+# Title: G-commands - search and select
+# Category: Clever Tricks
+# Tags: search, select, visual, pattern
+---
+Use `gn` to find and visually select next search match, `gN` for previous match.
+
+#### Example
+
+```vim
+/pattern<Enter>  " search for pattern first
+gn               " select next match
+gN               " select previous match
+```
+===
+# Title: G-commands - goto byte position
+# Category: Clever Tricks
+# Tags: byte, position, absolute
+---
+Use `go` followed by a number to go to specific byte position in buffer.
+
+#### Example
+
+```vim
+100go  " go to byte position 100
+```
+===
+# Title: G-commands - put and leave cursor
+# Category: Clever Tricks
+# Tags: put, paste, cursor, position
+---
+Use `gp` and `gP` to put text and leave cursor after the pasted text.
+
+#### Example
+
+```vim
+gp  " put after and leave cursor at end
+gP  " put before and leave cursor at end
+```
+===
+# Title: G-commands - format keeping cursor
+# Category: Clever Tricks
+# Tags: format, cursor, position, text
+---
+Use `gw{motion}` to format text while keeping cursor position unchanged.
+
+#### Example
+
+```vim
+gwap  " format paragraph, keep cursor position
+```
+===
+# Title: G-commands - sleep
+# Category: Clever Tricks
+# Tags: sleep, delay, pause
+---
+Use `gs` to make Neovim sleep for specified seconds (useful in scripts).
+
+#### Example
+
+```vim
+3gs  " sleep for 3 seconds
+gs   " sleep for 1 second (default)
+```
+===
+# Title: G-commands - execute application
+# Category: Clever Tricks
+# Tags: execute, application, file, system
+---
+Use `gx` to execute the default application for the file/URL under cursor.
+
+#### Example
+
+```vim
+gx  " open file/URL under cursor with default app
+```
+===
+# Title: G-commands - virtual replace
+# Category: Clever Tricks
+# Tags: virtual, replace, mode, character
+---
+Use `gR` to enter virtual replace mode, `gr{char}` to replace character without affecting layout.
+
+#### Example
+
+```vim
+gR    " enter virtual replace mode
+grx   " replace character with 'x' virtually
+```
+===
+# Title: G-commands - select modes
+# Category: Clever Tricks
+# Tags: select, mode, visual, block
+---
+Use `gh` for select mode, `gH` for select line mode, `g Ctrl+h` for select block mode.
+
+#### Example
+
+```vim
+gh       " start select mode
+gH       " start select line mode
+g Ctrl+h " start select block mode
+```
+===
+# Title: G-commands - Rot13 encoding
+# Category: Clever Tricks
+# Tags: rot13, encode, cipher, text
+---
+Use `g?{motion}` to apply Rot13 encoding to text (shifts letters by 13).
+
+#### Example
+
+```vim
+g?iw  " apply Rot13 to word under cursor
+g??   " apply Rot13 to current line
+```
+===
+# Title: G-commands - repeat substitute
+# Category: Clever Tricks
+# Tags: substitute, repeat, global, command
+---
+Use `g&` to repeat the last `:substitute` command on all lines.
+
+#### Example
+
+```vim
+:s/old/new/   " substitute on current line
+g&            " repeat substitute on all lines
+```
+===
+# Title: G-commands - display command output
+# Category: Clever Tricks
+# Tags: display, command, output, history
+---
+Use `g<` to display the output of the previous command.
+
+#### Example
+
+```vim
+g<  " display previous command output
+```
+===
+# Title: G-commands - mark navigation without jumplist
+# Category: Clever Tricks
+# Tags: mark, navigation, jumplist
+---
+Use `g'` and `` g` `` to jump to marks without changing the jumplist.
+
+#### Example
+
+```vim
+g'a  " jump to mark 'a' without affecting jumplist
+g`a  " jump to exact position of mark 'a' without jumplist
+```
+===
+# Title: Z-commands - spelling corrections
+# Category: Clever Tricks
+# Tags: spelling, correction, dictionary
+---
+Use `z=` for spelling suggestions, `zg` to add word to dictionary, `zw` to mark as misspelled, `zG`/`zW` for temporary marks.
+
+#### Example
+
+```vim
+z=  " show spelling suggestions for word under cursor
+zg  " add word to personal dictionary (good)
+zw  " mark word as misspelled (wrong)
+zG  " temporarily mark word as correct
+zW  " temporarily mark word as incorrect
+```
+===
+# Title: Z-commands - block operations
+# Category: Clever Tricks
+# Tags: block, paste, yank, trailing, space
+---
+Use `zp` to paste in block mode without trailing spaces, `zy` to yank without trailing spaces.
+
+#### Example
+
+```vim
+zp  " paste in block mode without trailing spaces
+zy  " yank without trailing spaces
+```
+===

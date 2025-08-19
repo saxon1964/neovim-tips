@@ -255,3 +255,122 @@ A  " append at line end
 o  " new line below
 ```
 ===
+# Title: Word movement alternatives
+# Category: Movement
+# Tags: word, WORD, movement, whitespace
+---
+Use `W` to jump to start of next WORD, `E` to jump to end of current WORD, and `B` to jump to start of previous WORD (WORD means whitespace-separated).
+
+#### Example
+
+```vim
+W  " next WORD (whitespace-separated)
+E  " end of WORD
+B  " previous WORD
+```
+===
+# Title: Alternative movement keys
+# Category: Movement
+# Tags: alternative, movement, keys
+---
+Use `Ctrl+h` (same as `h`), `Ctrl+j` (same as `j`), `Ctrl+k` (same as `k`), `Ctrl+n` (same as `j`), `Ctrl+p` (same as `k`) as alternative movement keys.
+
+#### Example
+
+```vim
+Ctrl+h  " same as h (left)
+Ctrl+j  " same as j (down)  
+Ctrl+k  " same as k (up)
+Ctrl+n  " same as j (down)
+Ctrl+p  " same as k (up)
+```
+===
+# Title: Line number movement
+# Category: Movement
+# Tags: line, number, goto, absolute
+---
+Use `{number}gg` or `{number}G` to go to absolute line number, where `{number}` is the line you want to jump to.
+
+#### Example
+
+```vim
+42gg  " go to line 42
+100G  " go to line 100
+1G    " go to first line (same as gg)
+```
+===
+# Title: Suspend and background
+# Category: Movement
+# Tags: suspend, background, shell
+---
+Use `Ctrl+z` to suspend Neovim and return to shell. Use `fg` in shell to return to Neovim.
+
+#### Example
+
+```vim
+Ctrl+z  " suspend to shell
+" Then in shell: fg  # to return to vim
+```
+===
+# Title: Page scrolling with cursor positioning
+# Category: Movement
+# Tags: scroll, page, cursor, position
+---
+Use `Ctrl+f` to scroll forward full page, `Ctrl+b` backward full page, `Ctrl+d` down half page, `Ctrl+u` up half page, `Ctrl+e` scroll up (cursor stays), `Ctrl+y` scroll down (cursor stays).
+
+#### Example
+
+```vim
+Ctrl+f  " page forward
+Ctrl+b  " page backward  
+Ctrl+d  " half page down
+Ctrl+u  " half page up
+Ctrl+e  " scroll up (cursor stays)
+Ctrl+y  " scroll down (cursor stays)
+```
+===
+# Title: Z-commands - redraw with cursor positioning
+# Category: Movement
+# Tags: redraw, cursor, position, screen
+---
+Use `z<Enter>` to redraw with cursor at top (first non-blank), `z.` for center, `z-` for bottom.
+
+#### Example
+
+```vim
+z<Enter>  " redraw, cursor line at top (first non-blank)
+z.        " redraw, cursor line at center (first non-blank)  
+z-        " redraw, cursor line at bottom (first non-blank)
+```
+===
+# Title: Z-commands - horizontal scrolling
+# Category: Movement
+# Tags: scroll, horizontal, wrap, screen
+---
+Use `zh`/`zl` to scroll left/right by character, `zH`/`zL` for half-screen, `zs`/`ze` to position cursor at start/end.
+
+#### Example
+
+```vim
+zh  " scroll right (when wrap is off)
+zl  " scroll left (when wrap is off)
+zH  " scroll right half-screenwidth
+zL  " scroll left half-screenwidth
+zs  " scroll cursor to start of screen
+ze  " scroll cursor to end of screen
+```
+===
+# Title: Z-commands - window height adjustment
+# Category: Movement
+# Tags: window, height, resize, redraw
+---
+Use `z{height}<Enter>` to set window height and redraw, `z+` for line below window, `z^` for line above.
+
+#### Example
+
+```vim
+z20<Enter>  " make window 20 lines high
+z+          " cursor to line below window
+z^          " cursor to line above window
+```
+===

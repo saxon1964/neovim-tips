@@ -121,3 +121,85 @@ nnoremap <F9> za
 vnoremap <F9> zf
 ```
 ===
+# Title: Z-commands - recursive fold operations
+# Category: Folding
+# Tags: fold, recursive, nested
+---
+Use `zA` to toggle fold recursively, `zO` to open all nested folds, `zC` to close all nested folds.
+
+#### Example
+
+```vim
+zA  " toggle fold and all nested folds
+zO  " open fold recursively (all levels)
+zC  " close fold recursively (all levels)
+```
+===
+# Title: Z-commands - fold deletion
+# Category: Folding
+# Tags: fold, delete, remove
+---
+Use `zd` to delete fold under cursor, `zD` to delete fold recursively, `zE` to eliminate all folds.
+
+#### Example
+
+```vim
+zd  " delete fold under cursor
+zD  " delete fold recursively 
+zE  " eliminate all folds in buffer
+```
+===
+# Title: Z-commands - fold navigation
+# Category: Folding
+# Tags: fold, navigation, movement
+---
+Use `zj` to move to start of next fold and `zk` to move to end of previous fold.
+
+#### Example
+
+```vim
+zj  " jump to start of next fold
+zk  " jump to end of previous fold
+```
+===
+# Title: Z-commands - fold enable/disable
+# Category: Folding
+# Tags: fold, enable, disable, toggle
+---
+Use `zi` to toggle folding on/off, `zn` to disable folding, `zN` to enable folding.
+
+#### Example
+
+```vim
+zi  " toggle folding enabled/disabled
+zn  " disable folding
+zN  " enable folding
+```
+===
+# Title: Z-commands - fold view and level
+# Category: Folding
+# Tags: fold, view, level, cursor
+---
+Use `zv` to open enough folds to view cursor line, `zx` to re-apply foldlevel and update view.
+
+#### Example
+
+```vim
+zv  " open folds to view cursor line
+zx  " re-apply foldlevel and update
+```
+===
+# Title: Z-commands - create folds
+# Category: Folding
+# Tags: fold, create, lines
+---
+Use `zF` to create fold for N lines or `zf{motion}` to create fold with motion.
+
+#### Example
+
+```vim
+5zF   " create fold for 5 lines
+zf3j  " create fold from cursor down 3 lines
+zfip  " create fold for inner paragraph
+```
+===

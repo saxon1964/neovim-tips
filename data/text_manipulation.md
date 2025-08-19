@@ -491,3 +491,87 @@ yyp                 " duplicate current line (yank and paste)
 :.,.+5co$           " copy lines to end of file
 ```
 ===
+# Title: Undo and redo operations
+# Category: Text Manipulation
+# Tags: undo, redo, history
+---
+Use `u` to undo changes, `Ctrl+r` to redo undone changes, and `U` to undo all changes on current line.
+
+#### Example
+
+```vim
+u      " undo last change
+Ctrl+r " redo (undo the undo)
+U      " undo all changes on current line
+```
+===
+# Title: Put text from register
+# Category: Text Manipulation
+# Tags: put, paste, register
+---
+Use `p` to put (paste) text after cursor and `P` to put text before cursor.
+
+#### Example
+
+```vim
+p  " put text after cursor
+P  " put text before cursor
+"ap " put from register 'a' after cursor
+```
+===
+# Title: Replace mode operations
+# Category: Text Manipulation
+# Tags: replace, mode, overwrite
+---
+Use `R` to enter Replace mode where typed characters overwrite existing text. Use `r{char}` to replace single character.
+
+#### Example
+
+```vim
+R    " enter Replace mode
+ra   " replace character under cursor with 'a'
+3rx  " replace 3 characters with 'x'
+```
+===
+# Title: Delete character operations
+# Category: Text Manipulation
+# Tags: delete, character, cursor
+---
+Use `x` to delete character under cursor and `X` to delete character before cursor.
+
+#### Example
+
+```vim
+x   " delete character under cursor
+X   " delete character before cursor
+5x  " delete 5 characters forward
+```
+===
+# Title: Record and replay macros
+# Category: Text Manipulation
+# Tags: macro, record, replay, automation
+---
+Use `q{register}` to start recording macro, `q` to stop recording, and `@{register}` to replay macro.
+
+#### Example
+
+```vim
+qa    " start recording macro in register 'a'
+" ... perform actions ...
+q     " stop recording
+@a    " replay macro from register 'a'
+@@    " replay last used macro
+```
+===
+# Title: Keyword lookup
+# Category: Text Manipulation
+# Tags: keyword, lookup, help, man
+---
+Use `K` to lookup the word under cursor in manual pages or help system.
+
+#### Example
+
+```vim
+K  " lookup word under cursor
+```
+===

@@ -80,3 +80,89 @@ Use `va(` to select text around parentheses (including the parentheses).
 va(  " select around parentheses
 ```
 ===
+# Title: Text objects - quoted strings
+# Category: Text Objects
+# Tags: textobject, quotes, strings
+---
+Use `i"` and `a"` for double-quoted strings, `i'` and `a'` for single-quoted strings, `` i` `` and `` a` `` for backtick strings.
+
+#### Example
+
+```vim
+ci"  " change inside double quotes
+da'  " delete around single quotes
+yi`  " yank inside backticks
+```
+===
+# Title: Text objects - angle brackets
+# Category: Text Objects
+# Tags: textobject, angle, brackets
+---
+Use `i<` and `a<` (or `i>` and `a>`) to operate inside/around angle brackets.
+
+#### Example
+
+```vim
+ci<  " change inside angle brackets
+da>  " delete around angle brackets
+vi<  " select inside angle brackets
+```
+===
+# Title: Text objects - square brackets
+# Category: Text Objects
+# Tags: textobject, square, brackets
+---
+Use `i[` and `a[` (or `i]` and `a]`) to operate inside/around square brackets.
+
+#### Example
+
+```vim
+ci[  " change inside square brackets
+da]  " delete around square brackets
+yi[  " yank inside square brackets
+```
+===
+# Title: Text objects - HTML/XML tags
+# Category: Text Objects
+# Tags: textobject, html, xml, tags
+---
+Use `it` for inside HTML/XML tags and `at` for around tags including the tag markup.
+
+#### Example
+
+```vim
+cit  " change inside HTML tag
+dat  " delete around HTML tag
+yit  " yank inside tag content
+vat  " select around tag including markup
+```
+===
+# Title: Text objects - alternative bracket notation
+# Category: Text Objects
+# Tags: textobject, brackets, alternatives
+---
+Use `ib` or `ab` as alternatives for `i(` or `a(`, and `iB` or `aB` as alternatives for `i{` or `a{`.
+
+#### Example
+
+```vim
+cib  " change inside parentheses (same as ci()
+dab  " delete around parentheses (same as da()
+yiB  " yank inside curly braces (same as yi{)
+vaB  " select around curly braces (same as va{)
+```
+===
+# Title: Text objects with operators
+# Category: Text Objects
+# Tags: textobject, operators, combinations
+---
+Text objects work with all operators: `c` (change), `d` (delete), `y` (yank), `v` (visual select), `=` (format), `>` (indent right), `<` (indent left).
+
+#### Example
+
+```vim
+=ap  " format around paragraph
+>i{  " indent inside curly braces
+<as  " unindent around sentence
+```
+===

@@ -1,3 +1,87 @@
+# Title: Window navigation basics
+# Category: Window Management
+# Tags: window, navigation, movement
+---
+Use `Ctrl+w h/j/k/l` to move to left/down/up/right windows, `Ctrl+w w` to cycle through windows, `Ctrl+w p` for previous window.
+
+#### Example
+
+```vim
+Ctrl+w h  " move to left window
+Ctrl+w j  " move to window below
+Ctrl+w k  " move to window above
+Ctrl+w l  " move to right window
+Ctrl+w w  " cycle to next window
+Ctrl+w p  " go to previous window
+```
+===
+# Title: Window splitting
+# Category: Window Management
+# Tags: window, split, create
+---
+Use `Ctrl+w s` to split horizontally and `Ctrl+w v` to split vertically. Use `Ctrl+w n` to create new empty window.
+
+#### Example
+
+```vim
+Ctrl+w s  " split window horizontally
+Ctrl+w v  " split window vertically  
+Ctrl+w n  " create new empty window
+```
+===
+# Title: Window closing
+# Category: Window Management
+# Tags: window, close, quit
+---
+Use `Ctrl+w c` to close current window, `Ctrl+w o` to close all windows except current, `Ctrl+w q` to quit current window.
+
+#### Example
+
+```vim
+Ctrl+w c  " close current window
+Ctrl+w o  " close all other windows
+Ctrl+w q  " quit current window
+```
+===
+# Title: Window position navigation
+# Category: Window Management
+# Tags: window, position, navigation
+---
+Use `Ctrl+w t` to go to top window and `Ctrl+w b` to go to bottom window.
+
+#### Example
+
+```vim
+Ctrl+w t  " go to top window
+Ctrl+w b  " go to bottom window
+```
+===
+# Title: Special window commands
+# Category: Window Management
+# Tags: window, special, file, tag
+---
+Use `Ctrl+w f` to split and open file under cursor, `Ctrl+w ]` to split and jump to tag, `Ctrl+w x` to exchange windows.
+
+#### Example
+
+```vim
+Ctrl+w f  " split and open file under cursor
+Ctrl+w ]  " split and jump to tag
+Ctrl+w x  " exchange current window with another
+```
+===
+# Title: Move window to tab
+# Category: Window Management
+# Tags: window, tab, move
+---
+Use `Ctrl+w T` to move current window to a new tab page.
+
+#### Example
+
+```vim
+Ctrl+w T  " move current window to new tab
+```
+===
 # Title: Equalize window sizes
 # Category: Window Management
 # Tags: window, resize, equalize

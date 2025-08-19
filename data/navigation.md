@@ -221,3 +221,173 @@ Use `%` to jump to matching brace/bracket/parenthesis, works with (), [], {}, an
 ]%  " jump to next unmatched )
 ```
 ===
+# Title: Square bracket navigation - unmatched brackets
+# Category: Navigation
+# Tags: bracket, unmatched, navigation
+---
+Use `[(` and `])` to jump to unmatched parentheses, `[{` and `]}` to jump to unmatched braces.
+
+#### Example
+
+```vim
+[(  " jump to previous unmatched (
+])  " jump to next unmatched )
+[{  " jump to previous unmatched {
+]}  " jump to next unmatched }
+```
+===
+# Title: Square bracket navigation - sections
+# Category: Navigation
+# Tags: section, navigation, document
+---
+Use `[[` and `]]` to jump between sections, `[]` and `][` to jump between SECTIONS (different formatting).
+
+#### Example
+
+```vim
+[[  " jump to previous section
+]]  " jump to next section
+[]  " jump to previous SECTION
+][  " jump to next SECTION
+```
+===
+# Title: Square bracket navigation - marks
+# Category: Navigation
+# Tags: mark, navigation, position
+---
+Use `['` and `]'` to jump to previous/next lowercase mark (first non-blank), `` [` `` and `` ]` `` to jump to exact mark position.
+
+#### Example
+
+```vim
+['  " jump to previous mark (first non-blank)
+]'  " jump to next mark (first non-blank)
+[`  " jump to previous mark (exact position)
+]`  " jump to next mark (exact position)
+```
+===
+# Title: Square bracket navigation - C comments
+# Category: Navigation
+# Tags: comment, C, navigation
+---
+Use `[/` and `]/` to jump to start/end of C-style comments. Use `[*` as alternative to `[/`.
+
+#### Example
+
+```vim
+[/  " jump to previous start of C comment
+]/  " jump to next end of C comment
+[*  " same as [/ (alternative)
+]*  " same as ]/ (alternative)
+```
+===
+# Title: Square bracket navigation - preprocessing
+# Category: Navigation
+# Tags: preprocessing, define, include
+---
+Use `[#` and `]#` to jump between #if/#else/#endif blocks.
+
+#### Example
+
+```vim
+[#  " jump to previous #if, #else, or #ifdef
+]#  " jump to next #endif or #else
+```
+===
+# Title: Square bracket navigation - definitions and includes
+# Category: Navigation
+# Tags: definition, include, search
+---
+Use `[Ctrl+d`/`]Ctrl+d` to jump to #define, `[Ctrl+i`/`]Ctrl+i` to jump to lines containing word under cursor.
+
+#### Example
+
+```vim
+[Ctrl+d  " jump to previous #define matching word
+]Ctrl+d  " jump to next #define matching word
+[Ctrl+i  " jump to previous line containing word
+]Ctrl+i  " jump to next line containing word
+```
+===
+# Title: Square bracket navigation - list definitions
+# Category: Navigation
+# Tags: list, definition, search, include
+---
+Use `[D`/`]D` to list all #defines, `[I`/`]I` to list all lines containing word under cursor.
+
+#### Example
+
+```vim
+[D  " list all #defines matching word under cursor
+]D  " list all #defines matching word under cursor  
+[I  " list all lines containing word under cursor
+]I  " list all lines containing word under cursor
+```
+===
+# Title: Square bracket navigation - show definitions
+# Category: Navigation
+# Tags: show, definition, preview
+---
+Use `[d`/`]d` to show first #define, `[i`/`]i` to show first line containing word under cursor.
+
+#### Example
+
+```vim
+[d  " show first #define matching word
+]d  " show first #define matching word
+[i  " show first line containing word
+]i  " show first line containing word
+```
+===
+# Title: Square bracket navigation - changes and diffs
+# Category: Navigation
+# Tags: change, diff, navigation
+---
+Use `[c` and `]c` to jump between changes in diff mode.
+
+#### Example
+
+```vim
+[c  " jump to previous change
+]c  " jump to next change
+```
+===
+# Title: Square bracket navigation - spelling
+# Category: Navigation
+# Tags: spelling, error, navigation
+---
+Use `[s` and `]s` to jump between misspelled words.
+
+#### Example
+
+```vim
+[s  " jump to previous misspelled word
+]s  " jump to next misspelled word
+```
+===
+# Title: Square bracket navigation - folds
+# Category: Navigation
+# Tags: fold, navigation, code
+---
+Use `[z` and `]z` to jump to start/end of open fold.
+
+#### Example
+
+```vim
+[z  " jump to start of open fold
+]z  " jump to end of open fold
+```
+===
+# Title: Square bracket navigation - member functions
+# Category: Navigation
+# Tags: function, member, class, navigation
+---
+Use `[m` and `]m` to jump between member function starts.
+
+#### Example
+
+```vim
+[m  " jump to previous start of member function
+]m  " jump to next start of member function
+```
+===

@@ -77,3 +77,18 @@ p  " paste after
 P  " paste before
 ```
 ===
+# Title: Paste with automatic indentation
+# Category: Cut and Paste
+# Tags: paste, indent, automatic
+---
+Use `[p` and `[P` to paste and automatically adjust indentation to match current line.
+
+#### Example
+
+```vim
+[p  " paste after with auto-indent
+[P  " paste before with auto-indent  
+]p  " paste after with auto-indent
+]P  " same as [P
+```
+===
