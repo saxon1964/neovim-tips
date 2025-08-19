@@ -64,18 +64,17 @@ local function read_tips_from_directory(dir_path)
   if not handle then
     return all_tips
   end
-  
+
   while true do
     local name, type = vim.loop.fs_scandir_next(handle)
     if not name then break end
-    
     if type == "file" and name:match("%.md$") and name ~= "builtin_tips.md.backup" then
       local file_path = dir_path .. "/" .. name
-      local tips = read_tip_file(file_path)
-      vim.list_extend(all_tips, tips)
+      local moreTips = read_tip_file(file_path)
+      vim.list_extend(all_tips, moreTips)
     end
   end
-  
+
   return all_tips
 end
 
