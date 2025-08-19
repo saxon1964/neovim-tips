@@ -100,8 +100,8 @@ let @a='ddp'  " save line swap macro permanently
 ```
 ===
 
-Record recursive macro
-# Title: Record recursive macro
+Record recursive macro by including the self-reference
+# Title: Record recursive macro by including the self-reference
 # Category: Macros
 # Tags: macro, recursive, loop, automation
 ---

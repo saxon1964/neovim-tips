@@ -226,9 +226,10 @@ Use `:g/pattern/d` to delete all lines containing a pattern, or `:g!/pattern/d` 
 #### Example
 
 ```vim
-:g/pattern/d     " delete all lines containing 'pattern'
-:g!/error/d      " delete lines NOT containing 'error'
-:g/^\s*$/d       " delete empty or whitespace-only lines
+:g/pattern/d        " delete all lines containing 'pattern'
+:g/^\s*$/d          " delete empty or whitespace-only lines
+:g!/error/d         " delete lines NOT containing 'error'
+:g!/error\|warn/d   " delete lines NOT containing 'error' or 'warn'
 ```
 ===
 
@@ -322,21 +323,5 @@ Use `/pattern/+n` to position cursor n lines after match, or `/pattern/-n` for n
 ```vim
 /function/+2     " position cursor 2 lines after 'function'
 /end/-1          " position cursor 1 line before 'end'
-```
-===
-
-Delete lines containing pattern
-# Title: Delete lines containing pattern
-# Category: Search
-# Tags: delete, pattern, global, lines
----
-Use `:g/pattern/d` to delete all lines containing pattern, or `:g!/pattern/d` to delete lines NOT containing pattern.
-
-#### Example
-
-```vim
-:g/profile/d        " delete lines containing 'profile'
-:g/^\s*$/d          " delete empty or whitespace-only lines
-:g!/error\|warn/d   " delete lines NOT containing 'error' or 'warn'
 ```
 ===
