@@ -1,4 +1,3 @@
-Exit insert mode
 # Title: Exit insert mode
 # Category: Edit
 # Tags: exit, insert, mode
@@ -12,8 +11,6 @@ Esc     " exit insert mode
 Ctrl+c  " exit insert mode
 ```
 ===
-
-Replace character
 # Title: Replace character
 # Category: Edit
 # Tags: replace, character, editing
@@ -26,8 +23,6 @@ Use `r` followed by a character to replace the single character under the cursor
 ra  " replace with 'a'
 ```
 ===
-
-Time-based undo navigation
 # Title: Time-based undo navigation
 # Category: Edit
 # Tags: undo, time, history

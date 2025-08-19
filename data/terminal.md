@@ -1,4 +1,3 @@
-Floating terminal
 # Title: Floating terminal
 # Category: Terminal
 # Tags: terminal, floating, window
@@ -11,8 +10,6 @@ Create floating terminal using `vim.api.nvim_open_term()`.
 :lua vim.api.nvim_open_term(0, {})
 ```
 ===
-
-Split terminal
 # Title: Split terminal
 # Category: Terminal
 # Tags: terminal, split, window
@@ -25,8 +22,6 @@ Use `:sp | terminal` to open terminal in a horizontal split.
 :sp | terminal  " terminal in horizontal split
 ```
 ===
-
-Send commands to terminal
 # Title: Send commands to terminal
 # Category: Terminal
 # Tags: terminal, command, send

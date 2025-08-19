@@ -1,4 +1,3 @@
-Record macro
 # Title: Record macro
 # Category: Macros
 # Tags: macro, record, automation
@@ -12,8 +11,6 @@ qa  " start recording macro 'a'
 q   " stop recording
 ```
 ===
-
-Execute macro
 # Title: Execute macro
 # Category: Macros
 # Tags: macro, execute, replay
@@ -27,8 +24,6 @@ Use `@{letter}` to execute macro stored in register {letter}, or `@@` to repeat 
 @@  " repeat last macro
 ```
 ===
-
-Run macro over visual selection
 # Title: Run macro over visual selection
 # Category: Macros
 # Tags: macro, visual, selection
@@ -41,8 +36,6 @@ Use `:'<,'>normal @q` to run macro q over visual selection.
 :'<,'>normal @q  " run macro q on selection
 ```
 ===
-
-Append to existing macro
 # Title: Append to existing macro
 # Category: Macros
 # Tags: macro, append, extend
@@ -56,8 +49,6 @@ qa...q   " record initial macro in 'a'
 qA...q   " append more commands to macro 'a'
 ```
 ===
-
-View macro contents
 # Title: View macro contents
 # Category: Macros
 # Tags: macro, view, register, debug
@@ -71,8 +62,6 @@ Use `:reg` to view all registers including macros, or `:reg a` to view specific 
 :reg a   " view macro in register 'a'
 ```
 ===
-
-Edit macro in command line
 # Title: Edit macro in command line
 # Category: Macros
 # Tags: macro, edit, modify, command
@@ -85,8 +74,6 @@ Use `:let @a='` then `Ctrl+R Ctrl+R a` to paste macro contents for editing, then
 :let @a='<Ctrl+R><Ctrl+R>a'  " edit macro 'a' inline
 ```
 ===
-
-Save macro in vimrc
 # Title: Save macro in vimrc
 # Category: Macros
 # Tags: macro, save, persistent, vimrc
@@ -134,8 +121,6 @@ Use `:argdo normal @q` to run macro q on all files in argument list, or `:bufdo 
 :argdo update       " save all changed files
 ```
 ===
-
-Record recursive macro
 # Title: Record recursive macro
 # Category: Macros
 # Tags: macro, recursive, loop, repeat
@@ -156,8 +141,6 @@ q               " stop recording
 @a
 ```
 ===
-
-Macro for data transformation
 # Title: Macro for data transformation
 # Category: Macros
 # Tags: macro, transform, data, format
@@ -181,8 +164,6 @@ q               " stop recording
 10@a            " run macro 'a' 10 times
 ```
 ===
-
-Quick macro shortcuts
 # Title: Quick macro shortcuts
 # Category: Macros
 # Tags: macro, shortcut, mapping, space

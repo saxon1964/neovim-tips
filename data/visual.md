@@ -1,4 +1,3 @@
-Visual selection modes
 # Title: Visual selection modes
 # Category: Visual
 # Tags: visual, selection, mode
@@ -13,8 +12,6 @@ V      " line visual
 Ctrl+v " block visual
 ```
 ===
-
-Indent text in visual mode
 # Title: Indent text in visual mode
 # Category: Visual
 # Tags: indent, visual, editing
@@ -28,8 +25,6 @@ Use `>` to shift selected text right and `<` to shift selected text left in visu
 <  " shift left
 ```
 ===
-
-Yank and delete in visual mode
 # Title: Yank and delete in visual mode
 # Category: Visual
 # Tags: yank, delete, visual
@@ -43,8 +38,6 @@ y  " yank selected text
 d  " delete selected text
 ```
 ===
-
-Yank highlighting
 # Title: Yank highlighting
 # Category: Visual
 # Tags: yank, highlight, autocmd
@@ -57,8 +50,6 @@ Create an autocmd to highlight yanked text briefly for visual feedback.
 :lua vim.api.nvim_create_autocmd("TextYankPost", {callback = function() vim.highlight.on_yank() end})
 ```
 ===
-
-Visual block append
 # Title: Visual block append
 # Category: Visual
 # Tags: visual, block, append, column
@@ -74,8 +65,6 @@ text    " type text to append
 Esc     " apply to all lines
 ```
 ===
-
-Reselect last visual selection
 # Title: Reselect last visual selection
 # Category: Visual
 # Tags: visual, reselect, selection, repeat
@@ -88,8 +77,6 @@ Use `gv` to reselect the last visual selection area.
 gv  " reselect last visual selection
 ```
 ===
-
-Sort visual selection
 # Title: Sort visual selection
 # Category: Visual
 # Tags: visual, sort, selection, lines

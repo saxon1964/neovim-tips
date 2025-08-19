@@ -1,4 +1,3 @@
-Move line down
 # Title: Move line down
 # Category: Clever Tricks
 # Tags: line, move, transpose
@@ -11,8 +10,6 @@ Use `ddp` to move current line down one position. This deletes the line and past
 ddp  " move line down
 ```
 ===
-
-Move line up
 # Title: Move line up
 # Category: Clever Tricks
 # Tags: line, move, transpose
@@ -25,8 +22,6 @@ Use `ddkP` to move current line up one position. This deletes the line, moves up
 ddkP  " move line up
 ```
 ===
-
-Swap two characters
 # Title: Swap two characters
 # Category: Clever Tricks
 # Tags: character, swap, transpose
@@ -39,8 +34,6 @@ Use `xp` to swap current character with next character.
 xp  " swap characters
 ```
 ===
-
-Display character information
 # Title: Display character information
 # Category: Clever Tricks
 # Tags: character, ascii, hex, info
@@ -54,8 +47,6 @@ ga  " show ASCII/hex value
 g8  " show UTF-8 byte sequence
 ```
 ===
-
-Auto-indent entire document
 # Title: Auto-indent entire document
 # Category: Clever Tricks
 # Tags: indent, format, document, auto
@@ -68,8 +59,6 @@ Use `gg=G` to auto-indent entire document from top to bottom.
 gg=G  " auto-indent entire file
 ```
 ===
-
-Auto-indent current block
 # Title: Auto-indent current block
 # Category: Clever Tricks
 # Tags: indent, block, braces, auto
@@ -82,8 +71,6 @@ Use `=%` when cursor is on opening brace to auto-indent entire block.
 =%  " auto-indent current block/braces
 ```
 ===
-
-Open file under cursor
 # Title: Open file under cursor
 # Category: Clever Tricks
 # Tags: file, open, cursor, path
@@ -97,8 +84,6 @@ gf   " open file under cursor
 gF   " open file and go to line number
 ```
 ===
-
-Line completion in insert mode
 # Title: Line completion in insert mode
 # Category: Clever Tricks
 # Tags: completion, line, insert, auto
@@ -112,8 +97,6 @@ Use `Ctrl+X Ctrl+L` in insert mode to complete entire lines from current buffer.
 Ctrl+X Ctrl+L  " complete entire line
 ```
 ===
-
-Quick substitute word
 # Title: Quick substitute word
 # Category: Clever Tricks
 # Tags: substitute, word, replace
@@ -126,8 +109,6 @@ Use `ciw{newword}` to change inner word. Position cursor anywhere in word and ty
 ciwfoo  " change word to 'foo'
 ```
 ===
-
-Quick fix typo
 # Title: Quick fix typo
 # Category: Clever Tricks
 # Tags: typo, fix, undo
@@ -141,8 +122,6 @@ Use `~` to toggle case of character under cursor, or `g~iw` to toggle case of en
 g~iw  " toggle word case
 ```
 ===
-
-Split line at cursor
 # Title: Split line at cursor
 # Category: Clever Tricks
 # Tags: split, line, break
@@ -155,8 +134,6 @@ Use `i` followed by `Enter` then `Esc`, or more efficiently `r` followed by `Ent
 i<Enter><Esc>  " split line at cursor
 ```
 ===
-
-Quick number increment
 # Title: Quick number increment
 # Category: Clever Tricks
 # Tags: number, increment, math
@@ -170,8 +147,6 @@ Ctrl+a  " increment number
 Ctrl+x  " decrement number
 ```
 ===
-
-Visual line selection shortcut
 # Title: Visual line selection shortcut
 # Category: Clever Tricks
 # Tags: visual, line, selection
@@ -184,8 +159,6 @@ Use `V` to select entire line immediately, then `j`/`k` to extend selection.
 Vjjj  " select current line + 3 below
 ```
 ===
-
-Change until character
 # Title: Change until character
 # Category: Clever Tricks
 # Tags: change, until, character
@@ -199,8 +172,6 @@ ct;  " change until semicolon
 cf;  " change including semicolon
 ```
 ===
-
-Jump to matching quote
 # Title: Jump to matching quote
 # Category: Clever Tricks
 # Tags: quote, matching, jump
@@ -214,8 +185,6 @@ ci'  " change inside single quotes
 ca"  " change including double quotes
 ```
 ===
-
-Quick paragraph navigation
 # Title: Quick paragraph navigation
 # Category: Clever Tricks
 # Tags: paragraph, navigation, block
@@ -229,8 +198,6 @@ Use `{` to jump to previous paragraph/block, `}` to jump to next paragraph/block
 }  " next paragraph
 ```
 ===
-
-Smart word boundaries
 # Title: Smart word boundaries
 # Category: Clever Tricks
 # Tags: word, boundary, navigation
@@ -244,8 +211,6 @@ W  " next WORD (space-separated)
 w  " next word (punctuation-separated)
 ```
 ===
-
-Reselect last selection
 # Title: Reselect last selection
 # Category: Clever Tricks
 # Tags: visual, reselect, selection
@@ -258,8 +223,6 @@ Use `gv` to reselect the last visual selection.
 gv  " reselect last visual selection
 ```
 ===
-
-Center line after jump
 # Title: Center line after jump
 # Category: Clever Tricks
 # Tags: center, jump, navigation

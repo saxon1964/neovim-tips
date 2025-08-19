@@ -1,4 +1,3 @@
-Search forward
 # Title: Search forward
 # Category: Search
 # Tags: search, find, forward
@@ -13,8 +12,6 @@ n       " next match
 N       " previous match
 ```
 ===
-
-Global search and replace
 # Title: Global search and replace
 # Category: Search
 # Tags: replace, global, substitute
@@ -27,8 +24,6 @@ Use `:%s/old/new/g` to replace all occurrences of 'old' with 'new' in the entire
 :%s/foo/bar/g  " replace all 'foo' with 'bar'
 ```
 ===
-
-Remove search highlighting
 # Title: Remove search highlighting
 # Category: Search
 # Tags: search, highlight, remove
@@ -41,8 +36,6 @@ Use `:nohl` to remove search highlighting after performing a search.
 :nohl
 ```
 ===
-
-Search with confirmation
 # Title: Search with confirmation
 # Category: Search
 # Tags: replace, confirm, interactive
@@ -55,8 +48,6 @@ Use `:%s/old/new/gc` to replace with confirmation for each match.
 :%s/foo/bar/gc  " replace with confirmation
 ```
 ===
-
-Search in selection
 # Title: Search in selection
 # Category: Search
 # Tags: replace, selection, range
@@ -69,8 +60,6 @@ Use `:'<,'>s/old/new/g` to replace only in visual selection.
 :'<,'>s/foo/bar/g  " replace in selection
 ```
 ===
-
-Case insensitive search
 # Title: Case insensitive search
 # Category: Search
 # Tags: search, case, insensitive
@@ -84,8 +73,6 @@ Use `/pattern\c` for case insensitive search, or `/pattern\C` for case sensitive
 /hello\C  " case sensitive
 ```
 ===
-
-Search word boundaries
 # Title: Search word boundaries
 # Category: Search
 # Tags: search, word, boundary
@@ -98,8 +85,6 @@ Use `\<word\>` to search for whole word only, preventing partial matches.
 /\<hello\>  " search for whole word 'hello' only
 ```
 ===
-
-Search word under cursor
 # Title: Search word under cursor
 # Category: Search
 # Tags: search, cursor, word
@@ -113,8 +98,6 @@ Use `*` to search forward for word under cursor and `#` to search backward for w
 #  " search backward for word under cursor
 ```
 ===
-
-Very magic search mode
 # Title: Very magic search mode
 # Category: Search
 # Tags: search, regex, magic
@@ -128,8 +111,6 @@ Use `\v` at start of search pattern for "very magic" mode, making regex more int
 /\vd+             " search for one or more digits
 ```
 ===
-
-Search backward
 # Title: Search backward
 # Category: Search
 # Tags: search, backward, reverse
@@ -144,8 +125,6 @@ n       " next match (backward)
 N       " previous match (forward)
 ```
 ===
-
-Recursive file search
 # Title: Recursive file search
 # Category: Search
 # Tags: vimgrep, recursive, files
@@ -158,8 +137,6 @@ Use `:vimgrep /pattern/ **/*.ext` to search for pattern recursively in files wit
 :vimgrep /pattern/ **/*.lua  " search in all .lua files
 ```
 ===
-
-Advanced search and replace with regex
 # Title: Advanced search and replace with regex
 # Category: Search
 # Tags: replace, regex, advanced
@@ -172,8 +149,6 @@ Use `:%s/\v(foo|bar)/baz/g` to replace either 'foo' or 'bar' with 'baz' using ve
 :%s/\v(foo|bar)/baz/g  " replace foo or bar with baz
 ```
 ===
-
-Repeat last search in substitution
 # Title: Repeat last search in substitution
 # Category: Search
 # Tags: substitute, repeat, search
@@ -186,8 +161,6 @@ Use `:%s//replacement/g` to use the last search pattern in substitution command.
 :%s//new_text/g  " replace last searched pattern with new_text
 ```
 ===
-
-Open search history
 # Title: Open search history
 # Category: Search
 # Tags: history, search, window
@@ -200,8 +173,6 @@ Use `q/` to open search history in a searchable window.
 q/  " open search history window
 ```
 ===
-
-Search with line numbers
 # Title: Search with line numbers
 # Category: Search
 # Tags: search, linenumber, range, between
@@ -215,8 +186,6 @@ Use `/pattern/;+5` to search for pattern and show 5 lines after, or `/pattern1/,
 /function/,/end/ " search between function and end
 ```
 ===
-
-Delete lines containing pattern
 # Title: Delete lines containing pattern
 # Category: Search
 # Tags: delete, pattern, global, lines
@@ -232,8 +201,6 @@ Use `:g/pattern/d` to delete all lines containing a pattern, or `:g!/pattern/d` 
 :g!/error\|warn/d   " delete lines NOT containing 'error' or 'warn'
 ```
 ===
-
-Global command with pattern
 # Title: Global command with pattern
 # Category: Search
 # Tags: global, command, execute, pattern
@@ -248,8 +215,6 @@ Use `:g/pattern/command` to execute a command on all lines matching pattern.
 :g/error/s/old/new/g " replace 'old' with 'new' on lines with 'error'
 ```
 ===
-
-Search word boundaries with very magic
 # Title: Search word boundaries with very magic
 # Category: Search
 # Tags: search, regex, word, boundary, magic
@@ -264,8 +229,6 @@ Use `\v` for very magic mode to make regex more intuitive, or `\<word\>` for exa
 /\vd+             " search for one or more digits
 ```
 ===
-
-Search and execute command
 # Title: Search and execute command
 # Category: Search
 # Tags: search, execute, global, command
@@ -280,8 +243,6 @@ Use `:g/pattern/command` to execute command on all lines matching pattern.
 :g/pattern/p     " print all lines matching pattern
 ```
 ===
-
-Negative search (inverse)
 # Title: Negative search (inverse)
 # Category: Search
 # Tags: search, negative, inverse, exclude
@@ -295,8 +256,6 @@ Use `:v/pattern/command` or `:g!/pattern/command` to execute command on lines NO
 :g!/TODO/p       " print lines NOT containing TODO
 ```
 ===
-
-Multi-line search pattern
 # Title: Multi-line search pattern
 # Category: Search
 # Tags: search, multiline, pattern, regex
@@ -310,8 +269,6 @@ Use `\_s` for whitespace including newlines, `\_.*` to match across lines in sea
 /start\_.*end        " match start to end across lines
 ```
 ===
-
-Search with offset
 # Title: Search with offset
 # Category: Search
 # Tags: search, offset, cursor, position

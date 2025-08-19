@@ -1,4 +1,3 @@
-Set marks
 # Title: Set marks
 # Category: Marks
 # Tags: marks, position, bookmark
@@ -12,8 +11,6 @@ ma  " set mark 'a'
 mB  " set global mark 'B'
 ```
 ===
-
-Jump to marks
 # Title: Jump to marks
 # Category: Marks
 # Tags: marks, jump, navigation
@@ -27,8 +24,6 @@ Use `'{letter}` to jump to beginning of line with mark, or \`{letter}\` to jump 
 `a   " jump to exact position of mark 'a'
 ```
 ===
-
-View marks
 # Title: View marks
 # Category: Marks
 # Tags: marks, list, view

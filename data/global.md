@@ -1,4 +1,3 @@
-Help
 # Title: Help
 # Category: Global
 # Tags: help
@@ -11,8 +10,6 @@ Use `:h[elp] keyword` to open help for a give keyword
 :h sandbox 
 ```
 ===
-
-Close current pane 
 # Title: Close current pane 
 # Category: Global
 # Tags: close, pane
@@ -27,8 +24,6 @@ Use `:clo[se]` to close the current pane.
 :clo
 ```
 ===
-
-Open terminal 
 # Title: Open terminal 
 # Category: Global
 # Tags: terminal
@@ -43,8 +38,6 @@ Use `:ter[minal]` to open a terminal window. When the window shows up, press `i`
 :ter
 ```
 ===
-
-Open documentation for word under the cursor 
 # Title: Open documentation for word under the cursor 
 # Category: Global
 # Tags: man pages, documentation, help

@@ -1,4 +1,3 @@
-Toggle fold
 # Title: Toggle fold
 # Category: Folding
 # Tags: fold, toggle, code
@@ -11,8 +10,6 @@ Use `za` to toggle fold under cursor open/closed.
 za  " toggle fold under cursor
 ```
 ===
-
-Open and close folds
 # Title: Open and close folds
 # Category: Folding
 # Tags: fold, open, close
@@ -26,8 +23,6 @@ zo  " open fold
 zc  " close fold
 ```
 ===
-
-Open and close all folds
 # Title: Open and close all folds
 # Category: Folding
 # Tags: fold, all, global
@@ -41,8 +36,6 @@ zR  " open all folds
 zM  " close all folds
 ```
 ===
-
-Create fold from selection
 # Title: Create fold from selection
 # Category: Folding
 # Tags: fold, create, selection
@@ -56,8 +49,6 @@ zf5j  " create fold 5 lines down
 zf    " create fold from visual selection
 ```
 ===
-
-Fold levels
 # Title: Fold levels
 # Category: Folding
 # Tags: fold, level, depth
@@ -71,8 +62,6 @@ zm  " increase fold level
 zr  " reduce fold level
 ```
 ===
-
-Fold by indentation
 # Title: Fold by indentation
 # Category: Folding
 # Tags: fold, indent, automatic, method
@@ -87,8 +76,6 @@ set foldlevelstart=1    " start with some folds open
 set foldnestmax=3       " limit nested fold depth
 ```
 ===
-
-Syntax-based folding
 # Title: Syntax-based folding
 # Category: Folding
 # Tags: fold, syntax, automatic, language
@@ -102,8 +89,6 @@ set foldmethod=syntax   " fold based on file syntax
 set foldlevel=2         " set initial fold level
 ```
 ===
-
-Fold navigation shortcuts
 # Title: Fold navigation shortcuts
 # Category: Folding
 # Tags: fold, navigation, movement, shortcuts
@@ -119,8 +104,6 @@ zk              " move to end of previous fold
 ]z              " move to end of current open fold
 ```
 ===
-
-Keep folds when inserting
 # Title: Keep folds when inserting
 # Category: Folding
 # Tags: fold, insert, preserve, maintain

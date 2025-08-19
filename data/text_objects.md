@@ -1,4 +1,3 @@
-Text objects - inside brackets
 # Title: Text objects - inside brackets
 # Category: Text Objects
 # Tags: textobject, brackets, inside
@@ -13,8 +12,6 @@ di[  " delete inside square brackets
 yi{  " yank inside curly braces
 ```
 ===
-
-Text objects - around brackets
 # Title: Text objects - around brackets
 # Category: Text Objects
 # Tags: textobject, brackets, around
@@ -29,8 +26,6 @@ da[  " delete around square brackets
 ya{  " yank around curly braces
 ```
 ===
-
-Text objects - sentences and paragraphs
 # Title: Text objects - sentences and paragraphs
 # Category: Text Objects
 # Tags: textobject, sentence, paragraph
@@ -46,8 +41,6 @@ vip  " select inside paragraph
 yap  " yank around paragraph
 ```
 ===
-
-Text objects - word variations
 # Title: Text objects - word variations
 # Category: Text Objects
 # Tags: textobject, word, inner
@@ -62,8 +55,6 @@ daw  " delete around word (includes space)
 yiW  " yank inside WORD (space-separated)
 ```
 ===
-
-Select inside quotes
 # Title: Select inside quotes
 # Category: Text Objects
 # Tags: select, quotes, inside
@@ -77,8 +68,6 @@ vi"  " select inside double quotes
 vi'  " select inside single quotes
 ```
 ===
-
-Select around parentheses
 # Title: Select around parentheses
 # Category: Text Objects
 # Tags: select, parentheses, around

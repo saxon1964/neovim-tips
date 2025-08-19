@@ -1,4 +1,3 @@
-Multiple cursors simulation
 # Title: Multiple cursors simulation
 # Category: Neovim Features
 # Tags: cursor, multiple, editing
@@ -13,8 +12,6 @@ cgn     " change next match
 .       " repeat change on next match
 ```
 ===
-
-Tree-sitter text objects
 # Title: Tree-sitter text objects
 # Category: Neovim Features
 # Tags: treesitter, textobject, modern
@@ -29,8 +26,6 @@ vif  " select inside function
 vac  " select around class
 ```
 ===
-
-Quick fix navigation
 # Title: Quick fix navigation
 # Category: Neovim Features
 # Tags: quickfix, navigation, errors
@@ -45,8 +40,6 @@ Use `:cn` to go to next error/item in quickfix list, `:cp` for previous, `:copen
 :copen  " open quickfix window
 ```
 ===
-
-Built-in terminal
 # Title: Built-in terminal
 # Category: Neovim Features
 # Tags: terminal, integrated, modern
@@ -60,8 +53,6 @@ Use `:term` to open terminal, `Ctrl+\` followed by `Ctrl+n` to exit terminal mod
 Ctrl+\ Ctrl+n   " exit terminal mode
 ```
 ===
-
-Window splitting shortcuts
 # Title: Window splitting shortcuts
 # Category: Neovim Features
 # Tags: window, split, navigation
@@ -76,8 +67,6 @@ Ctrl+w v  " vertical split
 Ctrl+w w  " cycle windows
 ```
 ===
-
-Lua configuration
 # Title: Lua configuration
 # Category: Neovim Features
 # Tags: lua, configuration, modern, scripting
@@ -93,8 +82,6 @@ vim.opt.relativenumber = true
 vim.keymap.set('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
 ```
 ===
-
-Built-in snippet support
 # Title: Built-in snippet support
 # Category: Neovim Features
 # Tags: snippets, completion, modern
@@ -114,8 +101,6 @@ vim.snippet.jump(1)
 vim.snippet.jump(-1)
 ```
 ===
-
-Floating windows API
 # Title: Floating windows API
 # Category: Neovim Features
 # Tags: floating, windows, api, modern
@@ -137,8 +122,6 @@ local win = vim.api.nvim_open_win(buf, true, {
 })
 ```
 ===
-
-Extended marks
 # Title: Extended marks
 # Category: Neovim Features
 # Tags: marks, extmarks, api, highlighting
@@ -155,8 +138,6 @@ vim.api.nvim_buf_set_extmark(0, ns, 0, 0, {
 })
 ```
 ===
-
-Diagnostic API
 # Title: Diagnostic API
 # Category: Neovim Features
 # Tags: diagnostics, api, lsp, modern
@@ -180,8 +161,6 @@ vim.diagnostic.set(ns_id, buf, {
 vim.diagnostic.open_float()
 ```
 ===
-
-Auto commands with Lua
 # Title: Auto commands with Lua
 # Category: Neovim Features
 # Tags: autocmd, lua, events, modern
@@ -200,8 +179,6 @@ vim.api.nvim_create_autocmd('BufWritePre', {
 })
 ```
 ===
-
-User commands
 # Title: User commands
 # Category: Neovim Features
 # Tags: commands, user, custom, lua
@@ -219,8 +196,6 @@ end, {
 })
 ```
 ===
-
-Virtual text
 # Title: Virtual text
 # Category: Neovim Features
 # Tags: virtual, text, inline, diagnostics
@@ -237,8 +212,6 @@ vim.api.nvim_buf_set_extmark(0, ns, 0, -1, {
 })
 ```
 ===
-
-Statusline and tabline API
 # Title: Statusline and tabline API
 # Category: Neovim Features
 # Tags: statusline, tabline, ui, customization
@@ -255,8 +228,6 @@ end
 vim.opt.statusline = '%!v:lua.custom_statusline()'
 ```
 ===
-
-RPC and job control
 # Title: RPC and job control
 # Category: Neovim Features
 # Tags: rpc, jobs, async, communication
@@ -277,8 +248,6 @@ local job_id = vim.fn.jobstart({'ls', '-la'}, {
 })
 ```
 ===
-
-Health checks
 # Title: Health checks
 # Category: Neovim Features
 # Tags: health, check, diagnostics, system

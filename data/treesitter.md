@@ -1,4 +1,3 @@
-Treesitter inspection
 # Title: Treesitter inspection
 # Category: Treesitter
 # Tags: treesitter, inspect, debug
@@ -12,8 +11,6 @@ Use `:Inspect` to see syntax node under cursor or `:InspectTree` to open full sy
 :InspectTree  " open full syntax tree
 ```
 ===
-
-Treesitter text objects
 # Title: Treesitter text objects
 # Category: Treesitter
 # Tags: treesitter, textobjects, selection
@@ -28,8 +25,6 @@ vif  " select inside function
 yac  " yank around class
 ```
 ===
-
-Treesitter incremental selection
 # Title: Treesitter incremental selection
 # Category: Treesitter
 # Tags: treesitter, selection, incremental, expand
@@ -43,8 +38,6 @@ Ctrl-space  " start/expand selection
 Ctrl-x      " shrink selection (if configured)
 ```
 ===
-
-Treesitter syntax highlighting
 # Title: Treesitter syntax highlighting
 # Category: Treesitter
 # Tags: treesitter, highlighting, syntax, colors
@@ -58,8 +51,6 @@ Use `:TSBufEnable highlight` to enable treesitter highlighting or `:TSBufDisable
 :TSBufDisable highlight  " disable TS highlighting
 ```
 ===
-
-Treesitter playground
 # Title: Treesitter playground
 # Category: Treesitter
 # Tags: treesitter, playground, debug, explore
@@ -72,8 +63,6 @@ Use `:TSPlaygroundToggle` to open treesitter playground for exploring syntax tre
 :TSPlaygroundToggle  " toggle treesitter playground
 ```
 ===
-
-Treesitter parser info
 # Title: Treesitter parser info
 # Category: Treesitter
 # Tags: treesitter, parser, info, status
@@ -86,8 +75,6 @@ Use `:TSModuleInfo` to see available treesitter modules and their status.
 :TSModuleInfo  " show treesitter module info
 ```
 ===
-
-Treesitter folding
 # Title: Treesitter folding
 # Category: Treesitter
 # Tags: treesitter, folding, code, structure
@@ -101,8 +88,6 @@ Set `foldmethod=expr` and `foldexpr=nvim_treesitter#foldexpr()` to use treesitte
 :set foldexpr=nvim_treesitter#foldexpr()
 ```
 ===
-
-Treesitter query editor
 # Title: Treesitter query editor
 # Category: Treesitter
 # Tags: treesitter, query, editor, test
@@ -116,8 +101,6 @@ Use `:EditQuery` to edit treesitter queries with live preview and testing.
 :EditQuery textobjects " edit textobject queries
 ```
 ===
-
-Treesitter node navigation
 # Title: Treesitter node navigation
 # Category: Treesitter
 # Tags: treesitter, navigation, nodes, movement
@@ -133,8 +116,6 @@ Use `]f` and `[f` to navigate between function nodes, or `]c` and `[c` for class
 [c  " previous class
 ```
 ===
-
-Treesitter swap nodes
 # Title: Treesitter swap nodes
 # Category: Treesitter
 # Tags: treesitter, swap, parameters, arguments
@@ -148,8 +129,6 @@ gs  " swap with next parameter/node
 gS  " swap with previous parameter/node
 ```
 ===
-
-Treesitter install parser
 # Title: Treesitter install parser
 # Category: Treesitter
 # Tags: treesitter, install, parser, language
@@ -164,8 +143,6 @@ Use `:TSInstall <language>` to install treesitter parser for a specific language
 :TSInstall all        " install all maintained parsers
 ```
 ===
-
-Treesitter update parsers
 # Title: Treesitter update parsers
 # Category: Treesitter
 # Tags: treesitter, update, parsers, maintenance
@@ -178,8 +155,6 @@ Use `:TSUpdate` to update all installed treesitter parsers to latest versions.
 :TSUpdate  " update all parsers
 ```
 ===
-
-Treesitter context
 # Title: Treesitter context
 # Category: Treesitter
 # Tags: treesitter, context, sticky, headers

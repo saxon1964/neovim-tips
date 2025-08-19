@@ -1,4 +1,3 @@
-Custom statusline
 # Title: Custom statusline
 # Category: UI
 # Tags: statusline, custom, display
@@ -11,8 +10,6 @@ Use `vim.opt.statusline` to set a custom statusline format.
 :lua vim.opt.statusline = "%f %y %m %= %l:%c"
 ```
 ===
-
-Check highlight groups
 # Title: Check highlight groups
 # Category: UI
 # Tags: highlight, groups, colors

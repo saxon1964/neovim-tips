@@ -1,4 +1,3 @@
-Open new tab
 # Title: Open new tab
 # Category: Tabs
 # Tags: tab, new, open
@@ -12,8 +11,6 @@ Use `:tabnew` or `:tabedit {file}` to open a new tab, optionally with a file.
 :tabedit file.txt
 ```
 ===
-
-Navigate tabs
 # Title: Navigate tabs
 # Category: Tabs
 # Tags: tab, navigate, switch
@@ -28,8 +25,6 @@ gT   " previous tab
 2gt  " go to tab 2
 ```
 ===
-
-Close tab
 # Title: Close tab
 # Category: Tabs
 # Tags: tab, close, exit

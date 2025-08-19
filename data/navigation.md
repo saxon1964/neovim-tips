@@ -1,4 +1,3 @@
-Jump list navigation
 # Title: Jump list navigation
 # Category: Navigation
 # Tags: jump, list, position
@@ -12,8 +11,6 @@ Ctrl+o  " jump to older position
 Ctrl+i  " jump to newer position
 ```
 ===
-
-View jump list
 # Title: View jump list
 # Category: Navigation
 # Tags: jump, list, view
@@ -26,8 +23,6 @@ Use `:jumps` to show the jump list with all stored positions.
 :jumps  " show jump list
 ```
 ===
-
-Go to file under cursor
 # Title: Go to file under cursor
 # Category: Navigation
 # Tags: file, cursor, goto
@@ -40,8 +35,6 @@ Use `gf` to open the file whose name is under the cursor.
 gf  " go to file under cursor
 ```
 ===
-
-LSP go to references
 # Title: LSP go to references
 # Category: Navigation
 # Tags: lsp, references, goto
@@ -54,8 +47,6 @@ Use `gr` to go to references of symbol under cursor (requires LSP server).
 gr  " go to references
 ```
 ===
-
-Go to declaration
 # Title: Go to declaration
 # Category: Navigation
 # Tags: lsp, declaration, goto
@@ -68,8 +59,6 @@ Use `gD` to go to declaration of symbol under cursor.
 gD  " go to declaration
 ```
 ===
-
-Jump to last edit location
 # Title: Jump to last edit location
 # Category: Navigation
 # Tags: edit, location, jump
@@ -82,8 +71,6 @@ Use `` `. `` to jump to the exact location of the last edit.
 `.  " jump to last edit location
 ```
 ===
-
-List jump locations
 # Title: List jump locations
 # Category: Navigation
 # Tags: jump, list, history
@@ -96,8 +83,6 @@ Use `:ju` to list all jump locations in the jump list.
 :ju  " list jump locations
 ```
 ===
-
-Navigate quickfix list
 # Title: Navigate quickfix list
 # Category: Navigation
 # Tags: quickfix, navigation, errors
@@ -111,8 +96,6 @@ Use `:cnext` to go to next item in quickfix list and `:cprev` to go to previous 
 :cprev  " previous quickfix item
 ```
 ===
-
-Jump to block boundaries
 # Title: Jump to block boundaries
 # Category: Navigation
 # Tags: block, boundaries, jump
@@ -126,8 +109,6 @@ Use `[{` to jump to start of current block and `]}` to jump to end of current bl
 ]}  " jump to block end
 ```
 ===
-
-Jump between functions
 # Title: Jump between functions
 # Category: Navigation
 # Tags: function, jump, treesitter
@@ -141,8 +122,6 @@ Use `]m` to jump to next function start and `[m` to jump to previous function st
 [m  " previous function start
 ```
 ===
-
-Jump to tag under cursor
 # Title: Jump to tag under cursor
 # Category: Navigation
 # Tags: tags, jump, definition, ctags
@@ -156,8 +135,6 @@ Ctrl+]  " jump to tag
 Ctrl+T  " jump back
 ```
 ===
-
-Navigate to alternate file
 # Title: Navigate to alternate file
 # Category: Navigation
 # Tags: alternate, file, header, source
@@ -171,8 +148,6 @@ Use `:A` to switch to alternate file (e.g., .h to .c), or `Ctrl+^` to switch to 
 Ctrl+^  " previous buffer
 ```
 ===
-
-Jump to definition with split
 # Title: Jump to definition with split
 # Category: Navigation
 # Tags: definition, split, window, tags
@@ -185,8 +160,6 @@ Use `Ctrl+W ]` to open tag definition in new split window.
 Ctrl+W ]  " open tag in split
 ```
 ===
-
-Buffer switching shortcuts
 # Title: Buffer switching shortcuts
 # Category: Navigation
 # Tags: buffer, switching, shortcuts, quick
@@ -202,8 +175,6 @@ Ctrl+^      " alternate between current and previous buffer
 :b partial  " switch to buffer matching partial name
 ```
 ===
-
-Jump to random line
 # Title: Jump to random line
 # Category: Navigation
 # Tags: random, line, jump, goto
@@ -219,8 +190,6 @@ G           " jump to last line
 :echo line('$')  " show total number of lines
 ```
 ===
-
-Fast buffer access
 # Title: Fast buffer access
 # Category: Navigation
 # Tags: buffer, fast, access, number
@@ -238,8 +207,6 @@ nnoremap <leader>5 :5b<CR>
 " Continue for buffers 6-9
 ```
 ===
-
-Jump to matching brace
 # Title: Jump to matching brace
 # Category: Navigation
 # Tags: brace, bracket, matching, jump

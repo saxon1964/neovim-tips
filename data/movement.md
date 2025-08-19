@@ -1,4 +1,3 @@
-Basic cursor movement
 # Title: Basic cursor movement
 # Category: Movement
 # Tags: cursor, navigation, movement
@@ -14,8 +13,6 @@ k  " move up
 l  " move right
 ```
 ===
-
-Word movement
 # Title: Word movement
 # Category: Movement
 # Tags: word, navigation, movement
@@ -30,8 +27,6 @@ e  " end of word
 b  " previous word start
 ```
 ===
-
-Line navigation
 # Title: Line navigation
 # Category: Movement
 # Tags: line, navigation, movement
@@ -46,8 +41,6 @@ Use `0` to jump to the beginning of the line, `^` to jump to the first non-blank
 $  " line end
 ```
 ===
-
-Document navigation
 # Title: Document navigation
 # Category: Movement
 # Tags: document, navigation, movement
@@ -61,8 +54,6 @@ gg  " first line
 G   " last line
 ```
 ===
-
-Screen scrolling
 # Title: Screen scrolling
 # Category: Movement
 # Tags: scroll, screen, navigation
@@ -76,8 +67,6 @@ Ctrl+e  " scroll down
 Ctrl+y  " scroll up
 ```
 ===
-
-Center cursor on screen
 # Title: Center cursor on screen
 # Category: Movement
 # Tags: center, screen, cursor
@@ -92,8 +81,6 @@ zt  " line to top
 zb  " line to bottom
 ```
 ===
-
-Page movement
 # Title: Page movement
 # Category: Movement
 # Tags: page, scroll, movement
@@ -109,8 +96,6 @@ Ctrl+d  " down half page
 Ctrl+u  " up half page
 ```
 ===
-
-Jump to specific line
 # Title: Jump to specific line
 # Category: Movement
 # Tags: line, jump, navigation
@@ -124,8 +109,6 @@ Use `{number}G` to jump to a specific line number, or `:{number}` as an alternat
 :42   " jump to line 42
 ```
 ===
-
-Character search on line
 # Title: Character search on line
 # Category: Movement
 # Tags: character, find, line
@@ -141,8 +124,6 @@ ta  " move to before next 'a'
 Ta  " move to after previous 'a'
 ```
 ===
-
-Repeat character search
 # Title: Repeat character search
 # Category: Movement
 # Tags: repeat, character, search
@@ -156,8 +137,6 @@ Use `;` to repeat last character search in the same direction and `,` to repeat 
 ,  " repeat search backward
 ```
 ===
-
-Matching brackets
 # Title: Matching brackets
 # Category: Movement
 # Tags: brackets, matching, navigation
@@ -170,8 +149,6 @@ Use `%` to jump to the matching bracket, parenthesis, or brace.
 %  " jump to matching bracket
 ```
 ===
-
-Screen position navigation
 # Title: Screen position navigation
 # Category: Movement
 # Tags: screen, position, navigation
@@ -183,5 +160,98 @@ Use `H` to move cursor to top of screen and `L` to move cursor to bottom of scre
 ```vim
 H  " move to top of screen
 L  " move to bottom of screen
+```
+===
+# Title: Jump to definition
+# Category: Movement
+# Tags: definition, jump, lsp
+---
+Use `gd` to jump to the definition of the symbol under the cursor (requires LSP). Use `gD` to go to declaration instead of definition.
+
+#### Example
+
+```vim
+gd  " go to definition
+gD  " go to declaration
+```
+===
+# Title: Jump list navigation
+# Category: Movement
+# Tags: jump, list, navigation
+---
+Use `Ctrl+o` to go back to previous location and `Ctrl+i` to go forward in the jump list. Use `:jumps` to see the jump list.
+
+#### Example
+
+```vim
+Ctrl+o  " previous location
+Ctrl+i  " next location
+:jumps  " show jump list
+```
+===
+# Title: Change list navigation
+# Category: Movement
+# Tags: change, list, edit
+---
+Use `g;` to go to previous change location and `g,` to go to next change location. Use `:changes` to see the change list.
+
+#### Example
+
+```vim
+g;       " previous change
+g,       " next change
+:changes " show change list
+```
+===
+# Title: Middle of screen
+# Category: Movement
+# Tags: middle, screen, position
+---
+Use `M` to move cursor to the middle line of the screen.
+
+#### Example
+
+```vim
+M  " move to middle of screen
+```
+===
+# Title: Paragraph movement
+# Category: Movement
+# Tags: paragraph, navigation, text
+---
+Use `{` to move to the beginning of current paragraph and `}` to move to the beginning of next paragraph.
+
+#### Example
+
+```vim
+{  " previous paragraph
+}  " next paragraph
+```
+===
+# Title: Sentence movement
+# Category: Movement
+# Tags: sentence, navigation, text
+---
+Use `(` to move to the beginning of current sentence and `)` to move to the beginning of next sentence.
+
+#### Example
+
+```vim
+(  " previous sentence
+)  " next sentence
+```
+===
+# Title: Line position shortcuts
+# Category: Movement
+# Tags: line, position, shortcuts
+---
+Use `I` to move to the beginning of line and enter insert mode, `A` to move to the end of line and enter insert mode, and `o` to create new line below and enter insert mode.
+
+#### Example
+
+```vim
+I  " insert at line beginning
+A  " append at line end
+o  " new line below
 ```
 ===

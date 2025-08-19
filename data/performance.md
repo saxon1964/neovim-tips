@@ -1,4 +1,3 @@
-Profile startup time
 # Title: Profile startup time
 # Category: Performance
 # Tags: profile, startup, performance
@@ -11,8 +10,6 @@ Use `nvim --startuptime profile.log` to profile Neovim startup time.
 nvim --startuptime profile.log
 ```
 ===
-
-Lazy load plugins
 # Title: Lazy load plugins
 # Category: Performance
 # Tags: lazy, loading, plugins, optimization
@@ -30,8 +27,6 @@ Use lazy loading for plugins that aren't needed immediately to improve startup t
 }
 ```
 ===
-
-Disable unused features
 # Title: Disable unused features
 # Category: Performance
 # Tags: disable, features, optimization, settings
@@ -50,8 +45,6 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 ```
 ===
-
-Use treesitter for syntax highlighting
 # Title: Use treesitter for syntax highlighting
 # Category: Performance
 # Tags: treesitter, syntax, highlighting, performance
@@ -69,8 +62,6 @@ require('nvim-treesitter.configs').setup {
 }
 ```
 ===
-
-Optimize updatetime
 # Title: Optimize updatetime
 # Category: Performance
 # Tags: updatetime, performance, responsiveness
@@ -83,8 +74,6 @@ Set appropriate updatetime for better responsiveness (default 4000ms is often to
 vim.opt.updatetime = 250  -- faster completion and diagnostics
 ```
 ===
-
-Use swap files efficiently
 # Title: Use swap files efficiently
 # Category: Performance
 # Tags: swap, files, memory, performance
@@ -99,8 +88,6 @@ vim.opt.directory = vim.fn.expand('~/.local/share/nvim/swap//')
 vim.opt.updatecount = 100  -- write swap after 100 keystrokes
 ```
 ===
-
-Optimize line numbers
 # Title: Optimize line numbers
 # Category: Performance
 # Tags: numbers, relative, performance, display
@@ -119,8 +106,6 @@ vim.api.nvim_create_autocmd({'BufEnter', 'FocusGained', 'InsertLeave'}, {
 })
 ```
 ===
-
-Reduce redraw frequency
 # Title: Reduce redraw frequency
 # Category: Performance
 # Tags: redraw, display, performance, optimization
@@ -133,8 +118,6 @@ Use lazyredraw to improve performance during macros and complex operations.
 vim.opt.lazyredraw = true  -- don't redraw during macros
 ```
 ===
-
-Profile Lua code
 # Title: Profile Lua code
 # Category: Performance
 # Tags: profile, lua, performance, debug
@@ -158,8 +141,6 @@ local elapsed = vim.loop.hrtime() - start
 print(string.format("Elapsed: %.2fms", elapsed / 1e6))
 ```
 ===
-
-Optimize file type detection
 # Title: Optimize file type detection
 # Category: Performance
 # Tags: filetype, detection, performance
@@ -173,8 +154,6 @@ vim.g.do_filetype_lua = 1  -- use Lua for filetype detection
 vim.g.did_load_filetypes = 0  -- don't use Vim script detection
 ```
 ===
-
-Memory usage monitoring
 # Title: Memory usage monitoring
 # Category: Performance
 # Tags: memory, monitoring, usage, debug
@@ -188,8 +167,6 @@ Monitor Neovim memory usage to identify memory leaks or excessive usage.
 :lua collectgarbage()  " force garbage collection
 ```
 ===
-
-Fast file operations
 # Title: Fast file operations
 # Category: Performance
 # Tags: file, operations, read, write, performance
@@ -205,8 +182,6 @@ vim.opt.undofile = true    -- persistent undo instead
 vim.opt.undodir = vim.fn.expand('~/.local/share/nvim/undo//')
 ```
 ===
-
-Syntax highlighting limits
 # Title: Syntax highlighting limits
 # Category: Performance
 # Tags: syntax, highlighting, limits, large files

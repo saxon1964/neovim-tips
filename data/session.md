@@ -1,4 +1,3 @@
-Session management
 # Title: Session management
 # Category: Session
 # Tags: session, save, restore

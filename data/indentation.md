@@ -1,4 +1,3 @@
-Auto indent
 # Title: Auto indent
 # Category: Indentation
 # Tags: indent, auto, format
@@ -12,8 +11,6 @@ Use `==` to auto-indent current line, or `{number}==` to auto-indent multiple li
 5==  " auto-indent 5 lines
 ```
 ===
-
-Indent lines
 # Title: Indent lines
 # Category: Indentation
 # Tags: indent, shift, format

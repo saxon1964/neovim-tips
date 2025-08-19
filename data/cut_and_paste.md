@@ -1,4 +1,3 @@
-Cut/delete line
 # Title: Cut/delete line
 # Category: Cut and Paste
 # Tags: cut, delete, line
@@ -12,8 +11,6 @@ dd   " cut current line
 3dd  " cut 3 lines
 ```
 ===
-
-Cut/delete word
 # Title: Cut/delete word
 # Category: Cut and Paste
 # Tags: cut, delete, word
@@ -28,8 +25,6 @@ de  " delete to end of word
 db  " delete to start of word
 ```
 ===
-
-Cut to end of line
 # Title: Cut to end of line
 # Category: Cut and Paste
 # Tags: cut, line, end
@@ -43,8 +38,6 @@ D    " delete to end of line
 d$   " delete to end of line
 ```
 ===
-
-Yank line
 # Title: Yank line
 # Category: Cut and Paste
 # Tags: yank, copy, line
@@ -58,8 +51,6 @@ yy   " yank current line
 3yy  " yank 3 lines
 ```
 ===
-
-Yank word
 # Title: Yank word
 # Category: Cut and Paste
 # Tags: yank, copy, word
@@ -73,8 +64,6 @@ yw  " yank to next word
 ye  " yank to end of word
 ```
 ===
-
-Paste text
 # Title: Paste text
 # Category: Cut and Paste
 # Tags: paste, put, text

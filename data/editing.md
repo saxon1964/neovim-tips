@@ -1,4 +1,3 @@
-Repeat last command
 # Title: Repeat last command
 # Category: Editing
 # Tags: repeat, command, editing
@@ -11,8 +10,6 @@ Use `.` to repeat the last command that changed text.
 .  " repeat last command
 ```
 ===
-
-Undo and redo
 # Title: Undo and redo
 # Category: Editing
 # Tags: undo, redo, history
@@ -26,8 +23,6 @@ u       " undo
 Ctrl+r  " redo
 ```
 ===
-
-Delete line
 # Title: Delete line
 # Category: Editing
 # Tags: delete, line, remove
@@ -41,8 +36,6 @@ dd  " delete entire line
 D   " delete to end of line
 ```
 ===
-
-Change operations
 # Title: Change operations
 # Category: Editing
 # Tags: change, replace, edit
@@ -57,8 +50,6 @@ C   " change to end of line
 cw  " change word
 ```
 ===
-
-Join lines
 # Title: Join lines
 # Category: Editing
 # Tags: join, lines, merge
@@ -72,8 +63,6 @@ J   " join with space
 gJ  " join without space
 ```
 ===
-
-Duplicate line
 # Title: Duplicate line
 # Category: Editing
 # Tags: duplicate, copy, line
@@ -87,8 +76,6 @@ yyp  " duplicate line below
 yyP  " duplicate line above
 ```
 ===
-
-Move line up or down
 # Title: Move line up or down
 # Category: Editing
 # Tags: move, line, reorder
@@ -102,8 +89,6 @@ ddkP  " move line up
 ddp   " move line down
 ```
 ===
-
-Insert at beginning/end
 # Title: Insert at beginning/end
 # Category: Editing
 # Tags: insert, beginning, end
@@ -117,8 +102,6 @@ I  " insert at line start
 A  " append at line end
 ```
 ===
-
-Open new line
 # Title: Open new line
 # Category: Editing
 # Tags: open, newline, insert
@@ -132,8 +115,6 @@ o  " open line below
 O  " open line above
 ```
 ===
-
-Replace single character
 # Title: Replace single character
 # Category: Editing
 # Tags: replace, character, substitute
@@ -147,8 +128,6 @@ ra  " replace with 'a'
 rx  " replace with 'x'
 ```
 ===
-
-Replace mode
 # Title: Replace mode
 # Category: Editing
 # Tags: replace, mode, overwrite
@@ -161,8 +140,6 @@ Use `R` to enter replace mode where typed characters overwrite existing text.
 R  " enter replace mode
 ```
 ===
-
-Substitute character
 # Title: Substitute character
 # Category: Editing
 # Tags: substitute, character, change
@@ -176,8 +153,6 @@ s  " substitute character
 S  " substitute line
 ```
 ===
-
-Delete character
 # Title: Delete character
 # Category: Editing
 # Tags: delete, character, remove
@@ -191,8 +166,6 @@ x  " delete character under cursor
 X  " delete character before cursor
 ```
 ===
-
-Yank (copy) operations
 # Title: Yank (copy) operations
 # Category: Editing
 # Tags: yank, copy, clipboard
@@ -207,8 +180,6 @@ yw  " yank word
 y$  " yank to end of line
 ```
 ===
-
-Put (paste) operations
 # Title: Put (paste) operations
 # Category: Editing
 # Tags: put, paste, clipboard
@@ -222,8 +193,6 @@ p  " paste after cursor
 P  " paste before cursor
 ```
 ===
-
-Increment/decrement numbers
 # Title: Increment/decrement numbers
 # Category: Editing
 # Tags: increment, decrement, numbers
@@ -237,8 +206,6 @@ Ctrl+a  " increment number
 Ctrl+x  " decrement number
 ```
 ===
-
-Change case
 # Title: Change case
 # Category: Editing
 # Tags: case, upper, lower, toggle
@@ -253,8 +220,6 @@ gUw   " uppercase word
 guw   " lowercase word
 ```
 ===
-
-Calculate expressions
 # Title: Calculate expressions
 # Category: Editing
 # Tags: calculate, math, expression, replace
@@ -269,8 +234,6 @@ Use `<C-r>=` in insert mode to calculate mathematical expressions and insert the
 <C-r>=16*1024<CR>   " inserts '16384'
 ```
 ===
-
-Insert literal tab
 # Title: Insert literal tab
 # Category: Editing
 # Tags: tab, literal, insert, character
@@ -284,8 +247,6 @@ Use `<C-v><Tab>` in insert mode to insert a literal tab character when expandtab
 <C-v><Tab>  " insert actual tab character
 ```
 ===
-
-Capitalize words easily
 # Title: Capitalize words easily
 # Category: Editing
 # Tags: capitalize, words, case, format
@@ -300,8 +261,6 @@ guw~        " lowercase word then capitalize first letter
 nnoremap <leader>tc guw~
 ```
 ===
-
-Insert single character
 # Title: Insert single character
 # Category: Editing
 # Tags: insert, character, single, quick
@@ -317,8 +276,6 @@ nnoremap <leader>i i_<Esc>r
 s{char}<Esc>  " replace character under cursor
 ```
 ===
-
-Delete words in different way
 # Title: Delete words in different way
 # Category: Editing
 # Tags: delete, word, alternative, whitespace
@@ -334,8 +291,6 @@ dW   " delete WORD (including punctuation)
 daW  " delete a WORD (including spaces)
 ```
 ===
-
-Insert multiple lines
 # Title: Insert multiple lines
 # Category: Editing
 # Tags: insert, lines, multiple, batch
@@ -351,8 +306,6 @@ Use `o<Esc>` followed by repeat count, or `{count}o` to insert multiple empty li
 o<Esc>4.    " insert line, then repeat 4 times
 ```
 ===
-
-Insert newline without entering insert mode
 # Title: Insert newline without entering insert mode
 # Category: Editing
 # Tags: newline, insert, normal, mode
@@ -369,8 +322,6 @@ nnoremap <leader>o o<Esc>
 nnoremap <leader>O O<Esc>
 ```
 ===
-
-Toggle paste mode
 # Title: Toggle paste mode
 # Category: Editing
 # Tags: paste, mode, toggle, indentation
@@ -387,8 +338,6 @@ set showmode            " show current mode including paste
 " Usage: Press F2, paste text, press F2 again
 ```
 ===
-
-Enhanced undo and redo
 # Title: Enhanced undo and redo
 # Category: Editing
 # Tags: undo, redo, changes, history, time
@@ -410,8 +359,6 @@ g-          " go to older text state
 g+          " go to newer text state
 ```
 ===
-
-Filter text through external commands
 # Title: Filter text through external commands
 # Category: Editing
 # Tags: filter, external, command, text, process
@@ -432,8 +379,6 @@ Process text by sending it through external programs and commands.
 :r !ls -la        " read directory listing into buffer
 ```
 ===
-
-Omni completion setup
 # Title: Omni completion setup
 # Category: Editing
 # Tags: completion, omni, smart, autocomplete

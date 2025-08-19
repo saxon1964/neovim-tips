@@ -1,4 +1,3 @@
-Quit Vim
 # Title: Quit Vim
 # Category: Exit
 # Tags: quit, exit, close

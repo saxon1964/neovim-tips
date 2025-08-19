@@ -1,4 +1,3 @@
-Toggle invisible characters
 # Title: Toggle invisible characters
 # Category: Display
 # Tags: invisible, characters, toggle
@@ -11,8 +10,6 @@ Use `:set list!` to toggle display of invisible characters (tabs, spaces, etc.).
 :set list!  " toggle invisible characters
 ```
 ===
-
-Toggle cursor line highlight
 # Title: Toggle cursor line highlight
 # Category: Display
 # Tags: cursorline, highlight, toggle

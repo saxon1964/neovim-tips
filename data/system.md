@@ -1,4 +1,3 @@
-Async shell commands
 # Title: Async shell commands
 # Category: System
 # Tags: async, shell, lua
@@ -11,8 +10,6 @@ Use `vim.loop.spawn()` to run shell commands asynchronously without blocking Neo
 :lua vim.loop.spawn("ls", {args={"-la"}}, function() print("Done!") end)
 ```
 ===
-
-Read command output into buffer
 # Title: Read command output into buffer
 # Category: System
 # Tags: command, output, read, external
@@ -28,8 +25,6 @@ Use `:r !command` to read external command output into current buffer at cursor 
 :r !curl -s url     " insert web content
 ```
 ===
-
-Write buffer to command
 # Title: Write buffer to command
 # Category: System
 # Tags: write, command, pipe, external
@@ -45,8 +40,6 @@ Use `:w !command` to pipe buffer contents to external command without saving fil
 :'<,'>w !sort       " sort selected lines
 ```
 ===
-
-Execute line as command
 # Title: Execute line as command
 # Category: System
 # Tags: execute, line, command, shell

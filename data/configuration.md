@@ -1,4 +1,3 @@
-Reload configuration
 # Title: Reload configuration
 # Category: Configuration
 # Tags: config, reload, source
@@ -11,8 +10,6 @@ Use `:source $MYVIMRC` to reload your Neovim configuration.
 :source $MYVIMRC  " reload config
 ```
 ===
-
-Edit configuration
 # Title: Edit configuration
 # Category: Configuration
 # Tags: config, edit, vimrc
@@ -25,8 +22,6 @@ Use `:e $MYVIMRC` to quickly edit your Neovim configuration file.
 :e $MYVIMRC  " edit config file
 ```
 ===
-
-View runtime paths
 # Title: View runtime paths
 # Category: Configuration
 # Tags: runtime, path, debug
@@ -39,8 +34,6 @@ Use `:echo &runtimepath` to see all runtime paths Neovim is using.
 :echo &runtimepath  " show runtime paths
 ```
 ===
-
-Enable 256 colors
 # Title: Enable 256 colors
 # Category: Configuration
 # Tags: colors, terminal, display
@@ -57,8 +50,6 @@ set t_AF=^[[38;5;%dm
 export TERM='xterm-256color'
 ```
 ===
-
-Auto tab completion
 # Title: Auto tab completion
 # Category: Configuration
 # Tags: completion, tab, autocomplete
@@ -79,8 +70,6 @@ inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
 set dictionary="/usr/dict/words"
 ```
 ===
-
-Restore cursor position
 # Title: Restore cursor position
 # Category: Configuration
 # Tags: cursor, position, session, restore
@@ -106,8 +95,6 @@ augroup END
 set viminfo='10,\"100,:20,%,n~/.viminfo
 ```
 ===
-
-Toggle paste mode
 # Title: Toggle paste mode
 # Category: Configuration
 # Tags: paste, toggle, indent, clipboard
@@ -123,8 +110,6 @@ set showmode
 " Use F2 before and after pasting external text
 ```
 ===
-
-Auto-reload file changes
 # Title: Auto-reload file changes
 # Category: Configuration
 # Tags: auto, reload, file, changes
@@ -142,8 +127,6 @@ au FocusLost,WinLeave * :silent! w
 au CursorHold * :silent! checktime
 ```
 ===
-
-Set color scheme based on time
 # Title: Set color scheme based on time
 # Category: Configuration
 # Tags: color, scheme, time, automatic

@@ -1,4 +1,3 @@
-Format with Treesitter
 # Title: Format with Treesitter
 # Category: Formatting
 # Tags: treesitter, format, syntax
@@ -11,8 +10,6 @@ Use `=ap` to format syntax-aware regions using Treesitter (when available).
 =ap  " format around paragraph with Treesitter
 ```
 ===
-
-Automatic paragraph formatting
 # Title: Automatic paragraph formatting
 # Category: Formatting
 # Tags: paragraph, textwidth, reflow
@@ -27,8 +24,6 @@ Automatically format paragraphs to specified width using textwidth and format co
 gqip                   " reformat inner paragraph
 ```
 ===
-
-Generate increasing numbers
 # Title: Generate increasing numbers
 # Category: Formatting
 # Tags: numbers, increment, column, sequence
@@ -44,8 +39,6 @@ Generate a column of increasing numbers using visual block mode and increment co
 :II                    " increment with left padding
 ```
 ===
-
-Comment lines by filetype
 # Title: Comment lines by filetype
 # Category: Formatting
 # Tags: comment, filetype, toggle
