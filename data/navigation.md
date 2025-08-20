@@ -391,3 +391,18 @@ Use `[m` and `]m` to jump between member function starts.
 ]m  " jump to next start of member function
 ```
 ===
+# Title: Toggle netrw file explorer
+# Category: Navigation
+# Tags: netrw, explorer, toggle, file, browser
+---
+Use `:Lexplore` to toggle the netrw file explorer in a vertical split on the left side.
+
+#### Example
+
+```vim
+:Lexplore    " toggle left explorer
+:Vexplore    " open explorer in vertical split
+:Sexplore    " open explorer in horizontal split
+:Explore     " open explorer in current window
+```
+===

@@ -82,29 +82,20 @@ Use `Ctrl+w T` to move current window to a new tab page.
 Ctrl+w T  " move current window to new tab
 ```
 ===
-# Title: Equalize window sizes
+# Title: Advanced window operations
 # Category: Window Management
-# Tags: window, resize, equalize
+# Tags: window, equalize, rotate, maximize, advanced
 ---
-Use `Ctrl+w =` to make all windows equal in size.
+Use `Ctrl+w =` to equalize windows, `Ctrl+w r` to rotate windows, `Ctrl+w |` to maximize horizontally.
 
 #### Example
 
 ```vim
-Ctrl+w =  " equalize window sizes
-```
-===
-# Title: Maximize window dimensions
-# Category: Window Management
-# Tags: window, maximize, resize
----
-Use `Ctrl+w _` to maximize current window height and `Ctrl+w |` to maximize current window width.
-
-#### Example
-
-```vim
-Ctrl+w _  " maximize window height
-Ctrl+w |  " maximize window width
+Ctrl+w =    " equalize window sizes
+Ctrl+w r    " rotate windows clockwise
+Ctrl+w R    " rotate windows counter-clockwise  
+Ctrl+w |    " maximize current window horizontally
+Ctrl+w _    " maximize current window vertically
 ```
 ===
 # Title: Resize windows incrementally
@@ -120,19 +111,6 @@ Ctrl+w +  " increase window height
 Ctrl+w -  " decrease window height
 Ctrl+w >  " increase window width
 Ctrl+w <  " decrease window width
-```
-===
-# Title: Rotate windows
-# Category: Window Management
-# Tags: window, rotate, move
----
-Use `Ctrl+w r` to rotate windows clockwise and `Ctrl+w R` to rotate windows counter-clockwise.
-
-#### Example
-
-```vim
-Ctrl+w r  " rotate windows clockwise
-Ctrl+w R  " rotate windows counter-clockwise
 ```
 ===
 # Title: Move windows

@@ -72,3 +72,46 @@ Use `:let @a='text'` to manually set the contents of register a.
 :let @a='hello world'  " set register a to 'hello world'
 ```
 ===
+# Title: Clear specific register
+# Category: Registers
+# Tags: register, clear, empty, macro
+---
+Use `q{register}q` to clear/empty a specific register by recording an empty macro.
+
+#### Example
+
+```vim
+qAq    " clear register 'A'
+qaq    " clear register 'a'  
+q1q    " clear register '1'
+q:q    " clear command register
+```
+===
+# Title: Get current buffer path in register
+# Category: Registers
+# Tags: buffer, path, filename, register, clipboard
+---
+Use `"%p` to paste current filename, `:let @+=@%` to copy buffer name to system clipboard.
+
+#### Example
+
+```vim
+"%p            " paste current filename
+":let @+=@%     " copy current buffer name to system clipboard
+":let @"=@%     " copy current buffer name to default register
+```
+===
+# Title: Paste without overwriting register
+# Category: Registers
+# Tags: paste, register, overwrite, visual, multiple
+---
+Use `P` (capital) in visual mode to paste without overwriting the register, allowing multiple pastes.
+
+#### Example
+
+```vim
+" Select text, then:
+P     " paste without overwriting register (can repeat)
+p     " paste and overwrite register with selected text
+```
+===

@@ -10,19 +10,6 @@ Use `.` to repeat the last command that changed text.
 .  " repeat last command
 ```
 ===
-# Title: Undo and redo
-# Category: Editing
-# Tags: undo, redo, history
----
-Use `u` to undo last change and `Ctrl+r` to redo undone changes.
-
-#### Example
-
-```vim
-u       " undo
-Ctrl+r  " redo
-```
-===
 # Title: Delete line
 # Category: Editing
 # Tags: delete, line, remove
@@ -48,19 +35,6 @@ Use `cc` to change entire line, `C` to change from cursor to end of line, `cw` t
 cc  " change entire line
 C   " change to end of line
 cw  " change word
-```
-===
-# Title: Join lines
-# Category: Editing
-# Tags: join, lines, merge
----
-Use `J` to join current line with next line, `gJ` to join without adding space.
-
-#### Example
-
-```vim
-J   " join with space
-gJ  " join without space
 ```
 ===
 # Title: Duplicate line
@@ -191,33 +165,6 @@ Use `p` to paste after cursor, `P` to paste before cursor.
 ```vim
 p  " paste after cursor
 P  " paste before cursor
-```
-===
-# Title: Increment/decrement numbers
-# Category: Editing
-# Tags: increment, decrement, numbers
----
-Use `Ctrl+a` to increment number under cursor, `Ctrl+x` to decrement.
-
-#### Example
-
-```vim
-Ctrl+a  " increment number
-Ctrl+x  " decrement number
-```
-===
-# Title: Change case
-# Category: Editing
-# Tags: case, upper, lower, toggle
----
-Use `~` to toggle case of character, `gU` to uppercase, `gu` to lowercase.
-
-#### Example
-
-```vim
-~     " toggle case
-gUw   " uppercase word
-guw   " lowercase word
 ```
 ===
 # Title: Calculate expressions
@@ -400,5 +347,268 @@ set omnifunc=syntaxcomplete#Complete
 " Enable for specific languages
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+```
+===
+# Title: Ex commands - line operations
+# Category: Editing
+# Tags: ex, line, delete, copy, move, range
+---
+Use `:d` to delete lines, `:y` to yank, `:m` to move, `:co` or `:t` to copy, with ranges like `1,5` or `%`.
+
+#### Example
+
+```vim
+:5d           " delete line 5
+:1,10d        " delete lines 1-10
+:%d           " delete all lines
+:5,10m 20     " move lines 5-10 to after line 20
+:1,5co 10     " copy lines 1-5 to after line 10
+```
+===
+# Title: Ex commands - undo and redo
+# Category: Editing
+# Tags: ex, undo, redo, earlier, later
+---
+Use `:undo` and `:redo` for undo/redo, `:earlier` and `:later` for time-based undo.
+
+#### Example
+
+```vim
+:undo         " undo last change
+:redo         " redo last undone change
+:earlier 10m  " go back 10 minutes
+:later 5s     " go forward 5 seconds
+:earlier 10f  " go back 10 file states
+```
+===
+# Title: Ex commands - sorting and formatting
+# Category: Editing
+# Tags: ex, sort, format, center, left, right
+---
+Use `:sort` to sort lines, `:center` to center text, `:left` and `:right` for alignment.
+
+#### Example
+
+```vim
+:%sort        " sort all lines
+:5,15sort     " sort lines 5-15
+:sort u       " sort and remove duplicates
+:center 80    " center text in 80 columns
+:left 5       " left align with 5 space indent
+:right 70     " right align to column 70
+```
+===
+# Title: Ex commands - joining and splitting
+# Category: Editing
+# Tags: ex, join, split, lines, combine
+---
+Use `:join` or `:j` to join lines, with count to join multiple lines.
+
+#### Example
+
+```vim
+:join         " join current line with next
+:j            " short form of join
+:5,8join      " join lines 5-8
+:join!        " join without inserting spaces
+```
+===
+# Title: Ex commands - marks and jumps
+# Category: Editing
+# Tags: ex, marks, jump, position, navigate
+---
+Use `:mark` to set mark, `:jumps` to show jump list, `:changes` for change list, `:delmarks` to delete marks.
+
+#### Example
+
+```vim
+:mark a       " set mark 'a' at current line
+:marks        " show all marks
+:jumps        " show jump list
+:changes      " show change list
+:delmarks a   " delete mark 'a'
+:delmarks!    " delete all lowercase marks
+```
+===
+# Title: Convert tabs to spaces
+# Category: Editing
+# Tags: tab, space, convert, expand, retab
+---
+Use `:set et|retab` to expand all tab indents to spaces in the current file.
+
+#### Example
+
+```vim
+:set expandtab    " use spaces instead of tabs
+:retab            " convert existing tabs to spaces
+:set et|retab     " do both in one command
+:set noet|retab!  " convert spaces back to tabs
+```
+===
+# Title: Move line to end of paragraph
+# Category: Editing
+# Tags: move, line, paragraph, end, motion
+---
+Use `:m'}-1` to move current line to end of current paragraph.
+
+#### Example
+
+```vim
+:m'}-1        " move current line to end of paragraph
+:m'}          " move current line after end of paragraph
+:m'{-1        " move current line to start of paragraph
+```
+===
+# Title: Execute normal commands without mappings
+# Category: Editing
+# Tags: normal, command, mapping, script, execute
+---
+Use `normal!` in scripts to execute normal-mode commands without triggering user mappings.
+
+#### Example
+
+```vim
+" In a script or function:
+normal! dd       " delete line without triggering dd mapping
+normal! yy       " yank line without triggering yy mapping
+execute "normal! \<C-v>j"  " block select down
+```
+===
+# Title: Substitute in all buffers
+# Category: Editing
+# Tags: substitute, buffer, all, bufdo, global
+---
+Use `:bufdo %s/old/new/ge` to substitute in all open buffers, `e` flag suppresses errors.
+
+#### Example
+
+```vim
+:bufdo %s/old/new/ge    " substitute in all buffers
+:bufdo %s/TODO/DONE/ge  " replace TODO with DONE in all buffers
+:bufdo update           " save all modified buffers
+```
+===
+# Title: Number lines with commands
+# Category: Editing
+# Tags: number, line, sequence, increment, script
+---
+Add line numbers to text using substitute command with expression.
+
+#### Example
+
+```vim
+:%s/^/\=line('.') . '. '/  " add line numbers with dots
+:%s/^/\=printf("%3d: ", line('.'))/ " formatted line numbers
+:let i=1 | g/^/s//\=i . '. '/ | let i=i+1  " alternative method
+```
+===
+# Title: Return to last exit position
+# Category: Editing
+# Tags: position, exit, return, mark, jump
+---
+Use mark `"0` to jump to position where Vim was last exited from current file.
+
+#### Example
+
+```vim
+`"0     " jump to last exit position
+'"0     " jump to last exit position (line start)
+:normal `"0  " execute from script/mapping
+```
+===
+# Title: Wrap text in HTML tags
+# Category: Editing
+# Tags: html, tag, wrap, surround, format
+---
+Use visual selection and substitute to wrap text in HTML tags.
+
+#### Example
+
+```vim
+" Select text in visual mode, then:
+:'<,'>s/.*/\<p>&\<\/p>/   " wrap lines in <p> tags
+:'<,'>s/.*/\<li>&\<\/li>/ " wrap lines in <li> tags
+:'<,'>s/\(.*\)/\<strong>\1\<\/strong>/ " wrap in <strong> tags
+```
+===
+# Title: Copy and move lines to marks
+# Category: Editing
+# Tags: copy, move, mark, line, range
+---
+Use `:t` to copy lines to marks, `:.t'a` to copy current line to mark 'a', `:152,154t.` to copy range to current position.
+
+#### Example
+
+```vim
+ma           " set mark 'a' at current line
+:.t'a        " copy current line to mark 'a'
+:5,10t'b     " copy lines 5-10 to mark 'b'
+:'<,'>t'a    " copy visual selection to mark 'a'
+:152,154t.   " copy lines 152-154 to current position
+```
+===
+# Title: Increment search results
+# Category: Editing
+# Tags: increment, search, replace, counter, sequential
+---
+Use global command with counter to incrementally replace search results with sequential numbers.
+
+#### Example
+
+```vim
+" Replace all '2.gif' with incremental numbers:
+:let idx=0 | g/2\.gif/ let idx += 1 | s//\= idx . '.gif'/
+
+" Replace 'item' with numbered items:
+:let n=1 | g/item/ s//\='item' . n/ | let n=n+1
+```
+===
+# Title: Global command with normal mode operations
+# Category: Editing
+# Tags: global, normal, command, pattern, batch
+---
+Use `:g/pattern/ normal {commands}` to execute normal mode commands on all matching lines.
+
+#### Example
+
+```vim
+:g/console.log/ normal gcc    " comment all lines with 'console.log'
+:g/TODO/ normal dw            " delete first word on lines with 'TODO'
+:g/function/ normal >>        " indent all lines containing 'function'
+```
+===
+# Title: Put text above or below current line
+# Category: Editing
+# Tags: put, paste, above, below, line
+---
+Use `:pu` to paste below current line, `:pu!` to paste above current line, regardless of cursor position.
+
+#### Example
+
+```vim
+:pu         " paste register contents below current line
+:pu!        " paste register contents above current line
+:pu a       " paste register 'a' below current line
+:pu! a      " paste register 'a' above current line
+```
+===
+# Title: Select non-uniform strings across lines
+# Category: Editing
+# Tags: select, yank, append, register, pattern
+---
+Use normal mode with append register to collect text from multiple lines into one register.
+
+#### Example
+
+```vim
+" Yank text inside {} from multiple lines to register A:
+:'<,'>norm "Ayi{
+
+" Yank word under cursor from multiple lines:
+:g/pattern/ normal "Ayiw
+
+" Clear register first:
+qAq
+:'<,'>norm "Ayi{
 ```
 ===

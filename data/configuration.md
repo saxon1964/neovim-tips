@@ -143,3 +143,214 @@ else
 endif
 ```
 ===
+# Title: Ex commands - set options
+# Category: Configuration
+# Tags: ex, set, option, toggle, query
+---
+Use `:set option` to enable, `:set nooption` to disable, `:set option?` to query, `:set option&` to reset to default.
+
+#### Example
+
+```vim
+:set number        " enable line numbers
+:set nonumber      " disable line numbers
+:set number?       " check if line numbers are enabled
+:set number&       " reset to default value
+```
+===
+# Title: Ex commands - option with values
+# Category: Configuration
+# Tags: ex, set, value, assignment, string
+---
+Use `:set option=value` to assign value, `:set option+=value` to append, `:set option-=value` to remove.
+
+#### Example
+
+```vim
+:set tabstop=4        " set tab width to 4
+:set path+=/usr/include  " add to path
+:set path-=/tmp       " remove from path
+:set suffixes+=.bak   " add .bak to suffixes
+```
+===
+# Title: Ex commands - autocmds and events
+# Category: Configuration
+# Tags: ex, autocmd, event, pattern, command
+---
+Use `:autocmd` to set up automatic commands, `:autocmd!` to clear, `:doautocmd` to trigger events.
+
+#### Example
+
+```vim
+:autocmd BufWritePost *.py !python %  " run python after save
+:autocmd! BufRead       " clear all BufRead autocmds
+:doautocmd BufRead      " trigger BufRead event
+:autocmd FileType python setlocal ts=4  " Python-specific settings
+```
+===
+# Title: Ex commands - mappings and abbreviations
+# Category: Configuration
+# Tags: ex, map, abbrev, shortcut, key
+---
+Use `:map` for mappings, `:abbrev` for abbreviations, `:unmap` and `:unabbrev` to remove.
+
+#### Example
+
+```vim
+:map <F2> :w<CR>        " map F2 to save
+:imap <F3> <Esc>:w<CR>  " insert mode mapping
+:abbrev teh the         " abbreviation for typo
+:unmap <F2>             " remove mapping
+:unabbrev teh           " remove abbreviation
+```
+===
+# Title: Ex commands - highlight and syntax
+# Category: Configuration
+# Tags: ex, highlight, syntax, color, group
+---
+Use `:highlight` to set colors, `:syntax` for syntax highlighting, `:colorscheme` to change themes.
+
+#### Example
+
+```vim
+:highlight Comment ctermfg=green   " set comment color
+:syntax on                         " enable syntax highlighting
+:syntax off                        " disable syntax highlighting
+:colorscheme desert                " change color scheme
+:highlight clear                   " clear all highlighting
+```
+===
+# Title: Ex commands - runtime and sourcing
+# Category: Configuration
+# Tags: ex, source, runtime, script, load
+---
+Use `:source` to load script, `:runtime` to load from runtime path, `:scriptnames` to list loaded scripts.
+
+#### Example
+
+```vim
+:source ~/.vimrc        " load configuration file
+:runtime! plugin/**/*.vim  " load all plugins
+:scriptnames            " list all loaded scripts
+:source %               " reload current file as script
+```
+===
+# Title: Home key smart mapping
+# Category: Configuration
+# Tags: home, key, mapping, smart, navigation
+---
+Map Home key to toggle between beginning of line and first non-blank character.
+
+#### Example
+
+```vim
+" Smart Home key mapping:
+nnoremap <expr> <Home> (col('.') == 1 ? '^' : '0')
+inoremap <expr> <Home> (col('.') == 1 ? '<C-o>^' : '<C-o>0')
+
+" Alternative version:
+nnoremap <silent> <Home> :call SmartHome()<CR>
+function! SmartHome()
+  let curcol = col('.')
+  normal! ^
+  if col('.') == curcol
+    normal! 0
+  endif
+endfunction
+```
+===
+# Title: Execute command with pipe separator
+# Category: Configuration
+# Tags: execute, command, pipe, separator, multiple
+---
+Use `:execute` to allow `|` pipe character to separate multiple commands in mappings.
+
+#### Example
+
+```vim
+" Without execute, | ends the mapping:
+nnoremap <F5> :w | echo "Saved"<CR>  " Wrong - | ends mapping
+
+" With execute, | separates commands:
+nnoremap <F5> :execute "w \| echo 'Saved'"<CR>  " Correct
+```
+===
+# Title: Verbose mapping information
+# Category: Configuration
+# Tags: verbose, mapping, script, source, debug
+---
+Use `:verbose map <key>` to see which script defined a mapping and where.
+
+#### Example
+
+```vim
+:verbose map <F1>     " show where F1 mapping was defined
+:verbose imap <Tab>   " show insert mode Tab mapping source
+:verbose map          " show all mappings with sources
+```
+===
+# Title: Speed up vimgrep with noautocmd
+# Category: Configuration
+# Tags: vimgrep, speed, autocmd, performance, search
+---
+Use `:noautocmd vimgrep` to speed up vimgrep by disabling autocmds during search.
+
+#### Example
+
+```vim
+:noautocmd vimgrep /pattern/ **/*.txt  " faster vimgrep
+:noautocmd bufdo %s/old/new/ge         " faster buffer operations
+```
+===
+# Title: Check plugin key mapping usage
+# Category: Configuration
+# Tags: plugin, mapping, check, usage, debug
+---
+Use `echo maparg("key", "mode")` to check what key mapping is assigned in specific mode.
+
+#### Example
+
+```vim
+:echo maparg("S", "v")      " check visual mode 'S' mapping
+:echo maparg("<leader>f", "n") " check normal mode leader+f mapping  
+:echo maparg("<C-n>", "i")  " check insert mode Ctrl+n mapping
+```
+===
+# Title: Environment variables in configuration
+# Category: Configuration
+# Tags: environment, variable, conditional, config, lua
+---
+Use `os.getenv()` in Lua configuration to conditionally set options based on environment variables.
+
+#### Example
+
+```vim
+-- In init.lua:
+if os.getenv("MACHINE") == "work" then
+  -- Work-specific configuration
+  vim.opt.colorcolumn = "80"
+else  
+  -- Personal configuration
+  vim.opt.colorcolumn = "120"
+end
+```
+===
+# Title: Alternate Neovim startup configuration
+# Category: Configuration
+# Tags: startup, config, alternate, minimal, debug
+---
+Start Neovim with alternate configuration using `-u` flag for testing or minimal setups.
+
+#### Example
+
+```vim
+" Start with minimal config:
+nvim -u ~/.config/nvim/minimal.lua
+
+" Start with no config:
+nvim -u NONE
+
+" Start with specific vimrc:
+nvim -u ~/.vimrc.test
+```
+===

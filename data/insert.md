@@ -319,3 +319,17 @@ Ctrl+m  " new line (same as Enter)
 Ctrl+j  " new line (alternative)
 ```
 ===
+# Title: Scroll window in insert mode
+# Category: Insert
+# Tags: scroll, window, view, insert
+---
+Use `Ctrl+x Ctrl+e` to scroll the window down and `Ctrl+x Ctrl+y` to scroll the window up without leaving insert mode.
+
+#### Example
+
+```vim
+" In insert mode:
+Ctrl+x Ctrl+e  " scroll window down
+Ctrl+x Ctrl+y  " scroll window up
+```
+===

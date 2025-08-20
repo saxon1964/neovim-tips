@@ -22,3 +22,34 @@ Use `:h index.txt` to access the master help index with all available commands.
 :h index.txt  " master help index
 ```
 ===
+# Title: Ex commands - help and documentation
+# Category: Help
+# Tags: ex, help, documentation, version, info
+---
+Use `:version` for version info, `:intro` for intro message, `:messages` for message history, `:checkhealth` for diagnostics.
+
+#### Example
+
+```vim
+:version      " show Neovim version and build info
+:intro        " show introduction message
+:messages     " show message history
+:checkhealth  " run health diagnostics
+```
+===
+# Title: Ex commands - help navigation
+# Category: Help
+# Tags: ex, help, navigation, tag, jump
+---
+Use `:helpgrep` to search help, `:ptag` for preview, `:pop` to go back, `:tag` to jump to tag.
+
+#### Example
+
+```vim
+:helpgrep pattern   " search all help for pattern
+:ptag function      " preview tag in preview window
+:pop                " go back in tag stack
+:tag function       " jump to tag
+:tags               " show tag stack
+```
+===

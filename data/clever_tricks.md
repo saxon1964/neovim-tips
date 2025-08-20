@@ -508,6 +508,214 @@ g'a  " jump to mark 'a' without affecting jumplist
 g`a  " jump to exact position of mark 'a' without jumplist
 ```
 ===
+# Title: Repeat last Ex command with @:
+# Category: Clever Tricks
+# Tags: repeat, ex, command, macro, colon
+---
+Use `@:` to repeat the last Ex command, similar to how `@@` repeats macros.
+
+#### Example
+
+```vim
+:substitute/old/new/g
+@:  " repeat the last substitute command
+```
+===
+# Title: Enhanced repeat with cursor positioning
+# Category: Clever Tricks
+# Tags: repeat, cursor, position, change, dot
+---
+Map `.` followed by `` ` `` to repeat last command and return cursor to start of change.
+
+#### Example
+
+```vim
+" Add this mapping:
+nnoremap <leader>. .`[
+
+" Now after making a change:
+<leader>.  " repeat change and go to start position
+```
+===
+# Title: List lines matching last search
+# Category: Clever Tricks
+# Tags: search, list, global, pattern, last
+---
+Use `:g//` to list all lines containing the last search pattern without specifying the pattern again.
+
+#### Example
+
+```vim
+/function   " search for 'function'
+:g//        " list all lines containing 'function'
+:g//p       " same as above (print is default)
+```
+===
+# Title: Save each line to separate files
+# Category: Clever Tricks
+# Tags: file, save, line, separate, export
+---
+Use `:g/^/exe` to save each line to a separate file with incremental names.
+
+#### Example
+
+```vim
+:let i = 1 | g/^/exe 'w! line' . i . '.txt' | let i = i + 1
+" Saves each line to line1.txt, line2.txt, etc.
+```
+===
+# Title: Alternative substitute delimiters
+# Category: Clever Tricks
+# Tags: substitute, delimiter, slash, alternative
+---
+Use any character as delimiter in substitute commands to avoid escaping slashes in paths.
+
+#### Example
+
+```vim
+:s#/path/to/old#/path/to/new#g  " using # as delimiter
+:s|/usr/bin|/usr/local/bin|g    " using | as delimiter
+:s@old@new@g                    " using @ as delimiter
+```
+===
+# Title: Calculation with expression register
+# Category: Clever Tricks
+# Tags: calculation, expression, register, math, evaluate
+---
+Use `=` register to evaluate mathematical expressions and insert results.
+
+#### Example
+
+```vim
+" In insert mode:
+Ctrl+r =2+3*4<Enter>    " inserts 14
+Ctrl+r =sqrt(16)<Enter> " inserts 4.0
+Ctrl+r =strftime("%Y")<Enter>  " inserts current year
+```
+===
+# Title: Word count in selection or file
+# Category: Clever Tricks
+# Tags: word, count, selection, statistics, file
+---
+Use `g Ctrl+g` to show word count, or `:!wc -w %` for file word count.
+
+#### Example
+
+```vim
+" Select text in visual mode, then:
+g Ctrl+g     " show character, word, line count of selection
+
+" For entire file:
+:!wc -w %    " show word count of current file
+```
+===
+# Title: Scroll windows together
+# Category: Clever Tricks
+# Tags: scroll, window, together, bind, sync
+---
+Use `:set scrollbind` in multiple windows to scroll them together synchronously.
+
+#### Example
+
+```vim
+" In first window:
+:set scrollbind
+
+" In second window:
+:set scrollbind
+
+" Now both windows scroll together
+" To disable:
+:set noscrollbind
+```
+===
+# Title: Change directory to current file
+# Category: Clever Tricks
+# Tags: directory, current, file, cd, path
+---
+Use `:cd %:h` to change directory to the directory of the current file.
+
+#### Example
+
+```vim
+:cd %:h     " change to current file's directory
+:pwd        " verify current directory
+:lcd %:h    " change local directory for current window only
+```
+===
+# Title: Open URL from current line
+# Category: Clever Tricks
+# Tags: url, open, browser, web, link
+---
+Use `gx` to open URL under cursor, or create mapping to open entire line as URL.
+
+#### Example
+
+```vim
+gx  " open URL under cursor with default browser
+
+" Custom mapping for entire line:
+nnoremap <leader>o :!open <cWORD><CR>
+```
+===
+# Title: File encoding in status line
+# Category: Clever Tricks
+# Tags: encoding, status, line, file, format
+---
+Add file encoding to status line to see current file's character encoding.
+
+#### Example
+
+```vim
+:set statusline=%f\ [%{&fileencoding?&fileencoding:&encoding}]\ %y
+" Shows filename, encoding, and filetype
+```
+===
+# Title: Create word frequency table
+# Category: Clever Tricks
+# Tags: word, frequency, table, count, analysis
+---
+Create a word frequency analysis using Vim commands and external tools.
+
+#### Example
+
+```vim
+" Create word frequency table:
+:%s/\W\+/\r/g | sort | uniq -c | sort -nr
+" Or using Vim's internal commands:
+:g/./normal 0"ay$
+```
+===
+# Title: Search for lines NOT matching pattern
+# Category: Clever Tricks
+# Tags: search, not, matching, invert, negative
+---
+Use `:v/pattern/` or `:g!/pattern/` to work with lines that do NOT match a pattern.
+
+#### Example
+
+```vim
+:v/TODO/d       " delete lines NOT containing TODO
+:g!/function/p  " print lines NOT containing 'function'
+:v/^$/d         " delete non-empty lines (keep only empty lines)
+```
+===
+# Title: Swap assignment statement sides
+# Category: Clever Tricks
+# Tags: swap, assignment, left, right, substitute
+---
+Use substitute with groups to swap left and right sides of assignment statements.
+
+#### Example
+
+```vim
+" Swap variable assignment (a = b becomes b = a):
+:%s/\(\w\+\)\s*=\s*\(\w\+\)/\2 = \1/g
+
+" Swap in selected region:
+:'<,'>s/\(\w\+\)\s*=\s*\(\w\+\)/\2 = \1/g
+```
+===
 # Title: Z-commands - spelling corrections
 # Category: Clever Tricks
 # Tags: spelling, correction, dictionary
