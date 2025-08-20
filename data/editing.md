@@ -194,6 +194,18 @@ Use `<C-v><Tab>` in insert mode to insert a literal tab character when expandtab
 <C-v><Tab>  " insert actual tab character
 ```
 ===
+# Title: Substitute entire line and start insert
+# Category: Editing
+# Tags: substitute, line, insert, indentation
+---
+Use `S` to delete the entire line and start insert mode with proper indentation.
+
+#### Example
+
+```vim
+S  " delete line and start insert at correct indentation
+```
+===
 # Title: Capitalize words easily
 # Category: Editing
 # Tags: capitalize, words, case, format

@@ -354,3 +354,17 @@ nvim -u NONE
 nvim -u ~/.vimrc.test
 ```
 ===
+# Title: Hidden buffers option
+# Category: Configuration
+# Tags: hidden, buffer, switch, unsaved, edit
+---
+Use `:set hidden` to allow switching between files without saving changes, preventing "No write since last change" errors.
+
+#### Example
+
+```vim
+:set hidden        " allow unsaved buffer switching
+:set nohidden      " require saving before switching (default)
+" Now you can use :edit, :next, etc. without saving first
+```
+===

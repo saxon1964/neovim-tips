@@ -280,3 +280,16 @@ V       " exit line visual mode
 Ctrl+v  " exit block visual mode
 ```
 ===
+# Title: Reselect last visual selection
+# Category: Visual
+# Tags: reselect, selection, previous, visual
+---
+Use `gv` to reselect the last visual selection, useful for applying multiple operations to the same text.
+
+#### Example
+
+```vim
+" After making a visual selection and returning to normal mode:
+gv  " reselect the previous visual selection
+```
+===

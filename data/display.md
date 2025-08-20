@@ -98,3 +98,19 @@ Use `:set laststatus` for status line, `:set showtabline` for tab line, `:set st
 :set statusline=%f\ %m%r%h%w\ [%Y]\ [%{&ff}]\ %=%l,%c\ %p%%
 ```
 ===
+# Title: Conceal text with syntax highlighting
+# Category: Display
+# Tags: conceal, hide, text, syntax, conceallevel
+---
+Use `:set conceallevel=2` to hide concealed text and `:syntax match` with `conceal` to define what to hide.
+
+#### Example
+
+```vim
+:set conceallevel=2       " hide concealed text completely
+:set conceallevel=0       " show all text normally
+:syntax match htmlTag '<[^>]*>' conceal  " hide HTML tags
+" Toggle conceal on/off
+nnoremap <leader>c :let &conceallevel = (&conceallevel == 2) ? 0 : 2<CR>
+```
+===

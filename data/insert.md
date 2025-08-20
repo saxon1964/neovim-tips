@@ -333,3 +333,18 @@ Ctrl+x Ctrl+e  " scroll window down
 Ctrl+x Ctrl+y  " scroll window up
 ```
 ===
+# Title: Paste in insert mode with register
+# Category: Insert
+# Tags: paste, insert, register, yank
+---
+Use `Ctrl+r 0` to paste yanked text in insert mode, or `Ctrl+r "` for default register.
+
+#### Example
+
+```vim
+" In insert mode:
+Ctrl+r 0  " paste from yank register
+Ctrl+r "  " paste from default register
+Ctrl+r +  " paste from system clipboard
+```
+===
