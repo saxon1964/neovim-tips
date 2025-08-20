@@ -23,6 +23,8 @@ I have provided a solid initial batch of tips and if you have your favorite one 
 - Support for categories, tags, and rich text
 - The plugin comes with a starting set of basic, predefined tips
 - You can add/edit unlimited number of personal tips stored in a configurable file
+- User tips with configurable prefixes to prevent conflicts with builtin tips
+- Automatic conflict detection and warnings
 
 ## 📦 Installation
 
@@ -34,7 +36,11 @@ I have provided a solid initial batch of tips and if you have your favorite one 
   dependencies = { "ibhagwan/fzf-lua" },
   opts = {
     -- OPTIONAL: Location of user defined tips (default value shown below)
-    user_file = vim.fn.stdpath("config") .. "/neovim_tips/user_tips.txt",
+    user_file = vim.fn.stdpath("config") .. "/neovim_tips/user_tips.md",
+    -- OPTIONAL: Prefix for user tips to avoid conflicts (default: "[User] ")
+    user_tip_prefix = "[User] ",
+    -- OPTIONAL: Show warnings when user tips conflict with builtin (default: true)
+    warn_on_conflicts = true,
   },
   init = function()
     -- OPTIONAL: Change to your liking or drop completely 
@@ -43,6 +49,7 @@ I have provided a solid initial batch of tips and if you have your favorite one 
     map("n", "<leader>nto", ":NeovimTips<CR>", { desc = "Neovim tips", noremap = true, silent = true })
     map("n", "<leader>nte", ":NeovimTipsEdit<CR>", { desc = "Edit your Neovim tips", noremap = true, silent = true })
     map("n", "<leader>nta", ":NeovimTipsAdd<CR>", { desc = "Add your Neovim tip", noremap = true, silent = true })
+    map("n", "<leader>nth", ":NeovimTipsHelp<CR>", { desc = "Neovim tips user guide", noremap = true, silent = true })
   end
 }
 ```
@@ -55,13 +62,16 @@ use {
   requires = { "ibhagwan/fzf-lua" },
   config = function()
     require("neovim_tips").setup {
-      user_file = vim.fn.stdpath("config") .. "/neovim_tips/user_tips.txt",
+      user_file = vim.fn.stdpath("config") .. "/neovim_tips/user_tips.md",
+      user_tip_prefix = "[User] ",  -- Prefix for user tips
+      warn_on_conflicts = true,     -- Warn about title conflicts
     }
 
     local map = vim.keymap.set
     map("n", "<leader>nto", ":NeovimTips<CR>", { desc = "Neovim tips", noremap = true, silent = true })
     map("n", "<leader>nte", ":NeovimTipsEdit<CR>", { desc = "Edit your Neovim tips", noremap = true, silent = true })
     map("n", "<leader>nta", ":NeovimTipsAdd<CR>", { desc = "Add your Neovim tip", noremap = true, silent = true })
+    map("n", "<leader>nth", ":NeovimTipsHelp<CR>", { desc = "Neovim tips user guide", noremap = true, silent = true })
   end
 }
 ```
@@ -188,6 +198,7 @@ return {
     ["<leader>nto"] = { "<cmd>NeovimTips<cr>", desc = "Neovim tips" },
     ["<leader>nte"] = { "<cmd>NeovimTipsEdit<cr>", desc = "Edit your Neovim tips" },
     ["<leader>nta"] = { "<cmd>NeovimTipsAdd<cr>", desc = "Add your Neovim tip" },
+    ["<leader>nth"] = { "<cmd>NeovimTipsHelp<cr>", desc = "Neovim tips user guide" },
   },
 }
 ```
@@ -197,6 +208,7 @@ return {
 - `:NeovimTips` — Open searchable list of tips
 - `:NeovimTipsEdit` — Edit your personal tips file
 - `:NeovimTipsAdd` — Insert a new tip template into your personal file and start editing
+- `:NeovimTipsHelp` — Open the user guide in a read-only buffer
 
 ## 📝 Tips
 
@@ -231,6 +243,39 @@ In normal mode use `:diw` to delete the word under the cursor.
 ```
 ===
 ````
+
+## ⚙️ Configuration Options
+
+All configuration options are optional with sensible defaults:
+
+```lua
+require("neovim_tips").setup({
+  -- Path to user tips file
+  user_file = vim.fn.stdpath("config") .. "/neovim_tips/user_tips.md",
+  
+  -- Prefix added to user tip titles to prevent conflicts
+  user_tip_prefix = "[User] ",
+  
+  -- Show warnings when user tips have conflicting titles with builtin tips
+  warn_on_conflicts = true,
+  
+  -- Path to builtin tips directory (usually not changed)
+  builtin_dir = "<plugin_path>/data",
+})
+```
+
+### User Tip Prefix Examples
+
+```lua
+-- Default: [User] prefix
+user_tip_prefix = "[User] "     -- "Join lines" becomes "[User] Join lines"
+
+-- Custom emoji prefix  
+user_tip_prefix = "🔧 "         -- "Join lines" becomes "🔧 Join lines"
+
+-- No prefix (not recommended, may cause conflicts)
+user_tip_prefix = ""            -- "Join lines" stays "Join lines"
+```
 
 ## 📁 Default File Locations
 
