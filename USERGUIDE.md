@@ -4,9 +4,9 @@
 
 ## User-Defined Tips
 
-Author of this plugin did his best to provide a significant number of built-in Neovim commands, tips and tricks. But Neovim is an endless surce of inspiration to many and, I believe, to you as well. 
+The author of this plugin has done his best to provide a significant number of built-in Neovim commands, tips and tricks. But Neovim is an endless source of inspiration to many and, I believe, to you as well.
 
-It is possible to mix your own tips with the built-in collection. Use :NeovimTipsAdd to add your own tip to the collection or :NeovimTipsEdit to edit the file with your custom tips. If the file for your custom tips does not exist, it will be created automatically. The location of the file can be adjusted (see "Configuration options") 
+It is possible to mix your own tips with the built-in collection. Use `:NeovimTipsAdd` to add your own tip to the collection or `:NeovimTipsEdit` to edit the file with your custom tips. If the file for your custom tips does not exist, it will be created automatically. The location of the file can be adjusted (see "Configuration Options"). 
 
 ### User Tip Format
 
@@ -27,11 +27,11 @@ Your tip description goes here.
 ===
 ````
 
-Anything between --- and === is considered to be a tip description in a markdown text format and will be rendered accordingly.
+Anything between `---` and `===` is considered to be a tip description in markdown text format and will be rendered accordingly.
 
 ### Conflict Prevention
 
-To prevent conflicts with builtin tips, user tips are automatically prefixed with `[User] ` by default. Do **NOT** add prefix by yourself. This means if you create a tip with the title `Join lines`, it will appear as `[User] Join lines` in the interface. And it will not interfere with built-in tip with the title `Join lines`.
+To prevent conflicts with builtin tips, user tips are automatically prefixed with `[User] ` by default. Do **NOT** add the prefix yourself. This means if you create a tip with the title `Join lines`, it will appear as `[User] Join lines` in the interface and will not interfere with the built-in tip with the title `Join lines`.
 
 ### Configuration Options
 

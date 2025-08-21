@@ -1,6 +1,6 @@
 # Neovim Tips Plugin
 
-*A Lua plugin for Neovim that helps you organize and search helpful tips, tricks, and shortcuts via a fuzzy search interface.*
+*A Lua plugin for Neovim that helps you organize and search over 550 helpful tips, tricks, and shortcuts via a fuzzy search interface.*
 
 ![Neovim tips plugin screenshot](saxon1964.neovim-tips.png)
 
@@ -214,7 +214,7 @@ return {
 
 Each tip should follow this format in your tips file:
 
-````markdown
+````
 # Title: My tip title
 # Category: My category name
 # Tags: tag1, tag2, tag3
@@ -231,7 +231,7 @@ Description of the tip starts with --- and ends with ===. There is **NO** predef
 
 ## ✅ Example
 
-````markdown
+````
 # Title: Delete word under the cursor
 # Category: Edit
 # Tags: delete, word, cursor
@@ -243,6 +243,37 @@ In normal mode use `:diw` to delete the word under the cursor.
 ```
 ===
 ````
+
+## 📝 User-Defined Tips
+
+The author of this plugin has done his best to provide a significant number of built-in Neovim commands, tips and tricks. But Neovim is an endless source of inspiration to many and, I believe, to you as well.
+
+It is possible to mix your own tips with the built-in collection. Use `:NeovimTipsAdd` to add your own tip to the collection or `:NeovimTipsEdit` to edit the file with your custom tips. If the file for your custom tips does not exist, it will be created automatically.
+
+### User Tip Format
+
+User tips follow the same format as builtin tips:
+
+````markdown
+# Title: Your custom tip title
+# Category: Your Category 
+# Tags: tag1, tag2, tag3
+---
+Your tip description goes here.
+
+#### Example
+
+```vim
+:YourCommand  " your example
+```
+===
+````
+
+Anything between `---` and `===` is considered to be a tip description in markdown text format and will be rendered accordingly.
+
+### Conflict Prevention
+
+To prevent conflicts with builtin tips, user tips are automatically prefixed with `[User] ` by default. Do **NOT** add the prefix yourself. This means if you create a tip with the title `Join lines`, it will appear as `[User] Join lines` in the interface and will not interfere with the built-in tip with the title `Join lines`.
 
 ## ⚙️ Configuration Options
 
@@ -276,6 +307,21 @@ user_tip_prefix = "🔧 "         -- "Join lines" becomes "🔧 Join lines"
 -- No prefix (not recommended, may cause conflicts)
 user_tip_prefix = ""            -- "Join lines" stays "Join lines"
 ```
+
+### Features
+
+- **Automatic prefixing**: User tips are automatically prefixed to avoid conflicts
+- **Conflict detection**: Warnings when user tip titles match builtin tips
+- **User tag**: All user tips automatically get a "user" tag for filtering
+- **Same format**: User tips follow the exact same format as builtin tips
+
+### Tips for Writing User Tips
+
+- Use descriptive, unique titles
+- Include relevant tags for easy searching
+- Provide clear examples when applicable
+- Test your tips before adding them
+- Consider if your tip might be useful as a contribution to the main collection
 
 ## 📁 Default File Locations
 
