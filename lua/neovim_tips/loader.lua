@@ -83,7 +83,7 @@ local function read_tips_from_directory(dir_path, is_user_tips)
     ---@diagnostic disable-next-line: undefined-field
     local name, type = vim.loop.fs_scandir_next(handle)
     if not name then break end
-    if type == "file" and name:match("%.md$") and name ~= "builtin_tips.md.backup" then
+    if type == "file" and name:match("%.md$") then
       local file_path = dir_path .. "/" .. name
       local moreTips = read_tip_file(file_path, is_user_tips)
       vim.list_extend(all_tips, moreTips)
