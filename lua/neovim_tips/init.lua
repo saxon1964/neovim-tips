@@ -43,16 +43,16 @@ function M.setup(opts)
   end, {})
 
   vim.api.nvim_create_user_command("NeovimTipsHelp", function()
-    local plugin_path = debug.getinfo(1, "S").source:sub(2):gsub("init.lua", "../../USERGUIDE.md")
+    local plugin_path = debug.getinfo(1, "S").source:sub(2):gsub("init.lua", "../../README.md")
     if vim.fn.filereadable(plugin_path) == 1 then
       vim.cmd("split " .. plugin_path)
       vim.cmd("setlocal readonly")
       vim.cmd("setlocal nomodifiable")
       vim.cmd("setlocal filetype=markdown")
     else
-      vim.notify("User guide not found: " .. plugin_path, vim.log.levels.ERROR)
+      vim.notify("README not found: " .. plugin_path, vim.log.levels.ERROR)
     end
-  end, { desc = "Open Neovim Tips user guide" })
+  end, { desc = "Open Neovim Tips README" })
 
   -- Reload tips on user file save
   vim.api.nvim_create_autocmd("BufWritePost", {

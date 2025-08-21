@@ -2,6 +2,8 @@
 
 *A Lua plugin for Neovim that helps you organize and search over 500 helpful tips, tricks, and shortcuts via a fuzzy search interface.*
 
+> **📖 Quick Access**: You can open this guide anytime with the `:NeovimTipsHelp` command
+
 ![Neovim tips plugin screenshot](saxon1964.neovim-tips.png)
 
 ## 🎯 Purpose
@@ -24,7 +26,7 @@ I have provided a solid initial batch of tips and if you have your favorite one 
 - The plugin comes with a starting set of basic, predefined tips
 - You can add/edit unlimited number of personal tips stored in a configurable file
 - User tips with configurable prefixes to prevent conflicts with builtin tips
-- Automatic conflict detection and warnings
+- Automatic title conflict detection and warnings
 
 ## 📦 Installation
 
@@ -212,7 +214,7 @@ return {
 
 ## 📝 Tips
 
-Each tip should follow this format in your tips file:
+Each tip should follow this format:
 
 ````
 # Title: My tip title
@@ -222,12 +224,16 @@ Each tip should follow this format in your tips file:
 This is a description of what the tip does.
 
 ```vim
-normal-mode-command
+some-command
 ```
 ===
 ````
 
-Description of the tip starts with --- and ends with ===. There is **NO** predefined format for description. Anything between the starting and ending marker will be interpreted as a text in markdown (.md) format. Fzf-lua will render the markdown description in the right FZF panel. 
+This format is used for all tips, built-in or created by you and stored separately.
+
+Each tip has to start with the `# Title:` line, followed by `# Category:` and a list of `# Tags`.
+
+Description of the tip starts with `---` and ends with `===`. There is **NO** predefined format for description. Anything between the starting and ending marker will be interpreted as a text in markdown (.md) format. Fzf-lua will render the markdown description in the right FZF panel. 
 
 ## ✅ Example
 
@@ -236,10 +242,10 @@ Description of the tip starts with --- and ends with ===. There is **NO** predef
 # Category: Edit
 # Tags: delete, word, cursor
 ---
-In normal mode use `:diw` to delete the word under the cursor.
+In normal mode use `diw` to delete the word under the cursor.
 
 ```vim
-:diw
+diw 
 ```
 ===
 ````
@@ -248,28 +254,9 @@ In normal mode use `:diw` to delete the word under the cursor.
 
 The author of this plugin has done his best to provide a significant number of built-in Neovim commands, tips and tricks. But Neovim is an endless source of inspiration to many and, I believe, to you as well.
 
-It is possible to mix your own tips with the built-in collection. Use `:NeovimTipsAdd` to add your own tip to the collection or `:NeovimTipsEdit` to edit the file with your custom tips. If the file for your custom tips does not exist, it will be created automatically.
+It is possible to mix your own tips with the built-in collection. Use `:NeovimTipsAdd` to add your own tip to the collection or `:NeovimTipsEdit` to edit the file with your custom tips. If the file for your custom tips does not exist, it will be created automatically. The location of the file can be adjusted (see "Configuration Options").
 
-### User Tip Format
-
-User tips follow the same format as builtin tips:
-
-````markdown
-# Title: Your custom tip title
-# Category: Your Category 
-# Tags: tag1, tag2, tag3
----
-Your tip description goes here.
-
-#### Example
-
-```vim
-:YourCommand  " your example
-```
-===
-````
-
-Anything between `---` and `===` is considered to be a tip description in markdown text format and will be rendered accordingly.
+User tips follow the same format as builtin tips described above.
 
 ### Conflict Prevention
 
@@ -289,9 +276,6 @@ require("neovim_tips").setup({
   
   -- Show warnings when user tips have conflicting titles with builtin tips
   warn_on_conflicts = true,
-  
-  -- Path to builtin tips directory (usually not changed)
-  builtin_dir = "<plugin_path>/data",
 })
 ```
 
@@ -331,6 +315,7 @@ user_tip_prefix = ""            -- "Join lines" stays "Join lines"
 ## 🔄 Roadmap Ideas
 
 - Category filtering
+- Tag filtering
 - Search descriptions
 - Support for other popular pickers (telescope, snacks, mini...)
 - Lazy loading
