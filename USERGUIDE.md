@@ -4,13 +4,15 @@
 
 ## User-Defined Tips
 
-You can create your own custom tips by creating a file at `~/.config/nvim/neovim_tips/user_tips.md`.
+Author of this plugin did his best to provide a significant number of built-in Neovim commands, tips and tricks. But Neovim is an endless surce of inspiration to many and, I believe, to you as well. 
+
+It is possible to mix your own tips with the built-in collection. Use :NeovimTipsAdd to add your own tip to the collection or :NeovimTipsEdit to edit the file with your custom tips. If the file for your custom tips does not exist, it will be created automatically. The location of the file can be adjusted (see "Configuration options") 
 
 ### User Tip Format
 
 User tips follow the same format as builtin tips:
 
-```markdown
+````
 # Title: Your custom tip title
 # Category: Your Category 
 # Tags: tag1, tag2, tag3
@@ -23,11 +25,13 @@ Your tip description goes here.
 :YourCommand  " your example
 ```
 ===
-```
+````
+
+Anything between --- and === is considered to be a tip description in a markdown text format and will be rendered accordingly.
 
 ### Conflict Prevention
 
-To prevent conflicts with builtin tips, user tips are automatically prefixed with `[User] ` by default. This means if you create a tip with the title "Join lines", it will appear as "[User] Join lines" in the interface.
+To prevent conflicts with builtin tips, user tips are automatically prefixed with `[User] ` by default. Do **NOT** add prefix by yourself. This means if you create a tip with the title `Join lines`, it will appear as `[User] Join lines` in the interface. And it will not interfere with built-in tip with the title `Join lines`.
 
 ### Configuration Options
 
@@ -39,7 +43,7 @@ require('neovim_tips').setup({
   warn_on_conflicts = true,         -- Show warnings for title conflicts
   user_file = "~/my_vim_tips.md"    -- Custom location for user tips
 })
-```
+``` 
 
 Available configuration options:
 
@@ -59,7 +63,7 @@ require('neovim_tips').setup({
 #### No prefix (not recommended)
 ```lua
 require('neovim_tips').setup({
-  user_tip_prefix = ""     -- No prefix, but conflicts will be warned about
+  user_tip_prefix = ""     -- No prefix, but conflicts with built-in tips will be warned about
 })
 ```
 
@@ -72,8 +76,9 @@ require('neovim_tips').setup({
 
 ### Tips for Writing User Tips
 
-1. Use descriptive, unique titles
-2. Include relevant tags for easy searching
-3. Provide clear examples when applicable
-4. Test your tips before adding them
-5. Consider if your tip might be useful as a contribution to the main collection
+- Use descriptive, unique titles
+- Include relevant tags for easy searching
+- Provide clear examples when applicable
+- Test your tips before adding them
+- Consider if your tip might be useful as a contribution to the main collection
+
