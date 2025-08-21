@@ -1,6 +1,6 @@
 # Neovim Tips Plugin
 
-*A Lua plugin for Neovim that helps you organize and search over 550 helpful tips, tricks, and shortcuts via a fuzzy search interface.*
+*A Lua plugin for Neovim that helps you organize and search over 500 helpful tips, tricks, and shortcuts via a fuzzy search interface.*
 
 ![Neovim tips plugin screenshot](saxon1964.neovim-tips.png)
 

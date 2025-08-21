@@ -164,21 +164,6 @@ nnoremap <silent> gm :call <SID>Gm()<CR>
 onoremap <silent> gm :call <SID>Gm()<CR>
 ```
 ===
-# Title: Open file under cursor
-# Category: Window Management
-# Tags: file, open, cursor, gf
----
-Open files referenced under cursor in different ways (current window, new tab, new split).
-
-#### Example
-
-```vim
-gf          " open file under cursor in current window
-<C-w>f      " open file under cursor in new horizontal split
-<C-w>gf     " open file under cursor in new tab
-<C-w>vgf    " open file under cursor in new vertical split
-```
-===
 # Title: Keep cursor centered
 # Category: Window Management
 # Tags: cursor, center, scroll, display
@@ -345,24 +330,6 @@ dp                      " diff put (put change to other)
 :diffput                " put changes to other buffer
 ```
 ===
-# Title: Session management
-# Category: Window Management
-# Tags: session, workspace, save, restore
----
-Save and restore entire editing sessions including windows, tabs, and buffers.
-
-#### Example
-
-```vim
-:mksession! ~/session.vim    " save current session
-:source ~/session.vim        " load session
-vim -S session.vim           " start vim with session
-
-" Automatic session saving
-autocmd VimLeave * mksession! ~/.vim/session.vim
-autocmd VimEnter * if argc() == 0 | source ~/.vim/session.vim | endif
-```
-===
 # Title: Quick file explorer
 # Category: Window Management
 # Tags: explorer, netrw, files, browse
@@ -384,5 +351,35 @@ Use built-in file explorer (netrw) for quick file navigation and management.
 " D - delete file
 " R - rename file
 " % - create new file
+```
+===
+# Title: Close all other windows
+# Category: Window Management
+# Tags: window, close, only, single
+---
+Use `:only` or `:on` to close all windows except the current one, making it take up the full screen.
+
+#### Example
+
+```vim
+:only   " close all other windows (keep current)
+:on     " short form of :only
+Ctrl+w o " normal mode shortcut for :only
+```
+===
+# Title: Window commands from Ex mode
+# Category: Window Management
+# Tags: wincmd, window, command, ex, mode
+---
+Use `:wincmd {key}` to execute window commands from Ex mode, useful in scripts and mappings.
+
+#### Example
+
+```vim
+:wincmd j     " same as Ctrl+w j (move to window below)
+:wincmd =     " same as Ctrl+w = (equalize windows)
+:wincmd o     " same as Ctrl+w o (close other windows)
+:wincmd v     " same as Ctrl+w v (vertical split)
+:wincmd s     " same as Ctrl+w s (horizontal split)
 ```
 ===

@@ -205,3 +205,18 @@ Ctrl+f  " open command-line window for editing
 Ctrl+o  " execute one normal mode command and return
 ```
 ===
+# Title: Command-line word manipulation
+# Category: Command Line
+# Tags: command, word, delete, kill, clear
+---
+Use `Ctrl+w` to delete word before cursor, `Ctrl+u` to delete from cursor to beginning of line.
+
+#### Example
+
+```vim
+" In command mode:
+Ctrl+w  " delete word before cursor
+Ctrl+u  " delete from cursor to beginning
+Ctrl+k  " delete from cursor to end of line
+```
+===

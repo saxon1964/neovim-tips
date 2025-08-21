@@ -138,3 +138,18 @@ Use `:redir` to redirect command output to variables, registers, or files for la
 :redir END         " stop redirecting
 ```
 ===
+# Title: Confirm dangerous operations
+# Category: System
+# Tags: confirm, dialog, save, quit, dangerous
+---
+Use `:confirm {command}` to show confirmation dialog for potentially dangerous operations.
+
+#### Example
+
+```vim
+:confirm quit     " show dialog if unsaved changes exist
+:confirm qall     " confirm before quitting all windows
+:confirm write    " confirm before writing file
+:confirm !rm %    " confirm before executing external command
+```
+===

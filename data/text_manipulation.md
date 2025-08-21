@@ -175,21 +175,6 @@ text    " type text to insert
 Esc     " apply to all selected lines
 ```
 ===
-# Title: Generate increasing numbers
-# Category: Text Manipulation
-# Tags: numbers, sequence, increment, column
----
-Use visual block to select numbers, then `:I` to increment by 1, or `:I #` to increment by specified amount with visincr plugin.
-
-#### Example
-
-```vim
-" Select column of numbers with Ctrl+V
-:I      " increment selected numbers by 1
-:I 5    " increment selected numbers by 5
-:II     " increment with left padding
-```
-===
 # Title: Insert line numbers
 # Category: Text Manipulation  
 # Tags: numbers, lines, automatic, sequence

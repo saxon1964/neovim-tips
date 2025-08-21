@@ -60,3 +60,18 @@ endfunction
 autocmd BufEnter * call CommentIt()
 ```
 ===
+# Title: Automatic text width formatting
+# Category: Formatting
+# Tags: text, width, format, autowrap, textwidth
+---
+Use `:set textwidth=80` to automatically wrap lines at 80 characters while typing.
+
+#### Example
+
+```vim
+:set textwidth=80   " wrap at 80 characters
+:set textwidth=0    " disable automatic wrapping  
+:set formatoptions+=t  " enable automatic text wrapping
+gqap                " manually format current paragraph to textwidth
+```
+===

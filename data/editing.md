@@ -102,18 +102,6 @@ ra  " replace with 'a'
 rx  " replace with 'x'
 ```
 ===
-# Title: Replace mode
-# Category: Editing
-# Tags: replace, mode, overwrite
----
-Use `R` to enter replace mode where typed characters overwrite existing text.
-
-#### Example
-
-```vim
-R  " enter replace mode
-```
-===
 # Title: Substitute character
 # Category: Editing
 # Tags: substitute, character, change
@@ -281,22 +269,6 @@ nnoremap <leader>o o<Esc>
 nnoremap <leader>O O<Esc>
 ```
 ===
-# Title: Toggle paste mode
-# Category: Editing
-# Tags: paste, mode, toggle, indentation
----
-Toggle paste mode to prevent auto-indentation when pasting external text.
-
-#### Example
-
-```vim
-set pastetoggle=<F2>    " set F2 as paste toggle key
-nnoremap <F2> :set invpaste paste?<CR>
-set showmode            " show current mode including paste
-
-" Usage: Press F2, paste text, press F2 again
-```
-===
 # Title: Enhanced undo and redo
 # Category: Editing
 # Tags: undo, redo, changes, history, time
@@ -316,26 +288,6 @@ U           " restore line to original state
 :undolist   " show undo history
 g-          " go to older text state
 g+          " go to newer text state
-```
-===
-# Title: Filter text through external commands
-# Category: Editing
-# Tags: filter, external, command, text, process
----
-Process text by sending it through external programs and commands.
-
-#### Example
-
-```vim
-:%!sort           " sort all lines
-:%!sort -u        " sort and remove duplicates
-:'a,'b!sort       " sort lines between marks a and b
-!}fmt             " format paragraph through fmt command
-!}python script.py " filter paragraph through Python script
-
-" Capture command output
-:r !date          " read date command output into buffer
-:r !ls -la        " read directory listing into buffer
 ```
 ===
 # Title: Omni completion setup
@@ -410,6 +362,21 @@ Use `:sort` to sort lines, `:center` to center text, `:left` and `:right` for al
 :right 70     " right align to column 70
 ```
 ===
+# Title: Edit file at specific line
+# Category: Editing  
+# Tags: file, line, open, position, jump
+---
+Use `:edit +{line} {file}` to open file and jump directly to specified line number.
+
+#### Example
+
+```vim
+:edit +25 config.vim  " open config.vim at line 25
+:edit +/pattern file.txt  " open file.txt at first line matching pattern
+:edit +$ log.txt      " open log.txt at last line
+vim +42 file.txt      " from command line: open at line 42
+```
+===
 # Title: Ex commands - joining and splitting
 # Category: Editing
 # Tags: ex, join, split, lines, combine
@@ -440,21 +407,6 @@ Use `:mark` to set mark, `:jumps` to show jump list, `:changes` for change list,
 :changes      " show change list
 :delmarks a   " delete mark 'a'
 :delmarks!    " delete all lowercase marks
-```
-===
-# Title: Convert tabs to spaces
-# Category: Editing
-# Tags: tab, space, convert, expand, retab
----
-Use `:set et|retab` to expand all tab indents to spaces in the current file.
-
-#### Example
-
-```vim
-:set expandtab    " use spaces instead of tabs
-:retab            " convert existing tabs to spaces
-:set et|retab     " do both in one command
-:set noet|retab!  " convert spaces back to tabs
 ```
 ===
 # Title: Move line to end of paragraph

@@ -273,3 +273,18 @@ endif
 let lines = readfile('data.txt')
 ```
 ===
+# Title: Browse for files with dialog
+# Category: File Operations
+# Tags: browse, dialog, gui, file, open
+---
+Use `:browse {command}` to open file browser dialog for commands that take filenames (GUI only).
+
+#### Example
+
+```vim
+:browse edit      " open file browser to edit file
+:browse saveas    " open save-as dialog  
+:browse read      " browse to read file into buffer
+:browse source    " browse to source a script file
+```
+===

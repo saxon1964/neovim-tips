@@ -1,16 +1,3 @@
-# Title: Jump list navigation
-# Category: Navigation
-# Tags: jump, list, position
----
-Use `Ctrl+o` to jump to older position in jump list and `Ctrl+i` to jump to newer position.
-
-#### Example
-
-```vim
-Ctrl+o  " jump to older position
-Ctrl+i  " jump to newer position
-```
-===
 # Title: View jump list
 # Category: Navigation
 # Tags: jump, list, view

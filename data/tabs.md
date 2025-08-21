@@ -37,3 +37,18 @@ Use `:tabclose` to close current tab.
 :tabclose
 ```
 ===
+# Title: Open commands in new tabs
+# Category: Tabs
+# Tags: tab, command, open, prefix
+---
+Use `:tab {command}` to open any command in a new tab instead of current window.
+
+#### Example
+
+```vim
+:tab split        " open split in new tab
+:tab help motion  " open help in new tab
+:tab edit file.txt " open file in new tab
+:tab ball         " open all buffers in tabs
+```
+===

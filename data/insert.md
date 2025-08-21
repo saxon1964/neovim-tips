@@ -348,3 +348,18 @@ Ctrl+r "  " paste from default register
 Ctrl+r +  " paste from system clipboard
 ```
 ===
+# Title: Insert character by decimal value
+# Category: Insert
+# Tags: character, decimal, value, ascii, unicode
+---
+Use `Ctrl+v` followed by decimal numbers to insert characters by their ASCII/Unicode decimal value.
+
+#### Example
+
+```vim
+" In insert mode:
+Ctrl+v 65    " insert 'A' (ASCII 65)
+Ctrl+v 169   " insert '©' (copyright symbol)
+Ctrl+v 8364  " insert '€' (euro symbol)
+```
+===
