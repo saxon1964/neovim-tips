@@ -94,16 +94,22 @@ local function read_tips_from_directory(dir_path, is_user_tips)
 end
 
 function M.load()
+  if next(titles_seen) == nil then
+    local builtin_tips = read_tips_from_directory(builtin_dir, false)
+    local user_tips = read_tip_file(user_file, true)
+    local all_tips = {}
+    vim.list_extend(all_tips, builtin_tips)
+    vim.list_extend(all_tips, user_tips)
+    tips.set(all_tips)
+    return true
+  else
+    return false
+  end
+end
+
+function M.reload()
   titles_seen = {}
-
-  local builtin_tips = read_tips_from_directory(builtin_dir, false)
-  local user_tips = read_tip_file(user_file, true)
-
-  local all_tips = {}
-  vim.list_extend(all_tips, builtin_tips)
-  vim.list_extend(all_tips, user_tips)
-
-  tips.set(all_tips)
+  return M.load()
 end
 
 return M

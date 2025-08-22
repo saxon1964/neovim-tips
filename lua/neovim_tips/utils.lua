@@ -29,5 +29,18 @@ function M.create_file_and_dirs(filepath, content)
   end
 end
 
+-- Asyncronous function execution
+function M.run_async(fn, callback)
+  local timer = vim.loop.new_timer()
+  timer:start(0, 0, function()
+    timer:stop()
+    timer:close()
+    local ok, result = pcall(fn)
+    vim.schedule(function()
+      callback(ok, result)
+    end)
+  end)
+end
+
 return M
 
