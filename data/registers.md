@@ -115,3 +115,17 @@ P     " paste without overwriting register (can repeat)
 p     " paste and overwrite register with selected text
 ```
 ===
+# Title: Append to register
+# Category: Registers
+# Tags: register, append, uppercase
+---
+Use uppercase letter to append to a register instead of replacing its contents.
+
+#### Example
+
+```vim
+"ayy   " yank line into register a
+"Ayy   " append line to register a (note uppercase A)
+"ap    " paste both lines from register a
+```
+===

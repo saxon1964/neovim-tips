@@ -368,3 +368,29 @@ Use `:set hidden` to allow switching between files without saving changes, preve
 " Now you can use :edit, :next, etc. without saving first
 ```
 ===
+# Title: Append to option value
+# Category: Configuration
+# Tags: set, option, append
+---
+Use `:set option+=value` to append a value to an option.
+
+#### Example
+
+```vim
+:set path+=./include  " add to search path
+:set wildignore+=*.pyc  " ignore Python bytecode
+```
+===
+# Title: Remove from option value
+# Category: Configuration
+# Tags: set, option, remove
+---
+Use `:set option-=value` to remove a value from an option.
+
+#### Example
+
+```vim
+:set path-=./include  " remove from search path
+:set wildignore-=*.pyc  " stop ignoring Python bytecode
+```
+===
