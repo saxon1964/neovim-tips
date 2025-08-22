@@ -23,6 +23,7 @@ I have provided a solid initial batch of tips and if you have your favorite one 
 - Preview rendered descriptions in markdown format
 - No additional utilities: you don't need `glow` or `bat` to render the tip
 - Support for categories, tags, and rich text
+- Lazy loading for optimal startup performance
 - The plugin comes with a starting set of basic, predefined tips
 - You can add/edit unlimited number of personal tips stored in a configurable file
 - User tips with configurable prefixes to prevent conflicts with builtin tips
@@ -318,7 +319,6 @@ user_tip_prefix = ""            -- "Join lines" stays "Join lines"
 - Tag filtering
 - Search descriptions
 - Support for other popular pickers (telescope, snacks, mini...)
-- Lazy loading
 - Multiple tip sources
 
 ## ⚖️ License
