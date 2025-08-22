@@ -2,7 +2,7 @@ local M = {}
 
 local config = require("neovim_tips.config")
 local loader = require("neovim_tips.loader")
-local ui = require("neovim_tips.ui")
+local fzf_lua_picker = require("neovim_tips.fzf_lua")
 local utils = require("neovim_tips.utils")
 
 function M.setup(opts)
@@ -22,7 +22,7 @@ function M.setup(opts)
             if result then
               vim.notify("Neovim tips loaded", vim.log.levels.INFO)
             end
-            ui.show_fzf()
+            fzf_lua_picker.show_fzf()
           else
             vim.notify("Failed to load Neovim tips: " .. result, vim.log.levels.ERROR)
           end
