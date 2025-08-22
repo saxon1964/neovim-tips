@@ -36,7 +36,10 @@ I have provided a solid initial batch of tips and if you have your favorite one 
 ```lua
 {
   "saxon1964/neovim-tips",
-  dependencies = { "ibhagwan/fzf-lua" },
+  dependencies = { 
+    "ibhagwan/fzf-lua", 
+    "MeanderingProgrammer/render-markdown.nvim" 
+  },
   opts = {
     -- OPTIONAL: Location of user defined tips (default value shown below)
     user_file = vim.fn.stdpath("config") .. "/neovim_tips/user_tips.md",
@@ -87,7 +90,7 @@ Plug 'saxon1964/neovim-tips'
 
 lua << EOF
 require("neovim_tips").setup {
-  user_file = vim.fn.stdpath("config") .. "/neovim_tips/user_tips.txt",
+  user_file = vim.fn.stdpath("config") .. "/neovim_tips/user_tips.md",
 }
 
 local map = vim.keymap.set
@@ -106,7 +109,7 @@ call minpac#add('saxon1964/neovim-tips')
 
 lua << EOF
 require("neovim_tips").setup {
-  user_file = vim.fn.stdpath("config") .. "/neovim_tips/user_tips.txt",
+  user_file = vim.fn.stdpath("config") .. "/neovim_tips/user_tips.md",
 }
 
 local map = vim.keymap.set
@@ -125,7 +128,7 @@ require "paq" {
 }
 
 require("neovim_tips").setup {
-  user_file = vim.fn.stdpath("config") .. "/neovim_tips/user_tips.txt",
+  user_file = vim.fn.stdpath("config") .. "/neovim_tips/user_tips.md",
 }
 
 local map = vim.keymap.set
@@ -146,7 +149,7 @@ call dein#end()
 
 lua << EOF
 require("neovim_tips").setup {
-  user_file = vim.fn.stdpath("config") .. "/neovim_tips/user_tips.txt",
+  user_file = vim.fn.stdpath("config") .. "/neovim_tips/user_tips.md",
 }
 
 local map = vim.keymap.set
@@ -163,9 +166,12 @@ EOF
 require("lazy").setup({
   {
     "saxon1964/neovim-tips",
-    dependencies = { "ibhagwan/fzf-lua" },
+    dependencies = { 
+    "ibhagwan/fzf-lua", 
+    "MeanderingProgrammer/render-markdown.nvim" 
+  },
     opts = {
-      user_file = vim.fn.stdpath("config") .. "/neovim_tips/user_tips.txt",
+      user_file = vim.fn.stdpath("config") .. "/neovim_tips/user_tips.md",
     },
     init = function()
       local map = vim.keymap.set
@@ -185,9 +191,12 @@ File `lua/user/plugins/neovim_tips.lua`:
 return {
   {
     "saxon1964/neovim-tips",
-    dependencies = { "ibhagwan/fzf-lua" },
+    dependencies = { 
+    "ibhagwan/fzf-lua", 
+    "MeanderingProgrammer/render-markdown.nvim" 
+  },
     opts = {
-      user_file = vim.fn.stdpath("config") .. "/neovim_tips/user_tips.txt",
+      user_file = vim.fn.stdpath("config") .. "/neovim_tips/user_tips.md",
     },
   },
 }
