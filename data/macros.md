@@ -121,7 +121,7 @@ Use `:argdo normal @q` to run macro q on all files in argument list, or `:bufdo 
 :argdo update       " save all changed files
 ```
 ===
-# Title: Record recursive macro
+# Title: Record recursive macro by including the self-reference
 # Category: Macros
 # Tags: macro, recursive, loop, repeat
 ---
