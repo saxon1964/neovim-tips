@@ -36,6 +36,7 @@ I have provided a solid initial batch of tips and if you have your favorite one 
 ```lua
 {
   "saxon1964/neovim-tips",
+  version = "*", -- Only update on tagged releases
   dependencies = { 
     "ibhagwan/fzf-lua", 
     "MeanderingProgrammer/render-markdown.nvim" 
@@ -65,7 +66,11 @@ I have provided a solid initial batch of tips and if you have your favorite one 
 ```lua
 use {
   "saxon1964/neovim-tips",
-  requires = { "ibhagwan/fzf-lua" },
+  tag = "*", -- Only update on tagged releases
+  requires = { 
+    "ibhagwan/fzf-lua", 
+    "MeanderingProgrammer/render-markdown.nvim" 
+  },
   config = function()
     require("neovim_tips").setup {
       user_file = vim.fn.stdpath("config") .. "/neovim_tips/user_tips.md",
@@ -86,7 +91,8 @@ use {
 
 ```vim
 Plug 'ibhagwan/fzf-lua'
-Plug 'saxon1964/neovim-tips'
+Plug 'MeanderingProgrammer/render-markdown.nvim'
+Plug 'saxon1964/neovim-tips', { 'tag': '*' } " Only update on tagged releases
 
 lua << EOF
 require("neovim_tips").setup {
@@ -105,7 +111,8 @@ EOF
 ```vim
 call minpac#init()
 call minpac#add('ibhagwan/fzf-lua')
-call minpac#add('saxon1964/neovim-tips')
+call minpac#add('MeanderingProgrammer/render-markdown.nvim')
+call minpac#add('saxon1964/neovim-tips', {'tag': '*'}) " Only update on tagged releases
 
 lua << EOF
 require("neovim_tips").setup {
@@ -124,7 +131,8 @@ EOF
 ```lua
 require "paq" {
   "ibhagwan/fzf-lua";
-  "saxon1964/neovim-tips";
+  "MeanderingProgrammer/render-markdown.nvim";
+  { "saxon1964/neovim-tips", tag = "*" }; -- Only update on tagged releases
 }
 
 require("neovim_tips").setup {
