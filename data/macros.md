@@ -86,8 +86,6 @@ Use `let @a='macro_contents'` in vimrc to make macros persistent across Vim sess
 let @a='ddp'  " save line swap macro permanently
 ```
 ===
-
-Record recursive macro by including the self-reference
 # Title: Record recursive macro by including the self-reference
 # Category: Macros
 # Tags: macro, recursive, loop, automation
@@ -105,8 +103,6 @@ q           " stop recording
 @q          " execute recursive macro
 ```
 ===
-
-Run macro on multiple files
 # Title: Run macro on multiple files
 # Category: Macros
 # Tags: macro, files, multiple, batch
