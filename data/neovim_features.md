@@ -214,7 +214,7 @@ end
 vim.opt.statusline = '%!v:lua.custom_statusline()'
 ```
 ===
-# Title: RPC and job control
+# Title: RPC and job control (jobstart)
 # Category: Neovim Features
 # Tags: rpc, jobs, async, communication
 ---

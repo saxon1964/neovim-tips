@@ -156,7 +156,7 @@ Use `VimResized` autocommand to automatically redistribute window sizes when ter
 " Useful when terminal window size changes
 ```
 ===
-# Title: Change directory to current file
+# Title: Change directory to current file with autocommand
 # Category: Autocommands
 # Tags: autocmd, BufEnter, cd, directory
 ---

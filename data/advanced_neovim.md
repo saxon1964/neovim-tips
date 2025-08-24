@@ -259,7 +259,7 @@ Use `vim.treesitter` API to query and manipulate the abstract syntax tree progra
 :lua for id, node in query:iter_captures(tree:root(), 0) do print(node:type()) end
 ```
 ===
-# Title: RPC and job control
+# Title: RPC and job control (vim.system)
 # Category: Advanced Neovim
 # Tags: rpc, job, control, async
 ---

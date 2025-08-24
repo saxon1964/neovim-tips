@@ -19,12 +19,13 @@ The plugin should help you to learn some basic (:wq, write and quit) and some no
 I have provided a solid initial batch of tips and if you have your favorite one that is not listed, I will be happy to include it in the next release **with proper credits**. Send your commands, tips and tricks to me, create an issue or submit a pull request. You can also add your own tips and tricks that will be stored on your local computer, you don't have to share anything with me.  
 
 ## ✨ Features
-- Search tips using ultra-fast `fzf-lua` plugin
-- Preview rendered descriptions in markdown format
+- **Dual picker support**: Choose between `fzf-lua` (default) or custom built-in picker
+- Search tips with ultra-fast fuzzy matching and real-time preview
+- Preview rendered descriptions in beautiful markdown format
 - No additional utilities: you don't need `glow` or `bat` to render the tip
 - Support for categories, tags, and rich text
 - Lazy loading for optimal startup performance
-- The plugin comes with a starting set of basic, predefined tips
+- The plugin comes with a starting set of 596+ curated tips
 - You can add/edit unlimited number of personal tips stored in a configurable file
 - User tips with configurable prefixes to prevent conflicts with builtin tips
 - Automatic title conflict detection and warnings
@@ -48,6 +49,8 @@ I have provided a solid initial batch of tips and if you have your favorite one 
     user_tip_prefix = "[User] ",
     -- OPTIONAL: Show warnings when user tips conflict with builtin (default: true)
     warn_on_conflicts = true,
+    -- OPTIONAL: Picker to use: "fzf-lua" (default) or "custom"
+    picker = "fzf-lua",
   },
   init = function()
     -- OPTIONAL: Change to your liking or drop completely 
@@ -76,6 +79,7 @@ use {
       user_file = vim.fn.stdpath("config") .. "/neovim_tips/user_tips.md",
       user_tip_prefix = "[User] ",  -- Prefix for user tips
       warn_on_conflicts = true,     -- Warn about title conflicts
+      picker = "fzf-lua",           -- Options: "fzf-lua", "custom"
     }
 
     local map = vim.keymap.set
@@ -225,10 +229,18 @@ return {
 
 ## 🔧 Commands
 
-- `:NeovimTips` — Open searchable list of tips
+- `:NeovimTips` — Open searchable list of tips (uses configured picker)
 - `:NeovimTipsEdit` — Edit your personal tips file
 - `:NeovimTipsAdd` — Insert a new tip template into your personal file and start editing
 - `:NeovimTipsHelp` — Open the user guide in a read-only buffer
+
+### 🧪 Testing Commands (for comparing pickers)
+- `:NeovimTipsFzf` — Force use fzf-lua picker
+- `:NeovimTipsCustom` — Force use custom built-in picker
+
+### 📊 Picker Comparison
+- **fzf-lua** (default): Ultra-fast, feature-rich, requires external dependency
+- **custom**: Pure Neovim Lua, no dependencies, three-pane layout with real-time preview
 
 ## 📝 Tips
 
