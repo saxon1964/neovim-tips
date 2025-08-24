@@ -25,22 +25,6 @@ Use `:set sessionoptions` to control what gets saved, `:mksession {file}` for cu
 :source mysession.vim     " restore specific session
 ```
 ===
-# Title: Ex commands - view files
-# Category: Session
-# Tags: ex, view, file, local, settings
----
-Use `:mkview` to save view (cursor position, folds), `:loadview` to restore, `:set viewoptions` to configure.
-
-#### Example
-
-```vim
-:mkview           " save current view
-:mkview 1         " save to view slot 1
-:loadview         " restore view
-:loadview 1       " restore from view slot 1
-:set viewoptions=cursor,folds  " configure what to save
-```
-===
 # Title: Ex commands - viminfo and shada
 # Category: Session
 # Tags: ex, viminfo, shada, history, persistent

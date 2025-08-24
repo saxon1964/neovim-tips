@@ -1,16 +1,3 @@
-# Title: Command history navigation
-# Category: Command Line
-# Tags: command, history, navigation
----
-Use `Ctrl+p` to go to previous command in history and `Ctrl+n` to go to next command while in command mode.
-
-#### Example
-
-```vim
-:Ctrl+p  " previous command in history
-:Ctrl+n  " next command in history
-```
-===
 # Title: Command completion
 # Category: Command Line
 # Tags: command, completion, tab

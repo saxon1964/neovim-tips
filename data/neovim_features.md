@@ -53,20 +53,6 @@ Use `:term` to open terminal, `Ctrl+\` followed by `Ctrl+n` to exit terminal mod
 Ctrl+\ Ctrl+n   " exit terminal mode
 ```
 ===
-# Title: Window splitting shortcuts
-# Category: Neovim Features
-# Tags: window, split, navigation
----
-Use `Ctrl+w s` for horizontal split, `Ctrl+w v` for vertical split, `Ctrl+w w` to cycle windows.
-
-#### Example
-
-```vim
-Ctrl+w s  " horizontal split
-Ctrl+w v  " vertical split
-Ctrl+w w  " cycle windows
-```
-===
 # Title: Lua configuration
 # Category: Neovim Features
 # Tags: lua, configuration, modern, scripting

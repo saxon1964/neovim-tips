@@ -1,27 +1,3 @@
-# Title: Floating terminal
-# Category: Terminal
-# Tags: terminal, floating, window
----
-Create floating terminal using `vim.api.nvim_open_term()`.
-
-#### Example
-
-```vim
-:lua vim.api.nvim_open_term(0, {})
-```
-===
-# Title: Split terminal
-# Category: Terminal
-# Tags: terminal, split, window
----
-Use `:sp | terminal` to open terminal in a horizontal split.
-
-#### Example
-
-```vim
-:sp | terminal  " terminal in horizontal split
-```
-===
 # Title: Send commands to terminal
 # Category: Terminal
 # Tags: terminal, command, send
@@ -101,22 +77,6 @@ Use `:sp | terminal` for horizontal split, `:vsp | terminal` for vertical split,
 :sp | terminal   " horizontal split terminal
 :vsp | terminal  " vertical split terminal  
 :tabe | terminal " terminal in new tab
-```
-===
-# Title: Terminal job control
-# Category: Terminal
-# Tags: terminal, job, control, id
----
-Use `b:terminal_job_id` to get terminal job ID, and terminal API functions for job control.
-
-#### Example
-
-```vim
-" Get terminal job ID:
-:echo b:terminal_job_id
-
-" Send data to terminal:
-:call chansendinput(b:terminal_job_id, "echo hello\n")
 ```
 ===
 # Title: Terminal scrollback buffer

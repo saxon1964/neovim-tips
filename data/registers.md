@@ -36,18 +36,6 @@ Use `"xy` to yank into specific register x. Replace x with any letter or number.
 "bp  " paste from register b
 ```
 ===
-# Title: Paste last yanked text
-# Category: Registers
-# Tags: paste, yank, register
----
-Use `"0p` to paste the last yanked text (ignoring deletions).
-
-#### Example
-
-```vim
-"0p  " paste last yanked text
-```
-===
 # Title: Delete without affecting register
 # Category: Registers
 # Tags: delete, register, blackhole

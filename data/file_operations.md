@@ -1,16 +1,3 @@
-# Title: Open file
-# Category: File Operations
-# Tags: file, open, edit
----
-Use `:e {file}` to edit/open a file, or `:edit {file}` as the full command.
-
-#### Example
-
-```vim
-:e file.txt
-:edit ../other.txt
-```
-===
 # Title: Save file
 # Category: File Operations
 # Tags: file, save, write
@@ -23,21 +10,6 @@ Use `:w` to save current file, `:w {file}` to save as new file, or `:wall` to sa
 :w             " save current file
 :w newfile.txt " save as new file
 :wall          " save all files
-```
-===
-# Title: Buffer operations
-# Category: File Operations
-# Tags: buffer, file, switch
----
-Use `:ls` to list buffers, `:b {number}` to switch to buffer, `:bn` for next buffer, `:bp` for previous buffer.
-
-#### Example
-
-```vim
-:ls   " list buffers
-:b2   " switch to buffer 2
-:bn   " next buffer
-:bp   " previous buffer
 ```
 ===
 # Title: Insert current date
@@ -64,18 +36,6 @@ Use `:r filename` to insert contents of another file at cursor position.
 :r file.txt  " insert contents of file.txt
 ```
 ===
-# Title: Save file with sudo
-# Category: File Operations
-# Tags: sudo, save, permissions
----
-Use `:w !sudo tee %` to save current file with sudo privileges when you forgot to open with sudo.
-
-#### Example
-
-```vim
-:w !sudo tee %  " save with sudo
-```
-===
 # Title: Reload file from disk
 # Category: File Operations
 # Tags: reload, file, refresh
@@ -86,37 +46,6 @@ Use `:e!` to reload current file from disk, discarding unsaved changes.
 
 ```vim
 :e!  " reload file from disk
-```
-===
-# Title: Ex commands - file creation and templates
-# Category: File Operations
-# Tags: ex, file, create, template, new
----
-Use `:enew` for new buffer, `:new` for new window, `:vnew` for vertical new window, `:tabnew` for new tab.
-
-#### Example
-
-```vim
-:enew    " create new empty buffer
-:new     " create new buffer in horizontal split
-:vnew    " create new buffer in vertical split
-:tabnew  " create new buffer in new tab
-```
-===
-# Title: Ex commands - file information
-# Category: File Operations
-# Tags: ex, file, info, stat, ls
----
-Use `:file` or `:f` for file info, `:ls` or `:buffers` for buffer list, `:files` for file list.
-
-#### Example
-
-```vim
-:file     " show current file info
-:f        " short form of :file
-:ls       " list all buffers
-:buffers  " same as :ls
-:files    " same as :ls
 ```
 ===
 # Title: Ex commands - read and write operations
@@ -147,21 +76,6 @@ Use `:set readonly` to make read-only, `:set nomodifiable` to prevent changes, `
 :set nomodifiable  " prevent any modifications
 :set fileformat=unix  " set Unix line endings
 :set fileformat=dos   " set DOS line endings
-```
-===
-# Title: Ex commands - backup and swap files
-# Category: File Operations
-# Tags: ex, backup, swap, recover, undo
----
-Use `:recover` to recover from swap file, `:preserve` to write to swap, `:set backup` for backups.
-
-#### Example
-
-```vim
-:recover     " recover from swap file
-:preserve    " force write to swap file
-:set backup  " enable backup files
-:set noswapfile  " disable swap files
 ```
 ===
 # Title: Save multiple files at once
@@ -196,21 +110,6 @@ Use `:s` commands to easily convert between backslash and forward slash in file 
 
 " Or use built-in function:
 :echo substitute(@%, '\\', '/', 'g')
-```
-===
-# Title: Insert file at specific position
-# Category: File Operations
-# Tags: file, insert, read, position, line
----
-Use `:0r filename` to insert file before first line, `:$r filename` to append at end.
-
-#### Example
-
-```vim
-:0r header.txt    " insert file before first line
-:$r footer.txt    " append file at end
-:5r data.txt      " insert file after line 5
-:r !date          " insert output of command
 ```
 ===
 # Title: Update file only if changed

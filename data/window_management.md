@@ -15,20 +15,6 @@ Ctrl+w w  " cycle to next window
 Ctrl+w p  " go to previous window
 ```
 ===
-# Title: Window splitting
-# Category: Window Management
-# Tags: window, split, create
----
-Use `Ctrl+w s` to split horizontally and `Ctrl+w v` to split vertically. Use `Ctrl+w n` to create new empty window.
-
-#### Example
-
-```vim
-Ctrl+w s  " split window horizontally
-Ctrl+w v  " split window vertically  
-Ctrl+w n  " create new empty window
-```
-===
 # Title: Window closing
 # Category: Window Management
 # Tags: window, close, quit

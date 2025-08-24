@@ -1,17 +1,3 @@
-# Title: Search forward
-# Category: Search
-# Tags: search, find, forward
----
-Use `/pattern` to search forward for a pattern. Press `n` to go to next match and `N` for previous.
-
-#### Example
-
-```vim
-/hello  " search for 'hello'
-n       " next match
-N       " previous match
-```
-===
 # Title: Global search and replace
 # Category: Search
 # Tags: replace, global, substitute
@@ -34,18 +20,6 @@ Use `:nohl` to remove search highlighting after performing a search.
 
 ```vim
 :nohl
-```
-===
-# Title: Search with confirmation
-# Category: Search
-# Tags: replace, confirm, interactive
----
-Use `:%s/old/new/gc` to replace with confirmation for each match.
-
-#### Example
-
-```vim
-:%s/foo/bar/gc  " replace with confirmation
 ```
 ===
 # Title: Search in selection
@@ -71,31 +45,6 @@ Use `/pattern\c` for case insensitive search, or `/pattern\C` for case sensitive
 ```vim
 /hello\c  " case insensitive
 /hello\C  " case sensitive
-```
-===
-# Title: Search word boundaries
-# Category: Search
-# Tags: search, word, boundary
----
-Use `\<word\>` to search for whole word only, preventing partial matches.
-
-#### Example
-
-```vim
-/\<hello\>  " search for whole word 'hello' only
-```
-===
-# Title: Search word under cursor
-# Category: Search
-# Tags: search, cursor, word
----
-Use `*` to search forward for word under cursor and `#` to search backward for word under cursor.
-
-#### Example
-
-```vim
-*  " search forward for word under cursor
-#  " search backward for word under cursor
 ```
 ===
 # Title: Very magic search mode
@@ -159,31 +108,6 @@ Use `:%s//replacement/g` to use the last search pattern in substitution command.
 
 ```vim
 :%s//new_text/g  " replace last searched pattern with new_text
-```
-===
-# Title: Open search history
-# Category: Search
-# Tags: history, search, window
----
-Use `q/` to open search history in a searchable window.
-
-#### Example
-
-```vim
-q/  " open search history window
-```
-===
-# Title: Search with line numbers
-# Category: Search
-# Tags: search, linenumber, range, between
----
-Use `/pattern/;+5` to search for pattern and show 5 lines after, or `/pattern1/,/pattern2/` to search between patterns.
-
-#### Example
-
-```vim
-/TODO/;+5        " show 5 lines after TODO
-/function/,/end/ " search between function and end
 ```
 ===
 # Title: Delete lines containing pattern
@@ -280,5 +204,19 @@ Use `/pattern/+n` to position cursor n lines after match, or `/pattern/-n` for n
 ```vim
 /function/+2     " position cursor 2 lines after 'function'
 /end/-1          " position cursor 1 line before 'end'
+```
+===
+# Title: Replace only within visual selection
+# Category: Search
+# Tags: replace, visual, selection, \\%V
+---
+Use `\%V` in search pattern to restrict replacement to only the visual selection area.
+
+#### Example
+
+```vim
+" After making visual selection:
+:'<,'>s/\%Vold/new/g   " replace only within selection
+" \%V ensures replacement only happens in selected text
 ```
 ===

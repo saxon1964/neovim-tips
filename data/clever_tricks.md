@@ -1,27 +1,3 @@
-# Title: Move line down
-# Category: Clever Tricks
-# Tags: line, move, transpose
----
-Use `ddp` to move current line down one position. This deletes the line and pastes it below.
-
-#### Example
-
-```vim
-ddp  " move line down
-```
-===
-# Title: Move line up
-# Category: Clever Tricks
-# Tags: line, move, transpose
----
-Use `ddkP` to move current line up one position. This deletes the line, moves up, and pastes above.
-
-#### Example
-
-```vim
-ddkP  " move line up
-```
-===
 # Title: Swap two characters
 # Category: Clever Tricks
 # Tags: character, swap, transpose
@@ -32,19 +8,6 @@ Use `xp` to swap current character with next character.
 
 ```vim
 xp  " swap characters
-```
-===
-# Title: Display character information
-# Category: Clever Tricks
-# Tags: character, ascii, hex, info
----
-Use `ga` to display ASCII/hex value of character under cursor, or `g8` to display UTF-8 bytes.
-
-#### Example
-
-```vim
-ga  " show ASCII/hex value
-g8  " show UTF-8 byte sequence
 ```
 ===
 # Title: Auto-indent entire document
@@ -109,19 +72,6 @@ Use `ciw{newword}` to change inner word. Position cursor anywhere in word and ty
 ciwfoo  " change word to 'foo'
 ```
 ===
-# Title: Quick fix typo
-# Category: Clever Tricks
-# Tags: typo, fix, undo
----
-Use `~` to toggle case of character under cursor, or `g~iw` to toggle case of entire word.
-
-#### Example
-
-```vim
-~     " toggle character case
-g~iw  " toggle word case
-```
-===
 # Title: Split line at cursor
 # Category: Clever Tricks
 # Tags: split, line, break
@@ -172,57 +122,6 @@ ct;  " change until semicolon
 cf;  " change including semicolon
 ```
 ===
-# Title: Jump to matching quote
-# Category: Clever Tricks
-# Tags: quote, matching, jump
----
-Use `ci'` or `ci"` to change inside quotes, `ca'` or `ca"` to change including quotes.
-
-#### Example
-
-```vim
-ci'  " change inside single quotes
-ca"  " change including double quotes
-```
-===
-# Title: Quick paragraph navigation
-# Category: Clever Tricks
-# Tags: paragraph, navigation, block
----
-Use `{` to jump to previous paragraph/block, `}` to jump to next paragraph/block.
-
-#### Example
-
-```vim
-{  " previous paragraph
-}  " next paragraph
-```
-===
-# Title: Smart word boundaries
-# Category: Clever Tricks
-# Tags: word, boundary, navigation
----
-Use `W` for WORD (space-separated) vs `w` for word (punctuation-separated). Same with `B` vs `b` and `E` vs `e`.
-
-#### Example
-
-```vim
-W  " next WORD (space-separated)
-w  " next word (punctuation-separated)
-```
-===
-# Title: Reselect last selection
-# Category: Clever Tricks
-# Tags: visual, reselect, selection
----
-Use `gv` to reselect the last visual selection.
-
-#### Example
-
-```vim
-gv  " reselect last visual selection
-```
-===
 # Title: Center line after jump
 # Category: Clever Tricks
 # Tags: center, jump, navigation
@@ -236,18 +135,6 @@ Append `zz` after navigation commands to center the line. Works with searches, l
 /foozz  " search for 'foo' and center
 ```
 ===
-# Title: G-commands - cursor position info
-# Category: Clever Tricks
-# Tags: cursor, position, info, stats
----
-Use `g Ctrl+g` to show detailed cursor position information including line, column, byte count, and percentage.
-
-#### Example
-
-```vim
-g Ctrl+g  " show detailed cursor position info
-```
-===
 # Title: G-commands - search variations
 # Category: Clever Tricks  
 # Tags: search, variations, boundaries
@@ -259,19 +146,6 @@ Use `g*` and `g#` to search for word under cursor without word boundaries (match
 ```vim
 g*  " search forward for word without boundaries
 g#  " search backward for word without boundaries
-```
-===
-# Title: G-commands - change list navigation
-# Category: Clever Tricks
-# Tags: change, list, navigation, history
----
-Use `g;` and `g,` to navigate through the change list (locations where you made edits).
-
-#### Example
-
-```vim
-g;  " go to older change position
-g,  " go to newer change position
 ```
 ===
 # Title: G-commands - undo branches
@@ -341,19 +215,6 @@ Use `gJ` to join lines without inserting a space between them.
 gJ  " join lines without adding space
 ```
 ===
-# Title: G-commands - special insert modes
-# Category: Clever Tricks
-# Tags: insert, mode, column, mark
----
-Use `gI` to insert at column 1 regardless of indentation, `gi` to insert at last insert position.
-
-#### Example
-
-```vim
-gI  " insert at column 1 (ignore indent)
-gi  " insert at last insert position
-```
-===
 # Title: G-commands - search and select
 # Category: Clever Tricks
 # Tags: search, select, visual, pattern
@@ -366,18 +227,6 @@ Use `gn` to find and visually select next search match, `gN` for previous match.
 /pattern<Enter>  " search for pattern first
 gn               " select next match
 gN               " select previous match
-```
-===
-# Title: G-commands - goto byte position
-# Category: Clever Tricks
-# Tags: byte, position, absolute
----
-Use `go` followed by a number to go to specific byte position in buffer.
-
-#### Example
-
-```vim
-100go  " go to byte position 100
 ```
 ===
 # Title: G-commands - put and leave cursor
@@ -730,18 +579,5 @@ zg  " add word to personal dictionary (good)
 zw  " mark word as misspelled (wrong)
 zG  " temporarily mark word as correct
 zW  " temporarily mark word as incorrect
-```
-===
-# Title: Z-commands - block operations
-# Category: Clever Tricks
-# Tags: block, paste, yank, trailing, space
----
-Use `zp` to paste in block mode without trailing spaces, `zy` to yank without trailing spaces.
-
-#### Example
-
-```vim
-zp  " paste in block mode without trailing spaces
-zy  " yank without trailing spaces
 ```
 ===

@@ -12,19 +12,6 @@ V      " line visual
 Ctrl+v " block visual
 ```
 ===
-# Title: Indent text in visual mode
-# Category: Visual
-# Tags: indent, visual, editing
----
-Use `>` to shift selected text right and `<` to shift selected text left in visual mode.
-
-#### Example
-
-```vim
->  " shift right
-<  " shift left
-```
-===
 # Title: Yank and delete in visual mode
 # Category: Visual
 # Tags: yank, delete, visual
@@ -77,19 +64,6 @@ Use `gv` to reselect the last visual selection area.
 gv  " reselect last visual selection
 ```
 ===
-# Title: Sort visual selection
-# Category: Visual
-# Tags: visual, sort, selection, lines
----
-Select lines in visual mode, then use `:sort` to sort only the selected lines.
-
-#### Example
-
-```vim
-V         " select lines
-:'<,'>sort  " sort selected lines
-```
-===
 # Title: Visual mode - corner and edge movement
 # Category: Visual
 # Tags: visual, corner, block, movement
@@ -120,23 +94,6 @@ Ctrl+v  " change to block-wise or exit visual
 Ctrl+g  " toggle Visual/Select mode
 ```
 ===
-# Title: Visual mode - text objects
-# Category: Visual
-# Tags: visual, text, object, selection
----
-Use text objects in visual mode to select structured text: `aw` (word), `ap` (paragraph), `a(` (parentheses), `a"` (quotes).
-
-#### Example
-
-```vim
-" In visual mode:
-aw   " select around word
-ip   " select inside paragraph
-a(   " select around parentheses
-i"   " select inside double quotes
-at   " select around HTML/XML tag
-```
-===
 # Title: Visual mode - operators and transformations
 # Category: Visual
 # Tags: visual, operator, transform, case
@@ -153,23 +110,6 @@ y   " yank selected text
 ~   " toggle case of selection
 u   " make selection lowercase
 U   " make selection uppercase
-```
-===
-# Title: Visual mode - indentation and formatting
-# Category: Visual
-# Tags: visual, indent, format, shift
----
-Use `>` and `<` to indent/unindent selection, `=` to format, `gq` to format text, `gw` to format keeping cursor position.
-
-#### Example
-
-```vim
-" After making visual selection:
->    " indent selection right
-<    " indent selection left
-=    " auto-format selection
-gq   " format text lines
-gw   " format text, keep cursor position
 ```
 ===
 # Title: Visual mode - joining and substitution
@@ -202,22 +142,6 @@ p   " replace selection with register contents
 P   " same as p in visual mode
 ```
 ===
-# Title: Visual mode - encoding and filtering
-# Category: Visual
-# Tags: visual, encode, filter, external
----
-Use `g?` for Rot13 encoding, `!{command}` to filter selection through external command.
-
-#### Example
-
-```vim
-" After making visual selection:
-g?           " apply Rot13 encoding
-!sort        " sort selected lines
-!uniq        " remove duplicate lines
-!wc -w       " count words in selection
-```
-===
 # Title: Visual mode - Ex commands
 # Category: Visual
 # Tags: visual, ex, command, range
@@ -234,21 +158,6 @@ Press `:` in visual mode to run Ex commands on the selected range. The range `'<
 :w newfile.txt  " write selection to file
 ```
 ===
-# Title: Visual mode - number operations
-# Category: Visual
-# Tags: visual, number, increment, decrement
----
-Use `Ctrl+a` and `Ctrl+x` to increment/decrement numbers in visual selection, `g Ctrl+a` for sequential increment.
-
-#### Example
-
-```vim
-" Select numbers, then:
-Ctrl+a    " increment all numbers by same amount
-Ctrl+x    " decrement all numbers by same amount
-g Ctrl+a  " increment sequentially (1, 2, 3...)
-```
-===
 # Title: Visual mode - tag and keyword operations
 # Category: Visual
 # Tags: visual, tag, keyword, jump
@@ -261,22 +170,5 @@ Use `Ctrl+]` to jump to tag of selected text, `K` to run keywordprg on selection
 " After selecting text:
 Ctrl+]  " jump to tag of selected text
 K       " run help/man on selected keyword
-```
-===
-# Title: Visual mode - exit and cancel
-# Category: Visual
-# Tags: visual, exit, cancel, escape
----
-Use `Esc`, `Ctrl+c`, or the same mode key to exit visual mode.
-
-#### Example
-
-```vim
-" In visual mode:
-Esc     " exit visual mode
-Ctrl+c  " exit visual mode
-v       " exit character visual mode
-V       " exit line visual mode
-Ctrl+v  " exit block visual mode
 ```
 ===

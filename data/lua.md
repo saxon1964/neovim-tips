@@ -46,18 +46,6 @@ Use `vim.keymap.set()` to create keymaps with inline Lua functions.
 :lua vim.keymap.set("n", "<leader>hi", function() print("Hello!") end)
 ```
 ===
-# Title: Lua autocommands
-# Category: Lua
-# Tags: autocommand, lua, event
----
-Use `vim.api.nvim_create_autocmd()` to create autocommands in Lua.
-
-#### Example
-
-```vim
-:lua vim.api.nvim_create_autocmd("BufWritePost", {pattern = "*.lua", callback = function() print("Saved!") end})
-```
-===
 # Title: View loaded Lua modules
 # Category: Lua
 # Tags: modules, loaded, debug

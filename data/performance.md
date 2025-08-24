@@ -45,23 +45,6 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 ```
 ===
-# Title: Use treesitter for syntax highlighting
-# Category: Performance
-# Tags: treesitter, syntax, highlighting, performance
----
-Replace regex-based syntax highlighting with treesitter for better performance and accuracy.
-
-#### Example
-
-```lua
-require('nvim-treesitter.configs').setup {
-  highlight = {
-    enable = true,
-    disable = {},
-  }
-}
-```
-===
 # Title: Optimize updatetime
 # Category: Performance
 # Tags: updatetime, performance, responsiveness
@@ -165,21 +148,6 @@ Monitor Neovim memory usage to identify memory leaks or excessive usage.
 ```vim
 :lua print(collectgarbage("count") .. " KB")  " current memory usage
 :lua collectgarbage()  " force garbage collection
-```
-===
-# Title: Fast file operations
-# Category: Performance
-# Tags: file, operations, read, write, performance
----
-Optimize file operations for better performance with large files.
-
-#### Example
-
-```lua
-vim.opt.backup = false     -- don't create backup files
-vim.opt.writebackup = false -- don't backup before writing
-vim.opt.undofile = true    -- persistent undo instead
-vim.opt.undodir = vim.fn.expand('~/.local/share/nvim/undo//')
 ```
 ===
 # Title: Syntax highlighting limits

@@ -1,16 +1,3 @@
-# Title: Cut/delete line
-# Category: Cut and Paste
-# Tags: cut, delete, line
----
-Use `dd` to cut (delete) the current line, or `{number}dd` to cut multiple lines.
-
-#### Example
-
-```vim
-dd   " cut current line
-3dd  " cut 3 lines
-```
-===
 # Title: Cut/delete word
 # Category: Cut and Paste
 # Tags: cut, delete, word
@@ -23,19 +10,6 @@ Use `dw` to delete from cursor to start of next word, `de` to delete to end of c
 dw  " delete to next word
 de  " delete to end of word
 db  " delete to start of word
-```
-===
-# Title: Cut to end of line
-# Category: Cut and Paste
-# Tags: cut, line, end
----
-Use `D` or `d$` to delete from cursor to end of line.
-
-#### Example
-
-```vim
-D    " delete to end of line
-d$   " delete to end of line
 ```
 ===
 # Title: Yank line

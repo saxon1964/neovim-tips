@@ -24,21 +24,6 @@ Automatically format paragraphs to specified width using textwidth and format co
 gqip                   " reformat inner paragraph
 ```
 ===
-# Title: Generate increasing numbers
-# Category: Formatting
-# Tags: numbers, increment, column, sequence
----
-Generate a column of increasing numbers using visual block mode and increment commands.
-
-#### Example
-
-```vim
-" Select column with Ctrl-v, then:
-:I                     " replace selection with incremental numbers
-:I 5                   " increment by 5
-:II                    " increment with left padding
-```
-===
 # Title: Comment lines by filetype
 # Category: Formatting
 # Tags: comment, filetype, toggle

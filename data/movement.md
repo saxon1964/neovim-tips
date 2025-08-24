@@ -241,20 +241,6 @@ Use `(` to move to the beginning of current sentence and `)` to move to the begi
 )  " next sentence
 ```
 ===
-# Title: Line position shortcuts
-# Category: Movement
-# Tags: line, position, shortcuts
----
-Use `I` to move to the beginning of line and enter insert mode, `A` to move to the end of line and enter insert mode, and `o` to create new line below and enter insert mode.
-
-#### Example
-
-```vim
-I  " insert at line beginning
-A  " append at line end
-o  " new line below
-```
-===
 # Title: Word movement alternatives
 # Category: Movement
 # Tags: word, WORD, movement, whitespace

@@ -24,15 +24,3 @@ Use `'{letter}` to jump to beginning of line with mark, or \`{letter}\` to jump 
 `a   " jump to exact position of mark 'a'
 ```
 ===
-# Title: View marks
-# Category: Marks
-# Tags: marks, list, view
----
-Use `:marks` to list all current marks.
-
-#### Example
-
-```vim
-:marks
-```
-===

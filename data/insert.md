@@ -1,18 +1,3 @@
-# Title: Insert modes
-# Category: Insert
-# Tags: insert, mode, editing
----
-Use `i` to insert before cursor, `I` to insert at line start, `a` to append after cursor, and `A` to append at line end.
-
-#### Example
-
-```vim
-i  " insert before cursor
-I  " insert at line start
-a  " append after cursor
-A  " append at line end
-```
-===
 # Title: New line insertion
 # Category: Insert
 # Tags: insert, line, editing
@@ -24,33 +9,6 @@ Use `o` to open new line below current line and `O` to open new line above curre
 ```vim
 o  " new line below
 O  " new line above
-```
-===
-# Title: Insert mode deletion
-# Category: Insert
-# Tags: delete, insert, editing
----
-Use `Ctrl+h` to delete character before cursor and `Ctrl+w` to delete word before cursor while in insert mode.
-
-#### Example
-
-```vim
-Ctrl+h  " delete character
-Ctrl+w  " delete word
-```
-===
-# Title: Insert mode movement
-# Category: Insert
-# Tags: movement, insert, cursor, navigation
----
-Use `Ctrl+o` in insert mode to execute one normal mode command, then return to insert mode.
-
-#### Example
-
-```vim
-" In insert mode:
-Ctrl+o w     " move to next word and return to insert
-Ctrl+o dw    " delete word and return to insert
 ```
 ===
 # Title: Paste in insert mode
@@ -65,20 +23,6 @@ Use `Ctrl+r "` to paste from default register, or `Ctrl+r a` to paste from regis
 " In insert mode:
 Ctrl+r "     " paste from default register
 Ctrl+r a     " paste from register 'a'
-```
-===
-# Title: Insert literal character
-# Category: Insert
-# Tags: literal, character, special, escape
----
-Use `Ctrl+v` followed by character to insert literal/special characters in insert mode.
-
-#### Example
-
-```vim
-" In insert mode:
-Ctrl+v Tab   " insert literal tab character
-Ctrl+v Esc   " insert literal escape character
 ```
 ===
 # Title: Insert mode completion
@@ -109,20 +53,6 @@ Use `Ctrl+k` followed by two characters to insert digraphs (special characters).
 Ctrl+k a:    " insert ä
 Ctrl+k <<    " insert «
 :digraphs    " show all digraphs
-```
-===
-# Title: Insert mode undo
-# Category: Insert
-# Tags: undo, insert, editing
----
-Use `Ctrl+u` to delete all characters from cursor to start of line and `Ctrl+w` to delete word before cursor while in insert mode.
-
-#### Example
-
-```vim
-" In insert mode:
-Ctrl+u  " delete to line start
-Ctrl+w  " delete previous word
 ```
 ===
 # Title: Insert calculation result
@@ -303,20 +233,6 @@ Use `Ctrl+i` as an alternative to the Tab key for inserting tab characters in in
 ```vim
 " In insert mode:
 Ctrl+i  " insert tab character (same as Tab key)
-```
-===
-# Title: Insert newline alternatives
-# Category: Insert
-# Tags: newline, line, break, enter
----
-Use `Ctrl+m` or `Ctrl+j` as alternatives to the Enter key for creating new lines in insert mode.
-
-#### Example
-
-```vim
-" In insert mode:
-Ctrl+m  " new line (same as Enter)
-Ctrl+j  " new line (alternative)
 ```
 ===
 # Title: Scroll window in insert mode

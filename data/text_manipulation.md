@@ -1,15 +1,3 @@
-# Title: Toggle case of character
-# Category: Text Manipulation
-# Tags: case, toggle, character
----
-Use `~` to toggle case of character under cursor.
-
-#### Example
-
-```vim
-~  " toggle character case
-```
-===
 # Title: Lowercase/uppercase current line
 # Category: Text Manipulation
 # Tags: case, line, transform
@@ -35,18 +23,6 @@ Use `gUw` to uppercase current word.
 gUw  " uppercase current word
 ```
 ===
-# Title: Sort paragraph
-# Category: Text Manipulation
-# Tags: sort, paragraph, formatting
----
-Use `!}sort` to sort the next paragraph.
-
-#### Example
-
-```vim
-!}sort  " sort next paragraph
-```
-===
 # Title: Format paragraph
 # Category: Text Manipulation
 # Tags: format, paragraph, wrap
@@ -57,18 +33,6 @@ Use `gqap` to format/wrap a paragraph according to textwidth.
 
 ```vim
 gqap  " format around paragraph
-```
-===
-# Title: Replace newlines with spaces
-# Category: Text Manipulation
-# Tags: newlines, replace, spaces
----
-Use `:%s/\n/ /g` to replace all newlines with spaces.
-
-#### Example
-
-```vim
-:%s/\n/ /g  " replace newlines with spaces
 ```
 ===
 # Title: Remove trailing whitespace
@@ -518,5 +482,19 @@ Use `x` to delete character under cursor and `X` to delete character before curs
 x   " delete character under cursor
 X   " delete character before cursor
 5x  " delete 5 characters forward
+```
+===
+# Title: Create incremental sequence with g Ctrl+a
+# Category: Text Manipulation
+# Tags: increment, sequence, numbers, visual, ctrl-a
+---
+Use `g Ctrl+a` in visual block mode to create incremental number sequences instead of incrementing all numbers by the same amount.
+
+#### Example
+
+```vim
+" Select multiple lines with numbers, then:
+g<C-a>    " creates 1,2,3,4... sequence
+<C-a>     " would increment all by 1
 ```
 ===

@@ -1,16 +1,3 @@
-# Title: Record macro
-# Category: Macros
-# Tags: macro, record, automation
----
-Use `q{letter}` to start recording a macro into register {letter}, then `q` again to stop recording.
-
-#### Example
-
-```vim
-qa  " start recording macro 'a'
-q   " stop recording
-```
-===
 # Title: Execute macro
 # Category: Macros
 # Tags: macro, execute, replay
@@ -34,19 +21,6 @@ Use `:'<,'>normal @q` to run macro q over visual selection.
 
 ```vim
 :'<,'>normal @q  " run macro q on selection
-```
-===
-# Title: Append to existing macro
-# Category: Macros
-# Tags: macro, append, extend
----
-Use capital letter register to append commands to existing macro. Record with `qA` to append to macro stored in register 'a'.
-
-#### Example
-
-```vim
-qa...q   " record initial macro in 'a'
-qA...q   " append more commands to macro 'a'
 ```
 ===
 # Title: View macro contents
@@ -179,5 +153,19 @@ nnoremap <leader>3 @e
 
 " Map for visual selection macro execution
 vnoremap <leader>m :normal @q<CR>
+```
+===
+# Title: Make existing macro recursive
+# Category: Macros
+# Tags: macro, recursive, modify, qQ
+---
+Convert an existing macro to recursive by appending the macro call to itself using `qQ@qq`.
+
+#### Example
+
+```vim
+" After recording macro @q normally:
+qQ@qq   " q=start recording to Q, Q=append to q, @q=call q, q=stop
+" Now @q is recursive and will loop until end of file
 ```
 ===

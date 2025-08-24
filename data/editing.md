@@ -10,59 +10,6 @@ Use `.` to repeat the last command that changed text.
 .  " repeat last command
 ```
 ===
-# Title: Delete line
-# Category: Editing
-# Tags: delete, line, remove
----
-Use `dd` to delete entire line, `D` to delete from cursor to end of line.
-
-#### Example
-
-```vim
-dd  " delete entire line
-D   " delete to end of line
-```
-===
-# Title: Change operations
-# Category: Editing
-# Tags: change, replace, edit
----
-Use `cc` to change entire line, `C` to change from cursor to end of line, `cw` to change word.
-
-#### Example
-
-```vim
-cc  " change entire line
-C   " change to end of line
-cw  " change word
-```
-===
-# Title: Duplicate line
-# Category: Editing
-# Tags: duplicate, copy, line
----
-Use `yyp` to duplicate current line below or `yyP` to duplicate above.
-
-#### Example
-
-```vim
-yyp  " duplicate line below
-yyP  " duplicate line above
-```
-===
-# Title: Move line up or down
-# Category: Editing
-# Tags: move, line, reorder
----
-Use `ddkP` to move line up or `ddp` to move line down.
-
-#### Example
-
-```vim
-ddkP  " move line up
-ddp   " move line down
-```
-===
 # Title: Insert at beginning/end
 # Category: Editing
 # Tags: insert, beginning, end
@@ -115,19 +62,6 @@ s  " substitute character
 S  " substitute line
 ```
 ===
-# Title: Delete character
-# Category: Editing
-# Tags: delete, character, remove
----
-Use `x` to delete character under cursor, `X` to delete character before cursor.
-
-#### Example
-
-```vim
-x  " delete character under cursor
-X  " delete character before cursor
-```
-===
 # Title: Yank (copy) operations
 # Category: Editing
 # Tags: yank, copy, clipboard
@@ -167,19 +101,6 @@ Use `<C-r>=` in insert mode to calculate mathematical expressions and insert the
 " In insert mode:
 <C-r>=2+2<CR>       " inserts '4'
 <C-r>=16*1024<CR>   " inserts '16384'
-```
-===
-# Title: Insert literal tab
-# Category: Editing
-# Tags: tab, literal, insert, character
----
-Use `<C-v><Tab>` in insert mode to insert a literal tab character when expandtab is set.
-
-#### Example
-
-```vim
-" In insert mode when expandtab is on:
-<C-v><Tab>  " insert actual tab character
 ```
 ===
 # Title: Substitute entire line and start insert
