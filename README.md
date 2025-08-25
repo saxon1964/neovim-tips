@@ -1,6 +1,6 @@
 # Neovim Tips Plugin
 
-*A Lua plugin for Neovim that helps you organize and search over 500 helpful tips, tricks, and shortcuts via a fuzzy search interface.*
+*A Lua plugin for Neovim that helps you organize and search over 500 helpful tips, tricks, and shortcuts via a beautiful custom picker interface.*
 
 > **📖 Quick Access**: You can open this guide anytime with the `:NeovimTipsHelp` command
 
@@ -19,10 +19,12 @@ The plugin should help you to learn some basic (:wq, write and quit) and some no
 I have provided a solid initial batch of tips and if you have your favorite one that is not listed, I will be happy to include it in the next release **with proper credits**. Send your commands, tips and tricks to me, create an issue or submit a pull request. You can also add your own tips and tricks that will be stored on your local computer, you don't have to share anything with me.  
 
 ## ✨ Features
-- **Dual picker support**: Choose between `fzf-lua` (default) or custom built-in picker
-- Search tips with ultra-fast fuzzy matching and real-time preview
-- Preview rendered descriptions in beautiful markdown format
-- No additional utilities: you don't need `glow` or `bat` to render the tip
+- **Beautiful custom picker**: Three-pane interface with search, tips list, and live markdown preview
+- **Lightweight dependencies**: Only requires `nui.nvim` - no heavyweight pickers (fzf-lua, telescope, snacks, mini...)
+- **Word-based search**: Intelligent search that matches all words (e.g., "insert character" finds "character to insert")
+- **Live markdown rendering**: Preview rendered descriptions with full markdown support
+- **Perfect navigation**: Seamless mouse and keyboard navigation with smart mode switching
+- **Cursor preservation**: Returns to your exact cursor position and mode after closing
 - Support for categories, tags, and rich text
 - Lazy loading for optimal startup performance
 - The plugin comes with a starting set of 596+ curated tips
@@ -39,7 +41,7 @@ I have provided a solid initial batch of tips and if you have your favorite one 
   "saxon1964/neovim-tips",
   version = "*", -- Only update on tagged releases
   dependencies = { 
-    "ibhagwan/fzf-lua", 
+    "MunifTanjim/nui.nvim",
     "MeanderingProgrammer/render-markdown.nvim" 
   },
   opts = {
@@ -49,8 +51,6 @@ I have provided a solid initial batch of tips and if you have your favorite one 
     user_tip_prefix = "[User] ",
     -- OPTIONAL: Show warnings when user tips conflict with builtin (default: true)
     warn_on_conflicts = true,
-    -- OPTIONAL: Picker to use: "fzf-lua" (default) or "custom"
-    picker = "fzf-lua",
   },
   init = function()
     -- OPTIONAL: Change to your liking or drop completely 
@@ -71,7 +71,7 @@ use {
   "saxon1964/neovim-tips",
   tag = "*", -- Only update on tagged releases
   requires = { 
-    "ibhagwan/fzf-lua", 
+    "MunifTanjim/nui.nvim",
     "MeanderingProgrammer/render-markdown.nvim" 
   },
   config = function()
@@ -79,7 +79,6 @@ use {
       user_file = vim.fn.stdpath("config") .. "/neovim_tips/user_tips.md",
       user_tip_prefix = "[User] ",  -- Prefix for user tips
       warn_on_conflicts = true,     -- Warn about title conflicts
-      picker = "fzf-lua",           -- Options: "fzf-lua", "custom"
     }
 
     local map = vim.keymap.set
@@ -94,7 +93,7 @@ use {
 ### vim-plug
 
 ```vim
-Plug 'ibhagwan/fzf-lua'
+Plug 'MunifTanjim/nui.nvim'
 Plug 'MeanderingProgrammer/render-markdown.nvim'
 Plug 'saxon1964/neovim-tips', { 'tag': '*' } " Only update on tagged releases
 
@@ -114,7 +113,7 @@ EOF
 
 ```vim
 call minpac#init()
-call minpac#add('ibhagwan/fzf-lua')
+call minpac#add('MunifTanjim/nui.nvim')
 call minpac#add('MeanderingProgrammer/render-markdown.nvim')
 call minpac#add('saxon1964/neovim-tips', {'tag': '*'}) " Only update on tagged releases
 
@@ -134,7 +133,7 @@ EOF
 
 ```lua
 require "paq" {
-  "ibhagwan/fzf-lua";
+  "MunifTanjim/nui.nvim";
   "MeanderingProgrammer/render-markdown.nvim";
   { "saxon1964/neovim-tips", tag = "*" }; -- Only update on tagged releases
 }
@@ -154,7 +153,8 @@ map("n", "<leader>nta", ":NeovimTipsAdd<CR>", { desc = "Add your Neovim tip", no
 ```vim
 call dein#begin('~/.cache/dein')
 
-call dein#add('ibhagwan/fzf-lua')
+call dein#add('MunifTanjim/nui.nvim')
+call dein#add('MeanderingProgrammer/render-markdown.nvim')
 call dein#add('saxon1964/neovim-tips')
 
 call dein#end()
@@ -179,7 +179,7 @@ require("lazy").setup({
   {
     "saxon1964/neovim-tips",
     dependencies = { 
-    "ibhagwan/fzf-lua", 
+    "MunifTanjim/nui.nvim",
     "MeanderingProgrammer/render-markdown.nvim" 
   },
     opts = {
@@ -204,7 +204,7 @@ return {
   {
     "saxon1964/neovim-tips",
     dependencies = { 
-    "ibhagwan/fzf-lua", 
+    "MunifTanjim/nui.nvim",
     "MeanderingProgrammer/render-markdown.nvim" 
   },
     opts = {
@@ -229,18 +229,10 @@ return {
 
 ## 🔧 Commands
 
-- `:NeovimTips` — Open searchable list of tips (uses configured picker)
+- `:NeovimTips` — Open searchable list of tips with beautiful three-pane interface
 - `:NeovimTipsEdit` — Edit your personal tips file
 - `:NeovimTipsAdd` — Insert a new tip template into your personal file and start editing
 - `:NeovimTipsHelp` — Open the user guide in a read-only buffer
-
-### 🧪 Testing Commands (for comparing pickers)
-- `:NeovimTipsFzf` — Force use fzf-lua picker
-- `:NeovimTipsCustom` — Force use custom built-in picker
-
-### 📊 Picker Comparison
-- **fzf-lua** (default): Ultra-fast, feature-rich, requires external dependency
-- **custom**: Pure Neovim Lua, no dependencies, three-pane layout with real-time preview
 
 ## 📝 Tips
 
@@ -347,8 +339,8 @@ user_tip_prefix = ""            -- "Join lines" stays "Join lines"
 - Category filtering
 - Tag filtering
 - Search descriptions
-- Support for other popular pickers (telescope, snacks, mini...)
 - Multiple tip sources
+- Export functionality
 
 ## ⚖️ License
 
