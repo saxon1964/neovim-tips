@@ -490,7 +490,7 @@ function M.show()
       return tips_module.get_description(title) or "Description not available"
     end,
     on_select = function(title)
-      vim.notify("Selected: " .. title, vim.log.levels.INFO)
+      -- Do nothing - just close picker
     end
   })
   

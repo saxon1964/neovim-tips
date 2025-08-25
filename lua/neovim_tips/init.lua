@@ -2,8 +2,7 @@ local M = {}
 
 local config = require("neovim_tips.config")
 local loader = require("neovim_tips.loader")
-local fzf_lua_picker = require("neovim_tips.fzf_lua")
-local nui_picker = require("neovim_tips.picker_nui")
+local picker = require("neovim_tips.picker")
 local utils = require("neovim_tips.utils")
 
 function M.setup(opts)
@@ -41,12 +40,8 @@ function M.setup(opts)
               vim.notify("Neovim tips loaded", vim.log.levels.INFO)
             end
             
-            -- Choose picker based on configuration
-            if config.options.picker == "nui" then
-              nui_picker.show()
-            else
-              fzf_lua_picker.show_fzf()
-            end
+            -- Show picker
+            picker.show()
           else
             vim.notify("Failed to load Neovim tips: " .. result, vim.log.levels.ERROR)
           end
@@ -101,24 +96,6 @@ function M.setup(opts)
     { desc = "Open Neovim tips README file" }
   )
 
-  -- Test command for nui picker
-  vim.api.nvim_create_user_command("NeovimTipsNui",
-    function()
-      utils.run_async(loader.load,
-        function(ok, result)
-          if ok then
-            if result then
-              vim.notify("Tips loaded - using nui picker", vim.log.levels.INFO)
-            end
-            nui_picker.show()
-          else
-            vim.notify("Failed to load tips: " .. result, vim.log.levels.ERROR)
-          end
-        end
-      )
-    end,
-    { desc = "Open Neovim tips with nui picker" }
-  )
 
   -- Reload tips on user file save
   vim.api.nvim_create_autocmd("BufWritePost", {
