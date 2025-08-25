@@ -19,7 +19,7 @@ The plugin should help you to learn some basic (:wq, write and quit) and some no
 I have provided a solid initial batch of tips and if you have your favorite one that is not listed, I will be happy to include it in the next release **with proper credits**. Send your commands, tips and tricks to me, create an issue or submit a pull request. You can also add your own tips and tricks that will be stored on your local computer, you don't have to share anything with me.  
 
 ## ✨ Features
-- Search tips using ultra-fast `fzf-lua` plugin
+- Search tips using fzf-lua or Snacks picker
 - Preview rendered descriptions in markdown format
 - No additional utilities: you don't need `glow` or `bat` to render the tip
 - Support for categories, tags, and rich text
@@ -60,6 +60,25 @@ I have provided a solid initial batch of tips and if you have your favorite one 
   end
 }
 ```
+
+#### Using Snacks picker
+
+If you prefer the Snacks picker, add folke/snacks.nvim and set picker = 'snacks':
+
+```lua
+{
+  "saxon1964/neovim-tips",
+  dependencies = {
+    "folke/snacks.nvim",
+  },
+  opts = {
+    picker = "snacks",
+    user_file = vim.fn.stdpath("config") .. "/neovim_tips/user_tips.md",
+  },
+}
+```
+
+Note: Ensure Snacks' picker is enabled in your Snacks setup (opts = { picker = { enabled = true } }).
 
 ### packer.nvim
 
@@ -251,7 +270,7 @@ This format is used for all tips, built-in or created by you and stored separate
 
 Each tip has to start with the `# Title:` line, followed by `# Category:` and a list of `# Tags`.
 
-Description of the tip starts with `---` and ends with `===`. There is **NO** predefined format for description. Anything between the starting and ending marker will be interpreted as a text in markdown (.md) format. Fzf-lua will render the markdown description in the right FZF panel. 
+Description of the tip starts with `---` and ends with `===`. There is **NO** predefined format for description. Anything between the starting and ending marker will be interpreted as a text in markdown (.md) format. Your configured picker will render the markdown description in its preview panel.
 
 ## ✅ Example
 
@@ -294,6 +313,9 @@ require("neovim_tips").setup({
   
   -- Show warnings when user tips have conflicting titles with builtin tips
   warn_on_conflicts = true,
+  
+    -- Picker backend: 'fzf-lua' (default) or 'snacks'
+    picker = 'fzf-lua',
 })
 ```
 
