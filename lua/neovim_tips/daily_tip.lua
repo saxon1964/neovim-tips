@@ -16,15 +16,15 @@ local function read_last_shown()
   if not file then
     return nil
   end
-  
+
   local content = file:read("*all")
   file:close()
-  
+
   local ok, data = pcall(vim.json.decode, content)
   if ok and data and data.last_shown then
     return data.last_shown
   end
-  
+ 
   return nil
 end
 
@@ -33,11 +33,11 @@ local function write_last_shown()
   local state_file = get_state_file()
   local today = os.date("%Y-%m-%d")
   local data = { last_shown = today }
-  
+ 
   -- Ensure directory exists
   local dir = vim.fn.fnamemodify(state_file, ":h")
   vim.fn.mkdir(dir, "p")
-  
+ 
   local file = io.open(state_file, "w")
   if file then
     file:write(vim.json.encode(data))
@@ -58,11 +58,11 @@ local function get_random_tip()
   if #all_titles == 0 then
     return nil
   end
-  
+
   math.randomseed(os.time())
   local random_index = math.random(1, #all_titles)
   local title = all_titles[random_index]
-  
+
   return {
     title = title,
     description = tips.get_description(title)
@@ -75,7 +75,7 @@ function M.show_daily_tip()
   if not tip then
     return
   end
-  
+
   -- Create popup with centered layout
   local popup = Popup({
     enter = true,
@@ -113,10 +113,10 @@ function M.show_daily_tip()
 
   -- Prepare content
   local lines = {}
-  
+
   -- Add tip title as first line
   table.insert(lines, "# " .. tip.title)
-  
+
   -- Add tip description (skip the first title line from description)
   if tip.description then
     local description_lines = vim.split(tip.description, "\n")
@@ -128,12 +128,12 @@ function M.show_daily_tip()
         break
       end
     end
-    
+
     for i = start_index, #description_lines do
       table.insert(lines, description_lines[i])
     end
   end
-  
+
   -- Add footer notes
   table.insert(lines, "")
   table.insert(lines, "---")
@@ -144,13 +144,13 @@ function M.show_daily_tip()
 
   -- Set content while buffer is modifiable
   vim.api.nvim_buf_set_lines(popup.bufnr, 0, -1, false, lines)
-  
+
   -- Position cursor at line 2 (empty line) so markdown renders properly
   vim.api.nvim_win_set_cursor(popup.winid, {2, 0})
 
   -- NOW lock the buffer
-  vim.api.nvim_buf_set_option(popup.bufnr, "modifiable", false)
-  vim.api.nvim_buf_set_option(popup.bufnr, "readonly", true)
+  vim.bo[popup.bufnr].modifiable = false
+  vim.bo[popup.bufnr].readonly = true
 
   -- Enable markdown rendering if available
   if pcall(require, "render-markdown") then
@@ -166,7 +166,7 @@ function M.show_daily_tip()
       popup:unmount()
     end, { noremap = true, silent = true })
   end
-  
+
   -- Clean up when popup closes
   popup:on("BufWinLeave", function()
     -- Nothing to restore since we didn't change global settings
@@ -181,14 +181,14 @@ end
 -- Main function to check and show daily tip
 function M.check_and_show()
   local daily_tip_mode = config.options.daily_tip
-  
+
   -- 0 = off, 1 = once per day, 2 = every startup
   if daily_tip_mode == 0 then
     return
   end
-  
+
   local should_show = (daily_tip_mode == 2) or should_show_today()
-  
+
   if should_show then
     -- Delay to let Neovim finish startup completely
     vim.defer_fn(function()
