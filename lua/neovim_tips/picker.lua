@@ -100,6 +100,12 @@ function NuiPicker:update_titles_display()
     lines = {"  No matching tips found"}
   end
 
+  -- Update border title with tip count
+  local total_tips = #(self.all_titles or {})
+  local filtered_count = #(self.filtered_titles or {})
+  local title_text = string.format(" Tips: %d/%d ", filtered_count, total_tips)
+  self.titles_popup.border:set_text("top", title_text, "center")
+
   -- Temporarily make modifiable to update, then restore
   vim.bo[self.titles_popup.bufnr].modifiable = true
   vim.api.nvim_buf_set_lines(self.titles_popup.bufnr, 0, -1, false, lines)
