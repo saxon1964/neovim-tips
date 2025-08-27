@@ -8,6 +8,7 @@ M.options = {
   -- for internal use only
   builtin_dir = debug.getinfo(1, "S").source:sub(2):gsub("config.lua", "../../data"),
   user_tips_tag = "user",
+  github_url = "https://github.com/saxon1964/neovim-tips",
 }
 
 function M.setup(opts)
