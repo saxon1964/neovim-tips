@@ -4,6 +4,7 @@ local config = require("neovim_tips.config")
 local loader = require("neovim_tips.loader")
 local picker = require("neovim_tips.picker")
 local utils = require("neovim_tips.utils")
+local daily_tip = require("neovim_tips.daily_tip")
 
 function M.setup(opts)
   -- Merge configurations
@@ -111,6 +112,19 @@ function M.setup(opts)
         end
       )
     end
+  })
+
+  -- Set up daily tip on VimEnter
+  vim.api.nvim_create_autocmd("VimEnter", {
+    callback = function()
+      -- Load tips first, then check for daily tip
+      utils.run_async(loader.load, function(ok, result)
+        if ok then
+          daily_tip.check_and_show()
+        end
+      end)
+    end,
+    once = true -- Only run once per session
   })
 end
 
