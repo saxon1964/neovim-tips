@@ -99,7 +99,7 @@ function M.show_daily_tip()
     },
     win_options = {
       winblend = 0,
-      winhighlight = "Normal:Normal,FloatBorder:ErrorMsg,Cursor:NONE,CursorLine:NONE",
+      winhighlight = "Normal:Normal,FloatBorder:Normal,Cursor:NONE,CursorLine:NONE",
       cursorline = false,
       cursorcolumn = false,
       number = false,

@@ -106,16 +106,22 @@ function NuiPicker:update_titles_display()
   vim.bo[self.titles_popup.bufnr].modifiable = false
 
   -- Highlight selected line
-  vim.api.nvim_buf_clear_namespace(self.titles_popup.bufnr, -1, 0, -1)
+  local ns_id = vim.api.nvim_create_namespace("neovim_tips_picker")
+  vim.api.nvim_buf_clear_namespace(self.titles_popup.bufnr, ns_id, 0, -1)
   if self.selected_index > 0 and self.selected_index <= #lines then
-    vim.api.nvim_buf_set_extmark(self.titles_popup.bufnr, -1, self.selected_index - 1, 0, {
-      end_col = -1,
-      hl_group = "PmenuSel",
+    local line_content = lines[self.selected_index]
+    local line_length = #line_content
+    
+    -- Highlight entire selected line including all text
+    vim.api.nvim_buf_set_extmark(self.titles_popup.bufnr, ns_id, self.selected_index - 1, 0, {
+      end_col = line_length,
+      hl_group = "Visual",
       priority = 100
     })
-    vim.api.nvim_buf_set_extmark(self.titles_popup.bufnr, -1, self.selected_index - 1, 0, {
+    -- Highlight the ">" prefix more prominently
+    vim.api.nvim_buf_set_extmark(self.titles_popup.bufnr, ns_id, self.selected_index - 1, 0, {
       end_col = 2,
-      hl_group = "WarningMsg",
+      hl_group = "IncSearch",
       priority = 101
     })
   end
@@ -235,7 +241,7 @@ function NuiPicker:create_layout()
     win_options = {
       wrap = false,
       number = false,
-      winhighlight = "FloatBorder:ErrorMsg",
+      winhighlight = "FloatBorder:Normal",
     },
   })
 
@@ -258,7 +264,7 @@ function NuiPicker:create_layout()
       wrap = false,
       number = false,
       cursorline = false,
-      winhighlight = "FloatBorder:ErrorMsg",
+      winhighlight = "FloatBorder:Normal",
     },
   })
 
@@ -280,7 +286,7 @@ function NuiPicker:create_layout()
     win_options = {
       wrap = true,
       number = false,
-      winhighlight = "FloatBorder:ErrorMsg",
+      winhighlight = "FloatBorder:Normal",
     },
   })
 
