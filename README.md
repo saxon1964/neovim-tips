@@ -4,7 +4,9 @@
 
 > **📖 Quick Access**: You can open this guide anytime with the `:NeovimTipsHelp` command
 
-![Neovim tips plugin screenshot](saxon1964.neovim-tips.png)
+![Neovim tips plugin screenshot](images/s1.png)
+
+![Neovim tips tip of the day](images/s2.png)
 
 ## 🎯 Purpose
 
@@ -24,7 +26,7 @@ I have provided a solid initial batch of tips and if you have your favorite one 
 - **Lightweight dependencies**: Only requires `nui.nvim` - no heavyweight pickers (fzf-lua, telescope, snacks, mini...)
 - **Word-based search**: Intelligent search that matches all words (e.g., "insert character" finds "character to insert")
 - **Live markdown rendering**: Preview rendered descriptions with full markdown support
-- **Perfect navigation**: Seamless mouse and keyboard navigation with smart mode switching
+- **Simple navigation**: Seamless mouse and keyboard navigation with smart mode switching
 - **Cursor preservation**: Returns to your exact cursor position and mode after closing
 - Support for categories, tags, and rich text
 - Lazy loading for optimal startup performance
