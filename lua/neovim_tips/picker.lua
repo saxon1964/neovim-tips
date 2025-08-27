@@ -101,15 +101,23 @@ function NuiPicker:update_titles_display()
   end
 
   -- Temporarily make modifiable to update, then restore
-  vim.api.nvim_buf_set_option(self.titles_popup.bufnr, "modifiable", true)
+  vim.bo[self.titles_popup.bufnr].modifiable = true
   vim.api.nvim_buf_set_lines(self.titles_popup.bufnr, 0, -1, false, lines)
-  vim.api.nvim_buf_set_option(self.titles_popup.bufnr, "modifiable", false)
+  vim.bo[self.titles_popup.bufnr].modifiable = false
 
   -- Highlight selected line
   vim.api.nvim_buf_clear_namespace(self.titles_popup.bufnr, -1, 0, -1)
   if self.selected_index > 0 and self.selected_index <= #lines then
-    vim.api.nvim_buf_add_highlight(self.titles_popup.bufnr, -1, "PmenuSel", self.selected_index - 1, 0, -1)
-    vim.api.nvim_buf_add_highlight(self.titles_popup.bufnr, -1, "WarningMsg", self.selected_index - 1, 0, 2)
+    vim.api.nvim_buf_set_extmark(self.titles_popup.bufnr, -1, self.selected_index - 1, 0, {
+      end_col = -1,
+      hl_group = "PmenuSel",
+      priority = 100
+    })
+    vim.api.nvim_buf_set_extmark(self.titles_popup.bufnr, -1, self.selected_index - 1, 0, {
+      end_col = 2,
+      hl_group = "WarningMsg",
+      priority = 101
+    })
   end
 end
 
@@ -148,7 +156,7 @@ function NuiPicker:update_preview()
 
     -- Update content (all buffers stay editable for debugging)
     vim.api.nvim_buf_set_lines(self.preview_popup.bufnr, 0, -1, false, lines)
-    vim.api.nvim_buf_set_option(self.preview_popup.bufnr, "filetype", "markdown")
+    vim.bo[self.preview_popup.bufnr].filetype = "markdown"
 
     -- Let render-markdown handle rendering automatically without forcing window switches
 
@@ -189,7 +197,7 @@ function NuiPicker:update_preview_immediate()
 
     -- Update content (all buffers stay editable for debugging)
     vim.api.nvim_buf_set_lines(self.preview_popup.bufnr, 0, -1, false, lines)
-    vim.api.nvim_buf_set_option(self.preview_popup.bufnr, "filetype", "markdown")
+    vim.bo[self.preview_popup.bufnr].filetype = "markdown"
 
     -- Let render-markdown handle rendering automatically without forcing window switches
   end
@@ -362,7 +370,6 @@ function NuiPicker:setup_autocmds()
       self.search_timer:stop()
       self.search_timer = nil
     end
-    
     self.search_timer = vim.defer_fn(function()
       local lines = vim.api.nvim_buf_get_lines(self.search_popup.bufnr, 0, 1, false)
       self.search_text = lines[1] or ""
@@ -485,7 +492,7 @@ function M.show()
     get_content = function(title)
       return tips_module.get_description(title) or "Description not available"
     end,
-    on_select = function(_) 
+    on_select = function(_)
       -- Title argument is not used
       -- Do nothing - just close picker
     end
