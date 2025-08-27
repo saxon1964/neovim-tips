@@ -168,6 +168,26 @@ function M.show_daily_tip()
       popup:unmount()
     end, { noremap = true, silent = true })
   end
+  
+  -- Auto-close when user enters command mode to prevent hijacking
+  popup:map("n", ":", function()
+    popup:unmount()
+    -- Use feedkeys to properly enter command mode
+    vim.api.nvim_feedkeys(":", "n", true)
+  end, { noremap = true, silent = true })
+  
+  -- Auto-close when user tries to leave the window (for shortcuts like <leader>nto)
+  popup:on("BufLeave", function()
+    -- Small delay to prevent immediate closure, but close if user actually switched focus
+    vim.defer_fn(function()
+      if popup.winid and vim.api.nvim_win_is_valid(popup.winid) then
+        local current_win = vim.api.nvim_get_current_win()
+        if current_win ~= popup.winid then
+          popup:unmount()
+        end
+      end
+    end, 50)
+  end)
 
   -- Clean up when popup closes
   popup:on("BufWinLeave", function()
