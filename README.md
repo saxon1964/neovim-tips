@@ -1,12 +1,14 @@
 # Neovim Tips Plugin
 
-*A Lua plugin for Neovim that helps you organize and search over 500 helpful tips, tricks, and shortcuts via a beautiful custom picker interface.*
-
-> **📖 Quick Access**: You can open this guide anytime with the `:NeovimTipsHelp` command
+*This Lua plugin for Neovim brings together hundreds of helpful tips, tricks, and shortcuts, all available through a custom picker. It’s easy to expand with your own entries, so the collection grows with you and your workflow.*
 
 ![Neovim tips plugin screenshot](images/s1.png)
 
+
+
 ![Neovim tips tip of the day](images/s2.png)
+
+> **📖 Quick Access**: You can open this guide anytime with the `:NeovimTipsHelp` command
 
 ## 🎯 Purpose
 
@@ -23,14 +25,14 @@ I have provided a solid initial batch of tips and if you have your favorite one 
 ## ✨ Features
 - **Beautiful custom picker**: Three-pane interface with search, tips list, and live markdown preview
 - **Daily tip popup**: Get a random tip on startup (configurable: off, daily, or every launch)
-- **Lightweight dependencies**: Only requires `nui.nvim` - no heavyweight pickers (fzf-lua, telescope, snacks, mini...)
+- **Lightweight dependencies**: Only requires `nui.nvim` and `render-markdown` - no heavyweight pickers (fzf-lua, telescope, snacks, mini...)
 - **Word-based search**: Intelligent search that matches all words (e.g., "insert character" finds "character to insert")
 - **Live markdown rendering**: Preview rendered descriptions with full markdown support
 - **Simple navigation**: Seamless mouse and keyboard navigation with smart mode switching
 - **Cursor preservation**: Returns to your exact cursor position and mode after closing
 - Support for categories, tags, and rich text
 - Lazy loading for optimal startup performance
-- The plugin comes with a starting set of 596+ curated tips
+- The plugin comes with a starting set of ~600 curated tips
 - You can add/edit unlimited number of personal tips stored in a configurable file
 - User tips with configurable prefixes to prevent conflicts with builtin tips
 - Automatic title conflict detection and warnings
