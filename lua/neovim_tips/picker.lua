@@ -45,23 +45,23 @@ end
 -- Filter titles based on search text (word-based search)
 function NuiPicker:filter_titles()
   local search_text = self.search_text or ""
-  
+
   if search_text == "" then
     self.filtered_titles = self.all_titles
   else
     self.filtered_titles = {}
     local search_lower = string.lower(search_text)
-    
+
     -- Split search text into words
     local search_words = {}
     for word in search_lower:gmatch("%S+") do
       table.insert(search_words, word)
     end
-    
+
     for _, title in ipairs(self.all_titles) do
       local title_lower = string.lower(title)
       local matches_all = true
-      
+
       -- Check that all search words are found in the title
       for _, word in ipairs(search_words) do
         if not string.find(title_lower, word, 1, true) then
@@ -69,13 +69,13 @@ function NuiPicker:filter_titles()
           break
         end
       end
-      
+
       if matches_all then
         table.insert(self.filtered_titles, title)
       end
     end
   end
-  
+
   -- Reset selection if needed
   if self.selected_index > #self.filtered_titles then
     self.selected_index = 1
@@ -88,23 +88,23 @@ end
 -- Update the titles list display
 function NuiPicker:update_titles_display()
   if not self.titles_popup then return end
-  
+
   local lines = {}
   for i, title in ipairs(self.filtered_titles or {}) do
     local prefix = (i == self.selected_index) and "> " or "  "
     table.insert(lines, prefix .. title)
   end
-  
+
   -- Show empty state if no results
   if #lines == 0 then
     lines = {"  No matching tips found"}
   end
-  
+
   -- Temporarily make modifiable to update, then restore
   vim.api.nvim_buf_set_option(self.titles_popup.bufnr, "modifiable", true)
   vim.api.nvim_buf_set_lines(self.titles_popup.bufnr, 0, -1, false, lines)
   vim.api.nvim_buf_set_option(self.titles_popup.bufnr, "modifiable", false)
-  
+
   -- Highlight selected line
   vim.api.nvim_buf_clear_namespace(self.titles_popup.bufnr, -1, 0, -1)
   if self.selected_index > 0 and self.selected_index <= #lines then
@@ -116,21 +116,21 @@ end
 -- Update preview content
 function NuiPicker:update_preview()
   if not self.preview_popup or #self.filtered_titles == 0 then return end
-  
+
   local selected_title = self.filtered_titles[self.selected_index]
   if not selected_title then return end
-  
+
   -- Cancel any pending timer
   if self.update_timer then
     self.update_timer:stop()
     self.update_timer:close()
     self.update_timer = nil
   end
-  
+
   -- Get content
   local content = self.opts.get_content and self.opts.get_content(selected_title) or "No content available"
   local lines = vim.split(content, "\n")
-  
+
   -- Create temp file for markdown rendering
   self:cleanup_tmp_file()
   self.tmp_file = os.tmpname() .. ".md"
@@ -138,25 +138,25 @@ function NuiPicker:update_preview()
   if not file then return end
   file:write(content)
   file:close()
-  
+
   -- Debounced update
   self.update_timer = vim.defer_fn(function()
     if not vim.api.nvim_buf_is_valid(self.preview_popup.bufnr) then return end
-    
+
     -- Update title
     self.preview_popup.border:set_text("top", " " .. selected_title .. " ", "center")
-    
+
     -- Update content (all buffers stay editable for debugging)
     vim.api.nvim_buf_set_lines(self.preview_popup.bufnr, 0, -1, false, lines)
     vim.api.nvim_buf_set_option(self.preview_popup.bufnr, "filetype", "markdown")
-    
+
     -- Trigger markdown rendering
     local current_win = vim.api.nvim_get_current_win()
     vim.api.nvim_set_current_win(self.preview_popup.winid)
     vim.cmd("silent! doautocmd FileType markdown")
     vim.cmd("silent! doautocmd BufWinEnter")
     vim.api.nvim_set_current_win(current_win)
-    
+
     self.update_timer = nil
   end, 100)
 end
@@ -164,21 +164,21 @@ end
 -- Immediate preview update for mouse clicks
 function NuiPicker:update_preview_immediate()
   if not self.preview_popup or #self.filtered_titles == 0 then return end
-  
+
   local selected_title = self.filtered_titles[self.selected_index]
   if not selected_title then return end
-  
+
   -- Cancel any pending timer
   if self.update_timer then
     self.update_timer:stop()
     self.update_timer:close()
     self.update_timer = nil
   end
-  
+
   -- Get content
   local content = self.opts.get_content and self.opts.get_content(selected_title) or "No content available"
   local lines = vim.split(content, "\n")
-  
+
   -- Create temp file
   self:cleanup_tmp_file()
   self.tmp_file = os.tmpname() .. ".md"
@@ -186,16 +186,16 @@ function NuiPicker:update_preview_immediate()
   if not file then return end
   file:write(content)
   file:close()
-  
+
   -- Immediate update
   if vim.api.nvim_buf_is_valid(self.preview_popup.bufnr) then
     -- Update title
     self.preview_popup.border:set_text("top", " " .. selected_title .. " ", "center")
-    
+
     -- Update content (all buffers stay editable for debugging)
     vim.api.nvim_buf_set_lines(self.preview_popup.bufnr, 0, -1, false, lines)
     vim.api.nvim_buf_set_option(self.preview_popup.bufnr, "filetype", "markdown")
-    
+
     -- Trigger markdown rendering
     local current_win = vim.api.nvim_get_current_win()
     vim.api.nvim_set_current_win(self.preview_popup.winid)
@@ -237,6 +237,7 @@ function NuiPicker:create_layout()
     win_options = {
       wrap = false,
       number = false,
+      winhighlight = "FloatBorder:ErrorMsg",
     },
   })
 
@@ -259,6 +260,7 @@ function NuiPicker:create_layout()
       wrap = false,
       number = false,
       cursorline = false,
+      winhighlight = "FloatBorder:ErrorMsg",
     },
   })
 
@@ -280,6 +282,7 @@ function NuiPicker:create_layout()
     win_options = {
       wrap = true,
       number = false,
+      winhighlight = "FloatBorder:ErrorMsg",
     },
   })
 
@@ -307,7 +310,7 @@ function NuiPicker:setup_keymaps()
   local function close_picker()
     self:close()
   end
-  
+
   local function move_down()
     if self.selected_index < #self.filtered_titles then
       self.selected_index = self.selected_index + 1
@@ -317,7 +320,7 @@ function NuiPicker:setup_keymaps()
       vim.api.nvim_win_set_cursor(self.titles_popup.winid, {self.selected_index, 0})
     end
   end
-  
+
   local function move_up()
     if self.selected_index > 1 then
       self.selected_index = self.selected_index - 1
@@ -327,7 +330,7 @@ function NuiPicker:setup_keymaps()
       vim.api.nvim_win_set_cursor(self.titles_popup.winid, {self.selected_index, 0})
     end
   end
-  
+
   local function select_item()
     if self.opts.on_select and #self.filtered_titles > 0 then
       local selected = self.filtered_titles[self.selected_index]
@@ -344,7 +347,7 @@ function NuiPicker:setup_keymaps()
   self.search_popup:map("i", "<Up>", move_up, { noremap = true })
   self.search_popup:map("i", "<C-j>", move_down, { noremap = true })
   self.search_popup:map("i", "<C-k>", move_up, { noremap = true })
-  
+
   self.search_popup:map("n", "<Esc>", close_picker, { noremap = true })
   self.search_popup:map("n", "q", close_picker, { noremap = true })
   self.search_popup:map("n", "<CR>", select_item, { noremap = true })
@@ -371,7 +374,7 @@ function NuiPicker:setup_autocmds()
     self:update_titles_display()
     self:update_preview()
   end)
-  
+
   self.search_popup:on(event.TextChanged, function()
     local lines = vim.api.nvim_buf_get_lines(self.search_popup.bufnr, 0, 1, false)
     self.search_text = lines[1] or ""
@@ -379,7 +382,7 @@ function NuiPicker:setup_autocmds()
     self:update_titles_display()
     self:update_preview()
   end)
-  
+
   -- Mouse click support in titles
   self.titles_popup:on(event.CursorMoved, function()
     local cursor = vim.api.nvim_win_get_cursor(self.titles_popup.winid)
@@ -392,12 +395,12 @@ function NuiPicker:setup_autocmds()
       vim.api.nvim_win_set_cursor(self.titles_popup.winid, {self.selected_index, 0})
     end
   end)
-  
+
   -- Exit insert mode when entering titles panel
   self.titles_popup:on(event.WinEnter, function()
     vim.cmd("stopinsert")
   end)
-  
+
   -- Auto-enter insert mode when returning to search
   self.search_popup:on(event.WinEnter, function()
     vim.cmd("startinsert!")
@@ -410,25 +413,25 @@ function NuiPicker:show()
     vim.notify("No titles available", vim.log.levels.INFO)
     return
   end
-  
+
   -- Save current state
   self.original_window = vim.api.nvim_get_current_win()
   self.original_cursor_pos = vim.api.nvim_win_get_cursor(self.original_window)
   self.original_mode = vim.api.nvim_get_mode().mode
-  
+
   self:create_layout()
   self:setup_keymaps()
   self:setup_autocmds()
-  
+
   -- Mount the layout
   self.layout:mount()
-  
+
   -- Initial display
   self.search_text = ""
   self:filter_titles()
   self:update_titles_display()
   self:update_preview()
-  
+
   -- Focus search and enter insert mode
   vim.api.nvim_set_current_win(self.search_popup.winid)
   vim.cmd("startinsert!")
@@ -437,26 +440,26 @@ end
 -- Close the picker
 function NuiPicker:close()
   self:cleanup_tmp_file()
-  
+
   -- Cancel any pending timer
   if self.update_timer then
     self.update_timer:stop()
     self.update_timer:close()
     self.update_timer = nil
   end
-  
+
   -- Unmount layout (nui handles cleanup)
   if self.layout then
     self.layout:unmount()
   end
-  
+
   -- Restore original state
   if self.original_window and vim.api.nvim_win_is_valid(self.original_window) then
     vim.api.nvim_set_current_win(self.original_window)
     if self.original_cursor_pos then
       pcall(vim.api.nvim_win_set_cursor, self.original_window, self.original_cursor_pos)
     end
-    
+
     -- Restore original mode
     if self.original_mode == "i" then
       vim.cmd("startinsert")
@@ -478,22 +481,23 @@ end
 function M.show()
   local tips_module = require("neovim_tips.tips")
   local titles = tips_module.get_titles()
-  
+
   if not titles or vim.tbl_isempty(titles) then
     vim.notify("No tips loaded. Please run :NeovimTipsLoad first to load tips, then try again.", vim.log.levels.WARN)
     return
   end
-  
+
   -- Create picker instance
   local picker = M.new({
     get_content = function(title)
       return tips_module.get_description(title) or "Description not available"
     end,
-    on_select = function(title)
+    on_select = function(_) 
+      -- Title argument is not used
       -- Do nothing - just close picker
     end
   })
-  
+
   picker:set_titles(titles)
   picker:show()
 end

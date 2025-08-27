@@ -40,7 +40,6 @@ function M.setup(opts)
             if result then
               vim.notify("Neovim tips loaded", vim.log.levels.INFO)
             end
-            
             -- Show picker
             picker.show()
           else
@@ -118,7 +117,7 @@ function M.setup(opts)
   vim.api.nvim_create_autocmd("VimEnter", {
     callback = function()
       -- Load tips first, then check for daily tip
-      utils.run_async(loader.load, function(ok, result)
+      utils.run_async(loader.load, function(ok, _)
         if ok then
           daily_tip.check_and_show()
         end
