@@ -1,11 +1,19 @@
+---@class NeovimTipsUtils
+---Utility functions for file operations, string handling, and async execution
 local M = {}
 
--- Lua: A funny language without a string trim function
+---Trim whitespace from both ends of a string
+---@param s string String to trim
+---@return string trimmed Trimmed string
 function M.trim(s)
   return s:match("^%s*(.-)%s*$")
 end
 
--- Create a file and its parent directories and write initial content
+---Create a file and its parent directories with initial content
+---Only creates the file if it doesn't already exist
+---@param filepath string Full path to the file to create
+---@param content string Initial content to write to the file
+---@return nil
 function M.create_file_and_dirs(filepath, content)
   -- Check if the file already exists
   if vim.fn.filereadable(filepath) == 1 then return end
@@ -29,7 +37,11 @@ function M.create_file_and_dirs(filepath, content)
   end
 end
 
--- Asyncronous function execution
+---Execute a function asynchronously with callback
+---Uses vim.loop timer to run function in background and schedule callback
+---@param fn function Function to execute asynchronously
+---@param callback function Callback function called with (ok, result) parameters
+---@return nil
 function M.run_async(fn, callback)
   local timer = vim.loop.new_timer()
   timer:start(0, 0, function()

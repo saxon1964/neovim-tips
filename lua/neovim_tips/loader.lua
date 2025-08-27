@@ -1,3 +1,5 @@
+---@class NeovimTipsLoader
+---Tip loading and parsing functionality
 local M = {}
 
 local config = require("neovim_tips.config")
@@ -9,6 +11,10 @@ local user_file = config.options.user_file
 
 local titles_seen = {}
 
+---Parse tip blocks from markdown content
+---@param content string Markdown content to parse
+---@param is_user_tips boolean Whether these are user tips (affects prefixing)
+---@return Tip[] tips Array of parsed tip objects
 local function parse_tip_blocks(content, is_user_tips)
   local parsed_tips = {}
   local current = {}
@@ -93,6 +99,9 @@ local function read_tips_from_directory(dir_path, is_user_tips)
   return all_tips
 end
 
+---Load all tips from builtin and user sources
+---Only loads if not already loaded (checks titles_seen cache)
+---@return boolean success True if tips were loaded, false if already loaded
 function M.load()
   if next(titles_seen) == nil then
     local builtin_tips = read_tips_from_directory(builtin_dir, false)
@@ -107,6 +116,9 @@ function M.load()
   end
 end
 
+---Reload all tips from builtin and user sources
+---Clears cache and forces a fresh load of all tips
+---@return boolean success Always returns true after reload
 function M.reload()
   titles_seen = {}
   return M.load()

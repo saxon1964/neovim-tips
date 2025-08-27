@@ -1,15 +1,22 @@
+---@class NeovimTipsDailyTip
+---Daily tip functionality for showing random tips on startup
 local M = {}
 
 local Popup = require("nui.popup")
 local tips = require("neovim_tips.tips")
 local config = require("neovim_tips.config")
 
--- Path to store the last shown date
+---@class DailyTipData
+---@field last_shown string Date string in YYYY-MM-DD format
+
+---Get the path to the daily tip state file
+---@return string path Path to persistent state JSON file
 local function get_state_file()
   return vim.fn.stdpath("data") .. "/neovim_tips/persistent.json"
 end
 
--- Read the last shown date
+---Read the last shown date from persistent storage
+---@return string|nil date Last shown date in YYYY-MM-DD format, or nil if not found
 local function read_last_shown()
   local state_file = get_state_file()
   local file = io.open(state_file, "r")
@@ -28,7 +35,8 @@ local function read_last_shown()
   return nil
 end
 
--- Write the current date as last shown
+---Write the current date as last shown to persistent storage
+---@return nil
 local function write_last_shown()
   local state_file = get_state_file()
   local today = os.date("%Y-%m-%d")
@@ -45,14 +53,16 @@ local function write_last_shown()
   end
 end
 
--- Check if we should show today's tip
+---Check if we should show today's tip based on last shown date
+---@return boolean should_show True if tip should be shown today
 local function should_show_today()
   local today = os.date("%Y-%m-%d")
   local last_shown = read_last_shown()
   return last_shown ~= today
 end
 
--- Get a random tip
+---Get a random tip from the available tips
+---@return table|nil tip Random tip with title and description, or nil if no tips available
 local function get_random_tip()
   local all_titles = tips.get_titles()
   if #all_titles == 0 then
@@ -69,7 +79,9 @@ local function get_random_tip()
   }
 end
 
--- Create and show the daily tip popup
+---Create and show the daily tip popup
+---Displays a centered popup with a random tip, markdown rendering, and auto-close functionality
+---@return nil
 function M.show_daily_tip()
   local tip = get_random_tip()
   if not tip then
@@ -200,7 +212,10 @@ function M.show_daily_tip()
   write_last_shown()
 end
 
--- Main function to check and show daily tip
+---Main function to check and show daily tip based on configuration
+---Respects the daily_tip configuration option and shows tip according to the mode:
+---0=off, 1=once per day, 2=every startup
+---@return nil
 function M.check_and_show()
   local daily_tip_mode = config.options.daily_tip
 

@@ -1,3 +1,5 @@
+---@class NeovimTipsInit
+---Main plugin initialization and command setup
 local M = {}
 
 local config = require("neovim_tips.config")
@@ -6,6 +8,10 @@ local picker = require("neovim_tips.picker")
 local utils = require("neovim_tips.utils")
 local daily_tip = require("neovim_tips.daily_tip")
 
+---Setup the Neovim tips plugin
+---Configures options, creates user commands, and sets up autocmds for tips management
+---@param opts NeovimTipsOptions|nil User configuration options
+---@return nil
 function M.setup(opts)
   -- Merge configurations
   config.setup(opts)

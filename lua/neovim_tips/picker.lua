@@ -1,3 +1,5 @@
+---@class NeovimTipsPicker
+---@field private M table
 local M = {}
 
 -- Import nui components
@@ -5,10 +7,29 @@ local Popup = require("nui.popup")
 local Layout = require("nui.layout")
 local event = require("nui.utils.autocmd").event
 
--- NUI-based picker class
+---@class NuiPicker
+---@field opts table Configuration options
+---@field layout NuiLayout|nil Main layout container
+---@field search_popup NuiPopup|nil Search input popup
+---@field titles_popup NuiPopup|nil Tips list popup  
+---@field preview_popup NuiPopup|nil Preview content popup
+---@field all_titles string[] All available tip titles
+---@field filtered_titles string[] Currently filtered tip titles
+---@field selected_index integer Currently selected tip index
+---@field search_text string Current search query
+---@field tmp_file string|nil Temporary file for markdown rendering
+---@field update_timer userdata|nil Debounce timer for preview updates
+---@field original_cursor_pos integer[]|nil Original cursor position
+---@field original_window integer|nil Original window ID
+---@field original_mode string|nil Original vim mode
 local NuiPicker = {}
 NuiPicker.__index = NuiPicker
 
+---Create a new NuiPicker instance
+---@param opts table|nil Configuration options
+---@field opts.get_content function|nil Function to get tip content by title
+---@field opts.on_select function|nil Callback when tip is selected
+---@return NuiPicker picker New picker instance
 function NuiPicker:new(opts)
   local picker = {
     opts = opts or {},
@@ -33,7 +54,9 @@ function NuiPicker:new(opts)
   return picker
 end
 
--- Set the data source
+---Set the tip titles that will be displayed in the picker
+---@param titles string[] List of tip titles to display
+---@return nil
 function NuiPicker:set_titles(titles)
   self.all_titles = titles
   self.filtered_titles = titles
@@ -42,7 +65,9 @@ function NuiPicker:set_titles(titles)
   end
 end
 
--- Filter titles based on search text (word-based search)
+---Filter titles based on search text using word-based matching
+---All words in the search query must be found in the title (case-insensitive)
+---@return nil
 function NuiPicker:filter_titles()
   local search_text = self.search_text or ""
 
@@ -85,7 +110,10 @@ function NuiPicker:filter_titles()
   end
 end
 
--- Update the titles list display
+---Update the titles list display with current filtered results
+---Updates the titles popup content and applies highlighting to selected item
+---Also updates the border title with current tip counts (filtered/total)
+---@return nil
 function NuiPicker:update_titles_display()
   if not self.titles_popup then return end
 
@@ -133,7 +161,10 @@ function NuiPicker:update_titles_display()
   end
 end
 
--- Update preview content
+---Update preview content with debounced rendering
+---Gets content for selected tip and updates preview popup with markdown rendering
+---Uses a 100ms debounce timer to prevent flickering during navigation
+---@return nil
 function NuiPicker:update_preview()
   if not self.preview_popup or #self.filtered_titles == 0 then return end
 
@@ -181,7 +212,9 @@ function NuiPicker:update_preview()
   end, 100)
 end
 
--- Immediate preview update for mouse clicks
+---Immediate preview update for mouse clicks and direct navigation
+---Similar to update_preview but without debouncing for immediate feedback
+---@return nil
 function NuiPicker:update_preview_immediate()
   if not self.preview_popup or #self.filtered_titles == 0 then return end
 
@@ -225,7 +258,8 @@ function NuiPicker:update_preview_immediate()
   end
 end
 
--- Clean up temporary file
+---Clean up temporary markdown file used for rendering
+---@return nil
 function NuiPicker:cleanup_tmp_file()
   if self.tmp_file and vim.fn.filereadable(self.tmp_file) == 1 then
     local ok, err = pcall(os.remove, self.tmp_file)
@@ -236,7 +270,9 @@ function NuiPicker:cleanup_tmp_file()
   end
 end
 
--- Create the layout with nui components
+---Create the three-pane layout with search, titles, and preview popups
+---Sets up the main UI structure with proper sizing and borders
+---@return nil
 function NuiPicker:create_layout()
   -- Create popups
   self.search_popup = Popup({
@@ -325,7 +361,9 @@ function NuiPicker:create_layout()
   )
 end
 
--- Set up key mappings
+---Set up key mappings for all popups
+---Configures navigation, selection, and closing keys for search, titles, and preview panels
+---@return nil
 function NuiPicker:setup_keymaps()
   local function close_picker()
     self:close()
@@ -384,7 +422,9 @@ function NuiPicker:setup_keymaps()
   self.titles_popup:map("n", "<Up>", move_up, { noremap = true })
 end
 
--- Set up autocmds
+---Set up autocmds for real-time search and mouse interaction
+---Handles text changes in search popup and cursor movement in titles popup
+---@return nil
 function NuiPicker:setup_autocmds()
   -- Debounced search filtering to reduce flicker
   local function debounced_search_update()
@@ -429,7 +469,10 @@ function NuiPicker:setup_autocmds()
   end)
 end
 
--- Show the picker
+---Show the picker and preserve current state
+---Saves current cursor position, window, and mode for restoration on close
+---Mounts the layout and initializes the search interface
+---@return nil
 function NuiPicker:show()
   if not self.all_titles or #self.all_titles == 0 then
     vim.notify("No titles available", vim.log.levels.INFO)
@@ -459,7 +502,10 @@ function NuiPicker:show()
   vim.cmd("startinsert!")
 end
 
--- Close the picker
+---Close the picker and restore original state
+---Restores cursor position, window focus, and vim mode to pre-picker state
+---Cleans up temporary files and unmounts the layout
+---@return nil
 function NuiPicker:close()
   self:cleanup_tmp_file()
 
@@ -494,12 +540,17 @@ function NuiPicker:close()
   end
 end
 
--- Factory function
+---Create a new picker instance
+---@param opts table|nil Configuration options
+---@return NuiPicker picker New picker instance  
 function M.new(opts)
   return NuiPicker:new(opts)
 end
 
--- Main entry point
+---Show the tips picker interface
+---Creates and displays a picker with all available tips
+---Uses the tips module for data and handles tip selection
+---@return nil
 function M.show()
   local tips_module = require("neovim_tips.tips")
   local titles = tips_module.get_titles()
