@@ -24,7 +24,7 @@ local function read_last_shown()
   if ok and data and data.last_shown then
     return data.last_shown
   end
- 
+
   return nil
 end
 
@@ -33,11 +33,11 @@ local function write_last_shown()
   local state_file = get_state_file()
   local today = os.date("%Y-%m-%d")
   local data = { last_shown = today }
- 
+
   -- Ensure directory exists
   local dir = vim.fn.fnamemodify(state_file, ":h")
   vim.fn.mkdir(dir, "p")
- 
+
   local file = io.open(state_file, "w")
   if file then
     file:write(vim.json.encode(data))
@@ -138,9 +138,10 @@ function M.show_daily_tip()
   table.insert(lines, "")
   table.insert(lines, "---")
   table.insert(lines, "")
-  table.insert(lines, "*Configuration: `daily_tip = 0` (off), `1` (once per day), `2` (every startup)*")
+  table.insert(lines, "Have your favorite tip? Found an error? Please report it [here](" .. config.options.github_url .. "). Thanks!")
   table.insert(lines, "")
-  table.insert(lines, "Use this [link](https://github.com/saxon1964/neovim-tips/issues) to report errors")
+  table.insert(lines, "For daily tip setup refer to [README](" .. config.options.github_url .. ") file.")
+  table.insert(lines, "")
 
   -- Set content while buffer is modifiable
   vim.api.nvim_buf_set_lines(popup.bufnr, 0, -1, false, lines)
@@ -193,7 +194,7 @@ function M.check_and_show()
     -- Delay to let Neovim finish startup completely
     vim.defer_fn(function()
       M.show_daily_tip()
-    end, 800)
+    end, 1000)
   end
 end
 
