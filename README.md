@@ -20,6 +20,7 @@ I have provided a solid initial batch of tips and if you have your favorite one 
 
 ## ✨ Features
 - **Beautiful custom picker**: Three-pane interface with search, tips list, and live markdown preview
+- **Daily tip popup**: Get a random tip on startup (configurable: off, daily, or every launch)
 - **Lightweight dependencies**: Only requires `nui.nvim` - no heavyweight pickers (fzf-lua, telescope, snacks, mini...)
 - **Word-based search**: Intelligent search that matches all words (e.g., "insert character" finds "character to insert")
 - **Live markdown rendering**: Preview rendered descriptions with full markdown support
@@ -51,6 +52,9 @@ I have provided a solid initial batch of tips and if you have your favorite one 
     user_tip_prefix = "[User] ",
     -- OPTIONAL: Show warnings when user tips conflict with builtin (default: true)
     warn_on_conflicts = true,
+    -- OPTIONAL: Daily tip mode (default: 1)
+    -- 0 = off, 1 = once per day, 2 = every startup
+    daily_tip = 1,
   },
   init = function()
     -- OPTIONAL: Change to your liking or drop completely 
@@ -79,6 +83,7 @@ use {
       user_file = vim.fn.stdpath("config") .. "/neovim_tips/user_tips.md",
       user_tip_prefix = "[User] ",  -- Prefix for user tips
       warn_on_conflicts = true,     -- Warn about title conflicts
+      daily_tip = 1,                -- Daily tip: 0=off, 1=once per day, 2=every startup
     }
 
     local map = vim.keymap.set
@@ -100,6 +105,7 @@ Plug 'saxon1964/neovim-tips', { 'tag': '*' } " Only update on tagged releases
 lua << EOF
 require("neovim_tips").setup {
   user_file = vim.fn.stdpath("config") .. "/neovim_tips/user_tips.md",
+  daily_tip = 1,  -- Daily tip: 0=off, 1=once per day, 2=every startup
 }
 
 local map = vim.keymap.set
@@ -120,6 +126,7 @@ call minpac#add('saxon1964/neovim-tips', {'tag': '*'}) " Only update on tagged r
 lua << EOF
 require("neovim_tips").setup {
   user_file = vim.fn.stdpath("config") .. "/neovim_tips/user_tips.md",
+  daily_tip = 1,  -- Daily tip: 0=off, 1=once per day, 2=every startup
 }
 
 local map = vim.keymap.set
@@ -140,6 +147,7 @@ require "paq" {
 
 require("neovim_tips").setup {
   user_file = vim.fn.stdpath("config") .. "/neovim_tips/user_tips.md",
+  daily_tip = 1,  -- Daily tip: 0=off, 1=once per day, 2=every startup
 }
 
 local map = vim.keymap.set
@@ -162,6 +170,7 @@ call dein#end()
 lua << EOF
 require("neovim_tips").setup {
   user_file = vim.fn.stdpath("config") .. "/neovim_tips/user_tips.md",
+  daily_tip = 1,  -- Daily tip: 0=off, 1=once per day, 2=every startup
 }
 
 local map = vim.keymap.set
@@ -226,6 +235,24 @@ return {
   },
 }
 ```
+
+## 💡 Daily Tip Feature
+
+The plugin can show you a random tip in a beautiful popup when you start Neovim. This helps you discover new tips and improve your workflow naturally.
+
+### Configuration Options:
+- `daily_tip = 0`: Disabled (no popup)
+- `daily_tip = 1`: Once per day (default)
+- `daily_tip = 2`: Every Neovim startup
+
+### Daily Tip Popup Features:
+- **"Did you know?" popup**: Centered popup with random tip
+- **Smart persistence**: Once daily mode uses `~/.local/share/nvim/neovim_tips/persistent.json` 
+- **Full markdown rendering**: Rich formatting with render-markdown.nvim
+- **Easy dismissal**: Close with `q` or `<Esc>`
+- **Error reporting**: Includes GitHub issues link for feedback
+
+![Daily tip popup example](screenshot-daily-tip.png)
 
 ## 🔧 Commands
 
@@ -298,6 +325,9 @@ require("neovim_tips").setup({
   
   -- Show warnings when user tips have conflicting titles with builtin tips
   warn_on_conflicts = true,
+  
+  -- Daily tip mode: 0=off, 1=once per day, 2=every startup
+  daily_tip = 1,
 })
 ```
 
