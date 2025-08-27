@@ -193,7 +193,7 @@ function M.check_and_show()
     -- Delay to let Neovim finish startup completely
     vim.defer_fn(function()
       M.show_daily_tip()
-    end, 1500)
+    end, 800)
   end
 end
 
