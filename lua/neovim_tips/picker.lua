@@ -150,12 +150,7 @@ function NuiPicker:update_preview()
     vim.api.nvim_buf_set_lines(self.preview_popup.bufnr, 0, -1, false, lines)
     vim.api.nvim_buf_set_option(self.preview_popup.bufnr, "filetype", "markdown")
 
-    -- Trigger markdown rendering
-    local current_win = vim.api.nvim_get_current_win()
-    vim.api.nvim_set_current_win(self.preview_popup.winid)
-    vim.cmd("silent! doautocmd FileType markdown")
-    vim.cmd("silent! doautocmd BufWinEnter")
-    vim.api.nvim_set_current_win(current_win)
+    -- Let render-markdown handle rendering automatically without forcing window switches
 
     self.update_timer = nil
   end, 100)
@@ -196,12 +191,7 @@ function NuiPicker:update_preview_immediate()
     vim.api.nvim_buf_set_lines(self.preview_popup.bufnr, 0, -1, false, lines)
     vim.api.nvim_buf_set_option(self.preview_popup.bufnr, "filetype", "markdown")
 
-    -- Trigger markdown rendering
-    local current_win = vim.api.nvim_get_current_win()
-    vim.api.nvim_set_current_win(self.preview_popup.winid)
-    vim.cmd("silent! doautocmd FileType markdown")
-    vim.cmd("silent! doautocmd BufWinEnter")
-    vim.api.nvim_set_current_win(current_win)
+    -- Let render-markdown handle rendering automatically without forcing window switches
   end
 end
 
@@ -366,22 +356,25 @@ end
 
 -- Set up autocmds
 function NuiPicker:setup_autocmds()
-  -- Real-time search filtering
-  self.search_popup:on(event.TextChangedI, function()
-    local lines = vim.api.nvim_buf_get_lines(self.search_popup.bufnr, 0, 1, false)
-    self.search_text = lines[1] or ""
-    self:filter_titles()
-    self:update_titles_display()
-    self:update_preview()
-  end)
+  -- Debounced search filtering to reduce flicker
+  local function debounced_search_update()
+    if self.search_timer then
+      self.search_timer:stop()
+      self.search_timer = nil
+    end
+    
+    self.search_timer = vim.defer_fn(function()
+      local lines = vim.api.nvim_buf_get_lines(self.search_popup.bufnr, 0, 1, false)
+      self.search_text = lines[1] or ""
+      self:filter_titles()
+      self:update_titles_display()
+      self:update_preview()
+      self.search_timer = nil
+    end, 50) -- 50ms debounce
+  end
 
-  self.search_popup:on(event.TextChanged, function()
-    local lines = vim.api.nvim_buf_get_lines(self.search_popup.bufnr, 0, 1, false)
-    self.search_text = lines[1] or ""
-    self:filter_titles()
-    self:update_titles_display()
-    self:update_preview()
-  end)
+  self.search_popup:on(event.TextChangedI, debounced_search_update)
+  self.search_popup:on(event.TextChanged, debounced_search_update)
 
   -- Mouse click support in titles
   self.titles_popup:on(event.CursorMoved, function()
