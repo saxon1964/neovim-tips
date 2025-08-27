@@ -170,7 +170,12 @@ function NuiPicker:update_preview()
     vim.api.nvim_buf_set_lines(self.preview_popup.bufnr, 0, -1, false, lines)
     vim.bo[self.preview_popup.bufnr].filetype = "markdown"
 
-    -- Let render-markdown handle rendering automatically without forcing window switches
+    -- Enable render-markdown if available
+    if pcall(require, "render-markdown") then
+      vim.api.nvim_buf_call(self.preview_popup.bufnr, function()
+        require("render-markdown").enable()
+      end)
+    end
 
     self.update_timer = nil
   end, 100)
@@ -211,7 +216,12 @@ function NuiPicker:update_preview_immediate()
     vim.api.nvim_buf_set_lines(self.preview_popup.bufnr, 0, -1, false, lines)
     vim.bo[self.preview_popup.bufnr].filetype = "markdown"
 
-    -- Let render-markdown handle rendering automatically without forcing window switches
+    -- Enable render-markdown if available
+    if pcall(require, "render-markdown") then
+      vim.api.nvim_buf_call(self.preview_popup.bufnr, function()
+        require("render-markdown").enable()
+      end)
+    end
   end
 end
 
