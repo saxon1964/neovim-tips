@@ -2,13 +2,13 @@
 
 *This Lua plugin for Neovim brings together hundreds of helpful tips, tricks, and shortcuts, all available through a custom picker. It’s easy to expand with your own entries, so the collection grows with you and your workflow.*
 
+<p align=center><img align="center" src="neovim-tips-logo.png" height="150"></p>
+
 ![Neovim tips plugin screenshot](images/s1.png)
 
 
 
 ![Neovim tips tip of the day](images/s2.png)
-
-> **📖 Quick Access**: You can open this guide anytime with the `:NeovimTipsHelp` command
 
 ## 🎯 Purpose
 
@@ -68,7 +68,6 @@ I have provided a solid initial batch of tips and if you have your favorite one 
     map("n", "<leader>nte", ":NeovimTipsEdit<CR>", { desc = "Edit your Neovim tips", noremap = true, silent = true })
     map("n", "<leader>nta", ":NeovimTipsAdd<CR>", { desc = "Add your Neovim tip", noremap = true, silent = true })
     map("n", "<leader>ntr", ":NeovimTipsRandom<CR>", { desc = "Show random tip", noremap = true, silent = true })
-    map("n", "<leader>nth", ":NeovimTipsHelp<CR>", { desc = "Neovim tips user guide", noremap = true, silent = true })
   end
 }
 ```
@@ -96,7 +95,6 @@ use {
     map("n", "<leader>nte", ":NeovimTipsEdit<CR>", { desc = "Edit your Neovim tips", noremap = true, silent = true })
     map("n", "<leader>nta", ":NeovimTipsAdd<CR>", { desc = "Add your Neovim tip", noremap = true, silent = true })
     map("n", "<leader>ntr", ":NeovimTipsRandom<CR>", { desc = "Show random tip", noremap = true, silent = true })
-    map("n", "<leader>nth", ":NeovimTipsHelp<CR>", { desc = "Neovim tips user guide", noremap = true, silent = true })
   end
 }
 ```
@@ -119,7 +117,6 @@ map("n", "<leader>nto", ":NeovimTips<CR>", { desc = "Neovim tips", noremap = tru
 map("n", "<leader>nte", ":NeovimTipsEdit<CR>", { desc = "Edit your Neovim tips", noremap = true, silent = true })
 map("n", "<leader>nta", ":NeovimTipsAdd<CR>", { desc = "Add your Neovim tip", noremap = true, silent = true })
 map("n", "<leader>ntr", ":NeovimTipsRandom<CR>", { desc = "Show random tip", noremap = true, silent = true })
-map("n", "<leader>nth", ":NeovimTipsHelp<CR>", { desc = "Neovim tips user guide", noremap = true, silent = true })
 EOF
 ```
 
@@ -142,7 +139,6 @@ map("n", "<leader>nto", ":NeovimTips<CR>", { desc = "Neovim tips", noremap = tru
 map("n", "<leader>nte", ":NeovimTipsEdit<CR>", { desc = "Edit your Neovim tips", noremap = true, silent = true })
 map("n", "<leader>nta", ":NeovimTipsAdd<CR>", { desc = "Add your Neovim tip", noremap = true, silent = true })
 map("n", "<leader>ntr", ":NeovimTipsRandom<CR>", { desc = "Show random tip", noremap = true, silent = true })
-map("n", "<leader>nth", ":NeovimTipsHelp<CR>", { desc = "Neovim tips user guide", noremap = true, silent = true })
 EOF
 ```
 
@@ -165,7 +161,6 @@ map("n", "<leader>nto", ":NeovimTips<CR>", { desc = "Neovim tips", noremap = tru
 map("n", "<leader>nte", ":NeovimTipsEdit<CR>", { desc = "Edit your Neovim tips", noremap = true, silent = true })
 map("n", "<leader>nta", ":NeovimTipsAdd<CR>", { desc = "Add your Neovim tip", noremap = true, silent = true })
 map("n", "<leader>ntr", ":NeovimTipsRandom<CR>", { desc = "Show random tip", noremap = true, silent = true })
-map("n", "<leader>nth", ":NeovimTipsHelp<CR>", { desc = "Neovim tips user guide", noremap = true, silent = true })
 ```
 
 ### dein.vim
@@ -190,7 +185,6 @@ map("n", "<leader>nto", ":NeovimTips<CR>", { desc = "Neovim tips", noremap = tru
 map("n", "<leader>nte", ":NeovimTipsEdit<CR>", { desc = "Edit your Neovim tips", noremap = true, silent = true })
 map("n", "<leader>nta", ":NeovimTipsAdd<CR>", { desc = "Add your Neovim tip", noremap = true, silent = true })
 map("n", "<leader>ntr", ":NeovimTipsRandom<CR>", { desc = "Show random tip", noremap = true, silent = true })
-map("n", "<leader>nth", ":NeovimTipsHelp<CR>", { desc = "Neovim tips user guide", noremap = true, silent = true })
 EOF
 
 ```
@@ -214,7 +208,6 @@ require("lazy").setup({
       map("n", "<leader>nte", ":NeovimTipsEdit<CR>", { desc = "Edit your Neovim tips", noremap = true, silent = true })
       map("n", "<leader>nta", ":NeovimTipsAdd<CR>", { desc = "Add your Neovim tip", noremap = true, silent = true })
       map("n", "<leader>ntr", ":NeovimTipsRandom<CR>", { desc = "Show random tip", noremap = true, silent = true })
-      map("n", "<leader>nth", ":NeovimTipsHelp<CR>", { desc = "Neovim tips user guide", noremap = true, silent = true })
     end,
   },
 })
@@ -277,7 +270,6 @@ The plugin can show you a random tip in a beautiful popup when you start Neovim.
 - `:NeovimTipsEdit` — Edit your personal tips file
 - `:NeovimTipsAdd` — Insert a new tip template into your personal file and start editing
 - `:NeovimTipsRandom` — Displays random tip upon user request
-- `:NeovimTipsHelp` — Open the user guide in a read-only buffer
 
 ## 📝 Tips
 
