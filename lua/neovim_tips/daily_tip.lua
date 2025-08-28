@@ -81,8 +81,9 @@ end
 
 ---Create and show the daily tip popup
 ---Displays a centered popup with a random tip, markdown rendering, and auto-close functionality
+---@param update_last_shown boolean true, if last shown date should be updated, false otherwise
 ---@return nil
-function M.show_daily_tip()
+local function show_daily_tip(update_last_shown)
   local tip = get_random_tip()
   if not tip then
     return
@@ -180,14 +181,14 @@ function M.show_daily_tip()
       popup:unmount()
     end, { noremap = true, silent = true })
   end
-  
+
   -- Auto-close when user enters command mode to prevent hijacking
   popup:map("n", ":", function()
     popup:unmount()
     -- Use feedkeys to properly enter command mode
     vim.api.nvim_feedkeys(":", "n", true)
   end, { noremap = true, silent = true })
-  
+
   -- Auto-close when user tries to leave the window (for shortcuts like <leader>nto)
   popup:on("BufLeave", function()
     -- Small delay to prevent immediate closure, but close if user actually switched focus
@@ -208,8 +209,10 @@ function M.show_daily_tip()
 
   -- No auto-close - keep open until user dismisses
 
-  -- Mark as shown today
-  write_last_shown()
+  -- Mark as shown today conditionally
+  if update_last_shown then
+    write_last_shown()
+  end
 end
 
 ---Main function to check and show daily tip based on configuration
@@ -229,9 +232,17 @@ function M.check_and_show()
   if should_show then
     -- Delay to let Neovim finish startup completely
     vim.defer_fn(function()
-      M.show_daily_tip()
+      -- Shows daily tip and updates last display time
+      show_daily_tip(true)
     end, 1000)
   end
 end
 
+---Function to show daily tip unconditionally
+---@return nil
+function M.show()
+  -- Shows random tip and does not update last display time
+  show_daily_tip(false)
+end
 return M
+
