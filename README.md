@@ -2,7 +2,7 @@
 
 *This Lua plugin for Neovim brings together hundreds of helpful tips, tricks, and shortcuts, all available through a custom picker. It’s easy to expand with your own entries, so the collection grows with you and your workflow.*
 
-<p align=center><img align="center" src="neovim-tips-logo.png" height="150"></p>
+<p align="center"><img src="neovim-tips-logo.gif" alt="Alt text" height="150" height="200"/></p>
 
 ![Neovim tips plugin screenshot](images/s1.png)
 
