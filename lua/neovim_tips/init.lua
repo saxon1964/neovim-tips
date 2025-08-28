@@ -53,7 +53,7 @@ function M.setup(opts)
           end
         end
       end
-      
+
       utils.run_async(loader.load,
         function(ok, result)
           if ok then
@@ -116,6 +116,12 @@ function M.setup(opts)
     { desc = "Open Neovim tips README file" }
   )
 
+  vim.api.nvim_create_user_command("NeovimTipsRandom",
+    function()
+      daily_tip.show()
+    end,
+    { desc = "Open random tip" }
+  )
 
   -- Reload tips on user file save
   vim.api.nvim_create_autocmd("BufWritePost", {
@@ -145,6 +151,8 @@ function M.setup(opts)
     end,
     once = true -- Only run once per session
   })
+
+
 end
 
 return M
