@@ -7,6 +7,7 @@ local M = {}
 ---@field user_tip_prefix string Prefix for user tips to avoid conflicts
 ---@field warn_on_conflicts boolean Show warnings when user tips conflict with builtin tips
 ---@field daily_tip integer Daily tip mode: 0=off, 1=once per day, 2=every startup
+---@field renderer string Renderer to use: "render-markdown" | "markview"
 ---@field builtin_dir string Internal: path to builtin tips data directory
 ---@field user_tips_tag string Internal: tag for user tips identification
 ---@field github_url string URL to the project repository
@@ -17,6 +18,7 @@ M.options = {
   user_tip_prefix = "[User] ",  -- Configurable prefix for user tips
   warn_on_conflicts = true,     -- Show warnings when user tips conflict with builtin
   daily_tip = 1,                -- Daily tip mode: 0=off, 1=once per day, 2=every startup
+  renderer = "render-markdown", -- Renderer: "render-markdown" (default) or "markview"
   -- for internal use only
   builtin_dir = debug.getinfo(1, "S").source:sub(2):gsub("config.lua", "../../data"),
   user_tips_tag = "user",

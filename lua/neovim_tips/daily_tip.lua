@@ -167,11 +167,20 @@ local function show_daily_tip(update_last_shown)
   vim.bo[popup.bufnr].modifiable = false
   vim.bo[popup.bufnr].readonly = true
 
-  -- Enable markdown rendering if available
-  if pcall(require, "render-markdown") then
-    vim.api.nvim_buf_call(popup.bufnr, function()
-      require("render-markdown").enable()
-    end)
+  -- Enable markdown rendering based on configured renderer
+  local renderer = config.options.renderer
+  if renderer == "markview" then
+    if pcall(require, "markview") then
+      vim.api.nvim_buf_call(popup.bufnr, function()
+        vim.cmd("Markview enable")
+      end)
+    end
+  else
+    if pcall(require, "render-markdown") then
+      vim.api.nvim_buf_call(popup.bufnr, function()
+        require("render-markdown").enable()
+      end)
+    end
   end
 
   -- Set up keymaps to close

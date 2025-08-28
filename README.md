@@ -25,7 +25,7 @@ I have provided a solid initial batch of tips and if you have your favorite one 
 ## ✨ Features
 - **Beautiful custom picker**: Three-pane interface with search, tips list, and live markdown preview
 - **Daily tip popup**: Get a random tip on startup (configurable: off, daily, or every launch)
-- **Lightweight dependencies**: Only requires `nui.nvim` and `render-markdown` - no heavyweight pickers (fzf-lua, telescope, snacks, mini...)
+- **Lightweight dependencies**: Only requires `nui.nvim` and a markdown renderer — `render-markdown.nvim` (default) or `markview.nvim` — no heavyweight pickers (fzf-lua, telescope, snacks, mini...)
 - **Word-based search**: Intelligent search that matches all words (e.g., "insert character" finds "character to insert")
 - **Live markdown rendering**: Preview rendered descriptions with full markdown support
 - **Simple navigation**: Seamless mouse and keyboard navigation with smart mode switching
@@ -38,6 +38,10 @@ I have provided a solid initial batch of tips and if you have your favorite one 
 - Automatic title conflict detection and warnings
 
 ## 📦 Installation
+
+Renderer dependency:
+- Default: MeanderingProgrammer/render-markdown.nvim
+- Alternative: OXY2DEV/markview.nvim (set `renderer = "markview"` in setup). Refer to markview's README for Tree-sitter requirements and loading order notes.
 
 ### Lazy.nvim
 
@@ -258,7 +262,7 @@ The plugin can show you a random tip in a beautiful popup when you start Neovim.
 ### Daily Tip Popup Features:
 - **"Did you know?" popup**: Centered popup with random tip
 - **Smart persistence**: Once daily mode uses `~/.local/share/nvim/neovim_tips/persistent.json` 
-- **Full markdown rendering**: Rich formatting with render-markdown.nvim
+- **Full markdown rendering**: Rich formatting via the configured renderer
 - **Easy dismissal**: Close with `q` or `<Esc>`
 - **Error reporting**: Includes GitHub issues link for feedback
 
@@ -338,6 +342,8 @@ require("neovim_tips").setup({
   
   -- Daily tip mode: 0=off, 1=once per day, 2=every startup
   daily_tip = 1,
+  -- Renderer to use for markdown preview: "render-markdown" (default) or "markview"
+  renderer = "render-markdown",
 })
 ```
 
