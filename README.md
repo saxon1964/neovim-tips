@@ -1,6 +1,10 @@
 # Neovim Tips Plugin
 
+
+
 *This Lua plugin for Neovim brings together hundreds of helpful tips, tricks, and shortcuts, all available through a custom picker. It’s easy to expand with your own entries, so the collection grows with you and your workflow.*
+
+<p align=center><img align="center" src="neovim-tips-logo.png" height="150"></p>
 
 ![Neovim tips plugin screenshot](images/s1.png)
 
@@ -388,4 +392,6 @@ user_tip_prefix = ""            -- "Join lines" stays "Join lines"
 - Search descriptions
 - Multiple tip sources
 - Export functionality
+
+![Neovim tips logo](neovim-tips-logo.png)
 
