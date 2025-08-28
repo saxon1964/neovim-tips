@@ -41,4 +41,5 @@ luac.out
 
 # Custom
 /misc
+.DS_Store
 
