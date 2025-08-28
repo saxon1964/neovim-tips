@@ -67,6 +67,7 @@ I have provided a solid initial batch of tips and if you have your favorite one 
     map("n", "<leader>nto", ":NeovimTips<CR>", { desc = "Neovim tips", noremap = true, silent = true })
     map("n", "<leader>nte", ":NeovimTipsEdit<CR>", { desc = "Edit your Neovim tips", noremap = true, silent = true })
     map("n", "<leader>nta", ":NeovimTipsAdd<CR>", { desc = "Add your Neovim tip", noremap = true, silent = true })
+    map("n", "<leader>ntr", ":NeovimTipsRandom<CR>", { desc = "Show random tip", noremap = true, silent = true })
     map("n", "<leader>nth", ":NeovimTipsHelp<CR>", { desc = "Neovim tips user guide", noremap = true, silent = true })
   end
 }
@@ -94,6 +95,7 @@ use {
     map("n", "<leader>nto", ":NeovimTips<CR>", { desc = "Neovim tips", noremap = true, silent = true })
     map("n", "<leader>nte", ":NeovimTipsEdit<CR>", { desc = "Edit your Neovim tips", noremap = true, silent = true })
     map("n", "<leader>nta", ":NeovimTipsAdd<CR>", { desc = "Add your Neovim tip", noremap = true, silent = true })
+    map("n", "<leader>ntr", ":NeovimTipsRandom<CR>", { desc = "Show random tip", noremap = true, silent = true })
     map("n", "<leader>nth", ":NeovimTipsHelp<CR>", { desc = "Neovim tips user guide", noremap = true, silent = true })
   end
 }
@@ -116,6 +118,8 @@ local map = vim.keymap.set
 map("n", "<leader>nto", ":NeovimTips<CR>", { desc = "Neovim tips", noremap = true, silent = true })
 map("n", "<leader>nte", ":NeovimTipsEdit<CR>", { desc = "Edit your Neovim tips", noremap = true, silent = true })
 map("n", "<leader>nta", ":NeovimTipsAdd<CR>", { desc = "Add your Neovim tip", noremap = true, silent = true })
+map("n", "<leader>ntr", ":NeovimTipsRandom<CR>", { desc = "Show random tip", noremap = true, silent = true })
+map("n", "<leader>nth", ":NeovimTipsHelp<CR>", { desc = "Neovim tips user guide", noremap = true, silent = true })
 EOF
 ```
 
@@ -137,6 +141,8 @@ local map = vim.keymap.set
 map("n", "<leader>nto", ":NeovimTips<CR>", { desc = "Neovim tips", noremap = true, silent = true })
 map("n", "<leader>nte", ":NeovimTipsEdit<CR>", { desc = "Edit your Neovim tips", noremap = true, silent = true })
 map("n", "<leader>nta", ":NeovimTipsAdd<CR>", { desc = "Add your Neovim tip", noremap = true, silent = true })
+map("n", "<leader>ntr", ":NeovimTipsRandom<CR>", { desc = "Show random tip", noremap = true, silent = true })
+map("n", "<leader>nth", ":NeovimTipsHelp<CR>", { desc = "Neovim tips user guide", noremap = true, silent = true })
 EOF
 ```
 
@@ -158,6 +164,8 @@ local map = vim.keymap.set
 map("n", "<leader>nto", ":NeovimTips<CR>", { desc = "Neovim tips", noremap = true, silent = true })
 map("n", "<leader>nte", ":NeovimTipsEdit<CR>", { desc = "Edit your Neovim tips", noremap = true, silent = true })
 map("n", "<leader>nta", ":NeovimTipsAdd<CR>", { desc = "Add your Neovim tip", noremap = true, silent = true })
+map("n", "<leader>ntr", ":NeovimTipsRandom<CR>", { desc = "Show random tip", noremap = true, silent = true })
+map("n", "<leader>nth", ":NeovimTipsHelp<CR>", { desc = "Neovim tips user guide", noremap = true, silent = true })
 ```
 
 ### dein.vim
@@ -181,6 +189,8 @@ local map = vim.keymap.set
 map("n", "<leader>nto", ":NeovimTips<CR>", { desc = "Neovim tips", noremap = true, silent = true })
 map("n", "<leader>nte", ":NeovimTipsEdit<CR>", { desc = "Edit your Neovim tips", noremap = true, silent = true })
 map("n", "<leader>nta", ":NeovimTipsAdd<CR>", { desc = "Add your Neovim tip", noremap = true, silent = true })
+map("n", "<leader>ntr", ":NeovimTipsRandom<CR>", { desc = "Show random tip", noremap = true, silent = true })
+map("n", "<leader>nth", ":NeovimTipsHelp<CR>", { desc = "Neovim tips user guide", noremap = true, silent = true })
 EOF
 
 ```
@@ -203,6 +213,8 @@ require("lazy").setup({
       map("n", "<leader>nto", ":NeovimTips<CR>", { desc = "Neovim tips", noremap = true, silent = true })
       map("n", "<leader>nte", ":NeovimTipsEdit<CR>", { desc = "Edit your Neovim tips", noremap = true, silent = true })
       map("n", "<leader>nta", ":NeovimTipsAdd<CR>", { desc = "Add your Neovim tip", noremap = true, silent = true })
+      map("n", "<leader>ntr", ":NeovimTipsRandom<CR>", { desc = "Show random tip", noremap = true, silent = true })
+      map("n", "<leader>nth", ":NeovimTipsHelp<CR>", { desc = "Neovim tips user guide", noremap = true, silent = true })
     end,
   },
 })
@@ -236,6 +248,7 @@ return {
     ["<leader>nte"] = { "<cmd>NeovimTipsEdit<cr>", desc = "Edit your Neovim tips" },
     ["<leader>nta"] = { "<cmd>NeovimTipsAdd<cr>", desc = "Add your Neovim tip" },
     ["<leader>nth"] = { "<cmd>NeovimTipsHelp<cr>", desc = "Neovim tips user guide" },
+    ["<leader>ntr"] = { "<cmd>NeovimTipsRandom<cr>", desc = "Random Neovim tip" },
   },
 }
 ```
@@ -256,13 +269,14 @@ The plugin can show you a random tip in a beautiful popup when you start Neovim.
 - **Easy dismissal**: Close with `q` or `<Esc>`
 - **Error reporting**: Includes GitHub issues link for feedback
 
-![Daily tip popup example](screenshot-daily-tip.png)
+![Daily tip popup example](images/s2.png)
 
 ## 🔧 Commands
 
 - `:NeovimTips` — Open searchable list of tips with beautiful three-pane interface
 - `:NeovimTipsEdit` — Edit your personal tips file
 - `:NeovimTipsAdd` — Insert a new tip template into your personal file and start editing
+- `:NeovimTipsRandom` — Displays random tip upon user request
 - `:NeovimTipsHelp` — Open the user guide in a read-only buffer
 
 ## 📝 Tips
@@ -370,13 +384,8 @@ user_tip_prefix = ""            -- "Join lines" stays "Join lines"
 
 ## 🔄 Roadmap Ideas
 
-- Category filtering
-- Tag filtering
+- Category/Tag filtering
 - Search descriptions
 - Multiple tip sources
 - Export functionality
-
-## ⚖️ License
-
-- Unlicense. You can find more details in the license file or [here](https://unlicense.org) 
 
