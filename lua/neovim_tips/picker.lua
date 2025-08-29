@@ -6,6 +6,7 @@ local M = {}
 local Popup = require("nui.popup")
 local Layout = require("nui.layout")
 local event = require("nui.utils.autocmd").event
+local config = require("neovim_tips.config")
 
 ---@class NuiPicker
 ---@field opts table Configuration options
@@ -201,11 +202,24 @@ function NuiPicker:update_preview()
     vim.api.nvim_buf_set_lines(self.preview_popup.bufnr, 0, -1, false, lines)
     vim.bo[self.preview_popup.bufnr].filetype = "markdown"
 
-    -- Enable render-markdown if available
-    if pcall(require, "render-markdown") then
-      vim.api.nvim_buf_call(self.preview_popup.bufnr, function()
-        require("render-markdown").enable()
-      end)
+    -- Enable markdown rendering based on configured renderer
+    local renderer = config.options.renderer
+    if renderer == "markview" then
+      if pcall(require, "markview") then
+        vim.api.nvim_buf_call(self.preview_popup.bufnr, function()
+          -- Ensure Markview is attached to this buffer and re-render
+          vim.cmd("Markview attach")
+          -- Ensure Markview is attached to this buffer and re-render
+          vim.cmd("Markview attach")
+          vim.cmd("Markview render")
+        end)
+      end
+    else
+      if pcall(require, "render-markdown") then
+        vim.api.nvim_buf_call(self.preview_popup.bufnr, function()
+          require("render-markdown").enable()
+        end)
+      end
     end
 
     self.update_timer = nil
@@ -249,11 +263,20 @@ function NuiPicker:update_preview_immediate()
     vim.api.nvim_buf_set_lines(self.preview_popup.bufnr, 0, -1, false, lines)
     vim.bo[self.preview_popup.bufnr].filetype = "markdown"
 
-    -- Enable render-markdown if available
-    if pcall(require, "render-markdown") then
-      vim.api.nvim_buf_call(self.preview_popup.bufnr, function()
-        require("render-markdown").enable()
-      end)
+    -- Enable markdown rendering based on configured renderer
+    local renderer = (config.options and config.options.renderer) or "render-markdown"
+    if renderer == "markview" then
+      if pcall(require, "markview") then
+        vim.api.nvim_buf_call(self.preview_popup.bufnr, function()
+          vim.cmd("Markview enable")
+        end)
+      end
+    else
+      if pcall(require, "render-markdown") then
+        vim.api.nvim_buf_call(self.preview_popup.bufnr, function()
+          require("render-markdown").enable()
+        end)
+      end
     end
   end
 end
@@ -274,6 +297,8 @@ end
 ---Sets up the main UI structure with proper sizing and borders
 ---@return nil
 function NuiPicker:create_layout()
+  -- Decide buftype for preview based on renderer
+  local use_markview = config.options.renderer == "markview"
   -- Create popups
   self.search_popup = Popup({
     enter = true,
@@ -331,7 +356,7 @@ function NuiPicker:create_layout()
       },
     },
     buf_options = {
-      buftype = "nofile",
+      buftype = use_markview and "" or "nofile",
       modifiable = true,
       readonly = false,
     },
