@@ -369,6 +369,30 @@ user_tip_prefix = ""            -- "Join lines" stays "Join lines"
 - Test your tips before adding them
 - Consider if your tip might be useful as a contribution to the main collection
 
+## 🚫 Disabling Completion in Search Bar
+
+If you're using completion engines like `blink.cmp` or `nvim-cmp` and want to disable autocompletion suggestions in the picker's search bar, you can use the custom filetype `neovim-tips-search`:
+
+### For blink.cmp:
+```lua
+require('blink.cmp').setup({
+  enabled = function()
+    return vim.bo.filetype ~= "neovim-tips-search"
+  end,
+  -- ... rest of your config
+})
+```
+
+### For nvim-cmp:
+```lua
+require('cmp').setup({
+  enabled = function()
+    return vim.bo.filetype ~= "neovim-tips-search"
+  end,
+  -- ... rest of your config
+})
+```
+
 ## 📁 Default File Locations
 
 - Built-in tips: `<plugin_directory>/data/`

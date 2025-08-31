@@ -289,6 +289,10 @@ function NuiPicker:create_layout()
       modifiable = true,
       readonly = false,
       buftype = "nofile",
+      complete = "",
+      completefunc = "",
+      omnifunc = "",
+      filetype = "neovim-tips-search",
     },
     win_options = {
       wrap = false,
@@ -465,6 +469,14 @@ function NuiPicker:setup_autocmds()
 
   -- Auto-enter insert mode when returning to search
   self.search_popup:on(event.WinEnter, function()
+    -- Set filetype first
+    vim.bo[self.search_popup.bufnr].filetype = "neovim-tips-search"
+    
+    -- Aggressively disable all completion for this buffer
+    vim.bo[self.search_popup.bufnr].complete = ""
+    vim.bo[self.search_popup.bufnr].completefunc = ""
+    vim.bo[self.search_popup.bufnr].omnifunc = ""
+    
     vim.cmd("startinsert!")
   end)
 end
