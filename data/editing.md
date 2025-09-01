@@ -1,15 +1,3 @@
-# Title: Repeat last command
-# Category: Editing
-# Tags: repeat, command, editing
----
-Use `.` to repeat the last command that changed text.
-
-#### Example
-
-```vim
-.  " repeat last command
-```
-===
 # Title: Insert at beginning/end
 # Category: Editing
 # Tags: insert, beginning, end
@@ -34,19 +22,6 @@ Use `o` to open new line below cursor, `O` to open new line above cursor.
 ```vim
 o  " open line below
 O  " open line above
-```
-===
-# Title: Replace single character
-# Category: Editing
-# Tags: replace, character, substitute
----
-Use `r{char}` to replace single character under cursor with new character.
-
-#### Example
-
-```vim
-ra  " replace with 'a'
-rx  " replace with 'x'
 ```
 ===
 # Title: Substitute character

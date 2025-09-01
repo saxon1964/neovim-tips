@@ -148,22 +148,6 @@ q?  " open search history (backward) in editable window
 " Navigate with vim motions, make complex edits
 ```
 ===
-# Title: Visual line operations
-# Category: Visual
-# Tags: visual, line, operations, block
----
-Use visual line mode and block mode for efficient multi-line text manipulation and formatting.
-
-#### Example
-
-```vim
-V       " select entire lines
-Ctrl+v  " visual block mode for column operations
-gv      " reselect last visual selection
-:'<,'>normal @q  " run macro on visual selection
-:'<,'>s/old/new/g  " substitute within selection only
-```
-===
 # Title: Buffer-specific settings
 # Category: Configuration
 # Tags: buffer, specific, settings, local
@@ -310,23 +294,6 @@ Use insert mode navigation keys for efficient editing without leaving insert mod
 <C-t>   " indent current line
 <C-d>   " unindent current line
 <C-o>   " execute one normal mode command
-```
-===
-# Title: Search and replace workflow
-# Category: Search
-# Tags: search, replace, workflow, confirmation
----
-Use interactive search and replace workflow for safe bulk text modifications with preview.
-
-#### Example
-
-```vim
-:%s/old/new/gc                " replace with confirmation
-:%s/old/new/gn                " count matches without replacing
-:set hlsearch                 " highlight matches
-:set incsearch                " incremental search
-/old<CR>cgnnew<Esc>           " search, change next match
-. . .                         " repeat with dot command
 ```
 ===
 # Title: Mark-based navigation workflow

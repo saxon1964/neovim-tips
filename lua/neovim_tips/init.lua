@@ -21,23 +21,6 @@ function M.setup(opts)
   utils.create_file_and_dirs(user_file, "# Your personal Neovim tips\n\n")
 
   -- Create commands
-  vim.api.nvim_create_user_command("NeovimTipsLoad",
-    function()
-      utils.run_async(loader.load,
-        function(ok, result)
-          if ok then
-            if result then
-              vim.notify("Neovim tips loaded silently", vim.log.levels.INFO)
-            end
-          else
-            vim.notify("Failed to load Neovim tips: " .. result, vim.log.levels.ERROR)
-          end
-        end
-      )
-    end,
-    { desc = "Load Neovim tips silently without showing picker" }
-  )
-
   vim.api.nvim_create_user_command("NeovimTips",
     function()
       -- Close any daily tip popup first to prevent it from hijacking the picker
@@ -54,7 +37,7 @@ function M.setup(opts)
         end
       end
 
-      utils.run_async(loader.reload,  -- Use reload to force fresh load
+      utils.run_async(loader.load,
         function(ok, result)
           if ok then
             if result then
@@ -106,37 +89,6 @@ function M.setup(opts)
       daily_tip.show()
     end,
     { desc = "Open random tip" }
-  )
-
-  vim.api.nvim_create_user_command("NeovimTipsDebug",
-    function()
-      local loader = require("neovim_tips.loader")
-      local tips = require("neovim_tips.tips")
-      print("=== Before Load ===")
-      print("Titles count before:", #tips.get_titles())
-      
-      print("=== Forcing Reload ===")
-      local reload_success = loader.reload()  -- Force reload
-      
-      local titles = tips.get_titles()
-      
-      print("=== After Reload ===")
-      print("Reload success:", reload_success)
-      print("Titles count:", #titles)
-      print("First 3 titles:")
-      for i = 1, math.min(3, #titles) do
-        print("  " .. i .. ": " .. titles[i])
-      end
-      if #titles == 0 then
-        print("No titles found!")
-      else
-        -- Test getting description for first tip
-        local first_desc = tips.get_description(titles[1])
-        print("First tip description length:", first_desc and #first_desc or "nil")
-      end
-      print("==================")
-    end,
-    { desc = "Debug tips loading with forced reload" }
   )
 
   -- Reload tips on user file save

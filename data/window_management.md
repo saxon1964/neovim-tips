@@ -195,23 +195,6 @@ Use `:bp|bd #` to close buffer without closing the window layout.
 :enew|bd #      " create new buffer, delete previous
 ```
 ===
-# Title: Buffer navigation shortcuts
-# Category: Window Management
-# Tags: buffer, navigation, switch, cycle
----
-Navigate between buffers efficiently using built-in commands and mappings.
-
-#### Example
-
-```vim
-:bn             " next buffer
-:bp             " previous buffer
-:b#             " alternate buffer (last visited)
-:b5             " go to buffer 5
-:b name<Tab>    " go to buffer by name (with completion)
-Ctrl+^          " toggle between current and alternate buffer
-```
-===
 # Title: Window splitting strategies
 # Category: Window Management
 # Tags: split, window, layout, organize
