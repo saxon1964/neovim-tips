@@ -54,7 +54,7 @@ function M.setup(opts)
         end
       end
 
-      utils.run_async(loader.load,
+      utils.run_async(loader.reload,  -- Use reload to force fresh load
         function(ok, result)
           if ok then
             if result then
@@ -106,6 +106,37 @@ function M.setup(opts)
       daily_tip.show()
     end,
     { desc = "Open random tip" }
+  )
+
+  vim.api.nvim_create_user_command("NeovimTipsDebug",
+    function()
+      local loader = require("neovim_tips.loader")
+      local tips = require("neovim_tips.tips")
+      print("=== Before Load ===")
+      print("Titles count before:", #tips.get_titles())
+      
+      print("=== Forcing Reload ===")
+      local reload_success = loader.reload()  -- Force reload
+      
+      local titles = tips.get_titles()
+      
+      print("=== After Reload ===")
+      print("Reload success:", reload_success)
+      print("Titles count:", #titles)
+      print("First 3 titles:")
+      for i = 1, math.min(3, #titles) do
+        print("  " .. i .. ": " .. titles[i])
+      end
+      if #titles == 0 then
+        print("No titles found!")
+      else
+        -- Test getting description for first tip
+        local first_desc = tips.get_description(titles[1])
+        print("First tip description length:", first_desc and #first_desc or "nil")
+      end
+      print("==================")
+    end,
+    { desc = "Debug tips loading with forced reload" }
   )
 
   -- Reload tips on user file save
