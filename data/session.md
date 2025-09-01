@@ -21,7 +21,8 @@ Use `:set sessionoptions` to control what gets saved, `:mksession {file}` for cu
 
 ```vim
 :set sessionoptions=buffers,curdir,folds,help,tabpages,winsize
-:mksession mysession.vim  " save with custom name
+:mksession mysession.vim  " save to custom file (fails if the file already exists)
+:mksession mysession.vim! " save with custom name (overwrites possibly existing file)
 :source mysession.vim     " restore specific session
 ```
 ===

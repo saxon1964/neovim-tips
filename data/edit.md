@@ -134,3 +134,24 @@ yi"   " yank inside quotes
 =i{   " format inside braces
 ```
 ===
+# Title: Adding prefix/suffix to multiline text easily
+# Category: Edit
+# Tags: text, object, advanced
+---
+Suppose that you have multiple lines of text. You want to put `<b>` and `</b>` tags around each line:
+
+- Position the cursor in normal mode over the first char of the frist line
+- Enter visual block mode: `<C-v>`
+- Select all first characters in all lines under the first one by using normal cursor keys
+- Switch to insert mode: `I`
+- Start changing the first line by typing `<b>`
+- When you are done, press `<ESC>` and all lines will have the same `<b>` prefix.
+- Now let's add `</b>` to the end of each line. Press `gv` - the first column gets selected.
+- Press `$` to go to the end of the line.
+- Now type `A` to append to the line
+- The cursor goes to the end of the top line. Enter the closing tag `</b>`.
+- Now pres `ESC` to leave the insert mode and you are done!
+
+Credits: [Henry Misc](https://www.youtube.com/watch?v=RdyfT2dbt78https://www.youtube.com/watch?v=RdyfT2dbt78)
+===
+

@@ -146,10 +146,13 @@ Use `ib` or `ab` as alternatives for `i(` or `a(`, and `iB` or `aB` as alternati
 #### Example
 
 ```vim
-cib  " change inside parentheses (same as ci()
-dab  " delete around parentheses (same as da()
-yiB  " yank inside curly braces (same as yi{)
-vaB  " select around curly braces (same as va{)
+cib  " change inside parentheses  - same as ci(, enters insert mode
+dab  " delete around parentheses  - same as da(
+yiB  " yank inside curly braces   - same as yi{
+vib  " select inside parentheses  - same as vi(
+vab  " select around parentheses  - sane as va(
+vaB  " select around curly braces - same as va{
+viB  " select inside curly braces - same as vi{
 ```
 ===
 # Title: Text objects with operators

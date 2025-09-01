@@ -12,6 +12,18 @@ Use `:w` to save current file, `:w {file}` to save as new file, or `:wall` to sa
 :wall          " save all files
 ```
 ===
+# Title: Save as 
+# Category: File
+# Tags: save, file
+---
+Use `:sav[eas] filepath` to save file under a different name
+ 
+#### Example
+
+```vim
+:sav ~/tmp/work.txt
+```
+===
 # Title: Insert current date
 # Category: File Operations
 # Tags: date, insert, command

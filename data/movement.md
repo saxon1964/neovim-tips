@@ -289,13 +289,20 @@ Use `{number}gg` or `{number}G` to go to absolute line number, where `{number}` 
 # Category: Movement
 # Tags: suspend, background, shell
 ---
-Use `Ctrl+z` to suspend Neovim and return to shell. Use `fg` in shell to return to Neovim.
+Use `Ctrl+z` to suspend Neovim and return to shell (terminal). You can do whatever you want in the hsell. Use `jobs` in shell to list suspended jobs. The list contains rows formatted like the following one:
+
+```
+[5]  + suspended  nvim playground
+```
+
+The number in square brackets is the number of the job that can be resumed. Just use `fg #` (in the shell) followed by job number to resume the job:
 
 #### Example
 
 ```vim
 Ctrl+z  " suspend to shell
-" Then in shell: fg  # to return to vim
+jobs    " list suspended jobs
+fg #5   " resume job #5
 ```
 ===
 # Title: Page scrolling with cursor positioning

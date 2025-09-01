@@ -393,3 +393,15 @@ Use `:Lexplore` to toggle the netrw file explorer in a vertical split on the lef
 :Explore     " open explorer in current window
 ```
 ===
+# Title: Jump between matching pair of parenthesis `([{...}])`
+# Category: Navigation
+# Tags: parenthesis
+---
+Position your cursor on `(`, `)`, `[`, `]`, `{`, `}`. Use `%` to jump between corresponding opening and closing symbols.
+
+### Example
+
+```vim
+%   "jumps between corresponding parenthesis
+```
+===

@@ -581,3 +581,17 @@ zG  " temporarily mark word as correct
 zW  " temporarily mark word as incorrect
 ```
 ===
+# Title: Toggle text case inside a HTML tag
+# Category: Clever Tricks
+# Tags: edit, case, tag
+---
+Use `g~it` to change the case of the text inside a html tag. Cursor should be between opening and closing HTML tag.
+
+### Example
+
+```vim
+" turns <b>important</b> into <b>IMPORTANT</b>
+g~it
+```
+===
+
