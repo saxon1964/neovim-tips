@@ -75,11 +75,11 @@ function M.setup(opts)
         "", -- code placeholder
         "```",
         "===",
-        ""
       }
       vim.cmd("edit " .. user_file)
       vim.api.nvim_buf_set_lines(0, -1, -1, false, lines)
-      vim.cmd("normal G")
+      local moveToTitle = string.format("G%dk$i ", #lines - 1)
+      vim.api.nvim_feedkeys(moveToTitle, 'n', false)
     end,
     { desc = "Add new tip to the file with custom tips" }
   )
