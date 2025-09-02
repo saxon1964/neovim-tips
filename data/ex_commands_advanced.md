@@ -126,6 +126,7 @@ Use `:sort` to sort lines in various ways.
 :sort n             " numeric sort
 :sort u             " remove duplicates while sorting
 :sort i             " case-insensitive sort
+:%!sort
 ```
 ***
 # Title: Change tab settings and convert
