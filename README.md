@@ -286,6 +286,7 @@ This is a description of what the tip does.
 some-command
 ```
 
+Some additional text here.
 ***
 ````
 

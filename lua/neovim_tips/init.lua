@@ -72,7 +72,6 @@ function M.setup(opts)
         "", -- description placeholder
         "```vim",
         "", -- code placeholder
-        "", -- code placeholder
         "```",
         "",
         "***",
