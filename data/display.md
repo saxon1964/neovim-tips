@@ -114,16 +114,3 @@ Use `:set conceallevel=2` to hide concealed text and `:syntax match` with `conce
 nnoremap <leader>c :let &conceallevel = (&conceallevel == 2) ? 0 : 2<CR>
 ```
 ***
-# Title: Highlight goroups
-# Category: Display
-# Tags: highlight groups, fun
----
-Use the following code to create command `HLList`. 
-
-```vim
-command! HLList lua local b=vim.api.nvim_create_buf(false,true) vim.api.nvim_set_current_buf(b) local g=vim.fn.getcompletion("","highlight") vim.api.nvim_buf_set_lines(b,0,-1,false,g) for i,n in ipairs(g) do pcall(vim.api.nvim_buf_add_highlight,b,-1,n,i-1,0,-1) end
-```
-
-When run, the command creates a scratch buffer with one line per highlight group, with each line styled with its own group.
-
-***
