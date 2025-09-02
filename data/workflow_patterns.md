@@ -55,7 +55,9 @@ Systematic approach to search and replace operations across projects.
 " Progressive search and replace workflow
 " 1. Search and review
 :vimgrep /old_function/j **/*.py
-:copen
+:copen    " creates quickfix list based on search results
+:cnext    " jump to next match
+:cprev    " jump to previous match
 
 " 2. Confirm matches visually
 :cfdo %s/old_function/new_function/gc
