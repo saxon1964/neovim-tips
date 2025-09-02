@@ -12,7 +12,7 @@ Use `[abc]` to match any of a, b, or c. Use `[a-z]` for ranges, `[^abc]` for neg
 /[[:alpha:]]    " match alphabetic characters
 /[[:digit:]]    " match digits
 ```
-===
+***
 # Title: Quantifiers in search patterns
 # Category: Advanced Search
 # Tags: regex, quantifier, repeat, match
@@ -26,7 +26,7 @@ Use `*` for zero or more, `+` for one or more, `?` for zero or one, `{n}` for ex
 /ab{3}          " a followed by exactly 3 b's (very magic: /\vab{3})
 /ab{2,5}        " a followed by 2 to 5 b's (very magic: /\vab{2,5})
 ```
-===
+***
 # Title: Anchors and word boundaries
 # Category: Advanced Search
 # Tags: regex, anchor, boundary, word, line
@@ -39,7 +39,7 @@ Use `^` for line start, `$` for line end, `\<` and `\>` for word boundaries.
 /\<word\>       " exact word 'word' with boundaries
 /\<\u\w*\>      " word starting with uppercase letter
 ```
-===
+***
 # Title: Lookahead and lookbehind patterns
 # Category: Advanced Search
 # Tags: regex, lookahead, lookbehind, assertion
@@ -52,7 +52,7 @@ Use `\@=` for positive lookahead, `\@!` for negative lookahead, `\@<=` for posit
 /\@<=good morning   " 'morning' preceded by 'good'
 /\@<!bad morning    " 'morning' NOT preceded by 'bad'
 ```
-===
+***
 # Title: Non-greedy matching
 # Category: Advanced Search
 # Tags: regex, non-greedy, lazy, minimal
@@ -64,7 +64,7 @@ Use `{-}` for non-greedy version of `*`, `{-n,m}` for non-greedy quantified matc
 /".{-}"         " non-greedy: matches "hello" and "world" separately
 /a.\{-}b        " non-greedy: shortest match from 'a' to 'b'
 ```
-===
+***
 # Title: Special characters and escaping
 # Category: Advanced Search
 # Tags: regex, escape, special, character, literal
@@ -77,7 +77,7 @@ Use `\` to escape special characters. Common escapes: `\.` for literal dot, `\\`
 /\$price        " literal dollar sign
 /\[bracket\]    " literal square brackets
 ```
-===
+***
 # Title: Case sensitivity control
 # Category: Advanced Search
 # Tags: case, sensitive, insensitive, ignore, match
@@ -90,7 +90,7 @@ Use `\c` for case insensitive, `\C` for case sensitive, `\%#=1` for old regex en
 /\c\<WORD\>     " case insensitive word boundary
 /\%#=1pattern   " use old regex engine (sometimes faster)
 ```
-===
+***
 # Title: Column and line position matching
 # Category: Advanced Search
 # Tags: position, column, line, range, specific
@@ -103,7 +103,7 @@ Use `\%23l` for line 23, `\%23c` for column 23, `\%>23l` for after line 23.
 /\%5cword       " 'word' starting at column 5
 /\%>50ctext     " 'text' after column 50
 ```
-===
+***
 # Title: Virtual column matching
 # Category: Advanced Search
 # Tags: virtual, column, tab, display, width
@@ -115,7 +115,7 @@ Use `\%23v` for virtual column 23 (accounts for tab display width).
 /\%>20vtext     " text after virtual column 20
 /\%<10v\S       " non-whitespace before virtual column 10
 ```
-===
+***
 # Title: Mark position matching
 # Category: Advanced Search
 # Tags: mark, position, range, between
@@ -127,7 +127,7 @@ Use `\%'m` to match at mark m, `\%>'a` for after mark a, `\%<'b` for before mark
 /\%>'a\%<'b     " between marks 'a' and 'b'
 /\%>'<\%<'>     " within last visual selection
 ```
-===
+***
 # Title: Composing complex patterns
 # Category: Advanced Search
 # Tags: complex, combine, pattern, advanced
@@ -145,7 +145,7 @@ Combine multiple regex features for sophisticated pattern matching.
 /\v<(https?|ftp)://[^\s]+>
 " URL matching pattern
 ```
-===
+***
 # Title: Search history and repetition
 # Category: Advanced Search
 # Tags: history, repeat, search, previous
@@ -159,7 +159,7 @@ Use `/` then arrow keys to navigate search history, `/<Up>` to recall previous s
 /<C-n>          " next search (alternative)
 //              " repeat last search
 ```
-===
+***
 # Title: Search with confirmation
 # Category: Advanced Search
 # Tags: confirm, interactive, replace, substitute
@@ -172,7 +172,7 @@ Use the `c` flag in substitute commands for interactive confirmation.
 ```
 
 Prompts: `y`es, `n`o, `a`ll, `q`uit, `l`ast, `^E` scroll down, `^Y` scroll up.
-===
+***
 # Title: Multiline pattern matching
 # Category: Advanced Search
 # Tags: multiline, pattern, across, lines
@@ -186,7 +186,7 @@ Use `\_` prefix for character classes that include newlines.
 /\_s\+                  " one or more whitespace including newlines
 /\_[a-z]                " any lowercase letter or newline
 ```
-===
+***
 # Title: Zero-width assertions
 # Category: Advanced Search
 # Tags: zero-width, assertion, position, match
@@ -198,7 +198,7 @@ Use zero-width patterns to match positions without consuming characters.
 /.*\zs\w\+$         " match last word on line
 /^\zs\s\+           " match leading whitespace (for highlighting)
 ```
-===
+***
 # Title: Branch and alternation
 # Category: Advanced Search
 # Tags: branch, alternation, or, choice
@@ -210,7 +210,7 @@ Use `\|` for alternation (OR), `\%(...\)` for grouping without capturing.
 /\(foo\|bar\)baz    " match 'foobaz' or 'barbaz'
 /\%(red\|blue\)     " non-capturing group for 'red' or 'blue'
 ```
-===
+***
 # Title: Recursive patterns
 # Category: Advanced Search
 # Tags: recursive, pattern, nested, structure
@@ -221,7 +221,7 @@ Use `\%(\)` and backreferences for matching nested structures.
 /([^()]*\([^()]*\)[^()]*)   " match balanced parentheses (simple)
 /\v"([^"\\]|\\.)*"          " match quoted strings with escapes
 ```
-===
+***
 # Title: Search in specific file types
 # Category: Advanced Search
 # Tags: filetype, specific, extension, file
@@ -233,7 +233,7 @@ Combine search with file patterns for targeted searching.
 :grep -r "pattern" --include="*.js" .   " external grep in JS files
 :lvimgrep /function/ *.lua      " local search in Lua files
 ```
-===
+***
 # Title: Pattern modifiers and flags
 # Category: Advanced Search
 # Tags: modifier, flag, option, behavior
@@ -247,7 +247,7 @@ Use various flags to modify search behavior and pattern interpretation.
 /pattern/+2     " position cursor 2 lines after match
 /pattern;/next  " search for pattern, then search for 'next'
 ```
-===
+***
 # Title: Search and replace with expressions
 # Category: Advanced Search
 # Tags: expression, function, dynamic, replace
@@ -259,7 +259,7 @@ Use `\=` in replacement to evaluate expressions dynamically.
 :%s/$/\=' - line '.line('.')/   " add line numbers at end
 :%s/\w\+/\=len(submatch(0))/g   " replace words with their length
 ```
-===
+***
 # Title: Search context and ranges
 # Category: Advanced Search
 # Tags: context, range, scope, limit
@@ -271,7 +271,7 @@ Use ranges and context to limit search scope effectively.
 :.,/pattern/s/a/b/g     " replace from cursor to first pattern match
 :/start/,/end/s/x/y/g   " replace between start and end patterns
 ```
-===
+***
 # Title: Very magic mode shortcuts
 # Category: Advanced Search
 # Tags: very-magic, shortcut, intuitive, regex
@@ -284,7 +284,7 @@ Use `\v` to make regex more like standard regex engines.
 /\v^\s*#\s*include          " C include statements
 /\v(function|class)\s+\w+   " function or class definitions
 ```
-===
+***
 # Title: Atom and group matching
 # Category: Advanced Search
 # Tags: atom, group, capture, match
@@ -297,4 +297,4 @@ Use `\(` and `\)` for grouping and capturing, `\1` to `\9` for backreferences.
 /\(<\w\+>\).\{-}\1      " XML/HTML tag pairs
 :%s/\(\w\+\) \(\w\+\)/\2, \1/g  " swap first and last name
 ```
-===
+***

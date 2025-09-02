@@ -22,7 +22,7 @@ end
 
 vim.api.nvim_create_autocmd('VimEnter', { callback = setup_project_workspace })
 ```
-===
+***
 # Title: Multi-file editing workflow
 # Category: Workflow Patterns
 # Tags: multi-file, editing, buffer, window, navigation
@@ -44,7 +44,7 @@ nnoremap <leader>t :tabnew<CR>:find<Space>
 " Quick jump between related files
 nnoremap <leader>a :find %:r.*<CR>  " find files with same basename
 ```
-===
+***
 # Title: Search and replace workflow
 # Category: Workflow Patterns
 # Tags: search, replace, refactor, pattern, workflow
@@ -70,7 +70,7 @@ Systematic approach to search and replace operations across projects.
 :argdo normal @r               " apply to all files in arglist
 :argdo update                  " save all changes
 ```
-===
+***
 # Title: Code review and annotation workflow
 # Category: Workflow Patterns
 # Tags: review, annotation, comment, feedback, collaboration
@@ -98,7 +98,7 @@ function! ReviewChecklist()
   :put ='- [ ] Test coverage'
 endfunction
 ```
-===
+***
 # Title: Testing and debugging workflow
 # Category: Workflow Patterns
 # Tags: testing, debugging, workflow, development, tdd
@@ -120,7 +120,7 @@ Integrated testing and debugging workflow patterns.
 :nnoremap <leader>ep :cprevious<CR>
 :nnoremap <leader>el :clist<CR>
 ```
-===
+***
 # Title: Documentation workflow
 # Category: Workflow Patterns  
 # Tags: documentation, writing, markdown, workflow, notes
@@ -148,7 +148,7 @@ endfunction
 " Link insertion for markdown
 :nnoremap <leader>ml i[]()<Left><Left><Left>
 ```
-===
+***
 # Title: Git workflow integration  
 # Category: Workflow Patterns
 # Tags: git, workflow, version, control, branch, merge
@@ -180,7 +180,7 @@ endfunction
 
 :command! -nargs=1 Commit call CommitTemplate(<args>)
 ```
-===
+***
 # Title: Configuration management workflow
 # Category: Workflow Patterns
 # Tags: configuration, dotfiles, settings, management, sync
@@ -203,7 +203,7 @@ endfunction
 " Dotfile synchronization
 :nnoremap <leader>ds :!cd ~/dotfiles && git add . && git commit -m "Update config" && git push<CR>
 ```
-===
+***
 # Title: Refactoring workflow patterns
 # Category: Workflow Patterns
 # Tags: refactoring, code, restructure, improve, workflow
@@ -236,7 +236,7 @@ function! RefactorChecklist()
   :put ='- [ ] Performance maintained'
 endfunction
 ```
-===
+***
 # Title: Build and deployment workflow
 # Category: Workflow Patterns
 # Tags: build, deployment, release, workflow, automation
@@ -264,7 +264,7 @@ endfunction
 :nnoremap <leader>rv :!git tag v<C-R>=input('Version: ')<CR><CR>
 :nnoremap <leader>rp :!git push --tags<CR>
 ```
-===
+***
 # Title: Learning and experimentation workflow
 # Category: Workflow Patterns
 # Tags: learning, experiment, playground, practice, workflow
@@ -293,7 +293,7 @@ endfunction
 " Quick snippet testing
 :nnoremap <leader>lt :tabnew /tmp/test.<C-R>=input('Extension: ')<CR><CR>
 ```
-===
+***
 # Title: Focus and distraction management
 # Category: Workflow Patterns
 # Tags: focus, distraction, productivity, workflow, zen
@@ -323,7 +323,7 @@ endfunction
 
 :command! -nargs=? Pomodoro call StartPomodoro(<args> ? <args> : 25)
 ```
-===
+***
 # Title: Session and workspace persistence
 # Category: Workflow Patterns
 # Tags: session, workspace, persistence, restore, save
@@ -352,7 +352,7 @@ endfunction
 :autocmd VimLeave * call SaveSession()
 :autocmd VimEnter * call LoadSession()
 ```
-===
+***
 # Title: Code review and collaboration workflow
 # Category: Workflow Patterns
 # Tags: collaboration, review, feedback, team, workflow
@@ -379,7 +379,7 @@ endfunction
 
 :command! -nargs=1 Review call StartReview(<args>)
 ```
-===
+***
 # Title: Error handling and debugging patterns
 # Category: Workflow Patterns
 # Tags: error, debugging, troubleshoot, workflow, pattern
@@ -411,7 +411,7 @@ endfunction
 
 :nnoremap <leader>ei :call InvestigateError()<CR>
 ```
-===
+***
 # Title: Performance profiling workflow
 # Category: Workflow Patterns
 # Tags: performance, profiling, optimization, workflow, analysis
@@ -437,7 +437,7 @@ endfunction
 :nnoremap <leader>pb :!time python %<CR>
 :nnoremap <leader>pm :!python -m cProfile %<CR>
 ```
-===
+***
 # Title: Knowledge management workflow
 # Category: Workflow Patterns
 # Tags: knowledge, documentation, notes, learning, workflow
@@ -468,7 +468,7 @@ endfunction
 :nnoremap <leader>nq :put ='**Q: ' . input('Question: ') . '**'<CR>
 :nnoremap <leader>na :put ='**A: ' . input('Answer: ') . '**'<CR>
 ```
-===
+***
 # Title: Code quality and standards workflow
 # Category: Workflow Patterns
 # Tags: quality, standards, lint, format, workflow
@@ -501,7 +501,7 @@ function! QualityReport()
   :r !npm run coverage | tail -1
 endfunction
 ```
-===
+***
 # Title: Backup and recovery workflow
 # Category: Workflow Patterns
 # Tags: backup, recovery, safety, workflow, protection
@@ -538,4 +538,4 @@ endfunction
 " Auto-backup on save
 :autocmd BufWritePre *.{py,js,lua,vim} call CreateBackup()
 ```
-===
+***

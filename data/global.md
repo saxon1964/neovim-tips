@@ -11,7 +11,7 @@ Use `:ter[minal]` to open a terminal window. When the window shows up, press `i`
 ```vim
 :ter
 ```
-===
+***
 # Title: Open documentation for word under the cursor 
 # Category: Global
 # Tags: man pages, documentation, help
@@ -23,4 +23,4 @@ Use `K` to open a man page or other type of available documentation for the word
 ```vim
 K
 ```
-===
+***

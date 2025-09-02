@@ -74,7 +74,8 @@ function M.setup(opts)
         "", -- code placeholder
         "", -- code placeholder
         "```",
-        "===",
+        "",
+        "***",
       }
       vim.cmd("edit " .. user_file)
       vim.api.nvim_buf_set_lines(0, -1, -1, false, lines)

@@ -15,7 +15,7 @@ Integrate Git operations seamlessly with Neovim editing workflow.
 :terminal git log --oneline " view git log in terminal
 :terminal git commit        " interactive commit
 ```
-===
+***
 # Title: System clipboard integration
 # Category: Integration
 # Tags: clipboard, system, copy, paste, register
@@ -33,7 +33,7 @@ vim.keymap.set({'n', 'v'}, '<leader>p', '"+p')  -- paste from system clipboard
 -- Check clipboard availability
 print(vim.fn.has('clipboard'))
 ```
-===
+***
 # Title: Terminal multiplexer integration
 # Category: Integration
 # Tags: tmux, screen, multiplexer, pane, session
@@ -52,7 +52,7 @@ Integrate with terminal multiplexers for enhanced workflow management.
 " Neovim terminal with tmux-like behavior
 vim.keymap.set('t', '<C-\\><C-n>', '<C-\\><C-n>')  -- escape terminal mode
 ```
-===
+***
 # Title: Browser and documentation integration
 # Category: Integration
 # Tags: browser, documentation, help, external, web
@@ -79,7 +79,7 @@ function! OpenURL()
   endif
 endfunction
 ```
-===
+***
 # Title: Database integration and querying
 # Category: Integration
 # Tags: database, sql, query, connection, dadbod
@@ -99,7 +99,7 @@ SELECT * FROM users;
 :let g:db = 'postgresql://localhost/mydb'
 :DB g:db SELECT COUNT(*) FROM products;
 ```
-===
+***
 # Title: REST API testing integration
 # Category: Integration
 # Tags: rest, api, http, curl, testing, client
@@ -123,7 +123,7 @@ Content-Type: application/json
 " Save API responses
 :r !curl -s https://api.github.com/users/octocat
 ```
-===
+***
 # Title: Docker and container integration  
 # Category: Integration
 # Tags: docker, container, dockerfile, build, run
@@ -143,7 +143,7 @@ Integrate Docker operations with Neovim development workflow.
 " Edit files in running container
 :!docker exec -it container_name vi /app/config.yml
 ```
-===
+***
 # Title: Cloud platform integration
 # Category: Integration
 # Tags: cloud, aws, gcp, azure, kubectl, terraform
@@ -164,7 +164,7 @@ Integrate with cloud platforms and infrastructure tools.
 :!terraform plan
 :!terraform apply
 ```
-===
+***
 # Title: Package manager integration
 # Category: Integration
 # Tags: package, manager, npm, pip, cargo, gem
@@ -186,7 +186,7 @@ Integrate with various package managers for dependency management.
 :!cargo test               " run tests
 :!cargo run                " run project
 ```
-===
+***
 # Title: Continuous Integration integration
 # Category: Integration
 # Tags: ci, cd, github, actions, jenkins, pipeline
@@ -208,7 +208,7 @@ Integrate with CI/CD pipelines and automation systems.
 :!curl --header "PRIVATE-TOKEN: token" \
   "https://gitlab.com/api/v4/projects/ID/pipelines"
 ```
-===
+***
 # Title: Monitoring and logging integration
 # Category: Integration
 # Tags: monitoring, logging, logs, metrics, observability
@@ -230,7 +230,7 @@ function! AnalyzeLogs()
   :r !grep -c WARN logs/*.log
 endfunction
 ```
-===
+***
 # Title: Email and notification integration  
 # Category: Integration
 # Tags: email, notification, alert, smtp, webhook
@@ -248,7 +248,7 @@ Send notifications and emails from Neovim for workflow automation.
 :!notify-send "Neovim" "Operation completed"  " Linux
 :!osascript -e 'display notification "Done" with title "Neovim"'  " macOS
 ```
-===
+***
 # Title: SSH and remote development integration
 # Category: Integration
 # Tags: ssh, remote, development, server, connection
@@ -268,7 +268,7 @@ Integrate SSH operations for remote development workflows.
 :!ssh -L 8080:localhost:80 user@server -N -f  " create tunnel
 :!kill $(ps aux | grep 'ssh.*8080' | awk '{print $2}')  " close tunnel
 ```
-===
+***
 # Title: External editor integration
 # Category: Integration  
 # Tags: editor, external, gui, comparison, merge
@@ -289,7 +289,7 @@ Integrate with external editors for specific tasks and workflows.
 :!libreoffice --writer %   " word processing
 :!typora %                 " markdown editor
 ```
-===
+***
 # Title: Build system integration
 # Category: Integration
 # Tags: build, make, cmake, gradle, maven, build
@@ -311,7 +311,7 @@ Integrate with various build systems and compilation tools.
 :!./gradlew build         " gradle build
 :!mvn compile test        " maven compile and test
 ```
-===
+***
 # Title: Version control system integration
 # Category: Integration
 # Tags: vcs, svn, mercurial, bazaar, perforce
@@ -334,7 +334,7 @@ Integrate with various version control systems beyond Git.
 :!p4 diff %               " show differences
 :!p4 submit               " submit changelist
 ```
-===
+***
 # Title: API and webhook integration
 # Category: Integration
 # Tags: api, webhook, http, rest, automation
@@ -356,7 +356,7 @@ endfunction
 " Auto-update from API
 autocmd BufWritePost *.md call NotifyWebhook("Documentation updated")
 ```
-===
+***
 # Title: Development server integration
 # Category: Integration
 # Tags: server, development, hot, reload, livereload
@@ -376,7 +376,7 @@ autocmd BufWritePost *.py !touch /tmp/reload      " trigger reload
 " LiveReload integration
 :!livereload --wait 200 --extraExts 'vue,jsx'
 ```
-===
+***
 # Title: Issue tracking integration
 # Category: Integration
 # Tags: issue, tracking, jira, github, gitlab, bug
@@ -397,7 +397,7 @@ Integrate with issue tracking systems for development workflow.
 :r ~/.config/nvim/templates/bug-report.md
 :r ~/.config/nvim/templates/feature-request.md
 ```
-===
+***
 # Title: Documentation generation integration
 # Category: Integration
 # Tags: documentation, generate, doxygen, sphinx, javadoc
@@ -417,7 +417,7 @@ Integrate documentation generation tools with editing workflow.
 :!jsdoc -d docs/ src/     " generate JavaScript docs
 :!npm run docs            " run documentation build script
 ```
-===
+***
 # Title: Testing framework integration
 # Category: Integration
 # Tags: testing, framework, jest, pytest, rspec, junit
@@ -439,4 +439,4 @@ Integrate with various testing frameworks for efficient testing workflow.
 :!go test                 " run tests in current package
 :!go test -v ./...        " verbose tests for all packages
 ```
-===
+***

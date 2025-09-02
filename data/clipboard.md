@@ -9,7 +9,7 @@ Use `vim.opt.clipboard="unnamedplus"` to sync yank/paste with system clipboard a
 ```vim
 :lua vim.opt.clipboard = "unnamedplus"
 ```
-===
+***
 # Title: Set system clipboard from Lua
 # Category: Clipboard
 # Tags: clipboard, lua, register
@@ -21,7 +21,7 @@ Use `vim.fn.setreg("+", "text")` to set system clipboard content from Lua.
 ```vim
 :lua vim.fn.setreg("+", "hello world")
 ```
-===
+***
 # Title: System clipboard access with registers
 # Category: Clipboard
 # Tags: clipboard, system, copy, paste, register
@@ -40,7 +40,7 @@ gg"+yG      " copy entire buffer to system clipboard
 "+p         " paste from + register
 "*p         " paste from * register
 ```
-===
+***
 # Title: Mac OS clipboard sharing
 # Category: Clipboard
 # Tags: macos, clipboard, pbcopy, pbpaste
@@ -57,7 +57,7 @@ nnoremap <C-v> :r !pbpaste<CR>
 " Use system clipboard by default
 set clipboard=unnamed
 ```
-===
+***
 # Title: GNU/Linux clipboard with xclip
 # Category: Clipboard
 # Tags: linux, clipboard, xclip, copy, paste
@@ -76,4 +76,4 @@ function! ClipboardYank()
   call system('xclip -i -selection clipboard', @@)
 endfunction
 ```
-===
+***

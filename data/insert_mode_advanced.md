@@ -11,7 +11,7 @@ Use arrow keys or `Ctrl+h` (left), `Ctrl+j` (down), `Ctrl+k` (up), `Ctrl+l` (rig
 Ctrl+h          " move left (backspace)
 Ctrl+l          " move right
 ```
-===
+***
 # Title: Word movement in insert mode
 # Category: Insert Mode Advanced
 # Tags: word, movement, navigation, shift
@@ -25,7 +25,7 @@ Shift+Right     " move to beginning of next word
 Ctrl+Left       " alternative word movement left
 Ctrl+Right      " alternative word movement right
 ```
-===
+***
 # Title: Line movement in insert mode
 # Category: Insert Mode Advanced
 # Tags: line, movement, beginning, end
@@ -39,7 +39,7 @@ Ctrl+o $        " go to end of line
 Ctrl+o gg       " go to first line
 Ctrl+o G        " go to last line
 ```
-===
+***
 # Title: Delete operations in insert mode
 # Category: Insert Mode Advanced
 # Tags: delete, backspace, word, line
@@ -54,7 +54,7 @@ Ctrl+h          " delete character before cursor (same as backspace)
 Ctrl+w          " delete word before cursor
 Ctrl+u          " delete from cursor to beginning of line
 ```
-===
+***
 # Title: Advanced completion modes
 # Category: Insert Mode Advanced
 # Tags: completion, advanced, keyword, line
@@ -74,7 +74,7 @@ Ctrl+x Ctrl+u   " user defined completion
 Ctrl+x Ctrl+v   " vim command-line completion
 Ctrl+x Ctrl+o   " omni completion
 ```
-===
+***
 # Title: Literal character insertion
 # Category: Insert Mode Advanced
 # Tags: literal, character, special, escape
@@ -88,7 +88,7 @@ Ctrl+v <Esc>    " insert literal escape character
 Ctrl+v <Enter>  " insert literal newline
 Ctrl+v Ctrl+m   " insert carriage return
 ```
-===
+***
 # Title: Insert mode register shortcuts
 # Category: Insert Mode Advanced  
 # Tags: register, shortcut, special, paste
@@ -103,7 +103,7 @@ Ctrl+r :        " insert last command line
 Ctrl+r /        " insert last search pattern
 Ctrl+r .        " insert last inserted text
 ```
-===
+***
 # Title: Insert mode window operations
 # Category: Insert Mode Advanced
 # Tags: window, scroll, operation, view
@@ -118,7 +118,7 @@ Ctrl+o zz       " center current line
 Ctrl+o zt       " move current line to top
 Ctrl+o zb       " move current line to bottom
 ```
-===
+***
 # Title: Completion menu navigation
 # Category: Insert Mode Advanced
 # Tags: completion, menu, navigate, popup
@@ -134,7 +134,7 @@ Ctrl+e          " close menu without selecting
 <Enter>         " accept current selection
 <Esc>           " close menu and exit insert mode
 ```
-===
+***
 # Title: Smart indentation in insert mode
 # Category: Insert Mode Advanced
 # Tags: indent, smart, automatic, programming
@@ -149,7 +149,7 @@ Ctrl+f          " re-indent current line
 Ctrl+o >>       " indent current line
 Ctrl+o <<       " unindent current line
 ```
-===
+***
 # Title: Insert mode text objects
 # Category: Insert Mode Advanced
 # Tags: text, object, change, delete
@@ -163,7 +163,7 @@ Ctrl+o ciw      " change inner word (stay in insert)
 Ctrl+o yiw      " yank inner word
 Ctrl+o daw      " delete a word (including spaces)
 ```
-===
+***
 # Title: Insert mode marks and jumps
 # Category: Insert Mode Advanced
 # Tags: mark, jump, position, navigation
@@ -177,7 +177,7 @@ Ctrl+o 'a       " jump to line of mark 'a'
 Ctrl+o `a       " jump to exact position of mark 'a'
 Ctrl+o ''       " jump to position before last jump
 ```
-===
+***
 # Title: Insert mode search operations
 # Category: Insert Mode Advanced
 # Tags: search, find, pattern, navigate
@@ -192,7 +192,7 @@ Ctrl+o n        " repeat last search
 Ctrl+o N        " repeat last search in opposite direction
 Ctrl+o *        " search for word under cursor
 ```
-===
+***
 # Title: Insert mode case conversion
 # Category: Insert Mode Advanced
 # Tags: case, conversion, upper, lower, toggle
@@ -206,7 +206,7 @@ Ctrl+o guw      " lowercase word under cursor
 Ctrl+o gUw      " uppercase word under cursor
 Ctrl+o g~w      " toggle case of word under cursor
 ```
-===
+***
 # Title: Insert mode abbreviation control
 # Category: Insert Mode Advanced
 # Tags: abbreviation, control, expand, prevent
@@ -220,7 +220,7 @@ Ctrl+]          " manually expand abbreviation
 ```
 
 After setting `:iabbrev teh the`, typing "teh " expands to "the ".
-===
+***
 # Title: Insert mode formatting and alignment  
 # Category: Insert Mode Advanced
 # Tags: format, align, text, paragraph
@@ -234,7 +234,7 @@ Ctrl+o =ap      " indent around paragraph
 Ctrl+o >ap      " increase indent of paragraph
 Ctrl+o <ap      " decrease indent of paragraph
 ```
-===
+***
 # Title: Insert mode buffer operations
 # Category: Insert Mode Advanced
 # Tags: buffer, file, operation, switch
@@ -248,7 +248,7 @@ Ctrl+o :e       " reload current buffer
 Ctrl+o Ctrl+^   " switch to alternate buffer
 Ctrl+r Ctrl+f   " insert filename under cursor
 ```
-===
+***
 # Title: Insert mode folding control
 # Category: Insert Mode Advanced  
 # Tags: fold, unfold, toggle, code
@@ -263,7 +263,7 @@ Ctrl+o zc       " close fold at cursor
 Ctrl+o zR       " open all folds
 Ctrl+o zM       " close all folds
 ```
-===
+***
 # Title: Insert mode macro operations
 # Category: Insert Mode Advanced
 # Tags: macro, record, replay, register
@@ -278,7 +278,7 @@ Ctrl+o qa       " start recording macro (then exit insert)
 ```
 
 Note: Recording typically requires exiting insert mode first.
-===
+***
 # Title: Insert mode terminal integration
 # Category: Insert Mode Advanced
 # Tags: terminal, command, external, shell  
@@ -292,4 +292,4 @@ Ctrl+r !whoami  " insert current username
 Ctrl+r !pwd     " insert current directory
 Ctrl+o :r !ls   " read output of ls into buffer
 ```
-===
+***

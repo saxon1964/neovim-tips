@@ -14,7 +14,7 @@ Ctrl+w l  " move to right window
 Ctrl+w w  " cycle to next window
 Ctrl+w p  " go to previous window
 ```
-===
+***
 # Title: Window closing
 # Category: Window Management
 # Tags: window, close, quit
@@ -28,7 +28,7 @@ Ctrl+w c  " close current window
 Ctrl+w o  " close all other windows
 Ctrl+w q  " quit current window
 ```
-===
+***
 # Title: Window position navigation
 # Category: Window Management
 # Tags: window, position, navigation
@@ -41,7 +41,7 @@ Use `Ctrl+w t` to go to top window and `Ctrl+w b` to go to bottom window.
 Ctrl+w t  " go to top window
 Ctrl+w b  " go to bottom window
 ```
-===
+***
 # Title: Special window commands
 # Category: Window Management
 # Tags: window, special, file, tag
@@ -55,7 +55,7 @@ Ctrl+w f  " split and open file under cursor
 Ctrl+w ]  " split and jump to tag
 Ctrl+w x  " exchange current window with another
 ```
-===
+***
 # Title: Move window to tab
 # Category: Window Management
 # Tags: window, tab, move
@@ -67,7 +67,7 @@ Use `Ctrl+w T` to move current window to a new tab page.
 ```vim
 Ctrl+w T  " move current window to new tab
 ```
-===
+***
 # Title: Advanced window operations
 # Category: Window Management
 # Tags: window, equalize, rotate, maximize, advanced
@@ -83,7 +83,7 @@ Ctrl+w R    " rotate windows counter-clockwise
 Ctrl+w |    " maximize current window horizontally
 Ctrl+w _    " maximize current window vertically
 ```
-===
+***
 # Title: Resize windows incrementally
 # Category: Window Management
 # Tags: window, resize, increment
@@ -98,7 +98,7 @@ Ctrl+w -  " decrease window height
 Ctrl+w >  " increase window width
 Ctrl+w <  " decrease window width
 ```
-===
+***
 # Title: Move windows
 # Category: Window Management
 # Tags: window, move, position
@@ -113,7 +113,7 @@ Ctrl+w J  " move window to bottom
 Ctrl+w K  " move window to top  
 Ctrl+w L  " move window to far right
 ```
-===
+***
 # Title: Fast window resizing
 # Category: Window Management
 # Tags: resize, window, keys, mapping
@@ -129,7 +129,7 @@ if bufwinnr(1)
   map - <C-W>-
 endif
 ```
-===
+***
 # Title: Better gm command
 # Category: Window Management
 # Tags: cursor, middle, navigation, movement
@@ -149,7 +149,7 @@ endfunction
 nnoremap <silent> gm :call <SID>Gm()<CR>
 onoremap <silent> gm :call <SID>Gm()<CR>
 ```
-===
+***
 # Title: Keep cursor centered
 # Category: Window Management
 # Tags: cursor, center, scroll, display
@@ -168,7 +168,7 @@ nnoremap N Nzz
 " Or automatic centering
 set scrolloff=999
 ```
-===
+***
 # Title: Change cursor shape in modes
 # Category: Window Management
 # Tags: cursor, shape, mode, visual
@@ -181,7 +181,7 @@ Configure different cursor shapes for different modes to provide visual feedback
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 " Block in normal, vertical bar in insert, horizontal in replace
 ```
-===
+***
 # Title: Keep window when closing buffer
 # Category: Window Management
 # Tags: buffer, close, window, preserve
@@ -194,7 +194,7 @@ Use `:bp|bd #` to close buffer without closing the window layout.
 :bp|bd #        " go to previous buffer, delete current
 :enew|bd #      " create new buffer, delete previous
 ```
-===
+***
 # Title: Window splitting strategies
 # Category: Window Management
 # Tags: split, window, layout, organize
@@ -211,7 +211,7 @@ Create and organize window splits for efficient multi-file editing.
 :sp filename    " split and open specific file
 :vsp filename   " vertical split and open specific file
 ```
-===
+***
 # Title: Tab management
 # Category: Window Management
 # Tags: tabs, navigation, workspace, organize
@@ -230,7 +230,7 @@ gt              " next tab (normal mode)
 gT              " previous tab (normal mode)
 :tab split      " open current buffer in new tab
 ```
-===
+***
 # Title: Window navigation without prefix
 # Category: Window Management
 # Tags: navigation, window, mapping, efficient
@@ -252,7 +252,7 @@ nnoremap <leader>j <C-w>j
 nnoremap <leader>k <C-w>k
 nnoremap <leader>l <C-w>l
 ```
-===
+***
 # Title: Focus mode for writing
 # Category: Window Management
 # Tags: focus, writing, distraction, zen
@@ -278,7 +278,7 @@ function! ToggleFocusMode()
 endfunction
 nnoremap <F12> :call ToggleFocusMode()<CR>
 ```
-===
+***
 # Title: Diff mode for file comparison
 # Category: Window Management
 # Tags: diff, compare, vimdiff, merge
@@ -298,7 +298,7 @@ dp                      " diff put (put change to other)
 :diffget                " get changes from other buffer
 :diffput                " put changes to other buffer
 ```
-===
+***
 # Title: Quick file explorer
 # Category: Window Management
 # Tags: explorer, netrw, files, browse
@@ -321,7 +321,7 @@ Use built-in file explorer (netrw) for quick file navigation and management.
 " R - rename file
 " % - create new file
 ```
-===
+***
 # Title: Close all other windows
 # Category: Window Management
 # Tags: window, close, only, single
@@ -335,7 +335,7 @@ Use `:only` or `:on` to close all windows except the current one, making it take
 :on     " short form of :only
 Ctrl+w o " normal mode shortcut for :only
 ```
-===
+***
 # Title: Window commands from Ex mode
 # Category: Window Management
 # Tags: wincmd, window, command, ex, mode
@@ -351,4 +351,4 @@ Use `:wincmd {key}` to execute window commands from Ex mode, useful in scripts a
 :wincmd v     " same as Ctrl+w v (vertical split)
 :wincmd s     " same as Ctrl+w s (horizontal split)
 ```
-===
+***

@@ -10,7 +10,7 @@ Use `:mksession!` to save session and `:source Session.vim` to restore it.
 :mksession!        " save session
 :source Session.vim " restore session
 ```
-===
+***
 # Title: Ex commands - session options
 # Category: Session
 # Tags: ex, session, options, save, restore
@@ -25,7 +25,7 @@ Use `:set sessionoptions` to control what gets saved, `:mksession {file}` for cu
 :mksession mysession.vim! " save with custom name (overwrites possibly existing file)
 :source mysession.vim     " restore specific session
 ```
-===
+***
 # Title: Ex commands - viminfo and shada
 # Category: Session
 # Tags: ex, viminfo, shada, history, persistent
@@ -40,7 +40,7 @@ Use `:wviminfo` to write viminfo, `:rviminfo` to read, `:wshada` and `:rshada` f
 :wshada backup.shada  " save to specific file
 :rshada backup.shada  " read from specific file
 ```
-===
+***
 # Title: Ex commands - arglist and project files
 # Category: Session
 # Tags: ex, arglist, args, project, files
@@ -56,7 +56,7 @@ Use `:args` to set argument list, `:argadd` to add files, `:next`/`:prev` to nav
 :prev            " go to previous file
 :argdo %s/old/new/g  " run command on all files
 ```
-===
+***
 # Title: Ex commands - working with multiple files
 # Category: Session
 # Tags: ex, multiple, files, bufdo, windo, tabdo
@@ -71,4 +71,4 @@ Use `:bufdo` for all buffers, `:windo` for all windows, `:tabdo` for all tabs to
 :tabdo close          " close all tabs
 :argdo write          " save all files in arglist
 ```
-===
+***

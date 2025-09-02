@@ -9,7 +9,7 @@ Use `:echo &runtimepath` to see all runtime paths Neovim is using.
 ```vim
 :echo &runtimepath  " show runtime paths
 ```
-===
+***
 # Title: Enable 256 colors
 # Category: Configuration
 # Tags: colors, terminal, display
@@ -25,7 +25,7 @@ set t_AF=^[[38;5;%dm
 " In shell profile:
 export TERM='xterm-256color'
 ```
-===
+***
 # Title: Auto tab completion
 # Category: Configuration
 # Tags: completion, tab, autocomplete
@@ -45,7 +45,7 @@ endfunction
 inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
 set dictionary="/usr/dict/words"
 ```
-===
+***
 # Title: Restore cursor position
 # Category: Configuration
 # Tags: cursor, position, session, restore
@@ -70,7 +70,7 @@ augroup END
 " Enable viminfo
 set viminfo='10,\"100,:20,%,n~/.viminfo
 ```
-===
+***
 # Title: Toggle paste mode
 # Category: Configuration
 # Tags: paste, toggle, indent, clipboard
@@ -85,7 +85,7 @@ nnoremap <F2> :set invpaste paste?<CR>
 set showmode
 " Use F2 before and after pasting external text
 ```
-===
+***
 # Title: Auto-reload file changes
 # Category: Configuration
 # Tags: auto, reload, file, changes
@@ -102,7 +102,7 @@ au FocusLost,WinLeave * :silent! w
 " Or check periodically
 au CursorHold * :silent! checktime
 ```
-===
+***
 # Title: Set color scheme based on time
 # Category: Configuration
 # Tags: color, scheme, time, automatic
@@ -118,7 +118,7 @@ else
   colorscheme evening
 endif
 ```
-===
+***
 # Title: Ex commands - set options
 # Category: Configuration
 # Tags: ex, set, option, toggle, query
@@ -133,7 +133,7 @@ Use `:set option` to enable, `:set nooption` to disable, `:set option?` to query
 :set number?       " check if line numbers are enabled
 :set number&       " reset to default value
 ```
-===
+***
 # Title: Ex commands - option with values
 # Category: Configuration
 # Tags: ex, set, value, assignment, string
@@ -148,7 +148,7 @@ Use `:set option=value` to assign value, `:set option+=value` to append, `:set o
 :set path-=/tmp       " remove from path
 :set suffixes+=.bak   " add .bak to suffixes
 ```
-===
+***
 # Title: Ex commands - autocmds and events
 # Category: Configuration
 # Tags: ex, autocmd, event, pattern, command
@@ -163,7 +163,7 @@ Use `:autocmd` to set up automatic commands, `:autocmd!` to clear, `:doautocmd` 
 :doautocmd BufRead      " trigger BufRead event
 :autocmd FileType python setlocal ts=4  " Python-specific settings
 ```
-===
+***
 # Title: Ex commands - mappings and abbreviations
 # Category: Configuration
 # Tags: ex, map, abbrev, shortcut, key
@@ -179,7 +179,7 @@ Use `:map` for mappings, `:abbrev` for abbreviations, `:unmap` and `:unabbrev` t
 :unmap <F2>             " remove mapping
 :unabbrev teh           " remove abbreviation
 ```
-===
+***
 # Title: Ex commands - highlight and syntax
 # Category: Configuration
 # Tags: ex, highlight, syntax, color, group
@@ -195,7 +195,7 @@ Use `:highlight` to set colors, `:syntax` for syntax highlighting, `:colorscheme
 :colorscheme desert                " change color scheme
 :highlight clear                   " clear all highlighting
 ```
-===
+***
 # Title: Ex commands - runtime and sourcing
 # Category: Configuration
 # Tags: ex, source, runtime, script, load
@@ -210,7 +210,7 @@ Use `:source` to load script, `:runtime` to load from runtime path, `:scriptname
 :scriptnames            " list all loaded scripts
 :source %               " reload current file as script
 ```
-===
+***
 # Title: Home key smart mapping
 # Category: Configuration
 # Tags: home, key, mapping, smart, navigation
@@ -234,7 +234,7 @@ function! SmartHome()
   endif
 endfunction
 ```
-===
+***
 # Title: Execute command with pipe separator
 # Category: Configuration
 # Tags: execute, command, pipe, separator, multiple
@@ -250,7 +250,7 @@ nnoremap <F5> :w | echo "Saved"<CR>  " Wrong - | ends mapping
 " With execute, | separates commands:
 nnoremap <F5> :execute "w \| echo 'Saved'"<CR>  " Correct
 ```
-===
+***
 # Title: Verbose mapping information
 # Category: Configuration
 # Tags: verbose, mapping, script, source, debug
@@ -264,7 +264,7 @@ Use `:verbose map <key>` to see which script defined a mapping and where.
 :verbose imap <Tab>   " show insert mode Tab mapping source
 :verbose map          " show all mappings with sources
 ```
-===
+***
 # Title: Speed up vimgrep with noautocmd
 # Category: Configuration
 # Tags: vimgrep, speed, autocmd, performance, search
@@ -277,7 +277,7 @@ Use `:noautocmd vimgrep` to speed up vimgrep by disabling autocmds during search
 :noautocmd vimgrep /pattern/ **/*.txt  " faster vimgrep
 :noautocmd bufdo %s/old/new/ge         " faster buffer operations
 ```
-===
+***
 # Title: Check plugin key mapping usage
 # Category: Configuration
 # Tags: plugin, mapping, check, usage, debug
@@ -291,7 +291,7 @@ Use `echo maparg("key", "mode")` to check what key mapping is assigned in specif
 :echo maparg("<leader>f", "n") " check normal mode leader+f mapping  
 :echo maparg("<C-n>", "i")  " check insert mode Ctrl+n mapping
 ```
-===
+***
 # Title: Environment variables in configuration
 # Category: Configuration
 # Tags: environment, variable, conditional, config, lua
@@ -310,7 +310,7 @@ else
   vim.opt.colorcolumn = "120"
 end
 ```
-===
+***
 # Title: Alternate Neovim startup configuration
 # Category: Configuration
 # Tags: startup, config, alternate, minimal, debug
@@ -329,7 +329,7 @@ nvim -u NONE
 " Start with specific vimrc:
 nvim -u ~/.vimrc.test
 ```
-===
+***
 # Title: Hidden buffers option
 # Category: Configuration
 # Tags: hidden, buffer, switch, unsaved, edit
@@ -343,7 +343,7 @@ Use `:set hidden` to allow switching between files without saving changes, preve
 :set nohidden      " require saving before switching (default)
 " Now you can use :edit, :next, etc. without saving first
 ```
-===
+***
 # Title: Append to option value
 # Category: Configuration
 # Tags: set, option, append
@@ -356,7 +356,7 @@ Use `:set option+=value` to append a value to an option.
 :set path+=./include  " add to search path
 :set wildignore+=*.pyc  " ignore Python bytecode
 ```
-===
+***
 # Title: Remove from option value
 # Category: Configuration
 # Tags: set, option, remove
@@ -369,4 +369,4 @@ Use `:set option-=value` to remove a value from an option.
 :set path-=./include  " remove from search path
 :set wildignore-=*.pyc  " stop ignoring Python bytecode
 ```
-===
+***

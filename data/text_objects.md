@@ -11,7 +11,7 @@ ci(  " change inside parentheses
 di[  " delete inside square brackets
 yi{  " yank inside curly braces
 ```
-===
+***
 # Title: Text objects - around brackets
 # Category: Text Objects
 # Tags: textobject, brackets, around
@@ -25,7 +25,7 @@ ca(  " change around parentheses
 da[  " delete around square brackets
 ya{  " yank around curly braces
 ```
-===
+***
 # Title: Text objects - sentences and paragraphs
 # Category: Text Objects
 # Tags: textobject, sentence, paragraph
@@ -40,7 +40,7 @@ das  " delete around sentence
 vip  " select inside paragraph
 yap  " yank around paragraph
 ```
-===
+***
 # Title: Text objects - word variations
 # Category: Text Objects
 # Tags: textobject, word, inner
@@ -54,7 +54,7 @@ ciw  " change inside word
 daw  " delete around word (includes space)
 yiW  " yank inside WORD (space-separated)
 ```
-===
+***
 # Title: Select inside quotes
 # Category: Text Objects
 # Tags: select, quotes, inside
@@ -67,7 +67,7 @@ Use `vi"` to select text inside double quotes or `vi'` for single quotes.
 vi"  " select inside double quotes
 vi'  " select inside single quotes
 ```
-===
+***
 # Title: Select around parentheses
 # Category: Text Objects
 # Tags: select, parentheses, around
@@ -79,7 +79,7 @@ Use `va(` to select text around parentheses (including the parentheses).
 ```vim
 va(  " select around parentheses
 ```
-===
+***
 # Title: Text objects - quoted strings
 # Category: Text Objects
 # Tags: textobject, quotes, strings
@@ -93,7 +93,7 @@ ci"  " change inside double quotes
 da'  " delete around single quotes
 yi`  " yank inside backticks
 ```
-===
+***
 # Title: Text objects - angle brackets
 # Category: Text Objects
 # Tags: textobject, angle, brackets
@@ -107,7 +107,7 @@ ci<  " change inside angle brackets
 da>  " delete around angle brackets
 vi<  " select inside angle brackets
 ```
-===
+***
 # Title: Text objects - square brackets
 # Category: Text Objects
 # Tags: textobject, square, brackets
@@ -121,7 +121,7 @@ ci[  " change inside square brackets
 da]  " delete around square brackets
 yi[  " yank inside square brackets
 ```
-===
+***
 # Title: Text objects - HTML/XML tags
 # Category: Text Objects
 # Tags: textobject, html, xml, tags
@@ -136,7 +136,7 @@ dat  " delete around HTML tag
 yit  " yank inside tag content
 vat  " select around tag including markup
 ```
-===
+***
 # Title: Text objects - alternative bracket notation
 # Category: Text Objects
 # Tags: textobject, brackets, alternatives
@@ -154,7 +154,7 @@ vab  " select around parentheses  - sane as va(
 vaB  " select around curly braces - same as va{
 viB  " select inside curly braces - same as vi{
 ```
-===
+***
 # Title: Text objects with operators
 # Category: Text Objects
 # Tags: textobject, operators, combinations
@@ -168,4 +168,4 @@ Text objects work with all operators: `c` (change), `d` (delete), `y` (yank), `v
 >i{  " indent inside curly braces
 <as  " unindent around sentence
 ```
-===
+***

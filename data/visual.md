@@ -11,7 +11,7 @@ v      " character visual
 V      " line visual
 Ctrl+v " block visual
 ```
-===
+***
 # Title: Yank and delete in visual mode
 # Category: Visual
 # Tags: yank, delete, visual
@@ -24,7 +24,7 @@ Use `y` to yank (copy) selected text and `d` to delete selected text in visual m
 y  " yank selected text
 d  " delete selected text
 ```
-===
+***
 # Title: Yank highlighting
 # Category: Visual
 # Tags: yank, highlight, autocmd
@@ -36,7 +36,7 @@ Create an autocmd to highlight yanked text briefly for visual feedback.
 ```vim
 :lua vim.api.nvim_create_autocmd("TextYankPost", {callback = function() vim.highlight.on_yank() end})
 ```
-===
+***
 # Title: Visual block append
 # Category: Visual
 # Tags: visual, block, append, column
@@ -51,7 +51,7 @@ A       " append to end of all lines
 text    " type text to append
 Esc     " apply to all lines
 ```
-===
+***
 # Title: Reselect last visual selection
 # Category: Visual
 # Tags: visual, reselect, selection, repeat
@@ -63,7 +63,7 @@ Use `gv` to reselect the last visual selection area.
 ```vim
 gv  " reselect last visual selection
 ```
-===
+***
 # Title: Visual mode - corner and edge movement
 # Category: Visual
 # Tags: visual, corner, block, movement
@@ -77,7 +77,7 @@ Use `o` to move cursor to opposite corner of selection, `O` to move to other cor
 o   " move cursor to opposite corner of selection
 O   " move to other corner (block mode only)
 ```
-===
+***
 # Title: Visual mode - toggle and change types
 # Category: Visual
 # Tags: visual, toggle, change, type
@@ -93,7 +93,7 @@ V       " change to line-wise or exit visual
 Ctrl+v  " change to block-wise or exit visual
 Ctrl+g  " toggle Visual/Select mode
 ```
-===
+***
 # Title: Visual mode - operators and transformations
 # Category: Visual
 # Tags: visual, operator, transform, case
@@ -111,7 +111,7 @@ y   " yank selected text
 u   " make selection lowercase
 U   " make selection uppercase
 ```
-===
+***
 # Title: Visual mode - joining and substitution
 # Category: Visual
 # Tags: visual, join, substitute, replace
@@ -127,7 +127,7 @@ gJ   " join lines without spaces
 s    " substitute selected text
 rx   " replace each character with 'x'
 ```
-===
+***
 # Title: Visual mode - paste and replace
 # Category: Visual
 # Tags: visual, paste, replace, register
@@ -141,7 +141,7 @@ Use `p` or `P` to replace visual selection with register contents. This is usefu
 p   " replace selection with register contents
 P   " same as p in visual mode
 ```
-===
+***
 # Title: Visual mode - Ex commands
 # Category: Visual
 # Tags: visual, ex, command, range
@@ -157,7 +157,7 @@ Press `:` in visual mode to run Ex commands on the selected range. The range `'<
 :sort           " sort selected lines
 :w newfile.txt  " write selection to file
 ```
-===
+***
 # Title: Visual mode - tag and keyword operations
 # Category: Visual
 # Tags: visual, tag, keyword, jump
@@ -171,4 +171,4 @@ Use `Ctrl+]` to jump to tag of selected text, `K` to run keywordprg on selection
 Ctrl+]  " jump to tag of selected text
 K       " run help/man on selected keyword
 ```
-===
+***

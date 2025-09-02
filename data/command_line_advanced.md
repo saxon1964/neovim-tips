@@ -10,7 +10,7 @@ Use `Ctrl+r =` to evaluate expressions and insert results into command line.
 :edit /path/<Ctrl+r>=strftime("%Y")<CR>/file.txt  " insert current year
 :let var = <Ctrl+r>=line('.')*2<CR>  " multiply current line by 2
 ```
-===
+***
 # Title: Command line filename completion variations
 # Category: Command Line Advanced
 # Tags: completion, filename, path, directory
@@ -24,7 +24,7 @@ Use different completion types for files, directories, and patterns.
 :help <Ctrl+x><Ctrl+v>        " Vim command completion
 :set <Ctrl+x><Ctrl+o>         " option completion
 ```
-===
+***
 # Title: Command line history search and filtering
 # Category: Command Line Advanced  
 # Tags: history, search, filter, pattern
@@ -37,7 +37,7 @@ Search and filter command history with patterns and ranges.
 :history / 5,10               " show search history items 5-10
 :history =                    " show expression history
 ```
-===
+***
 # Title: Command line range shortcuts  
 # Category: Command Line Advanced
 # Tags: range, shortcut, selection, lines
@@ -51,7 +51,7 @@ Use range shortcuts for efficient line selection in commands.
 :/pattern/,/end/d            " delete from pattern to 'end'
 :1,10!sort                   " sort lines 1-10 with external command
 ```
-===
+***
 # Title: Command line substitution flags and modifiers
 # Category: Command Line Advanced
 # Tags: substitute, flags, modifier, advanced
@@ -65,7 +65,7 @@ Use advanced substitution flags for precise control over replacements.
 :%s//~/g                     " replace last search with last substitute
 :%s/pattern/\=submatch(0)*2/g " use expression in replacement
 ```
-===
+***
 # Title: Command line external command integration
 # Category: Command Line Advanced
 # Tags: external, command, shell, filter, system
@@ -79,7 +79,7 @@ Integrate external commands seamlessly with Vim command line.
 :!!                          " repeat last external command
 :.!tr '[:lower:]' '[:upper:]' " convert current line to uppercase
 ```
-===
+***
 # Title: Command line abbreviations and shortcuts
 # Category: Command Line Advanced
 # Tags: abbreviation, shortcut, cabbrev, expand
@@ -93,7 +93,7 @@ Create command line abbreviations for frequently used commands.
 :cabbrev vsb vert sb         " expand vsb to 'vert sb'
 :cabbrev today put =strftime('%Y-%m-%d')  " insert today's date
 ```
-===
+***
 # Title: Command line register manipulation
 # Category: Command Line Advanced
 # Tags: register, insert, content, reference
@@ -109,7 +109,7 @@ Access and manipulate registers from command line efficiently.
 :<Ctrl+r>:                   " insert last command
 :<Ctrl+r>/                   " insert last search pattern
 ```
-===
+***
 # Title: Command line window operations
 # Category: Command Line Advanced
 # Tags: window, command, edit, history
@@ -122,7 +122,7 @@ q/                           " open search history window
 :<Ctrl+f>                    " switch to command line window from command line
 " In command window: <CR> executes, <Ctrl+c> closes
 ```
-===
+***
 # Title: Command line completion customization
 # Category: Command Line Advanced
 # Tags: completion, custom, wildmenu, wildmode
@@ -136,7 +136,7 @@ Customize command line completion behavior and appearance.
 :set wildoptions=pum         " use popup menu for completion
 :set pumheight=15            " limit popup menu height
 ```
-===
+***
 # Title: Command line macro recording and playback
 # Category: Command Line Advanced
 # Tags: macro, record, playbook, command, automation
@@ -149,7 +149,7 @@ Record and replay command sequences for automation.
 :g/pattern/normal @q         " execute macro on matching lines
 :%normal @q                  " execute macro on all lines
 ```
-===
+***
 # Title: Command line conditional execution
 # Category: Command Line Advanced
 # Tags: conditional, execute, if, expression
@@ -162,7 +162,7 @@ Execute commands conditionally using expressions and logic.
 :silent! write               " suppress error messages
 :try | source ~/.vimrc | catch | echo "Config error" | endtry
 ```
-===
+***
 # Title: Command line script execution  
 # Category: Command Line Advanced
 # Tags: script, execute, source, runtime
@@ -176,7 +176,7 @@ Execute scripts and source files with advanced options.
 :execute 'source' fnameescape(expand('~/.config/nvim/init.lua'))
 :luafile %                   " execute current Lua file
 ```
-===
+***
 # Title: Command line error handling
 # Category: Command Line Advanced
 # Tags: error, silent, try, catch, handling
@@ -189,7 +189,7 @@ Handle errors gracefully in command line operations.
 :if exists(':SomeCommand') | SomeCommand | endif
 :command! -bang MyCmd if <bang>0 | echo "Bang!" | else | echo "No bang" | endif
 ```
-===
+***
 # Title: Command line buffer and window targeting
 # Category: Command Line Advanced
 # Tags: buffer, window, target, specific, operation
@@ -203,7 +203,7 @@ Target specific buffers and windows for command execution.
 :argdo %s/pattern/replace/ge " execute on argument list files
 :cdo s/old/new/g             " execute on quickfix list items
 ```
-===
+***
 # Title: Command line advanced search operations
 # Category: Command Line Advanced
 # Tags: search, advanced, pattern, replace, scope
@@ -217,7 +217,7 @@ Perform sophisticated search operations from command line.
 :helpgrep pattern            " search help files
 :g/pattern1/s/pattern2/replacement/g   " conditional substitute
 ```
-===
+***
 # Title: Command line job control and async
 # Category: Command Line Advanced
 # Tags: job, async, background, control
@@ -230,7 +230,7 @@ Control background jobs and asynchronous operations.
 :call jobstop(job)                      " stop job
 :call jobwait([job], 5000)              " wait for job with timeout
 ```
-===
+***
 # Title: Command line terminal integration
 # Category: Command Line Advanced
 # Tags: terminal, integration, shell, command
@@ -244,7 +244,7 @@ Integrate terminal operations seamlessly with command line.
 :let @" = system('date')    " capture system command output
 :put =system('whoami')      " insert system command result
 ```
-===
+***
 # Title: Command line advanced substitution techniques
 # Category: Command Line Advanced
 # Tags: substitute, advanced, technique, pattern
@@ -257,7 +257,7 @@ Master advanced substitution patterns and techniques.
 :%s/^\s*\(.*\S\)\s*$/\1/     " trim leading/trailing whitespace
 :%s/\%V.*\%V/\=substitute(submatch(0), 'a', 'A', 'g')  " in visual selection
 ```
-===
+***
 # Title: Command line debugging and inspection
 # Category: Command Line Advanced
 # Tags: debug, inspect, verbose, trace
@@ -272,7 +272,7 @@ Debug command execution and inspect Vim state from command line.
 :messages                    " show message history
 :redir @a | silent! command | redir END  " redirect output to register
 ```
-===
+***
 # Title: Command line custom command creation
 # Category: Command Line Advanced
 # Tags: command, custom, user, define, parameter
@@ -292,7 +292,7 @@ endfunction
 " Range command with count
 :command! -range=% -nargs=1 ReplaceAll <line1>,<line2>s/<args>/g
 ```
-===
+***
 # Title: Command line environment variable integration
 # Category: Command Line Advanced
 # Tags: environment, variable, expand, system
@@ -306,4 +306,4 @@ Work with environment variables and system integration.
 :!echo $PATH                " use in external command
 :put =expand('$USER')       " insert environment variable value
 ```
-===
+***

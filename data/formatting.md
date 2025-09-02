@@ -9,7 +9,7 @@ Use `=ap` to format syntax-aware regions using Treesitter (when available).
 ```vim
 =ap  " format around paragraph with Treesitter
 ```
-===
+***
 # Title: Automatic paragraph formatting
 # Category: Formatting
 # Tags: paragraph, textwidth, reflow
@@ -23,7 +23,7 @@ Automatically format paragraphs to specified width using textwidth and format co
 :set fo=aw2tq          " format options for auto-formatting
 gqip                   " reformat inner paragraph
 ```
-===
+***
 # Title: Comment lines by filetype
 # Category: Formatting
 # Tags: comment, filetype, toggle
@@ -44,7 +44,7 @@ function CommentIt()
 endfunction
 autocmd BufEnter * call CommentIt()
 ```
-===
+***
 # Title: Automatic text width formatting
 # Category: Formatting
 # Tags: text, width, format, autowrap, textwidth
@@ -59,4 +59,4 @@ Use `:set textwidth=80` to automatically wrap lines at 80 characters while typin
 :set formatoptions+=t  " enable automatic text wrapping
 gqap                " manually format current paragraph to textwidth
 ```
-===
+***

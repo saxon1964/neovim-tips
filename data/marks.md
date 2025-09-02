@@ -10,7 +10,7 @@ Use `m{letter}` to set a mark at current position. Use lowercase letters for fil
 ma  " set mark 'a'
 mB  " set global mark 'B'
 ```
-===
+***
 # Title: Jump to marks
 # Category: Marks
 # Tags: marks, jump, navigation
@@ -23,4 +23,4 @@ Use `'{letter}` to jump to beginning of line with mark, or \`{letter}\` to jump 
 'a   " jump to line with mark 'a'
 `a   " jump to exact position of mark 'a'
 ```
-===
+***

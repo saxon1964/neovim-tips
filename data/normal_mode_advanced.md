@@ -11,7 +11,7 @@ Ctrl+x    " decrement number under cursor
 ```
 
 Works on hex (0x1F), octal (017), binary (0b1010), and decimals.
-===
+***
 # Title: Repeat last command
 # Category: Normal Mode
 # Tags: repeat, command, dot, redo
@@ -23,7 +23,7 @@ Use `.` to repeat the last change command. One of Vim's most powerful features f
 dd.       " delete line, then repeat delete
 cw foo<Esc>.  " change word to foo, then repeat on next word
 ```
-===
+***
 # Title: Record and replay macros
 # Category: Normal Mode
 # Tags: macro, record, replay, automation
@@ -38,7 +38,7 @@ q         " stop recording
 @@        " replay last macro
 5@a       " replay macro 'a' 5 times
 ```
-===
+***
 # Title: Case conversion commands
 # Category: Normal Mode
 # Tags: case, upper, lower, toggle, conversion
@@ -52,7 +52,7 @@ guw       " lowercase word
 gUw       " uppercase word  
 g~~       " toggle case of entire line
 ```
-===
+***
 # Title: Join lines with space control
 # Category: Normal Mode
 # Tags: join, lines, space, merge
@@ -64,7 +64,7 @@ J         " join lines with space
 gJ        " join lines without space
 3J        " join current line with next 2 lines
 ```
-===
+***
 # Title: Replace single character
 # Category: Normal Mode
 # Tags: replace, character, single, substitute
@@ -76,7 +76,7 @@ ra        " replace character under cursor with 'a'
 r<Space>  " replace with space
 R         " enter replace mode
 ```
-===
+***
 # Title: Change case of text
 # Category: Normal Mode
 # Tags: case, change, text, range
@@ -89,7 +89,7 @@ guw       " lowercase word under cursor
 gUiw      " uppercase inner word
 g~ap      " toggle case of paragraph
 ```
-===
+***
 # Title: Insert at line ends/beginnings
 # Category: Normal Mode
 # Tags: insert, line, beginning, end, multiple
@@ -101,7 +101,7 @@ I         " insert at beginning of line (first non-blank)
 A         " append at end of line
 gI        " insert at column 1 (absolute beginning)
 ```
-===
+***
 # Title: Open new lines
 # Category: Normal Mode
 # Tags: open, line, above, below, insert
@@ -113,7 +113,7 @@ o         " open new line below and enter insert mode
 O         " open new line above and enter insert mode
 3o        " open 3 new lines below
 ```
-===
+***
 # Title: Delete characters and words
 # Category: Normal Mode
 # Tags: delete, character, word, backspace
@@ -127,7 +127,7 @@ dw        " delete word
 dd        " delete entire line
 D         " delete from cursor to end of line
 ```
-===
+***
 # Title: Yank operations
 # Category: Normal Mode  
 # Tags: yank, copy, line, word, clipboard
@@ -141,7 +141,7 @@ y$        " yank from cursor to end of line
 Y         " yank from cursor to end of line (same as y$)
 yap       " yank around paragraph
 ```
-===
+***
 # Title: Put operations
 # Category: Normal Mode
 # Tags: put, paste, register, before, after
@@ -154,7 +154,7 @@ P         " put before cursor/line
 "ap       " put from register 'a' after cursor
 "0p       " put from yank register (register 0)
 ```
-===
+***
 # Title: Undo and redo
 # Category: Normal Mode
 # Tags: undo, redo, history, changes
@@ -166,7 +166,7 @@ u         " undo last change
 Ctrl+r    " redo last undone change
 U         " undo all changes on current line
 ```
-===
+***
 # Title: Change operations
 # Category: Normal Mode
 # Tags: change, replace, word, line, text
@@ -180,7 +180,7 @@ C         " change from cursor to end of line
 ciw       " change inner word
 cip       " change inner paragraph
 ```
-===
+***
 # Title: Visual selection commands
 # Category: Normal Mode
 # Tags: visual, select, line, block, character
@@ -193,7 +193,7 @@ V         " start line-wise visual selection
 Ctrl+v    " start block-wise visual selection
 gv        " reselect last visual selection
 ```
-===
+***
 # Title: Go to column
 # Category: Normal Mode
 # Tags: column, position, horizontal, goto
@@ -205,7 +205,7 @@ Use `{number}|` to go to specific column number on current line.
 1|        " go to column 1 (beginning of line)
 $         " go to end of line (last column)
 ```
-===
+***
 # Title: Search under cursor
 # Category: Normal Mode
 # Tags: search, word, cursor, find, highlight
@@ -218,7 +218,7 @@ Use `*` to search forward for word under cursor, `#` to search backward.
 g*        " search forward for partial word match
 g#        " search backward for partial word match
 ```
-===
+***
 # Title: Mark commands
 # Category: Normal Mode
 # Tags: mark, position, jump, navigate
@@ -232,7 +232,7 @@ ma        " set mark 'a' at current position
 ``        " jump to position before last jump
 ''        " jump to line before last jump
 ```
-===
+***
 # Title: Filter through external command
 # Category: Normal Mode
 # Tags: filter, external, command, process
@@ -245,7 +245,7 @@ Use `!` with motion to filter text through external command, `!!` to filter curr
 !5jsort   " sort next 5 lines
 !Gsort    " sort from cursor to end of file
 ```
-===
+***
 # Title: Format text
 # Category: Normal Mode
 # Tags: format, indent, text, alignment
@@ -258,7 +258,7 @@ Use `=` with motion to format/indent text, `==` to format current line.
 =G        " format from cursor to end of file
 gg=G      " format entire file
 ```
-===
+***
 # Title: Indent and outdent
 # Category: Normal Mode
 # Tags: indent, outdent, shift, tab
@@ -272,7 +272,7 @@ Use `>` to indent, `<` to outdent. Works with motions and counts.
 3>>       " indent next 3 lines
 >G        " indent from cursor to end
 ```
-===
+***
 # Title: Fold operations
 # Category: Normal Mode
 # Tags: fold, unfold, toggle, code
@@ -286,7 +286,7 @@ zc        " close fold at cursor
 zR        " open all folds in buffer
 zM        " close all folds in buffer
 ```
-===
+***
 # Title: Window navigation
 # Category: Normal Mode
 # Tags: window, switch, navigate, split
@@ -300,7 +300,7 @@ Ctrl+w k  " move to window above
 Ctrl+w l  " move to right window
 Ctrl+w w  " cycle through windows
 ```
-===
+***
 # Title: Ex mode and command execution
 # Category: Normal Mode
 # Tags: ex, command, colon, execute
@@ -311,7 +311,7 @@ Use `:` to enter command-line mode, `Q` to enter Ex mode (rarely used).
 :         " enter command-line mode
 Q         " enter Ex mode (exit with :vi)
 ```
-===
+***
 # Title: Spelling navigation
 # Category: Normal Mode
 # Tags: spell, navigation, error, correction
@@ -325,7 +325,7 @@ z=        " show spelling suggestions
 zg        " add word to good word list
 zw        " add word as misspelled
 ```
-===
+***
 # Title: Completion in insert mode trigger
 # Category: Normal Mode
 # Tags: completion, insert, keyword, file
@@ -339,7 +339,7 @@ Ctrl+p    " previous completion
 Ctrl+x Ctrl+f  " filename completion
 Ctrl+x Ctrl+l  " line completion
 ```
-===
+***
 # Title: Digraph insertion
 # Category: Normal Mode
 # Tags: digraph, special, character, unicode
@@ -353,7 +353,7 @@ Ctrl+k e`  " insert è (e with grave accent)
 Ctrl+k c,  " insert ç (c with cedilla)
 Ctrl+k >>  " insert » (right guillemet)
 ```
-===
+***
 # Title: Tag navigation
 # Category: Normal Mode
 # Tags: tag, definition, ctags, jump
@@ -365,7 +365,7 @@ Ctrl+]    " jump to tag definition
 Ctrl+t    " return from tag jump
 g Ctrl+]  " show list of matching tags
 ```
-===
+***
 # Title: File under cursor operations
 # Category: Normal Mode
 # Tags: file, cursor, edit, goto
@@ -378,7 +378,7 @@ gF        " open file under cursor with line number
 Ctrl+w f  " open file under cursor in new window
 Ctrl+w gf " open file under cursor in new tab
 ```
-===
+***
 # Title: Buffer navigation shortcuts
 # Category: Normal Mode
 # Tags: buffer, navigate, switch, file
@@ -389,7 +389,7 @@ Use `Ctrl+^` or `Ctrl+6` to switch to alternate buffer (previously edited file).
 Ctrl+^    " switch to alternate buffer
 Ctrl+6    " same as Ctrl+^ (switch to alternate)
 ```
-===
+***
 # Title: Line completion and duplication
 # Category: Normal Mode
 # Tags: line, duplicate, copy, complete
@@ -401,4 +401,4 @@ yyp       " duplicate current line below
 yyP       " duplicate current line above
 Yp        " same as yyp (Y yanks line, p pastes)
 ```
-===
+***

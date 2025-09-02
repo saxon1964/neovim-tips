@@ -9,7 +9,7 @@ Use `:help pattern` to search help documentation for specific keywords or patter
 ```vim
 :help pattern  " search help for 'pattern'
 ```
-===
+***
 # Title: Master help index
 # Category: Help
 # Tags: help, index, reference
@@ -21,7 +21,7 @@ Use `:h index.txt` to access the master help index with all available commands.
 ```vim
 :h index.txt  " master help index
 ```
-===
+***
 # Title: Ex commands - help and documentation
 # Category: Help
 # Tags: ex, help, documentation, version, info
@@ -36,7 +36,7 @@ Use `:version` for version info, `:intro` for intro message, `:messages` for mes
 :messages     " show message history
 :checkhealth  " run health diagnostics
 ```
-===
+***
 # Title: Ex commands - help navigation
 # Category: Help
 # Tags: ex, help, navigation, tag, jump
@@ -52,4 +52,4 @@ Use `:helpgrep` to search help, `:ptag` for preview, `:pop` to go back, `:tag` t
 :tag function       " jump to tag
 :tags               " show tag stack
 ```
-===
+***

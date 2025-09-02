@@ -11,7 +11,7 @@ Use `getftype()` to determine file type and `getfperm()` to get file permissions
 :echo getfperm(expand('%'))     " file permissions (rwxrwxrwx)
 :echo getfsize(expand('%'))     " file size in bytes
 ```
-===
+***
 # Title: String manipulation functions
 # Category: Functions
 # Tags: substitute, matchstr, split, string
@@ -25,7 +25,7 @@ Use `substitute()`, `matchstr()`, and `split()` functions for powerful string ma
 :echo matchstr("file.txt", '\\.\\w\\+$')             " .txt
 :echo split("a,b,c", ",")                            " ['a', 'b', 'c']
 ```
-===
+***
 # Title: Buffer and window information
 # Category: Functions
 # Tags: bufnr, winnr, tabpagenr, info
@@ -40,7 +40,7 @@ Use `bufnr()`, `winnr()`, `tabpagenr()` to get current buffer, window, and tab n
 :echo tabpagenr()       " current tab number
 :echo winnr('$')        " total number of windows
 ```
-===
+***
 # Title: Path manipulation functions
 # Category: Functions
 # Tags: fnamemodify, resolve, simplify, path
@@ -55,7 +55,7 @@ Use `fnamemodify()` to manipulate file paths and `resolve()` to resolve symbolic
 :echo resolve(expand('%'))                 " resolve symlinks
 :echo simplify('../path/./file')           " normalize path
 ```
-===
+***
 # Title: Search and match functions
 # Category: Functions
 # Tags: search, searchpos, match, pattern
@@ -70,7 +70,7 @@ Use `search()`, `searchpos()`, and `match()` functions for programmatic searchin
 :echo match('hello world', 'wor')          " find position in string (6)
 :echo matchend('hello world', 'wor')       " end position (9)
 ```
-===
+***
 # Title: Line and column functions
 # Category: Functions
 # Tags: line, col, getline, setline
@@ -85,7 +85,7 @@ Use `line()`, `col()`, `getline()`, `setline()` for precise cursor positioning a
 :echo getline('.')      " current line text
 :call setline('.', 'new text')  " replace current line
 ```
-===
+***
 # Title: Date and time functions
 # Category: Functions
 # Tags: strftime, localtime, getftime, date
@@ -100,7 +100,7 @@ Use `strftime()` and `localtime()` for date/time manipulation, and `getftime()` 
 :echo getftime(expand('%'))               " file modification time
 :put =strftime('%Y-%m-%d')                " insert current date
 ```
-===
+***
 # Title: System and environment functions
 # Category: Functions
 # Tags: system, systemlist, environ, getenv
@@ -115,7 +115,7 @@ Use `system()` and `systemlist()` to execute shell commands and `getenv()` to ac
 :echo getenv('HOME')                      " get environment variable
 :echo exists('$EDITOR')                  " check if env var exists
 ```
-===
+***
 # Title: List and dictionary functions
 # Category: Functions
 # Tags: len, empty, has_key, keys, values
@@ -132,7 +132,7 @@ Use `len()`, `empty()`, `has_key()`, `keys()`, `values()` for working with lists
 :echo has_key(mydict, 'a')               " true (1)
 :echo keys(mydict)                        " ['a', 'b']
 ```
-===
+***
 # Title: Type checking functions
 # Category: Functions
 # Tags: type, islocked, exists, function
@@ -148,7 +148,7 @@ Use `type()`, `islocked()`, and `exists()` functions to check variable types and
 :echo type({})                   " 4 (Dictionary)
 :echo exists('g:my_var')         " check if variable exists
 ```
-===
+***
 # Title: Mathematical functions
 # Category: Functions
 # Tags: abs, pow, sqrt, sin, cos, math
@@ -164,7 +164,7 @@ Use built-in math functions like `abs()`, `pow()`, `sqrt()`, `sin()`, `cos()` fo
 :echo sin(3.14159/2)             " sine: ~1.0
 :echo round(3.7)                 " round: 4
 ```
-===
+***
 # Title: Buffer content functions
 # Category: Functions
 # Tags: getbufline, setbufline, append, delete
@@ -179,7 +179,7 @@ Use `getbufline()` and `setbufline()` to read and modify buffer content without 
 :call append(line('.'), 'new line')      " append after current line
 :call delete(line('.'))                  " delete current line
 ```
-===
+***
 # Title: Input and interaction functions
 # Category: Functions
 # Tags: input, inputsave, inputlist, confirm
@@ -194,7 +194,7 @@ Use `input()`, `inputlist()`, `confirm()` functions to create interactive vim sc
 :let result = confirm('Save changes?', "&Yes\n&No\n&Cancel")
 :echo "You chose: " . choice
 ```
-===
+***
 # Title: Window and tab functions
 # Category: Functions  
 # Tags: winheight, winwidth, tabpagebuflist, winsaveview
@@ -210,7 +210,7 @@ Use window dimension and state functions to manage window layouts programmatical
 :call winrestview(view)          " restore saved view
 :echo tabpagebuflist()           " list buffers in current tab
 ```
-===
+***
 # Title: Highlighting and syntax functions
 # Category: Functions
 # Tags: synID, synIDattr, hlID, syntax
@@ -225,7 +225,7 @@ Use syntax highlighting functions to query and manipulate syntax highlighting pr
 :echo hlID('Comment')                    " highlight group ID
 :echo synIDattr(hlID('Comment'), 'fg')   " foreground color
 ```
-===
+***
 # Title: Regular expression functions
 # Category: Functions
 # Tags: matchadd, matchdelete, matchlist, regex
@@ -240,7 +240,7 @@ Use `matchadd()`, `matchdelete()`, `matchlist()` for advanced pattern matching a
 :echo matchlist('file.txt', '\\(.*\\)\\.\\(.*\\)')  " capture groups
 :echo matchstr('hello123world', '\\d\\+') " extract digits: 123
 ```
-===
+***
 # Title: Fold information functions
 # Category: Functions
 # Tags: foldclosed, foldtext, foldlevel, folding
@@ -255,7 +255,7 @@ Use folding functions to query and manipulate code folds programmatically.
 :echo foldtext()                 " default fold text
 :set foldtext=MyCustomFoldText() " custom fold text function
 ```
-===
+***
 # Title: File and directory functions
 # Category: Functions
 # Tags: glob, globpath, isdirectory, readable
@@ -270,7 +270,7 @@ Use `glob()`, `globpath()`, `isdirectory()` for file system operations and path 
 :echo isdirectory(expand('%:h')) " check if directory exists
 :echo readable(expand('%'))      " check if file is readable
 ```
-===
+***
 # Title: Register manipulation functions
 # Category: Functions
 # Tags: getreg, setreg, getregtype, registers
@@ -285,7 +285,7 @@ Use `getreg()`, `setreg()`, `getregtype()` to programmatically work with vim reg
 :echo getregtype('a')            " get register type (v, V, or Ctrl-V)
 :call setreg('+', @")            " copy default register to clipboard
 ```
-===
+***
 # Title: Cursor and mark functions
 # Category: Functions
 # Tags: cursor, getpos, setpos, marks
@@ -300,4 +300,4 @@ Use `cursor()`, `getpos()`, `setpos()` for precise cursor and mark manipulation.
 :call setpos('.', pos)           " restore cursor position
 :echo getpos("'a")               " get position of mark 'a'
 ```
-===
+***

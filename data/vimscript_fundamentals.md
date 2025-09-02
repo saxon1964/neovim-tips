@@ -11,7 +11,7 @@ Use `:let` to assign variables with different scopes: `g:` (global), `l:` (local
 :let b:buffer_var = {}       " buffer-local variable
 :let w:window_var = 3.14     " window-local variable
 ```
-===
+***
 # Title: String operations and concatenation
 # Category: Vim Script
 # Tags: string, concatenation, operation, manipulation
@@ -26,7 +26,7 @@ Use `.` for string concatenation, `len()` for length, `split()` and `join()` for
 :echo toupper("hello")           " HELLO
 :echo tolower("WORLD")           " world
 ```
-===
+***
 # Title: Conditional statements and logic
 # Category: Vim Script
 # Tags: if, else, condition, logic, comparison
@@ -45,7 +45,7 @@ Use `if`, `elseif`, `else`, `endif` for conditional logic with comparison operat
 
 " Comparison operators: == != > < >= <= =~ !~
 ```
-===
+***
 # Title: Loops and iteration
 # Category: Vim Script
 # Tags: for, while, loop, iteration, range
@@ -70,7 +70,7 @@ Use `for` loops for iteration over lists/ranges, `while` for conditional loops.
   let i += 1
 :endwhile
 ```
-===
+***
 # Title: Function definition and calling
 # Category: Vim Script
 # Tags: function, define, call, return, parameter
@@ -87,7 +87,7 @@ endfunction
 :echo MyFunction(10, 20)         " use in expression
 :let value = MyFunction(1, 2)    " assign result
 ```
-===
+***
 # Title: List and dictionary operations
 # Category: Vim Script
 # Tags: list, dictionary, array, hash, data-structure
@@ -108,7 +108,7 @@ Work with lists `[]` and dictionaries `{}` using built-in functions and operator
 :let name = mydict['name']       " access value
 :call remove(mydict, 'version')  " remove key
 ```
-===
+***
 # Title: Error handling with try-catch
 # Category: Vim Script
 # Tags: try, catch, finally, error, exception
@@ -130,7 +130,7 @@ Handle errors gracefully using try-catch-finally blocks.
   echo "Cleanup code"
 :endtry
 ```
-===
+***
 # Title: Regular expressions in Vim script
 # Category: Vim Script
 # Tags: regex, pattern, match, substitute, search
@@ -147,7 +147,7 @@ Use `=~` and `!~` operators for pattern matching, `substitute()` for replacement
 :let matches = matchlist(text, '\(\w\+\) \(\w\+\)')  " capture groups
 :echo match(text, 'World')      " find position
 ```
-===
+***
 # Title: File and buffer operations
 # Category: Vim Script
 # Tags: file, buffer, read, write, operation
@@ -165,7 +165,7 @@ Read/write files and manipulate buffers programmatically.
 :let lines = getbufline(bufnr, 1, '$') " get all lines
 :call setbufline(bufnr, 1, 'new first line')  " set line
 ```
-===
+***
 # Title: Autocommand creation in script
 # Category: Vim Script
 # Tags: autocmd, autocommand, event, group, script
@@ -185,7 +185,7 @@ function! TrimWhitespace()
   %s/\s\+$//e
 endfunction
 ```
-===
+***
 # Title: User command definition
 # Category: Vim Script
 # Tags: command, user-command, define, custom
@@ -205,7 +205,7 @@ Create custom user commands with parameters and completion.
 " Command with completion
 :command! -nargs=1 -complete=file EditConfig edit ~/.config/<args>
 ```
-===
+***
 # Title: Mappings in Vim script
 # Category: Vim Script
 # Tags: mapping, keymap, bind, shortcut, script
@@ -229,7 +229,7 @@ function! s:MyFunction()
   echo "Script-local function called"
 endfunction
 ```
-===
+***
 # Title: Option manipulation
 # Category: Vim Script
 # Tags: option, set, setlocal, global, buffer
@@ -249,7 +249,7 @@ Get and set Vim options programmatically using `&` syntax.
 " Toggle boolean option
 :let &wrap = !&wrap
 ```
-===
+***
 # Title: String formatting and printf
 # Category: Vim Script
 # Tags: string, format, printf, sprintf, output
@@ -267,7 +267,7 @@ Format strings using `printf()` and `string()` functions.
 :echo printf("%.2f", 3.14159)    " float: 3.14
 :echo printf("%s", string([1,2,3]))  " convert to string
 ```
-===
+***
 # Title: System command execution
 # Category: Vim Script
 # Tags: system, command, execute, shell, external
@@ -287,7 +287,7 @@ Execute system commands and capture output using `system()` and related function
   echo "Command failed"
 :endif
 ```
-===
+***
 # Title: Lua integration in Vim script
 # Category: Vim Script
 # Tags: lua, integration, execute, call, hybrid
@@ -311,7 +311,7 @@ function! VimFunction(arg)
   return "Vim received: " . a:arg
 endfunction
 ```
-===
+***
 # Title: Script sourcing and modules
 # Category: Vim Script
 # Tags: source, module, include, script, organization
@@ -335,7 +335,7 @@ function! MyModule#PublicFunction()
   return s:ScriptFunction()
 endfunction
 ```
-===
+***
 # Title: Debugging Vim scripts
 # Category: Vim Script
 # Tags: debug, echo, echom, verbose, profile
@@ -362,7 +362,7 @@ endif
 :source slow_script.vim
 :profile pause
 ```
-===
+***
 # Title: Built-in function usage
 # Category: Vim Script
 # Tags: builtin, function, vim, utility, helper
@@ -385,7 +385,7 @@ Utilize Vim's extensive built-in function library for common tasks.
 :echo fnamemodify('file.txt', ':r')  " remove extension
 :echo glob('*.vim')             " glob pattern matching
 ```
-===
+***
 # Title: Event handling and callbacks
 # Category: Vim Script
 # Tags: event, callback, timer, async, handler
@@ -408,4 +408,4 @@ endfunction
 
 :autocmd BufEnter * call OnBufEnter()
 ```
-===
+***

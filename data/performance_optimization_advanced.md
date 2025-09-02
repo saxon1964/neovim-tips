@@ -16,7 +16,7 @@ if should_load_heavy_plugins() then
   require('expensive-plugin').setup()
 end
 ```
-===
+***
 # Title: Buffer and window optimization
 # Category: Performance Optimization Advanced
 # Tags: buffer, window, memory, cleanup, optimization
@@ -38,7 +38,7 @@ vim.opt.hidden = true
 vim.opt.maxmem = 2000000  -- 2GB memory limit
 vim.opt.maxmemtot = 4000000  -- 4GB total memory limit
 ```
-===
+***
 # Title: Syntax and highlighting optimization
 # Category: Performance Optimization Advanced
 # Tags: syntax, highlight, treesitter, performance
@@ -72,7 +72,7 @@ require('nvim-treesitter.configs').setup({
   },
 })
 ```
-===
+***
 # Title: Search and regex performance tuning
 # Category: Performance Optimization Advanced
 # Tags: search, regex, performance, timeout, optimization
@@ -96,7 +96,7 @@ vim.keymap.set('n', '*', function()
   vim.cmd('normal! n')
 end)
 ```
-===
+***
 # Title: File I/O optimization
 # Category: Performance Optimization Advanced
 # Tags: file, io, read, write, performance, async
@@ -124,7 +124,7 @@ local function async_read_file(path, callback)
   end)
 end
 ```
-===
+***
 # Title: Autocommand optimization
 # Category: Performance Optimization Advanced
 # Tags: autocommand, event, performance, grouping
@@ -159,7 +159,7 @@ vim.api.nvim_create_autocmd('CursorMoved', {
   end
 })
 ```
-===
+***
 # Title: Memory management and garbage collection
 # Category: Performance Optimization Advanced
 # Tags: memory, garbage, collection, lua, cleanup
@@ -187,7 +187,7 @@ vim.api.nvim_create_autocmd('BufDelete', {
   end
 })
 ```
-===
+***
 # Title: LSP performance optimization
 # Category: Performance Optimization Advanced  
 # Tags: lsp, language, server, performance, debounce
@@ -213,7 +213,7 @@ end
 -- Limit concurrent LSP requests
 vim.lsp.buf.format({ timeout_ms = 2000, async = true })
 ```
-===
+***
 # Title: Completion system optimization
 # Category: Performance Optimization Advanced
 # Tags: completion, cmp, performance, async, cache
@@ -240,7 +240,7 @@ require('cmp').setup({
   },
 })
 ```
-===
+***
 # Title: Display and rendering optimization
 # Category: Performance Optimization Advanced
 # Tags: display, render, redraw, terminal, optimization
@@ -266,7 +266,7 @@ vim.opt.cursorcolumn = false -- disable cursor column
 -- Optimize sign column
 vim.opt.signcolumn = 'yes:1' -- always show 1 sign column
 ```
-===
+***
 # Title: Plugin configuration caching
 # Category: Performance Optimization Advanced
 # Tags: cache, config, plugin, startup, optimization
@@ -301,7 +301,7 @@ local function load_cache()
   return {}
 end
 ```
-===
+***
 # Title: Startup time profiling and analysis
 # Category: Performance Optimization Advanced
 # Tags: profile, startup, analysis, benchmark, timing
@@ -346,7 +346,7 @@ vim.api.nvim_create_user_command('ProfileReport', function()
   end
 end, {})
 ```
-===
+***
 # Title: Network and remote file optimization
 # Category: Performance Optimization Advanced
 # Tags: network, remote, file, ssh, ftp, optimization
@@ -379,7 +379,7 @@ local function async_remote_read(url, callback)
   })
 end
 ```
-===
+***
 # Title: Large file handling optimization
 # Category: Performance Optimization Advanced
 # Tags: large, file, handling, performance, memory
@@ -411,7 +411,7 @@ vim.api.nvim_create_autocmd('BufReadPost', {
   end
 })
 ```
-===
+***
 # Title: Diff and merge performance optimization
 # Category: Performance Optimization Advanced  
 # Tags: diff, merge, algorithm, performance, comparison
@@ -440,7 +440,7 @@ vim.api.nvim_create_autocmd('BufEnter', {
   end
 })
 ```
-===
+***
 # Title: Concurrent operations optimization
 # Category: Performance Optimization Advanced
 # Tags: concurrent, async, parallel, threading, performance
@@ -485,4 +485,4 @@ local function debounce(key, fn, delay)
   end, delay)
 end
 ```
-===
+***

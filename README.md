@@ -285,14 +285,16 @@ This is a description of what the tip does.
 ```vim
 some-command
 ```
-===
+
+***
 ````
 
+Alternatively, use can use === (3 equal signs) instead of *** (3 asterisks) to finish the tip. 
 This format is used for all tips, built-in or created by you and stored separately.
 
 Each tip has to start with the `# Title:` line, followed by `# Category:` and a list of `# Tags`.
 
-Description of the tip starts with `---` and ends with `===`. There is **NO** predefined format for description. Anything between the starting and ending marker will be interpreted as a text in markdown (.md) format. Fzf-lua will render the markdown description in the right FZF panel. 
+Description of the tip starts with `---` and ends with `***` or `===`. There is **NO** predefined format for description. Anything between the starting and ending marker will be interpreted as a text in markdown (.md) format. Fzf-lua will render the markdown description in the right FZF panel. 
 
 ## ✅ Example
 
@@ -306,7 +308,7 @@ In normal mode use `diw` to delete the word under the cursor.
 ```vim
 diw 
 ```
-===
+***
 ````
 
 ## 📝 User-Defined Tips
