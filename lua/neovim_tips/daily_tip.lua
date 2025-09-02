@@ -89,6 +89,9 @@ local function show_daily_tip(update_last_shown)
     return
   end
 
+  -- Decide buftype based on renderer
+  local use_markview = config.options.renderer == "markview"
+
   -- Create popup with centered layout
   local popup = Popup({
     enter = true,
@@ -106,6 +109,7 @@ local function show_daily_tip(update_last_shown)
       height = "40%",
     },
     buf_options = {
+      buftype = use_markview and "" or "nofile",
       modifiable = true,
       readonly = false,
       filetype = "markdown",
@@ -123,6 +127,9 @@ local function show_daily_tip(update_last_shown)
 
   -- Mount the popup
   popup:mount()
+
+  -- Give the buffer a stable name for identification (also used by opener logic)
+  pcall(vim.api.nvim_buf_set_name, popup.bufnr, "neovim_tips_daily_tip.md")
 
   -- Prepare content
   local lines = {}
@@ -163,25 +170,24 @@ local function show_daily_tip(update_last_shown)
   -- Position cursor at line 2 (empty line) so markdown renders properly
   vim.api.nvim_win_set_cursor(popup.winid, {2, 0})
 
-  -- NOW lock the buffer
-  vim.bo[popup.bufnr].modifiable = false
-  vim.bo[popup.bufnr].readonly = true
+  -- Ensure filetype is markdown for renderers
+  vim.bo[popup.bufnr].filetype = "markdown"
 
-  -- Enable markdown rendering based on configured renderer
-  local renderer = config.options.renderer
-  if renderer == "markview" then
-    if pcall(require, "markview") then
-      vim.api.nvim_buf_call(popup.bufnr, function()
-        vim.cmd("Markview enable")
+  -- Render markdown preview using centralized renderer after UI settles,
+  -- and only then lock the buffer to avoid interfering with renderer plugins
+  vim.defer_fn(function()
+    if popup and popup.bufnr and vim.api.nvim_buf_is_valid(popup.bufnr)
+        and popup.winid and vim.api.nvim_win_is_valid(popup.winid) then
+      -- Execute rendering within the popup window context so window-dependent
+      -- renderer plugins attach properly.
+      vim.api.nvim_win_call(popup.winid, function()
+        require("neovim_tips.render").render(popup.bufnr)
       end)
+      -- NOW lock the buffer
+      vim.bo[popup.bufnr].modifiable = false
+      vim.bo[popup.bufnr].readonly = true
     end
-  else
-    if pcall(require, "render-markdown") then
-      vim.api.nvim_buf_call(popup.bufnr, function()
-        require("render-markdown").enable()
-      end)
-    end
-  end
+  end, 150)
 
   -- Set up keymaps to close
   local close_keys = { "q", "<Esc>" }

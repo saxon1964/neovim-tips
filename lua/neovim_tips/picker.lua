@@ -12,7 +12,7 @@ local config = require("neovim_tips.config")
 ---@field opts table Configuration options
 ---@field layout NuiLayout|nil Main layout container
 ---@field search_popup NuiPopup|nil Search input popup
----@field titles_popup NuiPopup|nil Tips list popup  
+---@field titles_popup NuiPopup|nil Tips list popup
 ---@field preview_popup NuiPopup|nil Preview content popup
 ---@field all_titles string[] All available tip titles
 ---@field filtered_titles string[] Currently filtered tip titles
@@ -146,7 +146,7 @@ function NuiPicker:update_titles_display()
   if self.selected_index > 0 and self.selected_index <= #lines then
     local line_content = lines[self.selected_index]
     local line_length = #line_content
-    
+
     -- Highlight entire selected line including all text
     vim.api.nvim_buf_set_extmark(self.titles_popup.bufnr, ns_id, self.selected_index - 1, 0, {
       end_col = line_length,
@@ -202,25 +202,10 @@ function NuiPicker:update_preview()
     vim.api.nvim_buf_set_lines(self.preview_popup.bufnr, 0, -1, false, lines)
     vim.bo[self.preview_popup.bufnr].filetype = "markdown"
 
-    -- Enable markdown rendering based on configured renderer
-    local renderer = config.options.renderer
-    if renderer == "markview" then
-      if pcall(require, "markview") then
-        vim.api.nvim_buf_call(self.preview_popup.bufnr, function()
-          -- Ensure Markview is attached to this buffer and re-render
-          vim.cmd("Markview attach")
-          -- Ensure Markview is attached to this buffer and re-render
-          vim.cmd("Markview attach")
-          vim.cmd("Markview render")
-        end)
-      end
-    else
-      if pcall(require, "render-markdown") then
-        vim.api.nvim_buf_call(self.preview_popup.bufnr, function()
-          require("render-markdown").enable()
-        end)
-      end
-    end
+    -- Render markdown via centralized renderer within the preview window context
+    vim.api.nvim_win_call(self.preview_popup.winid, function()
+      require("neovim_tips.render").render(self.preview_popup.bufnr)
+    end)
 
     self.update_timer = nil
   end, 100)
@@ -231,6 +216,7 @@ end
 ---@return nil
 function NuiPicker:update_preview_immediate()
   if not self.preview_popup or #self.filtered_titles == 0 then return end
+
 
   local selected_title = self.filtered_titles[self.selected_index]
   if not selected_title then return end
@@ -263,21 +249,10 @@ function NuiPicker:update_preview_immediate()
     vim.api.nvim_buf_set_lines(self.preview_popup.bufnr, 0, -1, false, lines)
     vim.bo[self.preview_popup.bufnr].filetype = "markdown"
 
-    -- Enable markdown rendering based on configured renderer
-    local renderer = (config.options and config.options.renderer) or "render-markdown"
-    if renderer == "markview" then
-      if pcall(require, "markview") then
-        vim.api.nvim_buf_call(self.preview_popup.bufnr, function()
-          vim.cmd("Markview enable")
-        end)
-      end
-    else
-      if pcall(require, "render-markdown") then
-        vim.api.nvim_buf_call(self.preview_popup.bufnr, function()
-          require("render-markdown").enable()
-        end)
-      end
-    end
+    -- Render markdown via centralized renderer within the preview window context
+    vim.api.nvim_win_call(self.preview_popup.winid, function()
+      require("neovim_tips.render").render(self.preview_popup.bufnr)
+    end)
   end
 end
 
@@ -356,13 +331,15 @@ function NuiPicker:create_layout()
       },
     },
     buf_options = {
-      buftype = use_markview and "" or "nofile",
+      buftype = "",
       modifiable = true,
       readonly = false,
     },
     win_options = {
       wrap = true,
       number = false,
+      conceallevel = 2,
+      concealcursor = "nc",
       winhighlight = "FloatBorder:Normal",
     },
   })
@@ -567,7 +544,7 @@ end
 
 ---Create a new picker instance
 ---@param opts table|nil Configuration options
----@return NuiPicker picker New picker instance  
+---@return NuiPicker picker New picker instance
 function M.new(opts)
   return NuiPicker:new(opts)
 end
