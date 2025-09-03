@@ -29,7 +29,6 @@ local config = require("neovim_tips.config")
 ---@field filtered_titles string[] Currently filtered tip titles
 ---@field selected_index integer Currently selected tip index
 ---@field search_text string Current search query
----@field tmp_file string|nil Temporary file for markdown rendering
 ---@field update_timer uv_timer_t|nil Debounce timer for preview updates
 ---@field original_cursor_pos integer[]|nil Original cursor position
 ---@field original_window integer|nil Original window ID
@@ -54,7 +53,6 @@ function NuiPicker:new(opts)
     filtered_titles = {},
     selected_index = 1,
     search_text = "",
-    tmp_file = nil,
     update_timer = nil,
     -- Preserve original state
     original_cursor_pos = nil,
@@ -193,14 +191,6 @@ function NuiPicker:update_preview()
   local content = self.opts.get_content and self.opts.get_content(selected_title) or "No content available"
   local lines = vim.split(content, "\n")
 
-  -- Create temp file for markdown rendering
-  self:cleanup_tmp_file()
-  self.tmp_file = os.tmpname() .. ".md"
-  local file = io.open(self.tmp_file, "w")
-  if not file then return end
-  file:write(content)
-  file:close()
-
   -- Debounced update
   self.update_timer = vim.defer_fn(function()
     if not vim.api.nvim_buf_is_valid(self.preview_popup.bufnr) then return end
@@ -243,14 +233,6 @@ function NuiPicker:update_preview_immediate()
   local content = self.opts.get_content and self.opts.get_content(selected_title) or "No content available"
   local lines = vim.split(content, "\n")
 
-  -- Create temp file
-  self:cleanup_tmp_file()
-  self.tmp_file = os.tmpname() .. ".md"
-  local file = io.open(self.tmp_file, "w")
-  if not file then return end
-  file:write(content)
-  file:close()
-
   -- Immediate update
   if vim.api.nvim_buf_is_valid(self.preview_popup.bufnr) then
     -- Update title
@@ -266,18 +248,6 @@ function NuiPicker:update_preview_immediate()
         require("render-markdown").enable()
       end)
     end
-  end
-end
-
----Clean up temporary markdown file used for rendering
----@return nil
-function NuiPicker:cleanup_tmp_file()
-  if self.tmp_file and vim.fn.filereadable(self.tmp_file) == 1 then
-    local ok, err = pcall(os.remove, self.tmp_file)
-    if not ok then
-      vim.notify("Failed to remove temporary file: " .. err, vim.log.levels.WARN)
-    end
-    self.tmp_file = nil
   end
 end
 
@@ -579,8 +549,6 @@ end
 ---Cleans up temporary files and unmounts the layout
 ---@return nil
 function NuiPicker:close()
-  self:cleanup_tmp_file()
-
   -- Cancel any pending timer
   if self.update_timer then
     self.update_timer:stop()

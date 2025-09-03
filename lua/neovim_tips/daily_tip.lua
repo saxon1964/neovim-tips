@@ -157,6 +157,7 @@ local function show_daily_tip(update_last_shown)
 
   -- Set content while buffer is modifiable
   vim.api.nvim_buf_set_lines(popup.bufnr, 0, -1, false, lines)
+  vim.bo[popup.bufnr].filetype = "markdown"
 
   -- Position cursor at line 2 (empty line) so markdown renders properly
   vim.api.nvim_win_set_cursor(popup.winid, {2, 0})
