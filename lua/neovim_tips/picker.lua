@@ -7,6 +7,7 @@ local Popup = require("nui.popup")
 local Layout = require("nui.layout")
 local event = require("nui.utils.autocmd").event
 local config = require("neovim_tips.config")
+local renderer = require("neovim_tips.renderer")
 
 ---Stub definition of a class defined in libuv
 ---@class uv_timer_t
@@ -31,7 +32,7 @@ local config = require("neovim_tips.config")
 ---@field search_text string Current search query
 ---@field update_timer uv_timer_t|nil Debounce timer for preview updates
 ---@field original_cursor_pos integer[]|nil Original cursor position
----@field original_window integer|nil Original window ID
+---@field original_window integer|nil Original wendow ID
 ---@field original_mode string|nil Original vim mode
 local NuiPicker = {}
 NuiPicker.__index = NuiPicker
@@ -202,12 +203,8 @@ function NuiPicker:update_preview()
     vim.api.nvim_buf_set_lines(self.preview_popup.bufnr, 0, -1, false, lines)
     vim.bo[self.preview_popup.bufnr].filetype = "markdown"
 
-    -- Enable render-markdown if available
-    if pcall(require, "render-markdown") then
-      vim.api.nvim_buf_call(self.preview_popup.bufnr, function()
-        require("render-markdown").enable()
-      end)
-    end
+    -- Render markdown
+    renderer.render(self.preview_popup.bufnr)
 
     self.update_timer = nil
   end, 100)
@@ -242,12 +239,8 @@ function NuiPicker:update_preview_immediate()
     vim.api.nvim_buf_set_lines(self.preview_popup.bufnr, 0, -1, false, lines)
     vim.bo[self.preview_popup.bufnr].filetype = "markdown"
 
-    -- Enable render-markdown if available
-    if pcall(require, "render-markdown") then
-      vim.api.nvim_buf_call(self.preview_popup.bufnr, function()
-        require("render-markdown").enable()
-      end)
-    end
+    -- Render markdown 
+    renderer.render(self.preview_popup.bufnr)
   end
 end
 

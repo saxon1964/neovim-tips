@@ -5,6 +5,7 @@ local M = {}
 local Popup = require("nui.popup")
 local tips = require("neovim_tips.tips")
 local config = require("neovim_tips.config")
+local renderer = require("neovim_tips.renderer")
 
 ---@class DailyTipData
 ---@field last_shown string Date string in YYYY-MM-DD format
@@ -166,12 +167,8 @@ local function show_daily_tip(update_last_shown)
   vim.bo[popup.bufnr].modifiable = false
   vim.bo[popup.bufnr].readonly = true
 
-  -- Enable markdown rendering if available
-  if pcall(require, "render-markdown") then
-    vim.api.nvim_buf_call(popup.bufnr, function()
-      require("render-markdown").enable()
-    end)
-  end
+  -- Render markdown
+  renderer.render(popup.bufnr)
 
   -- Set up keymaps to close
   local close_keys = { "q", "<Esc>" }
