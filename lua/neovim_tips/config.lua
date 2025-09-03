@@ -10,6 +10,7 @@ local M = {}
 ---@field builtin_dir string Internal: path to builtin tips data directory
 ---@field user_tips_tag string Internal: tag for user tips identification
 ---@field github table<string, string> Internal: various github urls
+---@field picker table<string, string> Internal: various picker settings
 
 ---Default configuration options
 M.options = {
@@ -23,6 +24,9 @@ M.options = {
   github = {
     home = "https://github.com/saxon1964/neovim-tips",
     issues = "https://github.com/saxon1964/neovim-tips/issues/new",
+  },
+  picker = {
+    footer = "Having a favorite tip? Please submit it at https://github.com/saxon1964/neovim-tips/issues/new"
   },
 }
 

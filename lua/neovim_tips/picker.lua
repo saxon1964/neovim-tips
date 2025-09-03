@@ -6,19 +6,31 @@ local M = {}
 local Popup = require("nui.popup")
 local Layout = require("nui.layout")
 local event = require("nui.utils.autocmd").event
+local config = require("neovim_tips.config")
+
+---Stub definition of a class defined in libuv
+---@class uv_timer_t
+---@field start fun(self: uv_timer_t, timeout: number, repeat: number, callback: fun())
+---@field stop fun(self: uv_timer_t)
+---@field close fun(self: uv_timer_t)
+
+---@class NuiPickerOptions
+---@field get_content function(title: string)|nil Function to get the tip content by the title
+---@field on_select function(title: string)|nil Callback when tip is selected
 
 ---@class NuiPicker
 ---@field opts table Configuration options
 ---@field layout NuiLayout|nil Main layout container
 ---@field search_popup NuiPopup|nil Search input popup
----@field titles_popup NuiPopup|nil Tips list popup  
+---@field titles_popup NuiPopup|nil Tips list popup
 ---@field preview_popup NuiPopup|nil Preview content popup
+---@field footer_popup NuiPopup|nil Footer popup with GitHub submission message
 ---@field all_titles string[] All available tip titles
 ---@field filtered_titles string[] Currently filtered tip titles
 ---@field selected_index integer Currently selected tip index
 ---@field search_text string Current search query
 ---@field tmp_file string|nil Temporary file for markdown rendering
----@field update_timer userdata|nil Debounce timer for preview updates
+---@field update_timer uv_timer_t|nil Debounce timer for preview updates
 ---@field original_cursor_pos integer[]|nil Original cursor position
 ---@field original_window integer|nil Original window ID
 ---@field original_mode string|nil Original vim mode
@@ -26,9 +38,7 @@ local NuiPicker = {}
 NuiPicker.__index = NuiPicker
 
 ---Create a new NuiPicker instance
----@param opts table|nil Configuration options
----@field opts.get_content function|nil Function to get tip content by title
----@field opts.on_select function|nil Callback when tip is selected
+---@param opts NuiPickerOptions|nil Configuration options
 ---@return NuiPicker picker New picker instance
 function NuiPicker:new(opts)
   local picker = {
@@ -38,6 +48,7 @@ function NuiPicker:new(opts)
     search_popup = nil,
     titles_popup = nil,
     preview_popup = nil,
+    footer_popup = nil,
     -- State
     all_titles = {},
     filtered_titles = {},
@@ -145,7 +156,7 @@ function NuiPicker:update_titles_display()
   if self.selected_index > 0 and self.selected_index <= #lines then
     local line_content = lines[self.selected_index]
     local line_length = #line_content
-    
+
     -- Highlight entire selected line including all text
     vim.api.nvim_buf_set_extmark(self.titles_popup.bufnr, ns_id, self.selected_index - 1, 0, {
       end_col = line_length,
@@ -346,6 +357,28 @@ function NuiPicker:create_layout()
     },
   })
 
+  self.footer_popup = Popup({
+    enter = false,
+    focusable = false,
+    border = {
+      style = "rounded",
+      text = {
+        top = " Contribute ",
+        top_align = "center",
+      },
+    },
+    buf_options = {
+      modifiable = false,
+      readonly = true,
+      buftype = "nofile",
+    },
+    win_options = {
+      wrap = false,
+      number = false,
+      winhighlight = "FloatBorder:Normal",
+    },
+  })
+
   -- Create layout
   self.layout = Layout(
     {
@@ -358,9 +391,10 @@ function NuiPicker:create_layout()
     Layout.Box({
       Layout.Box(self.search_popup, { size = "10%" }),
       Layout.Box({
-        Layout.Box(self.titles_popup, { size = "40%" }),
-        Layout.Box(self.preview_popup, { size = "60%" }),
-      }, { dir = "row", size = "90%" }),
+        Layout.Box(self.titles_popup, { size = "50%" }),
+        Layout.Box(self.preview_popup, { size = "50%" }),
+      }, { dir = "row", size = "80%" }),
+      Layout.Box(self.footer_popup, { size = "10%" }),
     }, { dir = "col" })
   )
 end
@@ -471,14 +505,39 @@ function NuiPicker:setup_autocmds()
   self.search_popup:on(event.WinEnter, function()
     -- Set filetype first
     vim.bo[self.search_popup.bufnr].filetype = "neovim-tips-search"
-    
+
     -- Aggressively disable all completion for this buffer
     vim.bo[self.search_popup.bufnr].complete = ""
     vim.bo[self.search_popup.bufnr].completefunc = ""
     vim.bo[self.search_popup.bufnr].omnifunc = ""
-    
+
     vim.cmd("startinsert!")
   end)
+end
+
+---Set up the footer popup with GitHub contribution message
+---@return nil
+function NuiPicker:setup_footer()
+  if not self.footer_popup then return end
+
+  local message = config.options.picker.footer
+
+  -- Temporarily make modifiable to set content
+  vim.bo[self.footer_popup.bufnr].modifiable = true
+  vim.bo[self.footer_popup.bufnr].readonly = false
+
+  -- Center the text by adding padding
+  local win_width = vim.api.nvim_win_get_width(self.footer_popup.winid)
+  local message_length = #message
+  local padding = math.max(0, math.floor((win_width - message_length) / 2))
+  local padded_message = string.rep(" ", padding) .. message
+
+  -- Set the content
+  vim.api.nvim_buf_set_lines(self.footer_popup.bufnr, 0, -1, false, {padded_message})
+
+  -- Make non-modifiable again
+  vim.bo[self.footer_popup.bufnr].modifiable = false
+  vim.bo[self.footer_popup.bufnr].readonly = true
 end
 
 ---Show the picker and preserve current state
@@ -508,6 +567,7 @@ function NuiPicker:show()
   self:filter_titles()
   self:update_titles_display()
   self:update_preview()
+  self:setup_footer()
 
   -- Focus search and enter insert mode
   vim.api.nvim_set_current_win(self.search_popup.winid)
@@ -554,7 +614,7 @@ end
 
 ---Create a new picker instance
 ---@param opts table|nil Configuration options
----@return NuiPicker picker New picker instance  
+---@return NuiPicker picker New picker instance
 function M.new(opts)
   return NuiPicker:new(opts)
 end
