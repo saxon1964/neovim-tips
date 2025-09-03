@@ -150,12 +150,10 @@ local function show_daily_tip(update_last_shown)
   -- Add footer notes
   table.insert(lines, "")
   table.insert(lines, "---")
+  table.insert(lines, "Have your **favorite tip**? Found an **error**?  ")
+  table.insert(lines, "Please report it [here](" .. config.options.github.issues .. ")!  ")
   table.insert(lines, "")
-  table.insert(lines, "Have your favorite tip? Found an error?  ")
-  table.insert(lines, "Please report it [here](" .. config.options.github_url .. "/issues)!")
-  table.insert(lines, "")
-  table.insert(lines, "For daily tip setup refer to [README](" .. config.options.github_url .. ") file.")
-  table.insert(lines, "")
+  table.insert(lines, "For daily tip setup refer to [README](" .. config.options.github.home .. ") file.")
 
   -- Set content while buffer is modifiable
   vim.api.nvim_buf_set_lines(popup.bufnr, 0, -1, false, lines)

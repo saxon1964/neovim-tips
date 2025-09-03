@@ -9,7 +9,7 @@ local M = {}
 ---@field daily_tip integer Daily tip mode: 0=off, 1=once per day, 2=every startup
 ---@field builtin_dir string Internal: path to builtin tips data directory
 ---@field user_tips_tag string Internal: tag for user tips identification
----@field github_url string URL to the project repository
+---@field github table<string, string> Internal: various github urls
 
 ---Default configuration options
 M.options = {
@@ -20,7 +20,10 @@ M.options = {
   -- for internal use only
   builtin_dir = debug.getinfo(1, "S").source:sub(2):gsub("config.lua", "../../data"),
   user_tips_tag = "user",
-  github_url = "https://github.com/saxon1964/neovim-tips",
+  github = {
+    home = "https://github.com/saxon1964/neovim-tips",
+    issues = "https://github.com/saxon1964/neovim-tips/issues/new",
+  },
 }
 
 ---Setup configuration with user overrides
