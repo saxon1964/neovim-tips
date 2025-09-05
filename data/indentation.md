@@ -10,7 +10,7 @@ Use `==` to auto-indent current line, or `{number}==` to auto-indent multiple li
 ==   " auto-indent current line
 5==  " auto-indent 5 lines
 ```
-===
+***
 # Title: Indent lines
 # Category: Indentation
 # Tags: indent, shift, format
@@ -24,4 +24,4 @@ Use `>>` to indent current line right, `<<` to indent left, or use with numbers 
 <<   " indent line left
 3>>  " indent 3 lines right
 ```
-===
+***

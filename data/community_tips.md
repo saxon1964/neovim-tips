@@ -17,7 +17,7 @@ if not vim.uv.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 ```
-===
+***
 # Title: Environment-aware configuration
 # Category: Configuration
 # Tags: environment, conditional, config, dotenv
@@ -37,7 +37,7 @@ if filereadable(expand('~/.config/nvim/.env'))
   endfor
 endif
 ```
-===
+***
 # Title: Modular configuration loading
 # Category: Configuration
 # Tags: modular, import, require, organization
@@ -55,7 +55,7 @@ require('lazy').setup({
   change_detection = { notify = false }
 })
 ```
-===
+***
 # Title: Help in new tab workflow
 # Category: Workflow
 # Tags: help, tab, workflow, reference
@@ -69,7 +69,7 @@ Use custom mapping to open help documentation in new tabs for better reference w
 " Opens help in new tab, focuses on help content, closes empty buffer
 " Provides dedicated space for documentation reference
 ```
-===
+***
 # Title: Insert mode line manipulation
 # Category: Editing
 # Tags: insert, line, manipulation, efficiency
@@ -83,7 +83,7 @@ Use Alt key combinations to add new lines above/below without leaving insert mod
 :inoremap <M-O> <Esc>O<Esc>a    " add line above, return to insert
 " Maintains flow during writing/coding without mode switches
 ```
-===
+***
 # Title: Advanced completion shortcuts
 # Category: Completion
 # Tags: completion, ctrl-x, advanced, shortcuts
@@ -101,7 +101,7 @@ Ctrl+x Ctrl+]  " tag-based completion
 Ctrl+x Ctrl+f  " filename completion
 Ctrl+x Ctrl+o  " omni completion (context-aware)
 ```
-===
+***
 # Title: Efficient whitespace cleanup
 # Category: Text Manipulation
 # Tags: whitespace, cleanup, trailing, efficiency
@@ -115,7 +115,7 @@ Use F-key mapping for instant trailing whitespace removal with user feedback acr
 " One key press to clean entire file and confirm action
 " Works in any mode, provides immediate feedback
 ```
-===
+***
 # Title: Builtin completion without plugins
 # Category: Completion
 # Tags: builtin, completion, native, plugin-free
@@ -131,7 +131,7 @@ Use Neovim's built-in completion capabilities for intelligent code completion wi
 " Ctrl+n/Ctrl+p for next/previous completion
 " Ctrl+x Ctrl+o for omni completion (language-aware)
 ```
-===
+***
 # Title: Command-line window editing
 # Category: Command Line
 # Tags: command, window, editing, history
@@ -147,23 +147,7 @@ q?  " open search history (backward) in editable window
 " Edit commands like regular text, press Enter to execute
 " Navigate with vim motions, make complex edits
 ```
-===
-# Title: Visual line operations
-# Category: Visual
-# Tags: visual, line, operations, block
----
-Use visual line mode and block mode for efficient multi-line text manipulation and formatting.
-
-#### Example
-
-```vim
-V       " select entire lines
-Ctrl+v  " visual block mode for column operations
-gv      " reselect last visual selection
-:'<,'>normal @q  " run macro on visual selection
-:'<,'>s/old/new/g  " substitute within selection only
-```
-===
+***
 # Title: Buffer-specific settings
 # Category: Configuration
 # Tags: buffer, specific, settings, local
@@ -178,7 +162,7 @@ Use buffer-local settings and autocmds for file-type specific configurations and
 :autocmd BufEnter *.md setlocal textwidth=80 spell
 " File-specific settings without global impact
 ```
-===
+***
 # Title: Quick fold navigation
 # Category: Folding
 # Tags: fold, navigation, quick, movement
@@ -195,7 +179,7 @@ zk  " move to previous fold
 zv  " view cursor line (unfold if needed)
 zx  " update folds
 ```
-===
+***
 # Title: Register operations mastery
 # Category: Registers
 # Tags: registers, operations, advanced, clipboard
@@ -211,7 +195,7 @@ Use register operations for sophisticated copy-paste workflows and text manipula
 :reg a   " view contents of register 'a'
 :let @a='new text'  " set register 'a' programmatically
 ```
-===
+***
 # Title: Motion-based editing patterns
 # Category: Movement
 # Tags: motion, editing, patterns, efficiency
@@ -228,7 +212,7 @@ ya]     " yank around brackets
 viw     " visually select inner word
 vap     " visually select around paragraph
 ```
-===
+***
 # Title: Session workflow optimization
 # Category: Session
 # Tags: session, workflow, project, management
@@ -244,7 +228,7 @@ Use session commands for project-based workflow management and context switching
 :SLoad project_name           " load named session
 " Restore window layouts, open files, cursor positions
 ```
-===
+***
 # Title: Tab-based workflow
 # Category: Tabs
 # Tags: tabs, workflow, organization, navigation
@@ -260,7 +244,7 @@ gt / gT                       " navigate between tabs
 <C-w>T                        " move current window to new tab
 :tabmove 2                    " move tab to position 2
 ```
-===
+***
 # Title: Split window mastery
 # Category: Windows
 # Tags: split, windows, mastery, layout
@@ -277,7 +261,7 @@ Use advanced window splitting and management for efficient multi-file editing an
 <C-w>=                        " equalize window sizes
 <C-w>_                        " maximize window height
 ```
-===
+***
 # Title: Command abbreviations
 # Category: Command Line
 # Tags: abbreviations, shortcuts, efficiency, typos
@@ -294,7 +278,7 @@ Use command abbreviations for frequently used commands and common typo correctio
 :cabbrev ff find **/*
 " Corrects common typos and creates shortcuts
 ```
-===
+***
 # Title: Insert mode navigation
 # Category: Insert
 # Tags: insert, navigation, movement, efficiency
@@ -311,24 +295,7 @@ Use insert mode navigation keys for efficient editing without leaving insert mod
 <C-d>   " unindent current line
 <C-o>   " execute one normal mode command
 ```
-===
-# Title: Search and replace workflow
-# Category: Search
-# Tags: search, replace, workflow, confirmation
----
-Use interactive search and replace workflow for safe bulk text modifications with preview.
-
-#### Example
-
-```vim
-:%s/old/new/gc                " replace with confirmation
-:%s/old/new/gn                " count matches without replacing
-:set hlsearch                 " highlight matches
-:set incsearch                " incremental search
-/old<CR>cgnnew<Esc>           " search, change next match
-. . .                         " repeat with dot command
-```
-===
+***
 # Title: Mark-based navigation workflow
 # Category: Marks
 # Tags: marks, navigation, workflow, jumping
@@ -345,4 +312,4 @@ ma      " set mark 'a' at current position
 mA      " set global mark 'A' (across files)
 'A      " jump to global mark 'A'
 ```
-===
+***

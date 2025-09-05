@@ -12,7 +12,7 @@ Use `jobstart()` and `jobstop()` to manage background processes and communicate 
 })
 :lua vim.fn.jobstop(job_id)
 ```
-===
+***
 # Title: Terminal mode key mappings
 # Category: Terminal
 # Tags: terminal, mode, mappings, tnoremap
@@ -27,7 +27,7 @@ Use terminal mode mappings to customize key behavior inside built-in terminal em
 :tnoremap <A-h> <C-\><C-n><C-w>h            " alt+h navigation
 :tnoremap <C-]> <C-\><C-n>:q<CR>            " quick close
 ```
-===
+***
 # Title: Terminal scrollback and history
 # Category: Terminal
 # Tags: terminal, scrollback, history, buffer
@@ -42,7 +42,7 @@ Use `scrollback` option to control terminal history and access previous output i
 :terminal                 " open terminal
 " In terminal: <C-\><C-n> then /pattern to search history
 ```
-===
+***
 # Title: Split terminal workflows
 # Category: Terminal
 # Tags: terminal, split, workflow, development
@@ -57,7 +57,7 @@ Use terminal splits for integrated development workflows without leaving Neovim.
 :tabnew | terminal        " terminal in new tab
 " Create persistent terminal splits for common tasks
 ```
-===
+***
 # Title: Terminal with specific shell
 # Category: Terminal
 # Tags: terminal, shell, specific, custom
@@ -72,7 +72,7 @@ Use `:terminal` with specific shell or command for customized terminal environme
 :terminal node            " Node.js REPL
 :terminal zsh -c 'cd ~/project && zsh'  " custom environment
 ```
-===
+***
 # Title: Terminal buffer naming
 # Category: Terminal
 # Tags: terminal, buffer, naming, identification
@@ -87,7 +87,7 @@ Use buffer naming to identify and switch between multiple terminal instances eas
 :ls                      " shows named terminal buffers
 :buffer server           " switch to named terminal
 ```
-===
+***
 # Title: Terminal environment variables
 # Category: Terminal
 # Tags: terminal, environment, variables, env
@@ -102,7 +102,7 @@ Use environment variable control for terminal processes launched from Neovim.
 :terminal env              " show environment
 :terminal ENV_VAR=value command  " set env var for command
 ```
-===
+***
 # Title: Terminal with working directory
 # Category: Terminal
 # Tags: terminal, working, directory, cwd
@@ -116,7 +116,7 @@ Use `++cwd` to start terminals in specific working directories for project-based
 :split | terminal ++cwd=%:h " terminal in current file's directory
 :lua vim.cmd('terminal ++cwd=' .. vim.fn.expand('%:h'))
 ```
-===
+***
 # Title: Terminal size and dimensions
 # Category: Terminal
 # Tags: terminal, size, dimensions, rows, cols
@@ -131,7 +131,7 @@ Use terminal size options to create terminals with specific dimensions for diffe
 :20split | terminal       " split with specific height
 :vertical 80split | terminal  " split with specific width
 ```
-===
+***
 # Title: Terminal process communication
 # Category: Terminal
 # Tags: terminal, process, communication, stdin
@@ -146,7 +146,7 @@ Use `chansend()` to send input to terminal processes programmatically.
 :lua vim.fn.chansend(term_id, {"python", "-c", "print('hello')", "\n"})
 " Send commands to terminal buffer programmatically
 ```
-===
+***
 # Title: Terminal output processing
 # Category: Terminal
 # Tags: terminal, output, processing, callback
@@ -166,7 +166,7 @@ Use terminal output callbacks to process terminal output and integrate with edit
   end
 })
 ```
-===
+***
 # Title: Hidden terminal processes
 # Category: Terminal
 # Tags: terminal, hidden, background, process
@@ -184,7 +184,7 @@ Use hidden terminals to run background processes while maintaining editor workfl
   end
 })
 ```
-===
+***
 # Title: Terminal color and appearance
 # Category: Terminal
 # Tags: terminal, color, appearance, highlight
@@ -199,7 +199,7 @@ Use terminal-specific highlighting and color configuration for better visual int
 :hi TermCursorNC ctermfg=white ctermbg=darkgray
 :set termguicolors  " enable 24-bit colors in terminal
 ```
-===
+***
 # Title: Terminal autocmd events
 # Category: Terminal
 # Tags: terminal, autocmd, events, TermOpen
@@ -214,7 +214,7 @@ Use terminal-specific autocommand events to customize terminal behavior and appe
 :autocmd TermClose * echo "Terminal closed"
 :autocmd TermEnter * startinsert  " enter insert mode
 ```
-===
+***
 # Title: Terminal and quickfix integration
 # Category: Terminal
 # Tags: terminal, quickfix, integration, errors
@@ -231,7 +231,7 @@ Use terminal output parsing to populate quickfix list with build errors and navi
   callback = function() vim.cmd('cfile build.log') end
 })
 ```
-===
+***
 # Title: Terminal session persistence
 # Category: Terminal
 # Tags: terminal, session, persistence, restore
@@ -248,7 +248,7 @@ Use terminal session restoration to maintain terminal state across Neovim sessio
   -- Custom logic to save terminal commands/state
 end
 ```
-===
+***
 # Title: Terminal window management
 # Category: Terminal
 # Tags: terminal, window, management, layout
@@ -263,7 +263,7 @@ Use advanced window management for terminal-focused layouts and workflows.
 :vsplit | terminal | vertical resize 80  " side terminal
 " Create terminal-focused layout commands
 ```
-===
+***
 # Title: Terminal plugin integration
 # Category: Terminal
 # Tags: terminal, plugin, integration, compatibility
@@ -278,7 +278,7 @@ Use terminal integration patterns that work well with common Neovim plugins and 
 :autocmd TermOpen * lua vim.wo.winhighlight = "Normal:TermNormal"
 :autocmd BufEnter term://* startinsert  " auto enter insert mode
 ```
-===
+***
 # Title: Terminal debugging integration
 # Category: Terminal
 # Tags: terminal, debugging, gdb, integration
@@ -293,7 +293,7 @@ Use terminal for integrated debugging sessions with GDB, Python debugger, or oth
 " Use terminal splits to debug while viewing source
 :split | edit source.c | split | terminal gdb ./program
 ```
-===
+***
 # Title: Terminal REPL workflows
 # Category: Terminal
 # Tags: terminal, repl, workflow, interactive
@@ -309,4 +309,4 @@ Use terminal for REPL-driven development with language-specific interactive envi
 :terminal ghci            " Haskell GHCi
 " Send code from buffer to REPL using mappings
 ```
-===
+***

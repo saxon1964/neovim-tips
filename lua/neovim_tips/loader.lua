@@ -54,7 +54,7 @@ local function parse_tip_blocks(content, is_user_tips)
       end
     elseif line == "---" then
       body_lines = {}
-    elseif line == "===" then
+    elseif line == "***" or line == "===" then
       current.description = utils.trim(table.concat(body_lines, "\n"))
       if current.title then -- Ensure tip has a title and wasn't skipped
         table.insert(parsed_tips, current)

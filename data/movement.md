@@ -12,7 +12,7 @@ j  " move down
 k  " move up
 l  " move right
 ```
-===
+***
 # Title: Word movement
 # Category: Movement
 # Tags: word, navigation, movement
@@ -26,7 +26,7 @@ w  " next word start
 e  " end of word
 b  " previous word start
 ```
-===
+***
 # Title: Line navigation
 # Category: Movement
 # Tags: line, navigation, movement
@@ -40,7 +40,7 @@ Use `0` to jump to the beginning of the line, `^` to jump to the first non-blank
 ^  " first non-blank
 $  " line end
 ```
-===
+***
 # Title: Document navigation
 # Category: Movement
 # Tags: document, navigation, movement
@@ -53,7 +53,7 @@ Use `gg` to go to the first line of the document and `G` to go to the last line.
 gg  " first line
 G   " last line
 ```
-===
+***
 # Title: Screen scrolling
 # Category: Movement
 # Tags: scroll, screen, navigation
@@ -66,7 +66,7 @@ Use `Ctrl+e` to scroll down and `Ctrl+y` to scroll up without moving the cursor 
 Ctrl+e  " scroll down
 Ctrl+y  " scroll up
 ```
-===
+***
 # Title: Center cursor on screen
 # Category: Movement
 # Tags: center, screen, cursor
@@ -80,7 +80,7 @@ zz  " center line
 zt  " line to top
 zb  " line to bottom
 ```
-===
+***
 # Title: Page movement
 # Category: Movement
 # Tags: page, scroll, movement
@@ -95,7 +95,7 @@ Ctrl+b  " backward full page
 Ctrl+d  " down half page
 Ctrl+u  " up half page
 ```
-===
+***
 # Title: Jump to specific line
 # Category: Movement
 # Tags: line, jump, navigation
@@ -108,7 +108,7 @@ Use `{number}G` to jump to a specific line number, or `:{number}` as an alternat
 42G   " jump to line 42
 :42   " jump to line 42
 ```
-===
+***
 # Title: Character search on line
 # Category: Movement
 # Tags: character, find, line
@@ -123,7 +123,7 @@ Fa  " find previous 'a'
 ta  " move to before next 'a'
 Ta  " move to after previous 'a'
 ```
-===
+***
 # Title: Repeat character search
 # Category: Movement
 # Tags: repeat, character, search
@@ -136,7 +136,7 @@ Use `;` to repeat last character search in the same direction and `,` to repeat 
 ;  " repeat search forward
 ,  " repeat search backward
 ```
-===
+***
 # Title: Matching brackets
 # Category: Movement
 # Tags: brackets, matching, navigation
@@ -148,7 +148,7 @@ Use `%` to jump to the matching bracket, parenthesis, or brace.
 ```vim
 %  " jump to matching bracket
 ```
-===
+***
 # Title: Screen position navigation
 # Category: Movement
 # Tags: screen, position, navigation
@@ -161,7 +161,7 @@ Use `H` to move cursor to top of screen and `L` to move cursor to bottom of scre
 H  " move to top of screen
 L  " move to bottom of screen
 ```
-===
+***
 # Title: Jump to definition
 # Category: Movement
 # Tags: definition, jump, lsp
@@ -174,7 +174,7 @@ Use `gd` to jump to the definition of the symbol under the cursor (requires LSP)
 gd  " go to definition
 gD  " go to declaration
 ```
-===
+***
 # Title: Jump list navigation
 # Category: Movement
 # Tags: jump, list, navigation
@@ -188,7 +188,7 @@ Ctrl+o  " previous location
 Ctrl+i  " next location
 :jumps  " show jump list
 ```
-===
+***
 # Title: Change list navigation
 # Category: Movement
 # Tags: change, list, edit
@@ -202,7 +202,7 @@ g;       " previous change
 g,       " next change
 :changes " show change list
 ```
-===
+***
 # Title: Middle of screen
 # Category: Movement
 # Tags: middle, screen, position
@@ -214,7 +214,7 @@ Use `M` to move cursor to the middle line of the screen.
 ```vim
 M  " move to middle of screen
 ```
-===
+***
 # Title: Paragraph movement
 # Category: Movement
 # Tags: paragraph, navigation, text
@@ -227,7 +227,7 @@ Use `{` to move to the beginning of current paragraph and `}` to move to the beg
 {  " previous paragraph
 }  " next paragraph
 ```
-===
+***
 # Title: Sentence movement
 # Category: Movement
 # Tags: sentence, navigation, text
@@ -240,7 +240,7 @@ Use `(` to move to the beginning of current sentence and `)` to move to the begi
 (  " previous sentence
 )  " next sentence
 ```
-===
+***
 # Title: Word movement alternatives
 # Category: Movement
 # Tags: word, WORD, movement, whitespace
@@ -254,7 +254,7 @@ W  " next WORD (whitespace-separated)
 E  " end of WORD
 B  " previous WORD
 ```
-===
+***
 # Title: Alternative movement keys
 # Category: Movement
 # Tags: alternative, movement, keys
@@ -270,7 +270,7 @@ Ctrl+k  " same as k (up)
 Ctrl+n  " same as j (down)
 Ctrl+p  " same as k (up)
 ```
-===
+***
 # Title: Line number movement
 # Category: Movement
 # Tags: line, number, goto, absolute
@@ -284,20 +284,27 @@ Use `{number}gg` or `{number}G` to go to absolute line number, where `{number}` 
 100G  " go to line 100
 1G    " go to first line (same as gg)
 ```
-===
+***
 # Title: Suspend and background
 # Category: Movement
 # Tags: suspend, background, shell
 ---
-Use `Ctrl+z` to suspend Neovim and return to shell. Use `fg` in shell to return to Neovim.
+Use `Ctrl+z` to suspend Neovim and return to shell (terminal). You can do whatever you want in the hsell. Use `jobs` in shell to list suspended jobs. The list contains rows formatted like the following one:
+
+```
+[5]  + suspended  nvim playground
+```
+
+The number in square brackets is the number of the job that can be resumed. Just use `fg #` (in the shell) followed by job number to resume the job:
 
 #### Example
 
 ```vim
 Ctrl+z  " suspend to shell
-" Then in shell: fg  # to return to vim
+jobs    " list suspended jobs
+fg #5   " resume job #5
 ```
-===
+***
 # Title: Page scrolling with cursor positioning
 # Category: Movement
 # Tags: scroll, page, cursor, position
@@ -314,7 +321,7 @@ Ctrl+u  " half page up
 Ctrl+e  " scroll up (cursor stays)
 Ctrl+y  " scroll down (cursor stays)
 ```
-===
+***
 # Title: Z-commands - redraw with cursor positioning
 # Category: Movement
 # Tags: redraw, cursor, position, screen
@@ -328,7 +335,7 @@ z<Enter>  " redraw, cursor line at top (first non-blank)
 z.        " redraw, cursor line at center (first non-blank)  
 z-        " redraw, cursor line at bottom (first non-blank)
 ```
-===
+***
 # Title: Z-commands - horizontal scrolling
 # Category: Movement
 # Tags: scroll, horizontal, wrap, screen
@@ -345,7 +352,7 @@ zL  " scroll left half-screenwidth
 zs  " scroll cursor to start of screen
 ze  " scroll cursor to end of screen
 ```
-===
+***
 # Title: Z-commands - window height adjustment
 # Category: Movement
 # Tags: window, height, resize, redraw
@@ -359,4 +366,4 @@ z20<Enter>  " make window 20 lines high
 z+          " cursor to line below window
 z^          " cursor to line above window
 ```
-===
+***

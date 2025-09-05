@@ -9,7 +9,7 @@ Use `:jumps` to show the jump list with all stored positions.
 ```vim
 :jumps  " show jump list
 ```
-===
+***
 # Title: Go to file under cursor
 # Category: Navigation
 # Tags: file, cursor, goto
@@ -21,7 +21,7 @@ Use `gf` to open the file whose name is under the cursor.
 ```vim
 gf  " go to file under cursor
 ```
-===
+***
 # Title: LSP go to references
 # Category: Navigation
 # Tags: lsp, references, goto
@@ -33,7 +33,7 @@ Use `gr` to go to references of symbol under cursor (requires LSP server).
 ```vim
 gr  " go to references
 ```
-===
+***
 # Title: Go to declaration
 # Category: Navigation
 # Tags: lsp, declaration, goto
@@ -45,7 +45,7 @@ Use `gD` to go to declaration of symbol under cursor.
 ```vim
 gD  " go to declaration
 ```
-===
+***
 # Title: Jump to last edit location
 # Category: Navigation
 # Tags: edit, location, jump
@@ -57,7 +57,7 @@ Use `` `. `` to jump to the exact location of the last edit.
 ```vim
 `.  " jump to last edit location
 ```
-===
+***
 # Title: List jump locations
 # Category: Navigation
 # Tags: jump, list, history
@@ -69,7 +69,7 @@ Use `:ju` to list all jump locations in the jump list.
 ```vim
 :ju  " list jump locations
 ```
-===
+***
 # Title: Navigate quickfix list
 # Category: Navigation
 # Tags: quickfix, navigation, errors
@@ -82,7 +82,7 @@ Use `:cnext` to go to next item in quickfix list and `:cprev` to go to previous 
 :cnext  " next quickfix item
 :cprev  " previous quickfix item
 ```
-===
+***
 # Title: Jump to block boundaries
 # Category: Navigation
 # Tags: block, boundaries, jump
@@ -95,7 +95,7 @@ Use `[{` to jump to start of current block and `]}` to jump to end of current bl
 [{  " jump to block start
 ]}  " jump to block end
 ```
-===
+***
 # Title: Jump between functions
 # Category: Navigation
 # Tags: function, jump, treesitter
@@ -108,7 +108,7 @@ Use `]m` to jump to next function start and `[m` to jump to previous function st
 ]m  " next function start
 [m  " previous function start
 ```
-===
+***
 # Title: Jump to tag under cursor
 # Category: Navigation
 # Tags: tags, jump, definition, ctags
@@ -121,7 +121,7 @@ Use `Ctrl+]` to jump to tag under cursor, or `Ctrl+T` to jump back. Requires tag
 Ctrl+]  " jump to tag
 Ctrl+T  " jump back
 ```
-===
+***
 # Title: Navigate to alternate file
 # Category: Navigation
 # Tags: alternate, file, header, source
@@ -134,7 +134,7 @@ Use `:A` to switch to alternate file (e.g., .h to .c), or `Ctrl+^` to switch to 
 :A      " alternate file
 Ctrl+^  " previous buffer
 ```
-===
+***
 # Title: Jump to definition with split
 # Category: Navigation
 # Tags: definition, split, window, tags
@@ -146,7 +146,7 @@ Use `Ctrl+W ]` to open tag definition in new split window.
 ```vim
 Ctrl+W ]  " open tag in split
 ```
-===
+***
 # Title: Buffer switching shortcuts
 # Category: Navigation
 # Tags: buffer, switching, shortcuts, quick
@@ -161,7 +161,7 @@ Use `:ls` to list buffers, `:b#` for previous buffer, or create mappings for qui
 Ctrl+^      " alternate between current and previous buffer
 :b partial  " switch to buffer matching partial name
 ```
-===
+***
 # Title: Jump to random line
 # Category: Navigation
 # Tags: random, line, jump, goto
@@ -176,7 +176,7 @@ Use `:{number}G` or `:{number}` to jump to specific line, or `:echo line('$')` t
 G           " jump to last line
 :echo line('$')  " show total number of lines
 ```
-===
+***
 # Title: Fast buffer access
 # Category: Navigation
 # Tags: buffer, fast, access, number
@@ -193,7 +193,7 @@ nnoremap <leader>4 :4b<CR>
 nnoremap <leader>5 :5b<CR>
 " Continue for buffers 6-9
 ```
-===
+***
 # Title: Jump to matching brace
 # Category: Navigation
 # Tags: brace, bracket, matching, jump
@@ -207,7 +207,7 @@ Use `%` to jump to matching brace/bracket/parenthesis, works with (), [], {}, an
 [%  " jump to previous unmatched (
 ]%  " jump to next unmatched )
 ```
-===
+***
 # Title: Square bracket navigation - unmatched brackets
 # Category: Navigation
 # Tags: bracket, unmatched, navigation
@@ -222,7 +222,7 @@ Use `[(` and `])` to jump to unmatched parentheses, `[{` and `]}` to jump to unm
 [{  " jump to previous unmatched {
 ]}  " jump to next unmatched }
 ```
-===
+***
 # Title: Square bracket navigation - sections
 # Category: Navigation
 # Tags: section, navigation, document
@@ -237,7 +237,7 @@ Use `[[` and `]]` to jump between sections, `[]` and `][` to jump between SECTIO
 []  " jump to previous SECTION
 ][  " jump to next SECTION
 ```
-===
+***
 # Title: Square bracket navigation - marks
 # Category: Navigation
 # Tags: mark, navigation, position
@@ -252,7 +252,7 @@ Use `['` and `]'` to jump to previous/next lowercase mark (first non-blank), `` 
 [`  " jump to previous mark (exact position)
 ]`  " jump to next mark (exact position)
 ```
-===
+***
 # Title: Square bracket navigation - C comments
 # Category: Navigation
 # Tags: comment, C, navigation
@@ -267,7 +267,7 @@ Use `[/` and `]/` to jump to start/end of C-style comments. Use `[*` as alternat
 [*  " same as [/ (alternative)
 ]*  " same as ]/ (alternative)
 ```
-===
+***
 # Title: Square bracket navigation - preprocessing
 # Category: Navigation
 # Tags: preprocessing, define, include
@@ -280,7 +280,7 @@ Use `[#` and `]#` to jump between #if/#else/#endif blocks.
 [#  " jump to previous #if, #else, or #ifdef
 ]#  " jump to next #endif or #else
 ```
-===
+***
 # Title: Square bracket navigation - definitions and includes
 # Category: Navigation
 # Tags: definition, include, search
@@ -295,7 +295,7 @@ Use `[Ctrl+d`/`]Ctrl+d` to jump to #define, `[Ctrl+i`/`]Ctrl+i` to jump to lines
 [Ctrl+i  " jump to previous line containing word
 ]Ctrl+i  " jump to next line containing word
 ```
-===
+***
 # Title: Square bracket navigation - list definitions
 # Category: Navigation
 # Tags: list, definition, search, include
@@ -310,7 +310,7 @@ Use `[D`/`]D` to list all #defines, `[I`/`]I` to list all lines containing word 
 [I  " list all lines containing word under cursor
 ]I  " list all lines containing word under cursor
 ```
-===
+***
 # Title: Square bracket navigation - show definitions
 # Category: Navigation
 # Tags: show, definition, preview
@@ -325,7 +325,7 @@ Use `[d`/`]d` to show first #define, `[i`/`]i` to show first line containing wor
 [i  " show first line containing word
 ]i  " show first line containing word
 ```
-===
+***
 # Title: Square bracket navigation - changes and diffs
 # Category: Navigation
 # Tags: change, diff, navigation
@@ -338,7 +338,7 @@ Use `[c` and `]c` to jump between changes in diff mode.
 [c  " jump to previous change
 ]c  " jump to next change
 ```
-===
+***
 # Title: Square bracket navigation - spelling
 # Category: Navigation
 # Tags: spelling, error, navigation
@@ -351,7 +351,7 @@ Use `[s` and `]s` to jump between misspelled words.
 [s  " jump to previous misspelled word
 ]s  " jump to next misspelled word
 ```
-===
+***
 # Title: Square bracket navigation - folds
 # Category: Navigation
 # Tags: fold, navigation, code
@@ -364,7 +364,7 @@ Use `[z` and `]z` to jump to start/end of open fold.
 [z  " jump to start of open fold
 ]z  " jump to end of open fold
 ```
-===
+***
 # Title: Square bracket navigation - member functions
 # Category: Navigation
 # Tags: function, member, class, navigation
@@ -377,7 +377,7 @@ Use `[m` and `]m` to jump between member function starts.
 [m  " jump to previous start of member function
 ]m  " jump to next start of member function
 ```
-===
+***
 # Title: Toggle netrw file explorer
 # Category: Navigation
 # Tags: netrw, explorer, toggle, file, browser
@@ -392,4 +392,16 @@ Use `:Lexplore` to toggle the netrw file explorer in a vertical split on the lef
 :Sexplore    " open explorer in horizontal split
 :Explore     " open explorer in current window
 ```
-===
+***
+# Title: Jump between matching pair of parenthesis `([{...}])`
+# Category: Navigation
+# Tags: parenthesis
+---
+Position your cursor on `(`, `)`, `[`, `]`, `{`, `}`. Use `%` to jump between corresponding opening and closing symbols.
+
+### Example
+
+```vim
+%   "jumps between corresponding parenthesis
+```
+***

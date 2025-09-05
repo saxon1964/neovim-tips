@@ -3,8 +3,11 @@
 local M = {}
 
 local Popup = require("nui.popup")
+local Layout = require("nui.layout")
 local tips = require("neovim_tips.tips")
 local config = require("neovim_tips.config")
+local renderer = require("neovim_tips.renderer")
+local utils = require("neovim_tips.utils")
 
 ---@class DailyTipData
 ---@field last_shown string Date string in YYYY-MM-DD format
@@ -80,7 +83,7 @@ local function get_random_tip()
 end
 
 ---Create and show the daily tip popup
----Displays a centered popup with a random tip, markdown rendering, and auto-close functionality
+---Displays a centered layout with main tip popup and footer popup below
 ---@param update_last_shown boolean true, if last shown date should be updated, false otherwise
 ---@return nil
 local function show_daily_tip(update_last_shown)
@@ -89,8 +92,11 @@ local function show_daily_tip(update_last_shown)
     return
   end
 
-  -- Create popup with centered layout
-  local popup = Popup({
+  -- Close any existing plugin windows first to prevent layering issues
+  utils.close_plugin_windows()
+
+  -- Create main tip popup
+  local main_popup = Popup({
     enter = true,
     focusable = true,
     border = {
@@ -100,31 +106,67 @@ local function show_daily_tip(update_last_shown)
         top_align = "center",
       },
     },
-    position = "50%",
-    size = {
-      width = "60%",
-      height = "40%",
-    },
     buf_options = {
-      modifiable = true,
+      buftype = "nofile",
+      modifiable = false,
       readonly = false,
-      filetype = "markdown",
     },
     win_options = {
-      winblend = 0,
-      winhighlight = "Normal:Normal,FloatBorder:Normal,Cursor:NONE,CursorLine:NONE",
-      cursorline = false,
-      cursorcolumn = false,
+      wrap = true,
       number = false,
-      relativenumber = false,
-      signcolumn = "no",
+      winhighlight = "FloatBorder:Normal",
     },
   })
 
-  -- Mount the popup
-  popup:mount()
+  -- Create footer popup
+  local footer_popup = Popup({
+    enter = false,
+    focusable = false,
+    border = {
+      style = "rounded",
+      text = {
+        top = " Contribute ",
+        top_align = "center",
+      },
+    },
+    buf_options = {
+      buftype = "nofile",
+      modifiable = true,
+      readonly = false,
+    },
+    win_options = {
+      wrap = false,
+      number = false,
+      winhighlight = "FloatBorder:Normal",
+    },
+  })
 
-  -- Prepare content
+  -- Create layout similar to picker
+  local layout = Layout(
+    {
+      position = {
+        row = "50%",
+        col = "50%",
+      },
+      size = {
+        width = "70%",
+        height = "50%",
+      },
+      relative = "editor",
+    },
+    Layout.Box({
+      Layout.Box(main_popup, { size = "80%" }),
+      Layout.Box(footer_popup, { size = "20%" }),
+    }, { dir = "col" })
+  )
+
+  -- Mount the layout
+  layout:mount()
+  
+  -- Force redraw to ensure proper rendering over other popups
+  vim.cmd('redraw')
+
+  -- Prepare main content
   local lines = {}
 
   -- Add tip title as first line
@@ -147,67 +189,58 @@ local function show_daily_tip(update_last_shown)
     end
   end
 
-  -- Add footer notes
-  table.insert(lines, "")
-  table.insert(lines, "---")
-  table.insert(lines, "")
-  table.insert(lines, "Have your favorite tip? Found an error?  ")
-  table.insert(lines, "Please report it [here](" .. config.options.github_url .. "/issues)!")
-  table.insert(lines, "")
-  table.insert(lines, "For daily tip setup refer to [README](" .. config.options.github_url .. ") file.")
-  table.insert(lines, "")
+  -- Temporarily make modifiable to update content
+  vim.bo[main_popup.bufnr].modifiable = true
+  
+  -- Set main content
+  vim.api.nvim_buf_set_lines(main_popup.bufnr, 0, -1, false, lines)
+  vim.bo[main_popup.bufnr].filetype = "markdown"
 
-  -- Set content while buffer is modifiable
-  vim.api.nvim_buf_set_lines(popup.bufnr, 0, -1, false, lines)
+  -- Render markdown in main popup
+  renderer.enable(main_popup.bufnr)
+  
+  -- Make non-modifiable again to prevent user editing
+  vim.bo[main_popup.bufnr].modifiable = false
 
-  -- Position cursor at line 2 (empty line) so markdown renders properly
-  vim.api.nvim_win_set_cursor(popup.winid, {2, 0})
+  -- Position cursor at line 2 so markdown renders properly
+  vim.api.nvim_win_set_cursor(main_popup.winid, {2, 0})
 
-  -- NOW lock the buffer
-  vim.bo[popup.bufnr].modifiable = false
-  vim.bo[popup.bufnr].readonly = true
+  -- Set up footer content
+  local footer_lines = {}
+  table.insert(footer_lines, config.options.messages.daily_tip.footer1)
+  table.insert(footer_lines, config.options.messages.daily_tip.footer2)
 
-  -- Enable markdown rendering if available
-  if pcall(require, "render-markdown") then
-    vim.api.nvim_buf_call(popup.bufnr, function()
-      require("render-markdown").enable()
-    end)
-  end
+  vim.api.nvim_buf_set_lines(footer_popup.bufnr, 0, -1, false, footer_lines)
+  vim.bo[footer_popup.bufnr].filetype = "markdown"
+  renderer.enable(footer_popup.bufnr)
 
   -- Set up keymaps to close
   local close_keys = { "q", "<Esc>" }
   for _, key in ipairs(close_keys) do
-    popup:map("n", key, function()
-      popup:unmount()
+    main_popup:map("n", key, function()
+      layout:unmount()
     end, { noremap = true, silent = true })
   end
 
   -- Auto-close when user enters command mode to prevent hijacking
-  popup:map("n", ":", function()
-    popup:unmount()
+  main_popup:map("n", ":", function()
+    layout:unmount()
     -- Use feedkeys to properly enter command mode
     vim.api.nvim_feedkeys(":", "n", true)
   end, { noremap = true, silent = true })
 
-  -- Auto-close when user tries to leave the window (for shortcuts like <leader>nto)
-  popup:on("BufLeave", function()
+  -- Auto-close when user tries to leave the window
+  main_popup:on("BufLeave", function()
     -- Small delay to prevent immediate closure, but close if user actually switched focus
     vim.defer_fn(function()
-      if popup.winid and vim.api.nvim_win_is_valid(popup.winid) then
+      if main_popup.winid and vim.api.nvim_win_is_valid(main_popup.winid) then
         local current_win = vim.api.nvim_get_current_win()
-        if current_win ~= popup.winid then
-          popup:unmount()
+        if current_win ~= main_popup.winid then
+          layout:unmount()
         end
       end
     end, 50)
   end)
-
-  -- Clean up when popup closes
-  popup:on("BufWinLeave", function()
-    -- Nothing to restore since we didn't change global settings
-  end)
-
-  -- No auto-close - keep open until user dismisses
 
   -- Mark as shown today conditionally
   if update_last_shown then

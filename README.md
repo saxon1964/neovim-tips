@@ -29,10 +29,11 @@ I have provided a solid initial batch of tips and if you have your favorite one 
 - **Word-based search**: Intelligent search that matches all words (e.g., "insert character" finds "character to insert")
 - **Live markdown rendering**: Preview rendered descriptions with full markdown support
 - **Simple navigation**: Seamless mouse and keyboard navigation with smart mode switching
+- **Copy-friendly**: Easy copying of tip content and code snippets from both picker and daily tip
 - **Cursor preservation**: Returns to your exact cursor position and mode after closing
 - Support for categories, tags, and rich text
 - Lazy loading for optimal startup performance
-- The plugin comes with a starting set of ~600 curated tips
+- The plugin comes with a starting set of 900+ curated tips
 - You can add/edit unlimited number of personal tips stored in a configurable file
 - User tips with configurable prefixes to prevent conflicts with builtin tips
 - Automatic title conflict detection and warnings
@@ -256,11 +257,12 @@ The plugin can show you a random tip in a beautiful popup when you start Neovim.
 - `daily_tip = 2`: Every Neovim startup
 
 ### Daily Tip Popup Features:
-- **"Did you know?" popup**: Centered popup with random tip
+- **"Did you know?" popup**: Centered layout with main tip content and footer
 - **Smart persistence**: Once daily mode uses `~/.local/share/nvim/neovim_tips/persistent.json` 
 - **Full markdown rendering**: Rich formatting with render-markdown.nvim
+- **Easy copying**: Select and copy tip content or code snippets directly
 - **Easy dismissal**: Close with `q` or `<Esc>`
-- **Error reporting**: Includes GitHub issues link for feedback
+- **Contribution links**: Footer includes GitHub issues link for feedback
 
 ![Daily tip popup example](images/s2.png)
 
@@ -285,14 +287,17 @@ This is a description of what the tip does.
 ```vim
 some-command
 ```
-===
+
+Some additional text here.
+***
 ````
 
+Alternatively, use can use === (3 equal signs) instead of *** (3 asterisks) to finish the tip. 
 This format is used for all tips, built-in or created by you and stored separately.
 
 Each tip has to start with the `# Title:` line, followed by `# Category:` and a list of `# Tags`.
 
-Description of the tip starts with `---` and ends with `===`. There is **NO** predefined format for description. Anything between the starting and ending marker will be interpreted as a text in markdown (.md) format. Fzf-lua will render the markdown description in the right FZF panel. 
+Description of the tip starts with `---` and ends with `***` or `===`. There is **NO** predefined format for description. Anything between the starting and ending marker will be interpreted as a text in markdown (.md) format. Fzf-lua will render the markdown description in the right FZF panel. 
 
 ## ✅ Example
 
@@ -306,7 +311,7 @@ In normal mode use `diw` to delete the word under the cursor.
 ```vim
 diw 
 ```
-===
+***
 ````
 
 ## 📝 User-Defined Tips
@@ -368,6 +373,30 @@ user_tip_prefix = ""            -- "Join lines" stays "Join lines"
 - Provide clear examples when applicable
 - Test your tips before adding them
 - Consider if your tip might be useful as a contribution to the main collection
+
+## 🚫 Disabling Completion in Search Bar
+
+If you're using completion engines like `blink.cmp` or `nvim-cmp` and want to disable autocompletion suggestions in the picker's search bar, you can use the custom filetype `neovim-tips-search`:
+
+### For blink.cmp:
+```lua
+require('blink.cmp').setup({
+  enabled = function()
+    return vim.bo.filetype ~= "neovim-tips-search"
+  end,
+  -- ... rest of your config
+})
+```
+
+### For nvim-cmp:
+```lua
+require('cmp').setup({
+  enabled = function()
+    return vim.bo.filetype ~= "neovim-tips-search"
+  end,
+  -- ... rest of your config
+})
+```
 
 ## 📁 Default File Locations
 

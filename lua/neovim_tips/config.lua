@@ -2,6 +2,9 @@
 ---@field options NeovimTipsOptions Global configuration options
 local M = {}
 
+local github_root = "https://github.com/saxon1964/neovim-tips"
+local guthub_issues = github_root .. "/issues/new"
+
 ---@class NeovimTipsOptions
 ---@field user_file string Path to user's custom tips file
 ---@field user_tip_prefix string Prefix for user tips to avoid conflicts
@@ -9,18 +12,32 @@ local M = {}
 ---@field daily_tip integer Daily tip mode: 0=off, 1=once per day, 2=every startup
 ---@field builtin_dir string Internal: path to builtin tips data directory
 ---@field user_tips_tag string Internal: tag for user tips identification
----@field github_url string URL to the project repository
-
+---@field github table Internal: various github urls
+---@field messages table Internal: various messages
 ---Default configuration options
 M.options = {
   user_file = vim.fn.stdpath("config") .. "/neovim_tips/user_tips.md",
   user_tip_prefix = "[User] ",  -- Configurable prefix for user tips
   warn_on_conflicts = true,     -- Show warnings when user tips conflict with builtin
   daily_tip = 1,                -- Daily tip mode: 0=off, 1=once per day, 2=every startup
-  -- for internal use only
+  ---------------------------------------------------
+  --             for internal use only             --
+  ---------------------------------------------------
   builtin_dir = debug.getinfo(1, "S").source:sub(2):gsub("config.lua", "../../data"),
   user_tips_tag = "user",
-  github_url = "https://github.com/saxon1964/neovim-tips",
+  github = {
+    home = github_root,
+    issues = guthub_issues,
+  },
+  messages = {
+    picker = {
+      footer = "Having a **favorite tip**? Found an **error**? Just Shift+Click on the [**Issues**](" .. guthub_issues .. ") link. 🚀",
+    },
+    daily_tip = {
+      footer1 = "Having a **favorite tip**? Found an **error**? Just Shift+Click on the [**Issues**](" .. guthub_issues .. ") link. 🚀",
+      footer2 = "For daily tip setup refer to [**README**](" .. github_root .. ") file.",
+    }
+  },
 }
 
 ---Setup configuration with user overrides

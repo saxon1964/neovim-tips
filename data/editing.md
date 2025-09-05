@@ -1,15 +1,3 @@
-# Title: Repeat last command
-# Category: Editing
-# Tags: repeat, command, editing
----
-Use `.` to repeat the last command that changed text.
-
-#### Example
-
-```vim
-.  " repeat last command
-```
-===
 # Title: Insert at beginning/end
 # Category: Editing
 # Tags: insert, beginning, end
@@ -22,7 +10,7 @@ Use `I` to insert at beginning of line, `A` to append at end of line.
 I  " insert at line start
 A  " append at line end
 ```
-===
+***
 # Title: Open new line
 # Category: Editing
 # Tags: open, newline, insert
@@ -35,20 +23,7 @@ Use `o` to open new line below cursor, `O` to open new line above cursor.
 o  " open line below
 O  " open line above
 ```
-===
-# Title: Replace single character
-# Category: Editing
-# Tags: replace, character, substitute
----
-Use `r{char}` to replace single character under cursor with new character.
-
-#### Example
-
-```vim
-ra  " replace with 'a'
-rx  " replace with 'x'
-```
-===
+***
 # Title: Substitute character
 # Category: Editing
 # Tags: substitute, character, change
@@ -61,7 +36,7 @@ Use `s` to substitute character (delete and enter insert mode), `S` for entire l
 s  " substitute character
 S  " substitute line
 ```
-===
+***
 # Title: Yank (copy) operations
 # Category: Editing
 # Tags: yank, copy, clipboard
@@ -75,7 +50,7 @@ yy  " yank entire line
 yw  " yank word
 y$  " yank to end of line
 ```
-===
+***
 # Title: Put (paste) operations
 # Category: Editing
 # Tags: put, paste, clipboard
@@ -88,7 +63,7 @@ Use `p` to paste after cursor, `P` to paste before cursor.
 p  " paste after cursor
 P  " paste before cursor
 ```
-===
+***
 # Title: Calculate expressions
 # Category: Editing
 # Tags: calculate, math, expression, replace
@@ -102,7 +77,7 @@ Use `<C-r>=` in insert mode to calculate mathematical expressions and insert the
 <C-r>=2+2<CR>       " inserts '4'
 <C-r>=16*1024<CR>   " inserts '16384'
 ```
-===
+***
 # Title: Substitute entire line and start insert
 # Category: Editing
 # Tags: substitute, line, insert, indentation
@@ -114,7 +89,7 @@ Use `S` to delete the entire line and start insert mode with proper indentation.
 ```vim
 S  " delete line and start insert at correct indentation
 ```
-===
+***
 # Title: Capitalize words easily
 # Category: Editing
 # Tags: capitalize, words, case, format
@@ -128,7 +103,7 @@ guw~        " lowercase word then capitalize first letter
 " Or map for convenience:
 nnoremap <leader>tc guw~
 ```
-===
+***
 # Title: Insert single character
 # Category: Editing
 # Tags: insert, character, single, quick
@@ -143,7 +118,7 @@ nnoremap <leader>i i_<Esc>r
 " Or use s to substitute character:
 s{char}<Esc>  " replace character under cursor
 ```
-===
+***
 # Title: Delete words in different way
 # Category: Editing
 # Tags: delete, word, alternative, whitespace
@@ -158,7 +133,7 @@ diw  " delete inner word (no spaces)
 dW   " delete WORD (including punctuation)
 daW  " delete a WORD (including spaces)
 ```
-===
+***
 # Title: Insert multiple lines
 # Category: Editing
 # Tags: insert, lines, multiple, batch
@@ -173,7 +148,7 @@ Use `o<Esc>` followed by repeat count, or `{count}o` to insert multiple empty li
 " Or in normal mode:
 o<Esc>4.    " insert line, then repeat 4 times
 ```
-===
+***
 # Title: Insert newline without entering insert mode
 # Category: Editing
 # Tags: newline, insert, normal, mode
@@ -189,7 +164,7 @@ O<Esc>      " insert empty line above, stay in normal mode
 nnoremap <leader>o o<Esc>
 nnoremap <leader>O O<Esc>
 ```
-===
+***
 # Title: Enhanced undo and redo
 # Category: Editing
 # Tags: undo, redo, changes, history, time
@@ -210,7 +185,7 @@ U           " restore line to original state
 g-          " go to older text state
 g+          " go to newer text state
 ```
-===
+***
 # Title: Omni completion setup
 # Category: Editing
 # Tags: completion, omni, smart, autocomplete
@@ -233,7 +208,7 @@ set omnifunc=syntaxcomplete#Complete
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 ```
-===
+***
 # Title: Ex commands - line operations
 # Category: Editing
 # Tags: ex, line, delete, copy, move, range
@@ -249,7 +224,7 @@ Use `:d` to delete lines, `:y` to yank, `:m` to move, `:co` or `:t` to copy, wit
 :5,10m 20     " move lines 5-10 to after line 20
 :1,5co 10     " copy lines 1-5 to after line 10
 ```
-===
+***
 # Title: Ex commands - undo and redo
 # Category: Editing
 # Tags: ex, undo, redo, earlier, later
@@ -265,7 +240,7 @@ Use `:undo` and `:redo` for undo/redo, `:earlier` and `:later` for time-based un
 :later 5s     " go forward 5 seconds
 :earlier 10f  " go back 10 file states
 ```
-===
+***
 # Title: Ex commands - sorting and formatting
 # Category: Editing
 # Tags: ex, sort, format, center, left, right
@@ -282,7 +257,7 @@ Use `:sort` to sort lines, `:center` to center text, `:left` and `:right` for al
 :left 5       " left align with 5 space indent
 :right 70     " right align to column 70
 ```
-===
+***
 # Title: Edit file at specific line
 # Category: Editing  
 # Tags: file, line, open, position, jump
@@ -297,7 +272,7 @@ Use `:edit +{line} {file}` to open file and jump directly to specified line numb
 :edit +$ log.txt      " open log.txt at last line
 vim +42 file.txt      " from command line: open at line 42
 ```
-===
+***
 # Title: Ex commands - joining and splitting
 # Category: Editing
 # Tags: ex, join, split, lines, combine
@@ -312,7 +287,7 @@ Use `:join` or `:j` to join lines, with count to join multiple lines.
 :5,8join      " join lines 5-8
 :join!        " join without inserting spaces
 ```
-===
+***
 # Title: Ex commands - marks and jumps
 # Category: Editing
 # Tags: ex, marks, jump, position, navigate
@@ -329,7 +304,7 @@ Use `:mark` to set mark, `:jumps` to show jump list, `:changes` for change list,
 :delmarks a   " delete mark 'a'
 :delmarks!    " delete all lowercase marks
 ```
-===
+***
 # Title: Move line to end of paragraph
 # Category: Editing
 # Tags: move, line, paragraph, end, motion
@@ -343,7 +318,7 @@ Use `:m'}-1` to move current line to end of current paragraph.
 :m'}          " move current line after end of paragraph
 :m'{-1        " move current line to start of paragraph
 ```
-===
+***
 # Title: Execute normal commands without mappings
 # Category: Editing
 # Tags: normal, command, mapping, script, execute
@@ -358,7 +333,7 @@ normal! dd       " delete line without triggering dd mapping
 normal! yy       " yank line without triggering yy mapping
 execute "normal! \<C-v>j"  " block select down
 ```
-===
+***
 # Title: Substitute in all buffers
 # Category: Editing
 # Tags: substitute, buffer, all, bufdo, global
@@ -372,7 +347,7 @@ Use `:bufdo %s/old/new/ge` to substitute in all open buffers, `e` flag suppresse
 :bufdo %s/TODO/DONE/ge  " replace TODO with DONE in all buffers
 :bufdo update           " save all modified buffers
 ```
-===
+***
 # Title: Number lines with commands
 # Category: Editing
 # Tags: number, line, sequence, increment, script
@@ -386,7 +361,7 @@ Add line numbers to text using substitute command with expression.
 :%s/^/\=printf("%3d: ", line('.'))/ " formatted line numbers
 :let i=1 | g/^/s//\=i . '. '/ | let i=i+1  " alternative method
 ```
-===
+***
 # Title: Return to last exit position
 # Category: Editing
 # Tags: position, exit, return, mark, jump
@@ -400,7 +375,7 @@ Use mark `"0` to jump to position where Vim was last exited from current file.
 '"0     " jump to last exit position (line start)
 :normal `"0  " execute from script/mapping
 ```
-===
+***
 # Title: Wrap text in HTML tags
 # Category: Editing
 # Tags: html, tag, wrap, surround, format
@@ -415,7 +390,7 @@ Use visual selection and substitute to wrap text in HTML tags.
 :'<,'>s/.*/\<li>&\<\/li>/ " wrap lines in <li> tags
 :'<,'>s/\(.*\)/\<strong>\1\<\/strong>/ " wrap in <strong> tags
 ```
-===
+***
 # Title: Copy and move lines to marks
 # Category: Editing
 # Tags: copy, move, mark, line, range
@@ -431,7 +406,7 @@ ma           " set mark 'a' at current line
 :'<,'>t'a    " copy visual selection to mark 'a'
 :152,154t.   " copy lines 152-154 to current position
 ```
-===
+***
 # Title: Increment search results
 # Category: Editing
 # Tags: increment, search, replace, counter, sequential
@@ -447,7 +422,7 @@ Use global command with counter to incrementally replace search results with seq
 " Replace 'item' with numbered items:
 :let n=1 | g/item/ s//\='item' . n/ | let n=n+1
 ```
-===
+***
 # Title: Global command with normal mode operations
 # Category: Editing
 # Tags: global, normal, command, pattern, batch
@@ -461,7 +436,7 @@ Use `:g/pattern/ normal {commands}` to execute normal mode commands on all match
 :g/TODO/ normal dw            " delete first word on lines with 'TODO'
 :g/function/ normal >>        " indent all lines containing 'function'
 ```
-===
+***
 # Title: Put text above or below current line
 # Category: Editing
 # Tags: put, paste, above, below, line
@@ -476,7 +451,7 @@ Use `:pu` to paste below current line, `:pu!` to paste above current line, regar
 :pu a       " paste register 'a' below current line
 :pu! a      " paste register 'a' above current line
 ```
-===
+***
 # Title: Select non-uniform strings across lines
 # Category: Editing
 # Tags: select, yank, append, register, pattern
@@ -496,4 +471,4 @@ Use normal mode with append register to collect text from multiple lines into on
 qAq
 :'<,'>norm "Ayi{
 ```
-===
+***

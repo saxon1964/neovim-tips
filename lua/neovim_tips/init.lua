@@ -21,38 +21,10 @@ function M.setup(opts)
   utils.create_file_and_dirs(user_file, "# Your personal Neovim tips\n\n")
 
   -- Create commands
-  vim.api.nvim_create_user_command("NeovimTipsLoad",
-    function()
-      utils.run_async(loader.load,
-        function(ok, result)
-          if ok then
-            if result then
-              vim.notify("Neovim tips loaded silently", vim.log.levels.INFO)
-            end
-          else
-            vim.notify("Failed to load Neovim tips: " .. result, vim.log.levels.ERROR)
-          end
-        end
-      )
-    end,
-    { desc = "Load Neovim tips silently without showing picker" }
-  )
-
   vim.api.nvim_create_user_command("NeovimTips",
     function()
-      -- Close any daily tip popup first to prevent it from hijacking the picker
-      local wins = vim.api.nvim_list_wins()
-      for _, win in ipairs(wins) do
-        local buf = vim.api.nvim_win_get_buf(win)
-        local buf_name = vim.api.nvim_buf_get_name(buf)
-        if buf_name:match("daily_tip") or vim.api.nvim_buf_get_option(buf, "filetype") == "markdown" then
-          local ok, win_config = pcall(vim.api.nvim_win_get_config, win)
-          if ok and win_config.relative ~= "" then -- It's a floating window
-            vim.api.nvim_win_close(win, false)
-            break
-          end
-        end
-      end
+      -- Close any plugin windows first to prevent layering issues
+      utils.close_plugin_windows()
 
       utils.run_async(loader.load,
         function(ok, result)
@@ -89,14 +61,14 @@ function M.setup(opts)
         "", -- description placeholder
         "```vim",
         "", -- code placeholder
-        "", -- code placeholder
         "```",
-        "===",
-        ""
+        "",
+        "***",
       }
       vim.cmd("edit " .. user_file)
       vim.api.nvim_buf_set_lines(0, -1, -1, false, lines)
-      vim.cmd("normal G")
+      local moveToTitle = string.format("G%dk$i ", #lines - 1)
+      vim.api.nvim_feedkeys(moveToTitle, 'n', false)
     end,
     { desc = "Add new tip to the file with custom tips" }
   )

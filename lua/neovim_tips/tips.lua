@@ -37,11 +37,6 @@ function M.set(tips)
   table.sort(titles)
 end
 
----Get all loaded tips
----@return Tip[] tips Array of all tip objects
-function M.get_tips()
-  return all_tips
-end
 
 ---Get all tip titles for search and selection
 ---@return string[] titles Sorted array of tip titles
