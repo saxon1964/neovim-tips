@@ -200,12 +200,18 @@ function NuiPicker:update_preview(debounced)
     -- Update title
     self.preview_popup.border:set_text("top", " " .. selected_title .. " ", "center")
 
-    -- Update content (all buffers stay editable for debugging)
+    -- Temporarily make modifiable to update content
+    vim.bo[self.preview_popup.bufnr].modifiable = true
+    
+    -- Update content
     vim.api.nvim_buf_set_lines(self.preview_popup.bufnr, 0, -1, false, lines)
     vim.bo[self.preview_popup.bufnr].filetype = "markdown"
 
     -- Render markdown
     renderer.enable(self.preview_popup.bufnr)
+    
+    -- Make non-modifiable again to prevent user editing
+    vim.bo[self.preview_popup.bufnr].modifiable = false
 
     self.update_timer = nil
   end
@@ -273,7 +279,7 @@ function NuiPicker:create_layout()
 
   self.preview_popup = Popup({
     enter = false,
-    focusable = false,
+    focusable = true,
     border = {
       style = "rounded",
       text = {
@@ -283,7 +289,7 @@ function NuiPicker:create_layout()
     },
     buf_options = {
       buftype = "nofile",
-      modifiable = true,
+      modifiable = false,
       readonly = false,
     },
     win_options = {
@@ -371,6 +377,21 @@ function NuiPicker:setup_keymaps()
     self:close()
   end
 
+  local function focus_search()
+    vim.api.nvim_set_current_win(self.search_popup.winid)
+    vim.cmd("startinsert!")
+  end
+
+  local function focus_titles()
+    vim.api.nvim_set_current_win(self.titles_popup.winid)
+    vim.cmd("stopinsert")
+  end
+
+  local function focus_preview()
+    vim.api.nvim_set_current_win(self.preview_popup.winid)
+    vim.cmd("stopinsert")
+  end
+
   -- Search popup keymaps
   self.search_popup:map("i", "<Esc>", close_picker, { noremap = true })
   self.search_popup:map("i", "<C-c>", close_picker, { noremap = true })
@@ -379,12 +400,16 @@ function NuiPicker:setup_keymaps()
   self.search_popup:map("i", "<Up>", move_up, { noremap = true })
   self.search_popup:map("i", "<C-j>", move_down, { noremap = true })
   self.search_popup:map("i", "<C-k>", move_up, { noremap = true })
+  self.search_popup:map("i", "<Tab>", focus_titles, { noremap = true })
+  self.search_popup:map("i", "<C-l>", focus_preview, { noremap = true })
 
   self.search_popup:map("n", "<Esc>", close_picker, { noremap = true })
   self.search_popup:map("n", "q", close_picker, { noremap = true })
   self.search_popup:map("n", "<CR>", select_item, { noremap = true })
   self.search_popup:map("n", "j", move_down, { noremap = true })
   self.search_popup:map("n", "k", move_up, { noremap = true })
+  self.search_popup:map("n", "<Tab>", focus_titles, { noremap = true })
+  self.search_popup:map("n", "<C-l>", focus_preview, { noremap = true })
 
   -- Titles popup keymaps
   self.titles_popup:map("n", "<Esc>", close_picker, { noremap = true })
@@ -394,6 +419,19 @@ function NuiPicker:setup_keymaps()
   self.titles_popup:map("n", "k", move_up, { noremap = true })
   self.titles_popup:map("n", "<Down>", move_down, { noremap = true })
   self.titles_popup:map("n", "<Up>", move_up, { noremap = true })
+  self.titles_popup:map("n", "<S-Tab>", focus_search, { noremap = true })
+  self.titles_popup:map("n", "<Tab>", focus_preview, { noremap = true })
+  self.titles_popup:map("n", "<C-h>", focus_search, { noremap = true })
+  self.titles_popup:map("n", "<C-l>", focus_preview, { noremap = true })
+
+  -- Preview popup keymaps
+  self.preview_popup:map("n", "<Esc>", close_picker, { noremap = true })
+  self.preview_popup:map("n", "q", close_picker, { noremap = true })
+  self.preview_popup:map("n", "<CR>", select_item, { noremap = true })
+  self.preview_popup:map("n", "<S-Tab>", focus_titles, { noremap = true })
+  self.preview_popup:map("n", "<Tab>", focus_search, { noremap = true })
+  self.preview_popup:map("n", "<C-h>", focus_titles, { noremap = true })
+  self.preview_popup:map("n", "<C-j>", focus_search, { noremap = true })
 end
 
 ---Set up autocmds for real-time search and mouse interaction
