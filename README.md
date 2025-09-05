@@ -29,10 +29,11 @@ I have provided a solid initial batch of tips and if you have your favorite one 
 - **Word-based search**: Intelligent search that matches all words (e.g., "insert character" finds "character to insert")
 - **Live markdown rendering**: Preview rendered descriptions with full markdown support
 - **Simple navigation**: Seamless mouse and keyboard navigation with smart mode switching
+- **Copy-friendly**: Easy copying of tip content and code snippets from both picker and daily tip
 - **Cursor preservation**: Returns to your exact cursor position and mode after closing
 - Support for categories, tags, and rich text
 - Lazy loading for optimal startup performance
-- The plugin comes with a starting set of ~600 curated tips
+- The plugin comes with a starting set of 900+ curated tips
 - You can add/edit unlimited number of personal tips stored in a configurable file
 - User tips with configurable prefixes to prevent conflicts with builtin tips
 - Automatic title conflict detection and warnings
@@ -256,11 +257,12 @@ The plugin can show you a random tip in a beautiful popup when you start Neovim.
 - `daily_tip = 2`: Every Neovim startup
 
 ### Daily Tip Popup Features:
-- **"Did you know?" popup**: Centered popup with random tip
+- **"Did you know?" popup**: Centered layout with main tip content and footer
 - **Smart persistence**: Once daily mode uses `~/.local/share/nvim/neovim_tips/persistent.json` 
 - **Full markdown rendering**: Rich formatting with render-markdown.nvim
+- **Easy copying**: Select and copy tip content or code snippets directly
 - **Easy dismissal**: Close with `q` or `<Esc>`
-- **Error reporting**: Includes GitHub issues link for feedback
+- **Contribution links**: Footer includes GitHub issues link for feedback
 
 ![Daily tip popup example](images/s2.png)
 
