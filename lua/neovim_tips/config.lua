@@ -12,8 +12,8 @@ local guthub_issues = github_root .. "/issues/new"
 ---@field daily_tip integer Daily tip mode: 0=off, 1=once per day, 2=every startup
 ---@field builtin_dir string Internal: path to builtin tips data directory
 ---@field user_tips_tag string Internal: tag for user tips identification
----@field github table<string, string> Internal: various github urls
----@field messages table<string, string> Internal: various messages
+---@field github table Internal: various github urls
+---@field messages table Internal: various messages
 ---Default configuration options
 M.options = {
   user_file = vim.fn.stdpath("config") .. "/neovim_tips/user_tips.md",
@@ -30,7 +30,13 @@ M.options = {
     issues = guthub_issues,
   },
   messages = {
-    footer = "Having a **favorite tip**? Found an **error**? Just Shift+Click on the [**Issues**](" .. guthub_issues .. ") link 🚀",
+    picker = {
+      footer = "Having a **favorite tip**? Found an **error**? Just Shift+Click on the [**Issues**](" .. guthub_issues .. ") link. 🚀",
+    },
+    daily_tip = {
+      footer1 = "Having a **favorite tip**? Found an **error**? Just Shift+Click on the [**Issues**](" .. guthub_issues .. ") link. 🚀",
+      footer2 = "For daily tip setup refer to [**README**](" .. github_root .. ") file.",
+    }
   },
 }
 

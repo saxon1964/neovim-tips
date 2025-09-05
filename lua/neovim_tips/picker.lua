@@ -494,7 +494,7 @@ end
 function NuiPicker:setup_footer()
   if not self.footer_popup then return end
 
-  local message = config.options.messages.footer
+  local message = config.options.messages.picker.footer
 
   -- Set the content without centering to avoid interfering with markdown
   vim.api.nvim_buf_set_lines(self.footer_popup.bufnr, 0, -1, false, {message})
