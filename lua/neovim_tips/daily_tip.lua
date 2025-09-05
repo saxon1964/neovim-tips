@@ -91,6 +91,20 @@ local function show_daily_tip(update_last_shown)
     return
   end
 
+  -- Close any existing picker windows first to prevent layering issues
+  local wins = vim.api.nvim_list_wins()
+  for _, win in ipairs(wins) do
+    local ok, win_config = pcall(vim.api.nvim_win_get_config, win)
+    if ok and win_config.relative ~= "" then -- It's a floating window
+      local buf = vim.api.nvim_win_get_buf(win)
+      local buf_name = vim.api.nvim_buf_get_name(buf)
+      -- Close picker-related windows (search, tips, preview, footer)
+      if buf_name:match("neovim%-tips") or vim.api.nvim_buf_get_option(buf, "filetype") == "neovim-tips-search" then
+        vim.api.nvim_win_close(win, false)
+      end
+    end
+  end
+
   -- Create main tip popup
   local main_popup = Popup({
     enter = true,
@@ -145,7 +159,7 @@ local function show_daily_tip(update_last_shown)
         col = "50%",
       },
       size = {
-        width = "80%",
+        width = "70%",
         height = "50%",
       },
       relative = "editor",
@@ -158,6 +172,9 @@ local function show_daily_tip(update_last_shown)
 
   -- Mount the layout
   layout:mount()
+  
+  -- Force redraw to ensure proper rendering over other popups
+  vim.cmd('redraw')
 
   -- Prepare main content
   local lines = {}
