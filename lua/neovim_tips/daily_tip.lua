@@ -140,11 +140,15 @@ local function show_daily_tip(update_last_shown)
   -- Create layout similar to picker
   local layout = Layout(
     {
-      position = "50%",
+      position = {
+        row = "50%",
+        col = "50%",
+      },
       size = {
         width = "80%",
         height = "50%",
       },
+      relative = "editor",
     },
     Layout.Box({
       Layout.Box(main_popup, { size = "80%" }),
