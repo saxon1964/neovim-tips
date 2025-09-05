@@ -304,9 +304,9 @@ function NuiPicker:create_layout()
       },
     },
     buf_options = {
-      modifiable = false,
-      readonly = true,
       buftype = "nofile",
+      modifiable = true,
+      readonly = false,
     },
     win_options = {
       wrap = false,
@@ -327,8 +327,8 @@ function NuiPicker:create_layout()
     Layout.Box({
       Layout.Box(self.search_popup, { size = "10%" }),
       Layout.Box({
-        Layout.Box(self.titles_popup, { size = "50%" }),
-        Layout.Box(self.preview_popup, { size = "50%" }),
+        Layout.Box(self.titles_popup, { size = "40%" }),
+        Layout.Box(self.preview_popup, { size = "60%" }),
       }, { dir = "row", size = "80%" }),
       Layout.Box(self.footer_popup, { size = "10%" }),
     }, { dir = "col" })
@@ -456,24 +456,14 @@ end
 function NuiPicker:setup_footer()
   if not self.footer_popup then return end
 
-  local message = config.options.picker.footer
+  local message = config.options.messages.footer
 
-  -- Temporarily make modifiable to set content
-  vim.bo[self.footer_popup.bufnr].modifiable = true
-  vim.bo[self.footer_popup.bufnr].readonly = false
+  -- Set the content without centering to avoid interfering with markdown
+  vim.api.nvim_buf_set_lines(self.footer_popup.bufnr, 0, -1, false, {message})
 
-  -- Center the text by adding padding
-  local win_width = vim.api.nvim_win_get_width(self.footer_popup.winid)
-  local message_length = #message
-  local padding = math.max(0, math.floor((win_width - message_length) / 2))
-  local padded_message = string.rep(" ", padding) .. message
-
-  -- Set the content
-  vim.api.nvim_buf_set_lines(self.footer_popup.bufnr, 0, -1, false, {padded_message})
-
-  -- Make non-modifiable again
-  vim.bo[self.footer_popup.bufnr].modifiable = false
-  vim.bo[self.footer_popup.bufnr].readonly = true
+  -- Set filetype to markdown and enable rendering
+  vim.bo[self.footer_popup.bufnr].filetype = "markdown"
+  renderer.enable(self.footer_popup.bufnr)
 end
 
 ---Show the picker and preserve current state
