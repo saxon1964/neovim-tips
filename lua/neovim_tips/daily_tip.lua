@@ -168,7 +168,7 @@ local function show_daily_tip(update_last_shown)
   vim.bo[popup.bufnr].readonly = true
 
   -- Render markdown
-  renderer.render(popup.bufnr)
+  renderer.enable(popup.bufnr)
 
   -- Set up keymaps to close
   local close_keys = { "q", "<Esc>" }

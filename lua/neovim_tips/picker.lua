@@ -8,6 +8,7 @@ local Layout = require("nui.layout")
 local event = require("nui.utils.autocmd").event
 local config = require("neovim_tips.config")
 local renderer = require("neovim_tips.renderer")
+local tips = require("neovim_tips.tips")
 
 ---Stub definition of a class defined in libuv
 ---@class uv_timer_t
@@ -171,11 +172,12 @@ function NuiPicker:update_titles_display()
   end
 end
 
----Update preview content with debounced rendering
+---Update preview content, possibly with debounced rendering
 ---Gets content for selected tip and updates preview popup with markdown rendering
----Uses a 100ms debounce timer to prevent flickering during navigation
+---If debounced, uses a 100ms debounce timer to prevent flickering during navigation
+---@param debounced boolean Whether to debounce rendering
 ---@return nil
-function NuiPicker:update_preview()
+function NuiPicker:update_preview(debounced)
   if not self.preview_popup or #self.filtered_titles == 0 then return end
 
   local selected_title = self.filtered_titles[self.selected_index]
@@ -192,8 +194,7 @@ function NuiPicker:update_preview()
   local content = self.opts.get_content and self.opts.get_content(selected_title) or "No content available"
   local lines = vim.split(content, "\n")
 
-  -- Debounced update
-  self.update_timer = vim.defer_fn(function()
+  local function update()
     if not vim.api.nvim_buf_is_valid(self.preview_popup.bufnr) then return end
 
     -- Update title
@@ -204,43 +205,15 @@ function NuiPicker:update_preview()
     vim.bo[self.preview_popup.bufnr].filetype = "markdown"
 
     -- Render markdown
-    renderer.render(self.preview_popup.bufnr)
+    renderer.enable(self.preview_popup.bufnr)
 
-    self.update_timer = nil
-  end, 100)
-end
-
----Immediate preview update for mouse clicks and direct navigation
----Similar to update_preview but without debouncing for immediate feedback
----@return nil
-function NuiPicker:update_preview_immediate()
-  if not self.preview_popup or #self.filtered_titles == 0 then return end
-
-  local selected_title = self.filtered_titles[self.selected_index]
-  if not selected_title then return end
-
-  -- Cancel any pending timer
-  if self.update_timer then
-    self.update_timer:stop()
-    self.update_timer:close()
     self.update_timer = nil
   end
 
-  -- Get content
-  local content = self.opts.get_content and self.opts.get_content(selected_title) or "No content available"
-  local lines = vim.split(content, "\n")
-
-  -- Immediate update
-  if vim.api.nvim_buf_is_valid(self.preview_popup.bufnr) then
-    -- Update title
-    self.preview_popup.border:set_text("top", " " .. selected_title .. " ", "center")
-
-    -- Update content (all buffers stay editable for debugging)
-    vim.api.nvim_buf_set_lines(self.preview_popup.bufnr, 0, -1, false, lines)
-    vim.bo[self.preview_popup.bufnr].filetype = "markdown"
-
-    -- Render markdown 
-    renderer.render(self.preview_popup.bufnr)
+  if debounced then
+    self.update_timer = vim.defer_fn(update, 100)
+  else
+    update()
   end
 end
 
@@ -374,7 +347,7 @@ function NuiPicker:setup_keymaps()
     if self.selected_index < #self.filtered_titles then
       self.selected_index = self.selected_index + 1
       self:update_titles_display()
-      self:update_preview()  -- Back to debounced updates for smooth navigation
+      self:update_preview(true)  -- Back to debounced updates for smooth navigation
       -- Keep cursor synced in titles window
       vim.api.nvim_win_set_cursor(self.titles_popup.winid, {self.selected_index, 0})
     end
@@ -384,7 +357,7 @@ function NuiPicker:setup_keymaps()
     if self.selected_index > 1 then
       self.selected_index = self.selected_index - 1
       self:update_titles_display()
-      self:update_preview()  -- Back to debounced updates for smooth navigation
+      self:update_preview(true)  -- Back to debounced updates for smooth navigation
       -- Keep cursor synced in titles window
       vim.api.nvim_win_set_cursor(self.titles_popup.winid, {self.selected_index, 0})
     end
@@ -438,7 +411,7 @@ function NuiPicker:setup_autocmds()
       self.search_text = lines[1] or ""
       self:filter_titles()
       self:update_titles_display()
-      self:update_preview()
+      self:update_preview(true)
       self.search_timer = nil
     end, 50) -- 50ms debounce
   end
@@ -453,7 +426,7 @@ function NuiPicker:setup_autocmds()
     if new_index ~= self.selected_index and new_index <= #self.filtered_titles and new_index > 0 then
       self.selected_index = new_index
       self:update_titles_display()
-      self:update_preview_immediate()
+      self:update_preview(false)
       -- Ensure cursor stays synced with selection for future key navigation
       vim.api.nvim_win_set_cursor(self.titles_popup.winid, {self.selected_index, 0})
     end
@@ -529,7 +502,7 @@ function NuiPicker:show()
   self.search_text = ""
   self:filter_titles()
   self:update_titles_display()
-  self:update_preview()
+  self:update_preview(true)
   self:setup_footer()
 
   -- Focus search and enter insert mode
@@ -585,8 +558,7 @@ end
 ---Uses the tips module for data and handles tip selection
 ---@return nil
 function M.show()
-  local tips_module = require("neovim_tips.tips")
-  local titles = tips_module.get_titles()
+  local titles = tips.get_titles()
 
   if not titles or vim.tbl_isempty(titles) then
     vim.notify("No tips loaded. Please run :NeovimTipsLoad first to load tips, then try again.", vim.log.levels.WARN)
@@ -596,7 +568,7 @@ function M.show()
   -- Create picker instance
   local picker = M.new({
     get_content = function(title)
-      return tips_module.get_description(title) or "Description not available"
+      return tips.get_description(title) or "Description not available"
     end,
     on_select = function(_)
       -- Title argument is not used
