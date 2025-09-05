@@ -54,5 +54,28 @@ function M.run_async(fn, callback)
   end)
 end
 
+---Close plugin-related floating windows to prevent layering issues
+---Closes daily tip and picker windows by detecting their buffer names/filetypes
+---@return nil
+function M.close_plugin_windows()
+  local wins = vim.api.nvim_list_wins()
+  for _, win in ipairs(wins) do
+    local ok, win_config = pcall(vim.api.nvim_win_get_config, win)
+    if ok and win_config.relative ~= "" then -- It's a floating window
+      local buf = vim.api.nvim_win_get_buf(win)
+      local buf_name = vim.api.nvim_buf_get_name(buf)
+      local filetype = vim.api.nvim_buf_get_option(buf, "filetype")
+      
+      -- Close daily tip or picker-related windows
+      if buf_name:match("daily_tip") or 
+         buf_name:match("neovim%-tips") or 
+         filetype == "markdown" or 
+         filetype == "neovim-tips-search" then
+        vim.api.nvim_win_close(win, false)
+      end
+    end
+  end
+end
+
 return M
 

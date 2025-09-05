@@ -23,19 +23,8 @@ function M.setup(opts)
   -- Create commands
   vim.api.nvim_create_user_command("NeovimTips",
     function()
-      -- Close any daily tip popup first to prevent it from hijacking the picker
-      local wins = vim.api.nvim_list_wins()
-      for _, win in ipairs(wins) do
-        local buf = vim.api.nvim_win_get_buf(win)
-        local buf_name = vim.api.nvim_buf_get_name(buf)
-        if buf_name:match("daily_tip") or vim.api.nvim_buf_get_option(buf, "filetype") == "markdown" then
-          local ok, win_config = pcall(vim.api.nvim_win_get_config, win)
-          if ok and win_config.relative ~= "" then -- It's a floating window
-            vim.api.nvim_win_close(win, false)
-            break
-          end
-        end
-      end
+      -- Close any plugin windows first to prevent layering issues
+      utils.close_plugin_windows()
 
       utils.run_async(loader.load,
         function(ok, result)
