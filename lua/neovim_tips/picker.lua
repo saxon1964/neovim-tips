@@ -202,14 +202,14 @@ function NuiPicker:update_preview(debounced)
 
     -- Temporarily make modifiable to update content
     vim.bo[self.preview_popup.bufnr].modifiable = true
-    
+
     -- Update content
     vim.api.nvim_buf_set_lines(self.preview_popup.bufnr, 0, -1, false, lines)
     vim.bo[self.preview_popup.bufnr].filetype = "markdown"
 
     -- Render markdown
     renderer.enable(self.preview_popup.bufnr)
-    
+
     -- Make non-modifiable again to prevent user editing
     vim.bo[self.preview_popup.bufnr].modifiable = false
 

@@ -4,20 +4,18 @@ local M = {}
 
 ---@class Tip
 ---@field title string The tip title
----@field category string|nil The tip category  
+---@field category string|nil The tip category
 ---@field tags string[]|nil List of tags for the tip
 ---@field description string The tip description/content
 
 local titles = {}
 local descriptions = {}
-local all_tips = {}
 
 ---Set the tips data and build internal indexes
 ---Processes tips into searchable titles and formatted descriptions
 ---@param tips Tip[] Array of tip objects to process
 ---@return nil
 function M.set(tips)
-  all_tips = tips
   titles = {}
   descriptions = {}
   for _, tip in ipairs(tips) do
