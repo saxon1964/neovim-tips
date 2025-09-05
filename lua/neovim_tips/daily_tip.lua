@@ -162,7 +162,7 @@ local function show_daily_tip(update_last_shown)
 
   -- Mount the layout
   layout:mount()
-  
+
   -- Force redraw to ensure proper rendering over other popups
   vim.cmd('redraw')
 
@@ -191,14 +191,14 @@ local function show_daily_tip(update_last_shown)
 
   -- Temporarily make modifiable to update content
   vim.bo[main_popup.bufnr].modifiable = true
-  
+
   -- Set main content
   vim.api.nvim_buf_set_lines(main_popup.bufnr, 0, -1, false, lines)
   vim.bo[main_popup.bufnr].filetype = "markdown"
 
   -- Render markdown in main popup
   renderer.enable(main_popup.bufnr)
-  
+
   -- Make non-modifiable again to prevent user editing
   vim.bo[main_popup.bufnr].modifiable = false
 
