@@ -77,3 +77,18 @@ function! ClipboardYank()
 endfunction
 ```
 ***
+# Title: System clipboard: handling yank and delete motions differently
+# Category: Clipboard
+# Tags: clipboard, copy, paste
+---
+Suppose that you want yank and delete motions to behave differently with respect to system clipboard. For example, you want all yanked text to be copied to system clipboard as well to unnamed internal register. But in case of delete motions, you don't want to affect system clipboard. The setup is fairly easy. Just add the following lines to your `init.lua` configuration file
+
+```lua
+-- Avoid global clipboard hijacking
+vim.opt.clipboard = {}
+-- NOTE: Yank should copy to unnamed register AND system clipboard
+-- Deleted text goes to unnamed register only without changing system clipboard
+vim.keymap.set({ "n", "x" }, "y", '"+y', { desc = "Yank to clipboard", noremap = true })
+vim.keymap.set("n", "yy", '"+yy', { desc = "Yank to clipboard", noremap = true })
+```
+***
