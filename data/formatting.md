@@ -55,8 +55,38 @@ Use `:set textwidth=80` to automatically wrap lines at 80 characters while typin
 
 ```vim
 :set textwidth=80   " wrap at 80 characters
-:set textwidth=0    " disable automatic wrapping  
+:set textwidth=0    " disable automatic wrapping
 :set formatoptions+=t  " enable automatic text wrapping
 gqap                " manually format current paragraph to textwidth
 ```
+***
+# Title: Poor men's JSON formatter
+# Category: Formatting
+# Tags: text, format, json
+---
+A poor men's json formatter using `vim.json.decode` + `vim.json.encode`:
+
+```lua
+function _G.json_formatter()
+	-- from $VIMRUNTIME/lua/vim/lsp.lua
+	if vim.list_contains({ 'i', 'R', 'ic', 'ix' }, vim.fn.mode()) then
+		return 1
+	end
+	local indent = vim.bo.expandtab and '\t' or string.rep(' ', vim.o.tabstop)
+
+	local lines = vim.api.nvim_buf_get_lines(0, vim.v.lnum - 1, vim.v.count, true)
+	local deco = vim.json.decode(table.concat(lines, '\n'))
+	local enco = vim.json.encode(deco, { indent = indent })
+	local split = vim.split(enco, '\n')
+	vim.api.nvim_buf_set_lines(0, vim.v.lnum - 1, vim.v.count, true, split)
+
+	return 0
+end
+
+vim.bo.formatexpr = 'v:lua.json_formatter()'
+```
+
+You can put it in `ftplugin/json.lua`. Only works for the whole file, e.g. with `gggqG`
+
+[Credits: yochem](https://github.com/neovim/neovim/discussions/35683)
 ***
