@@ -109,7 +109,7 @@ function M.load()
     local all_tips = {}
     vim.list_extend(all_tips, builtin_tips)
     vim.list_extend(all_tips, user_tips)
-    tips.set(all_tips)
+    tips.set_tips(all_tips)
     return true
   else
     return false
