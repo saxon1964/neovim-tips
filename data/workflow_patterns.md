@@ -539,3 +539,19 @@ endfunction
 :autocmd BufWritePre *.{py,js,lua,vim} call CreateBackup()
 ```
 ***
+# Title: Add lines to multiple files with cfdo
+# Category: Workflow
+# Tags: cfdo, append, multiple, files, quickfix
+---
+Use `:cfdo` with `append()` function to add lines at specific positions across multiple files in the quickfix list.
+
+#### Example
+
+```vim
+" Add line after line 4 in all quickfix files
+:cfdo call append(4, '"status": "not started"') | update
+
+" Add multiple lines with execute and normal
+:cfdo execute 'norm 5GO"status": "not started",' | update
+```
+***

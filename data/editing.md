@@ -472,3 +472,17 @@ qAq
 :'<,'>norm "Ayi{
 ```
 ***
+# Title: Move lines to marks
+# Category: Editing
+# Tags: move, marks, line, navigation
+---
+Use `:m'a` to move current line to mark 'a', or `:.m'b` to move current line to mark 'b'. Useful when target is not visible on screen.
+
+#### Example
+
+```vim
+ma      " mark current line as 'a'
+:.m'a   " move current line to mark 'a'
+:5m'b   " move line 5 to mark 'b'
+```
+***
