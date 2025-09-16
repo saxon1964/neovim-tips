@@ -2,6 +2,8 @@
 ---Tips data management and formatting
 local M = {}
 
+local md_supported = require("neovim_tips.renderer").renderer_available()
+
 ---@class Tip
 ---@field title string The tip title
 ---@field category string|nil The tip category
@@ -46,7 +48,7 @@ end
 ---@param title string The tip title to get description for
 ---@return string|nil description Formatted markdown description, or nil if not found
 function M.get_description(title)
-  if(not descriptions_map[title]) then
+  if (not descriptions_map[title]) then
     local tip = tips_map[title]
     local description = {}
     table.insert(description, "## " .. tip.title)
@@ -57,10 +59,12 @@ function M.get_description(title)
       table.insert(description, "### Tags: " .. table.concat(tip.tags, ", "))
     end
     table.insert(description, tip.description)
+    if not md_supported then
+      table.insert(description, "NOTE: Consider installing render-markdown plugin for proper formatting.")
+    end
     descriptions_map[title] = table.concat(description, "\n\n")
   end
   return descriptions_map[title]
 end
 
 return M
-

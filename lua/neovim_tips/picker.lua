@@ -136,7 +136,7 @@ function NuiPicker:update_titles_display()
 
   -- Show empty state if no results
   if #lines == 0 then
-    lines = {"  No matching tips found"}
+    lines = { "  No matching tips found" }
   end
 
   -- Update border title with tip count
@@ -208,7 +208,7 @@ function NuiPicker:update_preview(debounced)
     vim.bo[self.preview_popup.bufnr].filetype = "markdown"
 
     -- Render markdown
-    renderer.enable(self.preview_popup.bufnr)
+    renderer.render(self.preview_popup.bufnr)
 
     -- Make non-modifiable again to prevent user editing
     vim.bo[self.preview_popup.bufnr].modifiable = false
@@ -353,9 +353,9 @@ function NuiPicker:setup_keymaps()
     if self.selected_index < #self.filtered_titles then
       self.selected_index = self.selected_index + 1
       self:update_titles_display()
-      self:update_preview(true)  -- Back to debounced updates for smooth navigation
+      self:update_preview(true) -- Back to debounced updates for smooth navigation
       -- Keep cursor synced in titles window
-      vim.api.nvim_win_set_cursor(self.titles_popup.winid, {self.selected_index, 0})
+      vim.api.nvim_win_set_cursor(self.titles_popup.winid, { self.selected_index, 0 })
     end
   end
 
@@ -363,9 +363,9 @@ function NuiPicker:setup_keymaps()
     if self.selected_index > 1 then
       self.selected_index = self.selected_index - 1
       self:update_titles_display()
-      self:update_preview(true)  -- Back to debounced updates for smooth navigation
+      self:update_preview(true) -- Back to debounced updates for smooth navigation
       -- Keep cursor synced in titles window
-      vim.api.nvim_win_set_cursor(self.titles_popup.winid, {self.selected_index, 0})
+      vim.api.nvim_win_set_cursor(self.titles_popup.winid, { self.selected_index, 0 })
     end
   end
 
@@ -466,7 +466,7 @@ function NuiPicker:setup_autocmds()
       self:update_titles_display()
       self:update_preview(false)
       -- Ensure cursor stays synced with selection for future key navigation
-      vim.api.nvim_win_set_cursor(self.titles_popup.winid, {self.selected_index, 0})
+      vim.api.nvim_win_set_cursor(self.titles_popup.winid, { self.selected_index, 0 })
     end
   end)
 
@@ -497,11 +497,11 @@ function NuiPicker:setup_footer()
   local message = config.options.messages.picker.footer
 
   -- Set the content without centering to avoid interfering with markdown
-  vim.api.nvim_buf_set_lines(self.footer_popup.bufnr, 0, -1, false, {message})
+  vim.api.nvim_buf_set_lines(self.footer_popup.bufnr, 0, -1, false, { message })
 
   -- Set filetype to markdown and enable rendering
   vim.bo[self.footer_popup.bufnr].filetype = "markdown"
-  renderer.enable(self.footer_popup.bufnr)
+  renderer.render(self.footer_popup.bufnr)
 end
 
 ---Show the picker and preserve current state

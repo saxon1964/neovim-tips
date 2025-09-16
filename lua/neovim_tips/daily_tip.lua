@@ -197,13 +197,13 @@ local function show_daily_tip(update_last_shown)
   vim.bo[main_popup.bufnr].filetype = "markdown"
 
   -- Render markdown in main popup
-  renderer.enable(main_popup.bufnr)
+  renderer.render(main_popup.bufnr)
 
   -- Make non-modifiable again to prevent user editing
   vim.bo[main_popup.bufnr].modifiable = false
 
   -- Position cursor at line 2 so markdown renders properly
-  vim.api.nvim_win_set_cursor(main_popup.winid, {2, 0})
+  vim.api.nvim_win_set_cursor(main_popup.winid, { 2, 0 })
 
   -- Set up footer content
   local footer_lines = {}
@@ -212,7 +212,7 @@ local function show_daily_tip(update_last_shown)
 
   vim.api.nvim_buf_set_lines(footer_popup.bufnr, 0, -1, false, footer_lines)
   vim.bo[footer_popup.bufnr].filetype = "markdown"
-  renderer.enable(footer_popup.bufnr)
+  renderer.render(footer_popup.bufnr)
 
   -- Set up keymaps to close
   local close_keys = { "q", "<Esc>" }
@@ -277,5 +277,5 @@ function M.show()
   -- Shows random tip and does not update last display time
   show_daily_tip(false)
 end
-return M
 
+return M
