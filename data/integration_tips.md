@@ -440,3 +440,27 @@ Integrate with various testing frameworks for efficient testing workflow.
 :!go test -v ./...        " verbose tests for all packages
 ```
 ***
+# Title: Git integration with gitsigns plugin
+# Category: Integration
+# Tags: git, gitsigns, diff, blame, plugin
+---
+Use Gitsigns plugin commands for advanced git integration directly in Neovim.
+
+#### Example
+
+```vim
+" Diff current buffer against previous version
+:Gitsigns diffthis ~1
+
+" Toggle git blame for current line
+:Gitsigns toggle_current_line_blame
+
+" Preview hunk under cursor
+:Gitsigns preview_hunk
+
+" Stage current hunk
+:Gitsigns stage_hunk
+```
+
+**Note**: Requires gitsigns.nvim plugin to be installed.
+***

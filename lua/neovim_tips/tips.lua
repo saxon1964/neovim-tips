@@ -2,41 +2,41 @@
 ---Tips data management and formatting
 local M = {}
 
+local md_supported = require("neovim_tips.renderer").renderer_available()
+
 ---@class Tip
 ---@field title string The tip title
----@field category string|nil The tip category  
+---@field category string|nil The tip category
 ---@field tags string[]|nil List of tags for the tip
 ---@field description string The tip description/content
 
+local tips = {}
 local titles = {}
-local descriptions = {}
-local all_tips = {}
+local tips_map = {}
+local descriptions_map = {}
 
 ---Set the tips data and build internal indexes
 ---Processes tips into searchable titles and formatted descriptions
----@param tips Tip[] Array of tip objects to process
+---@param all_tips Tip[] Array of tip objects to process
 ---@return nil
-function M.set(tips)
-  all_tips = tips
+function M.set_tips(all_tips)
+  tips = all_tips
   titles = {}
-  descriptions = {}
+  tips_map = {}
+  descriptions_map = {}
   for _, tip in ipairs(tips) do
     local title = tip.title
     table.insert(titles, title)
-    local description = {}
-    table.insert(description, "## " .. tip.title)
-    if tip.category and #tip.category > 0 then
-      table.insert(description, "### Category: " .. tip.category)
-    end
-    if tip.tags and #tip.tags > 0 then
-      table.insert(description, "### Tags: " .. table.concat(tip.tags, ", "))
-    end
-    table.insert(description, tip.description)
-    descriptions[title] = table.concat(description, "\n\n")
+    tips_map[title] = tip
   end
-  table.sort(titles)
+  table.sort(titles, function(t1, t2) return t1:lower() < t2:lower() end)
 end
 
+---Get all tip data
+---@return Tip[] tips Array of tip objects
+function M.get_tips()
+  return tips
+end
 
 ---Get all tip titles for search and selection
 ---@return string[] titles Sorted array of tip titles
@@ -48,8 +48,23 @@ end
 ---@param title string The tip title to get description for
 ---@return string|nil description Formatted markdown description, or nil if not found
 function M.get_description(title)
-  return descriptions[title]
+  if (not descriptions_map[title]) then
+    local tip = tips_map[title]
+    local description = {}
+    table.insert(description, "## " .. tip.title)
+    if tip.category and #tip.category > 0 then
+      table.insert(description, "### Category: " .. tip.category)
+    end
+    if tip.tags and #tip.tags > 0 then
+      table.insert(description, "### Tags: " .. table.concat(tip.tags, ", "))
+    end
+    table.insert(description, tip.description)
+    if not md_supported then
+      table.insert(description, "NOTE: Consider installing render-markdown plugin for proper formatting.")
+    end
+    descriptions_map[title] = table.concat(description, "\n\n")
+  end
+  return descriptions_map[title]
 end
 
 return M
-

@@ -367,3 +367,18 @@ z+          " cursor to line below window
 z^          " cursor to line above window
 ```
 ***
+# Title: Jump multiple lines with arrow keys
+# Category: Movement
+# Tags: jump, lines, arrows, count
+---
+Use number + arrow keys to jump multiple lines quickly. More intuitive than `j`/`k` for some users.
+
+#### Example
+
+```vim
+5↑    " jump 5 lines up
+5↓    " jump 5 lines down
+10↑   " jump 10 lines up
+3→    " move 3 characters right
+```
+***

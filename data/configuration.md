@@ -370,3 +370,26 @@ Use `:set option-=value` to remove a value from an option.
 :set wildignore-=*.pyc  " stop ignoring Python bytecode
 ```
 ***
+# Title: Markdown code block syntax highlighting
+# Category: Configuration  
+# Tags: markdown, syntax, highlighting, fenced, languages
+---
+Configure syntax highlighting for fenced code blocks in markdown files by setting supported languages.
+
+#### Example
+
+```lua
+-- In init.lua
+vim.g.markdown_fenced_languages = { 
+  "html", 
+  "javascript", 
+  "typescript", 
+  "css", 
+  "scss", 
+  "lua", 
+  "vim",
+  "python",
+  "bash"
+}
+```
+***

@@ -21,7 +21,7 @@ function M.create_file_and_dirs(filepath, content)
   -- Get the directory path from the full file path
   local dirpath = vim.fn.fnamemodify(filepath, ":h")
 
-  -- Check if the directory exists, if not, create it 
+  -- Check if the directory exists, if not, create it
   -- The 'p' flag makes mkdir create parent directories as needed
   if vim.fn.isdirectory(dirpath) == 0 then
     vim.fn.mkdir(dirpath, "p")
@@ -65,11 +65,11 @@ function M.close_plugin_windows()
       local buf = vim.api.nvim_win_get_buf(win)
       local buf_name = vim.api.nvim_buf_get_name(buf)
       local filetype = vim.api.nvim_buf_get_option(buf, "filetype")
-      
+
       -- Close daily tip or picker-related windows
-      if buf_name:match("daily_tip") or 
-         buf_name:match("neovim%-tips") or 
-         filetype == "markdown" or 
+      if buf_name:match("daily_tip") or
+         buf_name:match("neovim%-tips") or
+         filetype == "markdown" or
          filetype == "neovim-tips-search" then
         vim.api.nvim_win_close(win, false)
       end
