@@ -12,12 +12,12 @@ Use `:w` to save current file, `:w {file}` to save as new file, or `:wall` to sa
 :wall          " save all files
 ```
 ***
-# Title: Save as 
+# Title: Save as
 # Category: File
 # Tags: save, file
 ---
 Use `:sav[eas] filepath` to save file under a different name
- 
+
 #### Example
 
 ```vim
@@ -147,7 +147,7 @@ Use `:e ++ff=mac` to reload file with Mac format, `++ff=dos` for DOS, `++ff=unix
 
 ```vim
 :e ++ff=mac       " reload with Mac line endings
-:e ++ff=dos       " reload with DOS line endings  
+:e ++ff=dos       " reload with DOS line endings
 :e ++ff=unix      " reload with Unix line endings
 :set ff=unix      " change current file format
 ```
@@ -194,8 +194,21 @@ Use `:browse {command}` to open file browser dialog for commands that take filen
 
 ```vim
 :browse edit      " open file browser to edit file
-:browse saveas    " open save-as dialog  
+:browse saveas    " open save-as dialog
 :browse read      " browse to read file into buffer
 :browse source    " browse to source a script file
 ```
 ***
+# Title: Write file and create all directories form the full file path
+# Category: File Operations
+# Tags: file, save, write
+---
+Use this command to write file if the full path contains non-existent directories. All directories that do not exist will be created before the save:
+
+#### Example
+
+```vim
+:write p++
+```
+***
+
