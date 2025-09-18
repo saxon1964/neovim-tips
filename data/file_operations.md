@@ -208,7 +208,7 @@ Use this command to write file if the full path contains non-existent directorie
 #### Example
 
 ```vim
-:write p++
+:write ++p
 ```
 ***
 
