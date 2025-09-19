@@ -2,6 +2,24 @@
 ---Utility functions for file operations, string handling, and async execution
 local M = {}
 
+---Display a message in a notification
+---@param message string Message to display
+function M.info(message)
+  vim.notify(message, vim.log.levels.INFO, { title = "Neovim Tips" })
+end
+
+---Display a warning message in a notification
+---@param message string Message to display
+function M.warn(message)
+  vim.notify(message, vim.log.levels.WARN, { title = "Neovim Tips" })
+end
+
+---Display an error message in a notification
+---@param message string Message to display
+function M.error(message)
+  vim.notify(message, vim.log.levels.ERROR, { title = "Neovim Tips" })
+end
+
 ---Trim whitespace from both ends of a string
 ---@param s string String to trim
 ---@return string trimmed Trimmed string
@@ -33,7 +51,7 @@ function M.create_file_and_dirs(filepath, content)
     file:write(content)
     io.close(file)
   else
-    vim.notify("Failed to create file user tips file: " .. filepath, vim.log.levels.ERROR)
+    M.error("Failed to create file user tips file: " .. filepath)
   end
 end
 
@@ -64,13 +82,13 @@ function M.close_plugin_windows()
     if ok and win_config.relative ~= "" then -- It's a floating window
       local buf = vim.api.nvim_win_get_buf(win)
       local buf_name = vim.api.nvim_buf_get_name(buf)
-      local filetype = vim.api.nvim_buf_get_option(buf, "filetype")
+      local filetype = vim.api.nvim_get_option_value("filetype", { buf = buf })
 
       -- Close daily tip or picker-related windows
       if buf_name:match("daily_tip") or
-         buf_name:match("neovim%-tips") or
-         filetype == "markdown" or
-         filetype == "neovim-tips-search" then
+          buf_name:match("neovim%-tips") or
+          filetype == "markdown" or
+          filetype == "neovim-tips-search" then
         vim.api.nvim_win_close(win, false)
       end
     end
@@ -78,4 +96,3 @@ function M.close_plugin_windows()
 end
 
 return M
-

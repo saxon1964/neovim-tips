@@ -34,7 +34,7 @@ local function parse_tip_blocks(content, is_user_tips)
       end
       if titles_seen[title] then
         if config.options.warn_on_conflicts then
-          vim.notify("Duplicate tip title found: " .. title, vim.log.levels.WARN)
+          utils.warn("Duplicate tip title found: [" .. title .. "]")
         end
         current = {} -- Skip adding this duplicate tip
       else
@@ -125,4 +125,3 @@ function M.reload()
 end
 
 return M
-

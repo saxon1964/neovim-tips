@@ -30,12 +30,12 @@ function M.setup(opts)
         function(ok, result)
           if ok then
             if result then
-              vim.notify("Neovim tips loaded", vim.log.levels.INFO)
+              utils.info("Neovim tips loaded")
             end
             -- Show picker
             picker.show()
           else
-            vim.notify("Failed to load Neovim tips: " .. result, vim.log.levels.ERROR)
+            utils.error("Failed to load Neovim tips: " .. result)
           end
         end
       )
@@ -87,9 +87,9 @@ function M.setup(opts)
       utils.run_async(loader.reload,
         function(ok, result)
           if ok and result then
-            vim.notify("Neovim tips reloaded", vim.log.levels.INFO)
+            utils.info("Neovim tips reloaded")
           else
-            vim.notify("Failed to reload Neovim tips: " .. result, vim.log.levels.ERROR)
+            utils.error("Failed to reload Neovim tips: " .. result)
           end
         end
       )
@@ -108,8 +108,6 @@ function M.setup(opts)
     end,
     once = true -- Only run once per session
   })
-
 end
 
 return M
-

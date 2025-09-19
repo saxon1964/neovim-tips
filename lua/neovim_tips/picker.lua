@@ -9,6 +9,7 @@ local event = require("nui.utils.autocmd").event
 local config = require("neovim_tips.config")
 local renderer = require("neovim_tips.renderer")
 local tips = require("neovim_tips.tips")
+local utils = require("neovim_tips.utils")
 
 ---Stub definition of a class defined in libuv
 ---@class uv_timer_t
@@ -510,7 +511,7 @@ end
 ---@return nil
 function NuiPicker:show()
   if not self.all_titles or #self.all_titles == 0 then
-    vim.notify("No titles available", vim.log.levels.INFO)
+    utils.warn("No titles available")
     return
   end
 
@@ -589,7 +590,7 @@ function M.show()
   local titles = tips.get_titles()
 
   if not titles or vim.tbl_isempty(titles) then
-    vim.notify("No tips loaded. Please run :NeovimTipsLoad first to load tips, then try again.", vim.log.levels.WARN)
+    utils.error("No tips loaded")
     return
   end
 
