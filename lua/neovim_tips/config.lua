@@ -31,7 +31,7 @@ M.options = {
   },
   messages = {
     picker = {
-      footer = "Having a **favorite tip**? Found an **error**? Just Shift+Click on the [**Issues**](" .. guthub_issues .. ") link. 🚀",
+      footer = "**Examples:** `motion c:edit t:operator`, `insert file`, `t:delete` | **Help:** `t:?` `c:?` | [**Issues**](" .. guthub_issues .. ") 🚀",
     },
     daily_tip = {
       footer1 = "Having a **favorite tip**? Found an **error**? Just Shift+Click on the [**Issues**](" .. guthub_issues .. ") link. 🚀",

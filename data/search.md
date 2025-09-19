@@ -208,7 +208,7 @@ Use `/pattern/+n` to position cursor n lines after match, or `/pattern/-n` for n
 ***
 # Title: Replace only within visual selection
 # Category: Search
-# Tags: replace, visual, selection, \\%V
+# Tags: replace, visual, selection, visual-pattern
 ---
 Use `\%V` in search pattern to restrict replacement to only the visual selection area.
 
