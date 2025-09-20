@@ -373,7 +373,7 @@ c:"Key Mappings" leader        → leader key mapping tips
 
 ## 📂 Available Categories
 
-The plugin currently includes tips organized into **70+ categories**. Here's the complete list for easy reference when using category search (`c:category`):
+The plugin currently includes tips organized into **69+ categories**. Here's the complete list for easy reference when using category search (`c:category`):
 
 <details>
 <summary><strong>Click to expand categories list</strong></summary>
@@ -382,7 +382,6 @@ The plugin currently includes tips organized into **70+ categories**. Here's the
 - **Advanced Search** - Complex search patterns and techniques
 - **Autocommands** - Event-driven automation
 - **Buffer Management** - Working with buffers
-- **Cheat Sheets** - Quick reference collections
 - **Clever Tricks** - Creative solutions and shortcuts
 - **Clipboard** - Copy/paste operations
 - **Command Execution** - Running commands
@@ -596,8 +595,12 @@ require('cmp').setup({
 
 ## 🔄 Roadmap Ideas
 
-- Category/Tag filtering
-- Search descriptions
-- Multiple tip sources
-- Export functionality
+- ~~Category/Tag filtering~~ ✅ **Completed** - Advanced search with `t:tag` and `c:category` syntax
+- ~~Help system for discovering tags/categories~~ ✅ **Completed** - Interactive help picker with `t:?` and `c:?`
+- Search descriptions - Extend search to include tip content, not just titles
+- Multiple tip sources - Support loading tips from multiple directories/files
+- Export functionality - Export filtered tips to various formats (PDF, HTML, etc.)
+- API improvements - Better programmatic access for other plugins
+- Theme customization - Customizable colors and UI themes
+- Tip rating system - Allow users to rate and sort tips by usefulness
 
