@@ -273,6 +273,78 @@ The plugin can show you a random tip in a beautiful popup when you start Neovim.
 - `:NeovimTipsAdd` — Insert a new tip template into your personal file and start editing
 - `:NeovimTipsRandom` — Displays random tip upon user request
 
+## 🔍 Smart Search
+
+The tips picker features powerful search capabilities that let you find tips by title, category, or tags with intelligent filtering.
+
+### Basic Search
+
+Simply start typing to search tip titles:
+```
+vim motion          → finds tips with both "vim" and "motion" in title
+insert character    → finds tips about inserting characters
+delete word         → finds tips about deleting words
+```
+
+### Tag Search
+
+Use `t:` prefix to search by tags:
+```
+t:motion           → finds all tips tagged with "motion"
+t:delete           → finds all tips tagged with "delete"
+t:operator         → finds all tips tagged with "operator"
+```
+
+### Category Search
+
+Use `c:` prefix to search by categories:
+```
+c:editing          → finds all tips in "Editing" category
+c:search           → finds all tips in "Search" category
+c:"Key Mappings"   → finds tips in "Key Mappings" category (quoted for spaces)
+```
+
+### Combined Search
+
+Mix different search types with spaces (all must match):
+```
+motion c:editing t:operator    → tips with "motion" in title, "Editing" category, and "operator" tag
+insert file t:save             → tips with "insert file" in title and "save" tag
+c:search t:pattern replace     → "Search" category tips with "pattern" tag and "replace" in title
+```
+
+### Search Help
+
+Don't know what tags or categories are available? Use the help feature:
+
+- **`t:?`** — Shows popup with all available tags (1000+ tags)
+- **`c:?`** — Shows popup with all available categories (70+ categories)
+
+#### Help Picker Navigation:
+- **Arrow keys** or **j/k** — Navigate up/down
+- **Press any letter** — Jump to first item starting with that letter (e.g., press 'm' to jump to "motion")
+- **Enter** — Select the item
+- **Esc** or **q** — Cancel
+
+### Search Tips
+
+- **Case insensitive**: `MOTION`, `motion`, and `Motion` all work the same
+- **Word matching**: All words must be found (AND logic)
+- **Quoted values**: Use quotes for multi-word tags/categories: `t:"write file"`
+- **No results**: Both title list and preview clear when no matches found
+- **Fast navigation**: Use help picker's letter jumping for quick access
+
+### Examples
+
+Try these searches to see the power of the system:
+```
+t:motion                       → 5 tips about motion commands
+c:editing t:delete             → editing tips that involve deletion
+motion c:editing t:operator    → 1 specific tip about motion + editing + operators
+insert file                    → tips about inserting files
+c:"Key Mappings" leader        → leader key mapping tips
+```
+
 ## 📝 Tips
 
 Each tip should follow this format:
