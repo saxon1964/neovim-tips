@@ -1,6 +1,6 @@
 # Neovim Tips Plugin
 
-*This Lua plugin for Neovim brings together hundreds of helpful tips, tricks, and shortcuts, all available through a custom picker. It’s easy to expand with your own entries, so the collection grows with you and your workflow.*
+*This Lua plugin for Neovim brings together hundreds of helpful tips, tricks, and shortcuts, all available through a custom picker. It's easy to expand with your own entries, so the collection grows with you and your workflow.*
 
 ![Neovim tips logo](images/neovim-tips-logo.gif)
 
@@ -9,6 +9,32 @@
 
 
 ![Neovim tips tip of the day](images/s2.png)
+
+## 📚 Table of Contents
+
+- [🎯 Purpose](#-purpose)
+- [🤝 Let's Collaborate](#-lets-collaborate)
+- [✨ Features](#-features)
+- [📦 Installation](#-installation)
+  - [Lazy.nvim](#lazynvim)
+  - [packer.nvim](#packernvim)
+  - [vim-plug](#vim-plug)
+  - [minpac](#minpac)
+  - [paq-nvim](#paq-nvim)
+  - [dein.vim](#deinvim)
+  - [kickstart.nvim](#kickstartnvim)
+  - [AstroNvim](#astronvim)
+- [💡 Daily Tip Feature](#-daily-tip-feature)
+- [🔧 Commands](#-commands)
+- [🔍 Smart Search](#-smart-search)
+- [📂 Available Categories](#-available-categories)
+- [📝 Tips](#-tips)
+- [✅ Example](#-example)
+- [📝 User-Defined Tips](#-user-defined-tips)
+- [⚙️ Configuration Options](#️-configuration-options)
+- [🚫 Disabling Completion in Search Bar](#-disabling-completion-in-search-bar)
+- [📁 Default File Locations](#-default-file-locations)
+- [🔄 Roadmap Ideas](#-roadmap-ideas)
 
 ## 🎯 Purpose
 
@@ -343,6 +369,99 @@ c:editing t:delete             → editing tips that involve deletion
 motion c:editing t:operator    → 1 specific tip about motion + editing + operators
 insert file                    → tips about inserting files
 c:"Key Mappings" leader        → leader key mapping tips
+```
+
+## 📂 Available Categories
+
+The plugin currently includes tips organized into **70+ categories**. Here's the complete list for easy reference when using category search (`c:category`):
+
+<details>
+<summary><strong>Click to expand categories list</strong></summary>
+
+- **Advanced Neovim** - Advanced Neovim-specific features
+- **Advanced Search** - Complex search patterns and techniques
+- **Autocommands** - Event-driven automation
+- **Buffer Management** - Working with buffers
+- **Cheat Sheets** - Quick reference collections
+- **Clever Tricks** - Creative solutions and shortcuts
+- **Clipboard** - Copy/paste operations
+- **Command Execution** - Running commands
+- **Command History** - Command line history management
+- **Command Line** - Command line usage
+- **Command Line Advanced** - Advanced command line features
+- **Completion** - Auto-completion features
+- **Configuration** - Settings and configuration
+- **Cut and Paste** - Text cutting and pasting
+- **Development** - Programming and development
+- **Diagnostics** - Error checking and diagnostics
+- **Display** - Visual display options
+- **Edit** - Basic editing operations
+- **Editing** - Text editing techniques
+- **Exit** - Exiting Vim/Neovim
+- **File** - File operations
+- **File History** - File change history
+- **File Navigation** - Moving between files
+- **File Operations** - Advanced file management
+- **File Recovery** - Recovering files
+- **File Type Specific** - Language-specific features
+- **Folding** - Code folding
+- **Formatting** - Text formatting
+- **Fun** - Entertainment and fun features
+- **Functions** - Function definitions and usage
+- **Global** - Global operations
+- **Help** - Getting help and documentation
+- **Indentation** - Code indentation
+- **Information** - System and editor information
+- **Insert** - Insert mode operations
+- **Insert Mode Advanced** - Advanced insert mode features
+- **Integration** - External tool integration
+- **Interface** - User interface features
+- **Key Mappings** - Custom key bindings
+- **LSP** - Language Server Protocol
+- **Lua** - Lua scripting
+- **Macros** - Recording and playing macros
+- **Mapping** - Key mapping operations
+- **Marks** - Text marks and bookmarks
+- **Mode Switching** - Switching between modes
+- **Movement** - Cursor movement
+- **Navigation** - Code and text navigation
+- **Neovim Features** - Neovim-specific functionality
+- **Normal Mode** - Normal mode operations
+- **Performance** - Performance optimization
+- **Performance Optimization Advanced** - Advanced performance tips
+- **Registers** - Using Vim registers
+- **Scripting** - Script writing
+- **Search** - Search and find operations
+- **Search Replace** - Search and replace operations
+- **Session** - Session management
+- **Session Management** - Advanced session features
+- **System** - System integration
+- **System Information** - System data and info
+- **Tabs** - Tab management
+- **Terminal** - Terminal integration
+- **Text Editing** - General text editing
+- **Text Input** - Text input methods
+- **Text Manipulation** - Advanced text operations
+- **Text Objects** - Working with text objects
+- **Treesitter** - Syntax tree parsing
+- **UI** - User interface
+- **View Management** - Managing views and layouts
+- **Vim Script** - Vimscript programming
+- **Visual** - Visual mode operations
+- **Visual Mode Advanced** - Advanced visual mode features
+- **Window Management** - Managing windows
+- **Windows** - Window operations
+- **Workflow** - Workflow optimization
+- **Workflow Patterns** - Common workflow patterns
+
+</details>
+
+### Usage Examples:
+```
+c:editing                → All editing tips
+c:"Key Mappings"         → All key mapping tips (quoted for spaces)
+c:search t:pattern       → Search tips tagged with "pattern"
+motion c:editing         → Motion tips in editing category
 ```
 
 ## 📝 Tips
