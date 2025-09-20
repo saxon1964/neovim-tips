@@ -134,7 +134,13 @@ end
 ---@param debounced boolean Whether to debounce rendering
 ---@return nil
 function NuiPicker:update_preview(debounced)
-  if not self.layout.preview_popup or #self.filtered_titles == 0 then return end
+  if not self.layout.preview_popup then return end
+
+  -- If no filtered titles, clear the preview
+  if #self.filtered_titles == 0 then
+    layout.update_preview_content(self.layout.preview_popup, "No Results", "No matching tips found.", renderer)
+    return
+  end
 
   local selected_title = self.filtered_titles[self.selected_index]
   if not selected_title then return end
