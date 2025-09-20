@@ -1,14 +1,16 @@
+<img src="images/logo.png" width="150">
+
 # Neovim Tips Plugin
 
-*This Lua plugin for Neovim brings together hundreds of helpful tips, tricks, and shortcuts, all available through a custom picker. It's easy to expand with your own entries, so the collection grows with you and your workflow.*
+> *"I've been using Vim for about 2 years now, mostly because I can't figure out how to exit it."* ([I Am Developer](https://x.com/iamdevloper/status/435555976687923200))
 
-![Neovim tips logo](images/neovim-tips-logo.gif)
+**This Lua plugin for Neovim brings together hundreds of helpful tips, tricks, and shortcuts, all available through a custom picker. It's easy to expand with your own entries, so the collection grows with you and your workflow.**
 
 ![Neovim tips plugin screenshot](images/s1.png)
 
-
-
 ![Neovim tips tip of the day](images/s2.png)
+
+![Neovim tips advanced search](images/s3.png)
 
 ## 📚 Table of Contents
 
@@ -38,15 +40,13 @@
 
 ## 🎯 Purpose
 
-I started to work on this little plugin because I **love** neovim and I still remember how difficult it was to learn the basic commands. I was like that [Twitter guy](https://x.com/iamdevloper/status/435555976687923200) who said: 
+I started to work on this little plugin because I **love** neovim and I still remember how difficult it was to learn the basic commands.
 
-*"I've been using Vim for about 2 years now, mostly because I can't figure out how to exit it."*
-
-The plugin should help you to learn some basic (:wq, write and quit) and some not so basic commands (ddp, move line down) related to neovim. 
+The plugin should help you to learn some basic (:wq, write and quit) and some not so basic commands (ddp, move line down) related to neovim.
 
 ## 🤝 Let's Collaborate
 
-I have provided a solid initial batch of tips and if you have your favorite one that is not listed, I will be happy to include it in the next release **with proper credits**. Send your commands, tips and tricks to me, create an issue or submit a pull request. You can also add your own tips and tricks that will be stored on your local computer, you don't have to share anything with me.  
+I have provided a solid initial batch of tips and if you have your favorite one that is not listed, I will be happy to include it in the next release **with proper credits**. Send your commands, tips and tricks to me, create an issue or submit a pull request. You can also add your own tips and tricks that will be stored on your local computer, you don't have to share anything with me.
 
 ## ✨ Features
 - **Beautiful custom picker**: Three-pane interface with search, tips list, and live markdown preview
@@ -72,9 +72,9 @@ I have provided a solid initial batch of tips and if you have your favorite one 
 {
   "saxon1964/neovim-tips",
   version = "*", -- Only update on tagged releases
-  dependencies = { 
+  dependencies = {
     "MunifTanjim/nui.nvim",
-    "MeanderingProgrammer/render-markdown.nvim" 
+    "MeanderingProgrammer/render-markdown.nvim"
   },
   opts = {
     -- OPTIONAL: Location of user defined tips (default value shown below)
@@ -88,7 +88,7 @@ I have provided a solid initial batch of tips and if you have your favorite one 
     daily_tip = 1,
   },
   init = function()
-    -- OPTIONAL: Change to your liking or drop completely 
+    -- OPTIONAL: Change to your liking or drop completely
     -- The plugin does not provide default key mappings, only commands
     local map = vim.keymap.set
     map("n", "<leader>nto", ":NeovimTips<CR>", { desc = "Neovim tips", noremap = true, silent = true })
@@ -105,9 +105,9 @@ I have provided a solid initial batch of tips and if you have your favorite one 
 use {
   "saxon1964/neovim-tips",
   tag = "*", -- Only update on tagged releases
-  requires = { 
+  requires = {
     "MunifTanjim/nui.nvim",
-    "MeanderingProgrammer/render-markdown.nvim" 
+    "MeanderingProgrammer/render-markdown.nvim"
   },
   config = function()
     require("neovim_tips").setup {
@@ -222,9 +222,9 @@ EOF
 require("lazy").setup({
   {
     "saxon1964/neovim-tips",
-    dependencies = { 
+    dependencies = {
     "MunifTanjim/nui.nvim",
-    "MeanderingProgrammer/render-markdown.nvim" 
+    "MeanderingProgrammer/render-markdown.nvim"
   },
     opts = {
       user_file = vim.fn.stdpath("config") .. "/neovim_tips/user_tips.md",
@@ -248,9 +248,9 @@ File `lua/user/plugins/neovim_tips.lua`:
 return {
   {
     "saxon1964/neovim-tips",
-    dependencies = { 
+    dependencies = {
     "MunifTanjim/nui.nvim",
-    "MeanderingProgrammer/render-markdown.nvim" 
+    "MeanderingProgrammer/render-markdown.nvim"
   },
     opts = {
       user_file = vim.fn.stdpath("config") .. "/neovim_tips/user_tips.md",
@@ -284,7 +284,7 @@ The plugin can show you a random tip in a beautiful popup when you start Neovim.
 
 ### Daily Tip Popup Features:
 - **"Did you know?" popup**: Centered layout with main tip content and footer
-- **Smart persistence**: Once daily mode uses `~/.local/share/nvim/neovim_tips/persistent.json` 
+- **Smart persistence**: Once daily mode uses `~/.local/share/nvim/neovim_tips/persistent.json`
 - **Full markdown rendering**: Rich formatting with render-markdown.nvim
 - **Easy copying**: Select and copy tip content or code snippets directly
 - **Easy dismissal**: Close with `q` or `<Esc>`
@@ -482,12 +482,12 @@ Some additional text here.
 ***
 ````
 
-Alternatively, use can use === (3 equal signs) instead of *** (3 asterisks) to finish the tip. 
+Alternatively, use can use === (3 equal signs) instead of *** (3 asterisks) to finish the tip.
 This format is used for all tips, built-in or created by you and stored separately.
 
 Each tip has to start with the `# Title:` line, followed by `# Category:` and a list of `# Tags`.
 
-Description of the tip starts with `---` and ends with `***` or `===`. There is **NO** predefined format for description. Anything between the starting and ending marker will be interpreted as a text in markdown (.md) format. Fzf-lua will render the markdown description in the right FZF panel. 
+Description of the tip starts with `---` and ends with `***` or `===`. There is **NO** predefined format for description. Anything between the starting and ending marker will be interpreted as a text in markdown (.md) format. Fzf-lua will render the markdown description in the right FZF panel.
 
 ## ✅ Example
 
@@ -499,7 +499,7 @@ Description of the tip starts with `---` and ends with `***` or `===`. There is 
 In normal mode use `diw` to delete the word under the cursor.
 
 ```vim
-diw 
+diw
 ```
 ***
 ````
@@ -524,13 +524,13 @@ All configuration options are optional with sensible defaults:
 require("neovim_tips").setup({
   -- Path to user tips file
   user_file = vim.fn.stdpath("config") .. "/neovim_tips/user_tips.md",
-  
+
   -- Prefix added to user tip titles to prevent conflicts
   user_tip_prefix = "[User] ",
-  
+
   -- Show warnings when user tips have conflicting titles with builtin tips
   warn_on_conflicts = true,
-  
+
   -- Daily tip mode: 0=off, 1=once per day, 2=every startup
   daily_tip = 1,
 })
@@ -542,7 +542,7 @@ require("neovim_tips").setup({
 -- Default: [User] prefix
 user_tip_prefix = "[User] "     -- "Join lines" becomes "[User] Join lines"
 
--- Custom emoji prefix  
+-- Custom emoji prefix
 user_tip_prefix = "🔧 "         -- "Join lines" becomes "🔧 Join lines"
 
 -- No prefix (not recommended, may cause conflicts)
@@ -597,7 +597,7 @@ require('cmp').setup({
 
 - ~~Category/Tag filtering~~ ✅ **Completed** - Advanced search with `t:tag` and `c:category` syntax
 - ~~Help system for discovering tags/categories~~ ✅ **Completed** - Interactive help picker with `t:?` and `c:?`
-- Search descriptions - Extend search to include tip content, not just titles
+- Search descriptions - Extend search to include tip content, not just titles, tags and categories
 - Multiple tip sources - Support loading tips from multiple directories/files
 - Export functionality - Export filtered tips to various formats (PDF, HTML, etc.)
 - API improvements - Better programmatic access for other plugins
