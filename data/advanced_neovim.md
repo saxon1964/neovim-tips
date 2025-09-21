@@ -208,7 +208,7 @@ Use `vim.snippet` API for snippet expansion and navigation without external snip
 #### Example
 
 ```vim
-:lua vim.snippet.expand('for ${1:var} in ${2:iterable}:\n\t${0:pass}')
+:lua vim.snippet.expand('for var in iterable:\n\tpass')
 :lua if vim.snippet.active() then vim.snippet.jump(1) end
 " Built-in snippet support in Neovim 0.10+
 ```

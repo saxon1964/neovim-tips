@@ -58,14 +58,14 @@ Use `set ignorecase smartcase` for intelligent case handling - ignore case unles
 # Category: Configuration
 # Tags: listchars, invisible, whitespace, tabs
 ---
-Use `set list listchars=tab:▸\ ,eol:¬,trail:·,space:·` to visualize invisible characters like tabs, spaces, and line endings.
+Use `set list listchars=tab:>\  ,eol:$,trail:.,space:.` to visualize invisible characters like tabs, spaces, and line endings.
 
 #### Example
 
 ```vim
 :set list
-:set listchars=tab:▸\ ,eol:¬,trail:·,space:·
-" Shows tabs as ▸, line endings as ¬, trailing spaces as ·
+:set listchars=tab:>\ ,eol:$,trail:.,space:.
+" Shows tabs as >, line endings as $, trailing spaces as .
 ```
 ***
 # Title: Incremental command preview
@@ -253,7 +253,7 @@ Use `set linebreak` with `set breakat` to wrap long lines at word boundaries rat
 ```vim
 :set linebreak
 :set breakat=\ \t!@*-+;:,./?   " break at these characters
-:set showbreak=↪\              " show symbol at wrapped lines
+:set showbreak=>>\              " show symbol at wrapped lines
 ```
 ***
 # Title: Scroll context lines

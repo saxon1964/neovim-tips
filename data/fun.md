@@ -42,7 +42,7 @@ Moves every line to the top — effectively reversing the buffer. Great for expe
 ```
 ***
 # Title: Flip a coin
-# Category: fun
+# Category: Fun
 # Tags: fun
 ---
 Quick decision-making inside Neovim. Could help settle coding debates (“Tabs or spaces?”).

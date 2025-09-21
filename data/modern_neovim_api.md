@@ -136,7 +136,7 @@ Use `vim.diagnostic.config()` to customize how diagnostics are displayed and beh
 -- Configure diagnostic display
 vim.diagnostic.config({
   virtual_text = {
-    prefix = '●',
+    prefix = '*',
     spacing = 2,
     severity = { min = vim.diagnostic.severity.WARN }
   },

@@ -80,7 +80,7 @@ Use `:set foldcolumn` to show fold column, `:set foldtext` for custom fold text,
 
 ```vim
 :set foldcolumn=4     " show fold indicators in 4-char column
-:set fillchars=fold:·,vert:│  " customize fill characters
+:set fillchars=fold:.,vert:|  " customize fill characters
 :set foldtext=MyFoldText()    " custom fold text function
 ```
 ***

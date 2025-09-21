@@ -78,7 +78,7 @@ Neovim 0.10+ has built-in snippet support for LSP and completion engines.
 
 ```lua
 -- Expand snippet
-vim.snippet.expand("for i in range(${1:10}):\n\t${0}")
+vim.snippet.expand("for i in range(10):\n\tpass")
 
 -- Jump to next placeholder
 vim.snippet.jump(1)
