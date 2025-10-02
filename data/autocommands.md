@@ -1,5 +1,19 @@
+# Title: Smart auto-save with update command
+# Category: Autocommands
+# Tags: autocmd, auto-save, update, silent, efficient
+---
+Use `silent! update` for efficient auto-save that only writes when buffer is modified and file has changed.
+
+```lua
+vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost" }, {
+  pattern = "*",
+  command = "silent! update",
+  desc = "Auto-save on leave/lost focus",
+})
+```
+***
 # Title: Auto-save on focus lost
-# Category: Autocommands  
+# Category: Autocommands
 # Tags: autocmd, FocusLost, auto-save, backup
 ---
 Use `FocusLost` autocommand to automatically save all buffers when vim loses focus.

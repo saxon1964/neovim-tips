@@ -1,3 +1,15 @@
+# Title: Sandbox mode for safe testing
+# Category: Configuration
+# Tags: sandbox, safe, testing, command, :sandbox
+---
+Use `:sandbox` to execute commands safely without side effects like persistent undo entries or autocommands.
+
+```vim
+:sandbox set number           " test setting without permanent change
+:sandbox echo expand('%')     " safely test expressions
+:sandbox source unsafe.vim    " test configuration safely
+```
+***
 # Title: View runtime paths
 # Category: Configuration
 # Tags: runtime, path, debug

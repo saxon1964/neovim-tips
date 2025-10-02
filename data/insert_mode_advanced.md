@@ -1,3 +1,17 @@
+# Title: Temporary normal mode from insert mode
+# Category: Insert Mode Advanced
+# Tags: normal, mode, temporary, <C-o>, command
+---
+Use `<C-o>` in insert mode to execute a single normal mode command and return immediately to insert mode.
+
+```vim
+" In insert mode:
+<C-o>dd        " delete current line and return to insert
+<C-o>j         " move down one line and continue inserting
+<C-o>ciw       " change inner word and stay in insert mode
+<C-o>A         " go to end of line and continue inserting
+```
+***
 # Title: Insert mode navigation without exiting
 # Category: Insert Mode Advanced
 # Tags: navigation, cursor, movement, arrow

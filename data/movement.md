@@ -1,3 +1,15 @@
+# Title: Last non-blank character motion (g_)
+# Category: Movement
+# Tags: motion, line, end, g_, non-blank
+---
+Use `g_` to move to the last non-blank character of the line, unlike `$` which goes to the very end including whitespace.
+
+```vim
+g_     " go to last non-blank character
+yg_    " yank to last non-blank character (no trailing spaces)
+dg_    " delete to last non-blank character
+```
+***
 # Title: Basic cursor movement
 # Category: Movement
 # Tags: cursor, navigation, movement

@@ -1,3 +1,18 @@
+# Title: Repeating changes with gv and dot command
+# Category: Visual
+# Tags: visual, repeat, gv, dot, reselect, workflow
+---
+Use `gv` to reselect the last visual selection at a new location, then use `.` to repeat the same change. Perfect for applying identical modifications to different non-contiguous blocks.
+
+```vim
+" Workflow example:
+" 1. Select text block (V or Ctrl+v)
+" 2. Make change (e.g., S) to wrap in parentheses)
+" 3. Move cursor to different location
+" 4. Use gv to reselect same-sized block
+" 5. Use . to repeat the wrapping action
+```
+***
 # Title: Visual selection modes
 # Category: Visual
 # Tags: visual, selection, mode

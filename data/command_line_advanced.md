@@ -1,3 +1,18 @@
+# Title: Command-line window editing
+# Category: Command Line Advanced
+# Tags: command-line, window, editing, <C-f>
+---
+Use `<C-f>` in command-line mode to open the command-line window where you can edit commands with full normal mode motions, including search, replace, and multi-line editing.
+
+```vim
+:s/old/   <C-f>    " open command-line window
+" Now you can use any normal mode command:
+" - Search with /pattern
+" - Use ciw to change words
+" - Use dd to delete lines
+" - Press <Enter> to execute the command
+```
+***
 # Title: Command line expression evaluation
 # Category: Command Line Advanced
 # Tags: expression, evaluation, calculation, register
@@ -9,6 +24,19 @@ Use `Ctrl+r =` to evaluate expressions and insert results into command line.
 :echo <Ctrl+r>=2*3<CR>        " insert 6
 :edit /path/<Ctrl+r>=strftime("%Y")<CR>/file.txt  " insert current year
 :let var = <Ctrl+r>=line('.')*2<CR>  " multiply current line by 2
+```
+
+# Title: Insert word under cursor in command line
+# Category: Command Line Advanced
+# Tags: command-line, register, word, cursor, <C-r><C-w>
+---
+Use `<C-r><C-w>` in command-line mode to insert the word under the cursor, perfect for quick substitutions.
+
+```vim
+" Position cursor on 'oldword' then:
+:%s//<C-r><C-w>/g     " substitute oldword with word under cursor
+:grep <C-r><C-w> **   " search for word under cursor in all files
+:help <C-r><C-w>      " get help for word under cursor
 ```
 ***
 # Title: Command line filename completion variations

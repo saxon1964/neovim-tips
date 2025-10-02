@@ -1,3 +1,15 @@
+# Title: Change list navigation
+# Category: Navigation
+# Tags: changelist, navigation, g;, g,, changes
+---
+Use `g;` and `g,` to navigate through the change list - locations where you made edits in the current buffer.
+
+```vim
+g;         " jump to previous change location
+g,         " jump to next change location
+:changes   " view the change list
+```
+***
 # Title: View jump list
 # Category: Navigation
 # Tags: jump, list, view
@@ -10,16 +22,15 @@ Use `:jumps` to show the jump list with all stored positions.
 :jumps  " show jump list
 ```
 ***
-# Title: Go to file under cursor
+# Title: Go to file and open URL under cursor
 # Category: Navigation
-# Tags: file, cursor, goto
+# Tags: file, cursor, goto, url, gf, gx
 ---
-Use `gf` to open the file whose name is under the cursor.
-
-#### Example
+Use `gf` to open the file whose name is under the cursor, or `gx` to open URLs/links in external browser.
 
 ```vim
-gf  " go to file under cursor
+gf  " go to file under cursor (path/to/file.txt)
+gx  " open URL under cursor in browser (https://example.com)
 ```
 ***
 # Title: LSP go to references
@@ -81,6 +92,19 @@ Use `:cnext` to go to next item in quickfix list and `:cprev` to go to previous 
 ```vim
 :cnext  " next quickfix item
 :cprev  " previous quickfix item
+```
+
+# Title: Quickfix navigation with bracket commands
+# Category: Navigation
+# Tags: quickfix, navigation, bracket, [q, ]q, [l, ]l
+---
+Use `[q` and `]q` to navigate quickfix items, `[l` and `]l` for location list items.
+
+```vim
+[q    " go to previous quickfix item
+]q    " go to next quickfix item
+[l    " go to previous location list item
+]l    " go to next location list item
 ```
 ***
 # Title: Jump to block boundaries

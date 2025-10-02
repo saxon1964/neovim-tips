@@ -1,3 +1,17 @@
+# Title: Filter text through external commands
+# Category: Text Manipulation
+# Tags: filter, external, command, !, pipe, processing
+---
+Use `!{motion}{command}` to filter text through external commands for text processing.
+
+```vim
+!}sort              " sort paragraph (motion: })
+:'<,'>!sort         " sort visual selection
+!Gtidy -iq -xml     " format XML until end of file
+:%!python3 -m json.tool  " format entire file as JSON
+:10,20!nl           " add line numbers to lines 10-20
+```
+***
 # Title: Lowercase/uppercase current line
 # Category: Text Manipulation
 # Tags: case, line, transform

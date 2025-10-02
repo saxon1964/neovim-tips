@@ -1,3 +1,15 @@
+# Title: Incremental number sequences with g<C-a>
+# Category: Visual Mode Advanced
+# Tags: visual, block, numbers, increment, sequence
+---
+Use visual block mode with `g<C-a>` to create incremental number sequences. Perfect for creating numbered lists or incrementing multiple values.
+
+```vim
+Ctrl+v          " start visual block mode
+jjj             " select column of numbers (like 1,1,1,1)
+g<Ctrl+a>       " increment sequentially (becomes 1,2,3,4)
+```
+***
 # Title: Visual block column insertion
 # Category: Visual Mode Advanced
 # Tags: visual, block, column, insert, prepend
@@ -6,7 +18,7 @@ Use visual block mode with `I` to insert text at the beginning of each selected 
 
 ```vim
 Ctrl+v          " start visual block mode
-jjj             " select multiple lines  
+jjj             " select multiple lines
 I               " insert at beginning of each line
 text            " type text to insert
 <Esc>           " apply to all selected lines
