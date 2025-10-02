@@ -28,6 +28,7 @@
   - [AstroNvim](#astronvim)
 - [💡 Daily Tip Feature](#-daily-tip-feature)
 - [🔧 Commands](#-commands)
+- [📖 Help System](#-help-system)
 - [🔍 Smart Search](#-smart-search)
 - [📂 Available Categories](#-available-categories)
 - [📝 Tips](#-tips)
@@ -94,6 +95,7 @@ I have provided a solid initial batch of tips and if you have your favorite one 
     map("n", "<leader>nto", ":NeovimTips<CR>", { desc = "Neovim tips", noremap = true, silent = true })
     map("n", "<leader>nte", ":NeovimTipsEdit<CR>", { desc = "Edit your Neovim tips", noremap = true, silent = true })
     map("n", "<leader>nta", ":NeovimTipsAdd<CR>", { desc = "Add your Neovim tip", noremap = true, silent = true })
+    map("n", "<leader>nth", ":help neovim-tips<CR>", { desc = "Neovim tips help", noremap = true, silent = true })
     map("n", "<leader>ntr", ":NeovimTipsRandom<CR>", { desc = "Show random tip", noremap = true, silent = true })
   end
 }
@@ -121,6 +123,7 @@ use {
     map("n", "<leader>nto", ":NeovimTips<CR>", { desc = "Neovim tips", noremap = true, silent = true })
     map("n", "<leader>nte", ":NeovimTipsEdit<CR>", { desc = "Edit your Neovim tips", noremap = true, silent = true })
     map("n", "<leader>nta", ":NeovimTipsAdd<CR>", { desc = "Add your Neovim tip", noremap = true, silent = true })
+    map("n", "<leader>nth", ":help neovim-tips<CR>", { desc = "Neovim tips help", noremap = true, silent = true })
     map("n", "<leader>ntr", ":NeovimTipsRandom<CR>", { desc = "Show random tip", noremap = true, silent = true })
   end
 }
@@ -143,6 +146,7 @@ local map = vim.keymap.set
 map("n", "<leader>nto", ":NeovimTips<CR>", { desc = "Neovim tips", noremap = true, silent = true })
 map("n", "<leader>nte", ":NeovimTipsEdit<CR>", { desc = "Edit your Neovim tips", noremap = true, silent = true })
 map("n", "<leader>nta", ":NeovimTipsAdd<CR>", { desc = "Add your Neovim tip", noremap = true, silent = true })
+map("n", "<leader>nth", ":help neovim-tips<CR>", { desc = "Neovim tips help", noremap = true, silent = true })
 map("n", "<leader>ntr", ":NeovimTipsRandom<CR>", { desc = "Show random tip", noremap = true, silent = true })
 EOF
 ```
@@ -165,6 +169,7 @@ local map = vim.keymap.set
 map("n", "<leader>nto", ":NeovimTips<CR>", { desc = "Neovim tips", noremap = true, silent = true })
 map("n", "<leader>nte", ":NeovimTipsEdit<CR>", { desc = "Edit your Neovim tips", noremap = true, silent = true })
 map("n", "<leader>nta", ":NeovimTipsAdd<CR>", { desc = "Add your Neovim tip", noremap = true, silent = true })
+map("n", "<leader>nth", ":help neovim-tips<CR>", { desc = "Neovim tips help", noremap = true, silent = true })
 map("n", "<leader>ntr", ":NeovimTipsRandom<CR>", { desc = "Show random tip", noremap = true, silent = true })
 EOF
 ```
@@ -187,6 +192,7 @@ local map = vim.keymap.set
 map("n", "<leader>nto", ":NeovimTips<CR>", { desc = "Neovim tips", noremap = true, silent = true })
 map("n", "<leader>nte", ":NeovimTipsEdit<CR>", { desc = "Edit your Neovim tips", noremap = true, silent = true })
 map("n", "<leader>nta", ":NeovimTipsAdd<CR>", { desc = "Add your Neovim tip", noremap = true, silent = true })
+map("n", "<leader>nth", ":help neovim-tips<CR>", { desc = "Neovim tips help", noremap = true, silent = true })
 map("n", "<leader>ntr", ":NeovimTipsRandom<CR>", { desc = "Show random tip", noremap = true, silent = true })
 ```
 
@@ -211,6 +217,7 @@ local map = vim.keymap.set
 map("n", "<leader>nto", ":NeovimTips<CR>", { desc = "Neovim tips", noremap = true, silent = true })
 map("n", "<leader>nte", ":NeovimTipsEdit<CR>", { desc = "Edit your Neovim tips", noremap = true, silent = true })
 map("n", "<leader>nta", ":NeovimTipsAdd<CR>", { desc = "Add your Neovim tip", noremap = true, silent = true })
+map("n", "<leader>nth", ":help neovim-tips<CR>", { desc = "Neovim tips help", noremap = true, silent = true })
 map("n", "<leader>ntr", ":NeovimTipsRandom<CR>", { desc = "Show random tip", noremap = true, silent = true })
 EOF
 
@@ -234,6 +241,7 @@ require("lazy").setup({
       map("n", "<leader>nto", ":NeovimTips<CR>", { desc = "Neovim tips", noremap = true, silent = true })
       map("n", "<leader>nte", ":NeovimTipsEdit<CR>", { desc = "Edit your Neovim tips", noremap = true, silent = true })
       map("n", "<leader>nta", ":NeovimTipsAdd<CR>", { desc = "Add your Neovim tip", noremap = true, silent = true })
+      map("n", "<leader>nth", ":help neovim-tips<CR>", { desc = "Neovim tips help", noremap = true, silent = true })
       map("n", "<leader>ntr", ":NeovimTipsRandom<CR>", { desc = "Show random tip", noremap = true, silent = true })
     end,
   },
@@ -267,7 +275,7 @@ return {
     ["<leader>nto"] = { "<cmd>NeovimTips<cr>", desc = "Neovim tips" },
     ["<leader>nte"] = { "<cmd>NeovimTipsEdit<cr>", desc = "Edit your Neovim tips" },
     ["<leader>nta"] = { "<cmd>NeovimTipsAdd<cr>", desc = "Add your Neovim tip" },
-    ["<leader>nth"] = { "<cmd>NeovimTipsHelp<cr>", desc = "Neovim tips user guide" },
+    ["<leader>nth"] = { "<cmd>help neovim-tips<cr>", desc = "Neovim tips help" },
     ["<leader>ntr"] = { "<cmd>NeovimTipsRandom<cr>", desc = "Random Neovim tip" },
   },
 }
@@ -298,6 +306,36 @@ The plugin can show you a random tip in a beautiful popup when you start Neovim.
 - `:NeovimTipsEdit` — Edit your personal tips file
 - `:NeovimTipsAdd` — Insert a new tip template into your personal file and start editing
 - `:NeovimTipsRandom` — Displays random tip upon user request
+
+## 📖 Help System
+
+The plugin provides comprehensive built-in documentation accessible via Neovim's help system. All features, commands, and configuration options are documented with examples and cross-references.
+
+### Main Help Topics
+
+- `:help neovim-tips` — Complete plugin documentation
+- `:help neovim-tips-commands` — All available commands
+- `:help neovim-tips-search` — Advanced search syntax and examples
+- `:help neovim-tips-configuration` — Configuration options with examples
+- `:help neovim-tips-user-tips` — Creating and managing custom tips
+- `:help neovim-tips-daily` — Daily tip feature configuration
+
+### Individual Command Help
+
+- `:help :NeovimTips` — Main picker command
+- `:help :NeovimTipsEdit` — Edit personal tips file
+- `:help :NeovimTipsAdd` — Add new tip template
+- `:help :NeovimTipsRandom` — Random tip display
+
+### Quick Access
+
+The help system includes:
+- **Detailed examples** for all search modes (`t:tag`, `c:category`, etc.)
+- **Configuration templates** you can copy and customize
+- **Troubleshooting guide** for common issues
+- **Cross-referenced sections** for easy navigation between related topics
+
+**Pro tip**: Start with `:help neovim-tips` for a complete overview, then use `:help neovim-tips-<topic>` for specific areas of interest.
 
 ## 🔍 Smart Search
 
@@ -518,7 +556,7 @@ To prevent conflicts with builtin tips, user tips are automatically prefixed wit
 
 ## ⚙️ Configuration Options
 
-All configuration options are optional with sensible defaults:
+All configuration options are optional with sensible defaults. For detailed explanations and examples, see `:help neovim-tips-configuration`.
 
 ```lua
 require("neovim_tips").setup({
@@ -566,7 +604,7 @@ user_tip_prefix = ""            -- "Join lines" stays "Join lines"
 
 ## 🚫 Disabling Completion in Search Bar
 
-If you're using completion engines like `blink.cmp` or `nvim-cmp` and want to disable autocompletion suggestions in the picker's search bar, you can use the custom filetype `neovim-tips-search`:
+If you're using completion engines like `blink.cmp` or `nvim-cmp` and want to disable autocompletion suggestions in the picker's search bar, you can use the custom filetype `neovim-tips-search`. For more troubleshooting help, see `:help neovim-tips-troubleshooting`:
 
 ### For blink.cmp:
 ```lua
@@ -603,4 +641,16 @@ require('cmp').setup({
 - API improvements - Better programmatic access for other plugins
 - Theme customization - Customizable colors and UI themes
 - Tip rating system - Allow users to rate and sort tips by usefulness
+
+---
+
+## 📚 Need More Help?
+
+For comprehensive documentation with examples, troubleshooting, and detailed configuration options, use Neovim's built-in help system:
+
+```vim
+:help neovim-tips
+```
+
+All plugin features are fully documented with cross-references and copy-friendly examples!
 

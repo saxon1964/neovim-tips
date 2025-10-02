@@ -1,0 +1,389 @@
+*neovim-tips.txt*     Neovim Tips Plugin Documentation                  *neovim-tips*
+
+Author: saxon1964 <https://github.com/saxon1964>
+License: MIT
+Version: 1.0
+
+==============================================================================
+CONTENTS                                                *neovim-tips-contents*
+
+1. Introduction.................................|neovim-tips-introduction|
+2. Features.....................................|neovim-tips-features|
+3. Installation.................................|neovim-tips-installation|
+4. Configuration................................|neovim-tips-configuration|
+5. Commands.....................................|neovim-tips-commands|
+6. Search.......................................|neovim-tips-search|
+7. Categories...................................|neovim-tips-categories|
+8. User Tips....................................|neovim-tips-user-tips|
+9. Daily Tips...................................|neovim-tips-daily|
+10. Troubleshooting.............................|neovim-tips-troubleshooting|
+
+==============================================================================
+1. INTRODUCTION                                     *neovim-tips-introduction*
+
+This Lua plugin for Neovim brings together hundreds of helpful tips, tricks,
+and shortcuts, all available through a custom picker. It's easy to expand
+with your own entries, so the collection grows with you and your workflow.
+
+The plugin includes 900+ curated tips organized into 70+ categories, covering
+everything from basic commands to advanced Neovim features.
+
+Repository: https://github.com/saxon1964/neovim-tips
+
+==============================================================================
+2. FEATURES                                             *neovim-tips-features*
+
+• Beautiful custom picker with three-pane interface
+• Daily tip popup (configurable: off, daily, or every launch)
+• Lightweight dependencies (only nui.nvim and render-markdown)
+• Word-based search with intelligent filtering
+• Live markdown rendering in preview pane
+• Simple navigation with mouse and keyboard
+• Copy-friendly interface for tips and code snippets
+• Cursor preservation after closing
+• Support for categories, tags, and rich text
+• Lazy loading for optimal startup performance
+• 900+ curated built-in tips
+• Unlimited personal tips with configurable prefixes
+• Automatic title conflict detection
+
+==============================================================================
+3. INSTALLATION                                     *neovim-tips-installation*
+
+The plugin requires these dependencies:
+• MunifTanjim/nui.nvim
+• MeanderingProgrammer/render-markdown.nvim
+
+3.1 Lazy.nvim ~
+>lua
+    {
+      "saxon1964/neovim-tips",
+      version = "*",
+      dependencies = {
+        "MunifTanjim/nui.nvim",
+        "MeanderingProgrammer/render-markdown.nvim"
+      },
+      opts = {},
+      init = function()
+        local map = vim.keymap.set
+        map("n", "<leader>nto", ":NeovimTips<CR>",
+            { desc = "Neovim tips", noremap = true, silent = true })
+        map("n", "<leader>nte", ":NeovimTipsEdit<CR>",
+            { desc = "Edit your Neovim tips", noremap = true, silent = true })
+        map("n", "<leader>nta", ":NeovimTipsAdd<CR>",
+            { desc = "Add your Neovim tip", noremap = true, silent = true })
+        map("n", "<leader>nth", ":help neovim-tips<CR>",
+            { desc = "Neovim tips help", noremap = true, silent = true })
+        map("n", "<leader>ntr", ":NeovimTipsRandom<CR>",
+            { desc = "Show random tip", noremap = true, silent = true })
+      end
+    }
+<
+
+3.2 packer.nvim ~
+>lua
+    use {
+      "saxon1964/neovim-tips",
+      tag = "*",
+      requires = {
+        "MunifTanjim/nui.nvim",
+        "MeanderingProgrammer/render-markdown.nvim"
+      },
+      config = function()
+        require("neovim_tips").setup()
+      end
+    }
+<
+
+See the README for additional package manager examples.
+
+==============================================================================
+4. CONFIGURATION                                   *neovim-tips-configuration*
+
+The plugin accepts the following configuration options:
+
+>lua
+    require("neovim_tips").setup({
+      -- Path to user tips file
+      user_file = vim.fn.stdpath("config") .. "/neovim_tips/user_tips.md",
+
+      -- Prefix added to user tip titles to prevent conflicts
+      user_tip_prefix = "[User] ",
+
+      -- Show warnings when user tips conflict with builtin tips
+      warn_on_conflicts = true,
+
+      -- Daily tip mode: 0=off, 1=once per day, 2=every startup
+      daily_tip = 1,
+    })
+<
+
+4.1 Configuration Options ~
+
+*neovim-tips-config-user-file*
+user_file                   Path to your personal tips file
+                           Default: ~/.config/nvim/neovim_tips/user_tips.md
+
+*neovim-tips-config-prefix*
+user_tip_prefix            Prefix for user tips to avoid conflicts
+                           Default: "[User] "
+                           Examples: "🔧 ", "My ", ""
+
+*neovim-tips-config-conflicts*
+warn_on_conflicts          Show warnings for conflicting tip titles
+                           Default: true
+
+*neovim-tips-config-daily*
+daily_tip                  Daily tip popup behavior
+                           0 = disabled
+                           1 = once per day (default)
+                           2 = every startup
+
+==============================================================================
+5. COMMANDS                                             *neovim-tips-commands*
+
+*:NeovimTips*              Open the searchable tips picker with three-pane
+                           interface (search, tips list, markdown preview)
+
+*:NeovimTipsEdit*          Open your personal tips file for editing
+                           Creates the file if it doesn't exist
+
+*:NeovimTipsAdd*           Insert a new tip template into your personal file
+                           and start editing at the cursor position
+
+*:NeovimTipsRandom*        Display a random tip in a popup window
+                           Same format as daily tip feature
+
+The plugin provides no default key mappings. Add your own in the
+configuration as shown in the installation examples.
+
+==============================================================================
+6. SEARCH                                                 *neovim-tips-search*
+
+The tips picker features powerful search capabilities with multiple modes.
+
+6.1 Basic Search ~
+                                                        *neovim-tips-search-basic*
+
+Simply type to search tip titles:
+>
+    vim motion          → finds tips with both "vim" and "motion"
+    insert character    → finds tips about inserting characters
+    delete word         → finds tips about deleting words
+<
+
+6.2 Tag Search ~
+                                                        *neovim-tips-search-tags*
+
+Use `t:` prefix to search by tags:
+>
+    t:motion           → finds all tips tagged with "motion"
+    t:delete           → finds all tips tagged with "delete"
+    t:operator         → finds all tips tagged with "operator"
+<
+
+6.3 Category Search ~
+                                                   *neovim-tips-search-categories*
+
+Use `c:` prefix to search by categories:
+>
+    c:editing          → finds all tips in "Editing" category
+    c:search           → finds all tips in "Search" category
+    c:"Key Mappings"   → finds tips in "Key Mappings" (quoted for spaces)
+<
+
+6.4 Combined Search ~
+                                                     *neovim-tips-search-combined*
+
+Mix different search types (all must match):
+>
+    motion c:editing t:operator    → tips with "motion" + "Editing" + "operator"
+    insert file t:save             → tips with "insert file" + "save" tag
+    c:search t:pattern replace     → "Search" tips + "pattern" tag + "replace"
+<
+
+6.5 Search Help ~
+                                                        *neovim-tips-search-help*
+
+Get help with available tags and categories:
+
+`t:?`                      Shows popup with all available tags (1000+ tags)
+`c:?`                      Shows popup with all available categories (70+)
+
+Help picker navigation:
+• Arrow keys or j/k       Navigate up/down
+• Press any letter        Jump to first item starting with that letter
+• Enter                   Select the item
+• Esc or q               Cancel
+
+6.6 Search Features ~
+
+• Case insensitive matching
+• Word-based search (all words must match)
+• Quoted values for multi-word tags/categories
+• Real-time filtering with instant preview
+• No results handling (clears display when no matches)
+
+==============================================================================
+7. CATEGORIES                                         *neovim-tips-categories*
+
+The plugin includes 70+ categories. Here are the main ones:
+
+• Advanced Neovim         • Advanced Search         • Autocommands
+• Buffer Management       • Clever Tricks           • Clipboard
+• Command Execution       • Command History         • Command Line
+• Command Line Advanced   • Completion              • Configuration
+• Cut and Paste          • Development             • Diagnostics
+• Display                • Edit                    • Editing
+• Exit                   • File                    • File History
+• File Navigation        • File Operations         • File Recovery
+• File Type Specific     • Folding                 • Formatting
+• Fun                    • Functions               • Global
+• Help                   • Indentation             • Information
+• Insert                 • Insert Mode Advanced    • Integration
+• Interface              • Key Mappings            • LSP
+• Lua                    • Macros                  • Mapping
+• Marks                  • Mode Switching          • Movement
+• Navigation             • Neovim Features         • Normal Mode
+• Performance            • Performance Optimization Advanced
+• Registers              • Scripting               • Search
+• Search Replace         • Session                 • Session Management
+• System                 • System Information      • Tabs
+• Terminal               • Text Editing            • Text Input
+• Text Manipulation      • Text Objects            • Treesitter
+• UI                     • View Management         • Vim Script
+• Visual                 • Visual Mode Advanced    • Window Management
+• Windows                • Workflow                • Workflow Patterns
+
+Use `c:?` in the search bar to see the complete list with descriptions.
+
+==============================================================================
+8. USER TIPS                                           *neovim-tips-user-tips*
+
+You can add your own tips alongside the built-in collection.
+
+8.1 Adding Tips ~
+                                                     *neovim-tips-user-tips-add*
+
+Use |:NeovimTipsAdd| to add a new tip, or |:NeovimTipsEdit| to edit your
+tips file directly.
+
+8.2 Tip Format ~
+                                                  *neovim-tips-user-tips-format*
+
+Each tip follows this exact format:
+>
+    # Title: My tip title
+    # Category: My category name
+    # Tags: tag1, tag2, tag3
+    ---
+    Description in markdown format.
+
+    ```vim
+    some-command
+    ```
+
+    Additional text here.
+    ***
+<
+
+The format is strict:
+• Must start with `# Title:`
+• Must include `# Category:` and `# Tags:`
+• Description starts with `---`
+• Description ends with `***` or `===`
+• Everything between `---` and `***` is rendered as markdown
+
+8.3 Conflict Prevention ~
+                                                *neovim-tips-user-tips-conflicts*
+
+User tips are automatically prefixed to prevent conflicts with built-in tips.
+If you create a tip titled "Join lines", it appears as "[User] Join lines".
+
+Do NOT add the prefix yourself - it's automatic.
+
+8.4 Features ~
+
+• Automatic prefixing for conflict prevention
+• Conflict detection with warnings
+• Automatic "user" tag addition
+• Same format and features as built-in tips
+• Configurable prefix (default: "[User] ")
+
+==============================================================================
+9. DAILY TIPS                                             *neovim-tips-daily*
+
+The plugin can show a random tip popup when you start Neovim.
+
+9.1 Configuration ~
+                                                      *neovim-tips-daily-config*
+
+Set the `daily_tip` option:
+• 0 = Disabled (no popup)
+• 1 = Once per day (default)
+• 2 = Every Neovim startup
+
+9.2 Features ~
+
+• "Did you know?" popup with centered layout
+• Smart persistence using ~/.local/share/nvim/neovim_tips/persistent.json
+• Full markdown rendering with render-markdown.nvim
+• Easy copying of tip content and code snippets
+• Close with `q` or `<Esc>`
+• Includes contribution link in footer
+
+9.3 Persistence ~
+
+Once-daily mode tracks when tips were shown to avoid repetition within
+the same day. Data is stored in:
+~/.local/share/nvim/neovim_tips/persistent.json
+
+==============================================================================
+10. TROUBLESHOOTING                               *neovim-tips-troubleshooting*
+
+10.1 Common Issues ~
+
+No tips showing                Check that data/ directory exists in plugin
+                               installation. Verify dependencies are installed.
+
+Search not working             Make sure you're using correct syntax:
+                               - Basic: just type words
+                               - Tags: t:tagname
+                               - Categories: c:categoryname
+
+Daily tip not appearing        Check `daily_tip` configuration value.
+                               Verify persistent.json isn't corrupted.
+
+User tips not saving          Check `user_file` path is writable.
+                               Verify parent directories exist.
+
+Markdown not rendering         Ensure render-markdown.nvim is installed
+                               and configured properly.
+
+10.2 File Locations ~
+
+Built-in tips:                <plugin_directory>/data/
+User tips:                     ~/.config/nvim/neovim_tips/user_tips.md
+Daily tip persistence:         ~/.local/share/nvim/neovim_tips/persistent.json
+
+10.3 Disabling Completion ~
+
+If using completion engines and want to disable them in the search bar:
+>lua
+    -- For blink.cmp
+    require('blink.cmp').setup({
+      enabled = function()
+        return vim.bo.filetype ~= "neovim-tips-search"
+      end,
+    })
+
+    -- For nvim-cmp
+    require('cmp').setup({
+      enabled = function()
+        return vim.bo.filetype ~= "neovim-tips-search"
+      end,
+    })
+<
+
+==============================================================================
+vim:tw=78:ts=8:ft=help:norl:
