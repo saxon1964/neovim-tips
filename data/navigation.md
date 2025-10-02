@@ -1,15 +1,3 @@
-# Title: Change list navigation
-# Category: Navigation
-# Tags: changelist, navigation, g;, g,, changes
----
-Use `g;` and `g,` to navigate through the change list - locations where you made edits in the current buffer.
-
-```vim
-g;         " jump to previous change location
-g,         " jump to next change location
-:changes   " view the change list
-```
-***
 # Title: View jump list
 # Category: Navigation
 # Tags: jump, list, view

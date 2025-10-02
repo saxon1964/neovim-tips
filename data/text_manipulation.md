@@ -198,22 +198,6 @@ iab seperate separate
 iab definately definitely
 ```
 ***
-# Title: Filter text through external commands
-# Category: Text Manipulation
-# Tags: filter, external, commands, process
----
-Use `!` to filter selected text through external programs for processing.
-
-#### Example
-
-```vim
-:%!sort -u           " sort all lines, remove duplicates
-!}sort               " sort from cursor to end of paragraph
-" Visual mode: select lines, then:
-!python script.py    " filter through Python script
-!awk '{print $2}'    " extract second column
-```
-***
 # Title: Word count methods
 # Category: Text Manipulation
 # Tags: count, words, statistics, analyze
