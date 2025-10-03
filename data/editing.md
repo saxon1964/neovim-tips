@@ -221,6 +221,8 @@ Use `:d` to delete lines, `:y` to yank, `:m` to move, `:co` or `:t` to copy, wit
 :5d           " delete line 5
 :1,10d        " delete lines 1-10
 :%d           " delete all lines
+:%delete      " same as above
+ggdG          " same as above
 :5,10m 20     " move lines 5-10 to after line 20
 :1,5co 10     " copy lines 1-5 to after line 10
 ```
@@ -259,7 +261,7 @@ Use `:sort` to sort lines, `:center` to center text, `:left` and `:right` for al
 ```
 ***
 # Title: Edit file at specific line
-# Category: Editing  
+# Category: Editing
 # Tags: file, line, open, position, jump
 ---
 Use `:edit +{line} {file}` to open file and jump directly to specified line number.
