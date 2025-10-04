@@ -15,7 +15,7 @@ mB  " set global mark 'B'
 # Category: Marks
 # Tags: marks, jump, navigation
 ---
-Use `'{letter}` to jump to beginning of line with mark, or \`{letter}\` to jump to exact mark position.
+Use `'{letter}` to jump to beginning of line with mark, or `` `{letter} `` to jump to exact mark position.
 
 #### Example
 

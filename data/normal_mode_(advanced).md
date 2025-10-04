@@ -11,6 +11,7 @@ Ctrl+x    " decrement number under cursor
 ```
 
 Works on hex (0x1F), octal (017), binary (0b1010), and decimals.
+
 ***
 # Title: Repeat last command
 # Category: Normal Mode
@@ -49,7 +50,7 @@ Use `~` to toggle case of character, `g~` with motion for range case toggle, `gu
 ~         " toggle case of character under cursor
 g~w       " toggle case of word
 guw       " lowercase word
-gUw       " uppercase word  
+gUw       " uppercase word
 g~~       " toggle case of entire line
 ```
 ***
@@ -129,7 +130,7 @@ D         " delete from cursor to end of line
 ```
 ***
 # Title: Yank operations
-# Category: Normal Mode  
+# Category: Normal Mode
 # Tags: yank, copy, line, word, clipboard
 ---
 Use `y` with motion to yank (copy), `yy` to yank line, `Y` to yank to end of line.
@@ -223,7 +224,7 @@ g#        " search backward for partial word match
 # Category: Normal Mode
 # Tags: mark, position, jump, navigate
 ---
-Use `m{letter}` to set mark, `'{letter}` to jump to mark's line, `\`{letter}` to jump to exact position.
+Use `m{letter}` to set mark, `'{letter}` to jump to mark's line, `` `{letter}`` to jump to exact position.
 
 ```vim
 ma        " set mark 'a' at current position
