@@ -76,6 +76,8 @@ The plugin requires these dependencies:
             { desc = "Neovim tips help", noremap = true, silent = true })
         map("n", "<leader>ntr", ":NeovimTipsRandom<CR>",
             { desc = "Show random tip", noremap = true, silent = true })
+        map("n", "<leader>ntp", ":NeovimTipsPdf<CR>",
+            { desc = "Open Neovim tips PDF", noremap = true, silent = true })
       end
     }
 <
