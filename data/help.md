@@ -53,3 +53,17 @@ Use `:helpgrep` to search help, `:ptag` for preview, `:pop` to go back, `:tag` t
 :tags               " show tag stack
 ```
 ***
+# Title: Man pages
+# Category: Help
+# Tags: man, help, documentation
+---
+Use `:Man` to open a man-page in a read-only mode. You can navigate the page like any other Neovim content. You can jump arround, copy parts of it, search for a word and perform all other standard Neovim operations. Once you have a man-page on the screen, you can generate its content by using stadnard `gO` command in normal mode.
+
+#### Example
+
+```vim
+:Man ls   "Opens man-page for linux ls command
+gO        "Generates TOC in normal mode for the selected man-page
+
+```
+***
