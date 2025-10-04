@@ -154,6 +154,11 @@ daily_tip                  Daily tip popup behavior
 *:NeovimTipsRandom*        Display a random tip in a popup window
                            Same format as daily tip feature
 
+*:NeovimTipsPdf*           Open the Neovim Tips PDF book (almost 400 pages)
+                           in your system's default PDF viewer
+                           Cross-platform: macOS, Linux, Windows
+                           PDF location: pdf/book/NeovimTips.pdf
+
 The plugin provides no default key mappings. Add your own in the
 configuration as shown in the installation examples.
 

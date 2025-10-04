@@ -300,12 +300,34 @@ The plugin can show you a random tip in a beautiful popup when you start Neovim.
 
 ![Daily tip popup example](images/s2.png)
 
+## 📖 PDF Book Export
+
+All tips have been compiled into a beautifully formatted PDF book with almost 400 pages that you can read offline or print for reference.
+
+<img src="images/book.png" width="400">
+
+### Opening the PDF Book
+
+Use the `:NeovimTipsPdf` command to open the PDF book in your system's default PDF viewer:
+
+```vim
+:NeovimTipsPdf
+```
+
+The command automatically detects your operating system and uses the appropriate command:
+- **macOS**: `open`
+- **Linux**: `xdg-open` (with fallbacks to `gnome-open` or `kde-open`)
+- **Windows**: `start`
+
+The PDF is located at `pdf/book/NeovimTips.pdf` within the plugin directory and includes all 945+ tips organized by category with a professional layout.
+
 ## 🔧 Commands
 
 - `:NeovimTips` — Open searchable list of tips with beautiful three-pane interface
 - `:NeovimTipsEdit` — Edit your personal tips file
 - `:NeovimTipsAdd` — Insert a new tip template into your personal file and start editing
 - `:NeovimTipsRandom` — Displays random tip upon user request
+- `:NeovimTipsPdf` — Open the Neovim Tips PDF book (cross-platform: macOS, Linux, Windows)
 
 ## 📖 Help System
 
