@@ -1,0 +1,58 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%      NEW FONT SIZES
+\newcommand\FontSubsec{\@setfontsize\FontSubsec{11}{13.2}}
+\newcommand\HUGE{\@setfontsize\HUGE{26}{31.2}}
+\newcommand\LArge{\@setfontsize\LArge{15.5}{18.6}}
+\newcommand\smallnote{\@setfontsize\smallnote{6}{7.2}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%      FONT ENCODING
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%      NO PAGE NUMBER IN THE FIRST PAGE OF A CHAPTER
+	\makeatletter
+		\let\ps@plain\ps@empty
+	\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%      EVEN PAGE ALWAYS PLAIN AT THE END OF A CHAPTER
+\makeatletter
+	\def\cleardoublepage{\clearpage\ifodd\c@page\else
+  	\vspace*{\fill}
+  	\pagestyle{plain}
+ 	\newpage
+	\pagestyle{fancymain}
+	\fi}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{AuxiliaryFiles/Packages}
+\usepackage{AuxiliaryFiles/Environments}
+\usepackage{AuxiliaryFiles/TikZ}
+\input{AuxiliaryFiles/Referencing.tex}
+\usepackage{AuxiliaryFiles/Commands}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%       MAINMATTER PAGE FORMAT
+\fancypagestyle{fancymain}{
+\renewcommand{\headrulewidth}{0.1pt}
+\fancyhead[LE, RO]{\small\parbox{.45\textwidth}{
+    \checkoddpage
+    \ifoddpage
+        \raggedleft
+    \else
+        \raggedright
+    \fi
+    \bfseries\nouppercase{\leftmark}}\vspace{.065cm}}
+\fancyhead[LO, RE]{\small\parbox{.45\textwidth}{
+    \checkoddpage
+    \ifoddpage
+        \raggedright
+    \else
+        \raggedleft
+    \fi
+    \nouppercase{\rightmark}}\vspace{.065cm}}
+\fancyfoot[LE,RO]{\small\thepage}
+\fancyfoot[C]{}
+\fancyfoot[LO,RE]{\small \EMail}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%       SPACING
+\strictpagecheck
+\raggedbottom

@@ -1,0 +1,21 @@
+\documentclass[12pt]{book}
+
+\usepackage[english]{babel}                 %%%%%%%%%%%%%%%%%% (EDIT LANGUAGE)
+\usepackage{Structure/Styles/Custom}        %%%%%%%%%%%%%%%%%%    (EDIT NAMES)
+\usepackage{AuxiliaryFiles/AuxiliaryFiles}  %%%%%%%%%%%%%%%%%%   (DO NOT EDIT)
+\usepackage{Structure/Styles/Custom-2}      %%%%%%%%%%%%%%%%%%          (EDIT)
+
+\begin{document}
+\input{Structure/Title.tex}             %%%%%%%%%%%%%%%%%%    (EDIT TITLEPAGE)
+
+\newcommand\IndexYes{1}                 %%%%%%%%%%%%%%%%%%               (TOC)
+
+\input{AuxiliaryFiles/Frontmatter}      %%%%%%%%%%%%%%%%%%       (DO NOT EDIT)
+\input{Structure/Introduction}          %%%%%%%%%%%%%%%%%% (EDIT INTRODUCTION)
+
+\input{AuxiliaryFiles/Mainmatter}       %%%%%%%%%%%%%%%%%%       (DO NOT EDIT)
+
+\input{Structure/Content}               %%%%%%%%%%%%%%%%%%     (EDIT CHAPTERS)
+
+%\input{AuxiliaryFiles/Backmatter}      %%%%%%%%%%%%%%%%%%       (DO NOT EDIT)
+\end{document}

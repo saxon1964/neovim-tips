@@ -1,0 +1,64 @@
+\backmatter
+
+%%%%%%%%%                       (BIBLIOGRAPHY PAGE FORMAT)
+\fancypagestyle{fancyBibliography}{
+	\renewcommand{\headrulewidth}{0.25pt}
+	\renewcommand{\footrulewidth}{0.25pt}
+	\fancyfoot[LE,RO]{}
+	\fancyhead[LO,RE]{\bf\small \BibliographyName}}
+
+%%%%%%%%%%                      (ANALYTIC INDEX PAGE FORMAT)
+\fancypagestyle{fancyIndex}{
+	\renewcommand{\headrulewidth}{0.25pt}
+	\renewcommand{\footrulewidth}{0.25pt}
+	\fancyhead[L,R]{}
+	\fancyfoot[L,R]{}
+	\fancyfoot[C]{\small\thepage}
+	\fancyfoot[LE,RO]{}
+	\fancyhead[LO,RE]{\bf\small \AnalyticIndexName}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%    (BIBLIOGRAPHY)
+\pagestyle{fancyBibliography}
+\renewcommand{\bibname}{}
+
+\titleformat{\chapter}[display]{\bfseries\Large}	{\filleft\MakeUppercase{\chaptertitlename} \HUGE\thechapter}{.4ex}{\vspace{1ex}\filleft}[\vspace{3.5ex}]
+\titlespacing*{\chapter}{0pt}{0.1\baselineskip}{0.5\baselineskip}
+
+{
+    \let\cleardoublepage\relax
+    \begin{minipage}[r]{.95\textwidth}\raggedleft
+    \vspace{3cm}
+    \HUGE\bfseries\BibliographyName
+	\vspace{0cm}
+    \end{minipage}
+	\addcontentsline{toc}{part}{\BibliographyName}
+
+	\nocite{*}
+	\bibliographystyle{unsrtnat}   % Alternatives: amsalpha
+	\bibliography{Structure/Bibliography}
+}
+
+\cleardoublepage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%    (ANALYTIC INDEX)
+ \pagestyle{fancyIndex}
+ 	\renewcommand{\indexname}{}
+	\let\cleardoublepage\relax
+    \titleformat{\chapter}[hang]{}{}{0em}{}[]
+
+    \chapter*{}
+	\titleformat{\chapter}
+		[hang]
+		{\Huge}
+		{}
+		{0em}
+		{}
+		[\Large {\begin{tikzpicture} [remember picture, overlay]
+		\pgftext[right,x=14.75cm,y=0.2cm]{\HUGE\bfseries
+			\AnalyticIndexName}
+		\end{tikzpicture}}]
+	\titlespacing*{\chapter}{0pt}{0\baselineskip}{5\baselineskip}
+
+    \addcontentsline{toc}{part}{\AnalyticIndexName}
+	%\vspace{-2cm}
+	\printindex

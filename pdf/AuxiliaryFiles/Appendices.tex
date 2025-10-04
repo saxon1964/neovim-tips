@@ -1,0 +1,43 @@
+% !TEX root = ../BookTemplate.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newgeometry{
+	top=3cm,
+	bottom=3cm,
+	left=75pt,
+	right=50pt,
+	marginparsep=0cm,
+	marginparwidth=0cm,
+	voffset=0pt,
+	hoffset=0pt,
+	headheight=0pt,
+	headsep=0pt,
+	footskip=14pt,
+	footnotesep=0pt
+}
+
+%%%%%%%%    (APPENDICES TOC)
+\addtocontents{toc}{
+  \protect\vspace{25pt}
+  \protect\noindent\qquad\qquad\bfseries{\Large\AppendixPart}
+  \protect\par
+  \protect\vspace{10pt}}
+\titlecontents{chapter}[4pc]
+{\addvspace{16pt}\Large\bfseries\thecontentslabel}{\hspace{.5cm}}{}
+{\tiny\color{black!50}\;\;\dotfill\;\large\bfseries\color{black}\PageName\, \thecontentspage}
+
+%%%%%%%%
+\part*{Appendices}
+\restoregeometry
+
+%%%%%%%%    (APPENDICES PAGE FORMAT)
+\fancypagestyle{fancyapp}{
+\renewcommand{\headrulewidth}{0.25pt}
+	\fancyhead[LE, RO]{\small\parbox{.45\textwidth}{\checkoddpage
+\ifoddpage \raggedleft \else \raggedright \fi \bfseries\nouppercase{\leftmark}}\vspace{.065cm}}
+	\fancyhead[LO, RE]{\small\parbox{.45\textwidth}{\checkoddpage
+\ifoddpage \raggedright \else \raggedleft \fi \nouppercase{\rightmark}}\vspace{.065cm}}
+	\fancyfoot[LE,RO]{\small\thepage}
+	\fancyfoot[C]{}
+	\fancyfoot[LO,RE]{\small \EMail}}
+
+\pagestyle{fancyapp}

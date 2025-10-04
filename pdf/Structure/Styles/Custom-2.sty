@@ -1,0 +1,50 @@
+%%%%%%%%%%%%%% COLOURS
+%%%%%%%%%%%%%% TO PRINT IN BLACK AND WHITE, CHANGE ALL COLOURS TO '0,0,0'
+\definecolor{Url}{RGB}{238,34,0}
+\definecolor{Cite}{RGB}{46,112,64}
+\definecolor{Link}{RGB}{4,72,124}
+\definecolor{MarginNote}{RGB}{228,84,54}
+
+%%%%%%%%%%%%%%      FONTS
+\setmainfont{Aptos Serif}
+\setsansfont{Aptos}
+\setmonofont{JetBrainsMono Nerd Font Mono}
+
+%%%%%%%%%%%%%%      PAGE FORMAT
+\geometry{
+	a4paper,
+	top=3.5cm,
+	bottom=2.5cm,
+	left=72pt,
+	right=86pt,
+  marginparsep=12pt,
+	marginparwidth=68pt,
+	voffset=0pt,
+	hoffset=-2pt,
+	headheight=54pt,
+	headsep=\baselineskip,
+	footskip=25pt,
+	footnotesep=10pt,
+    %showframe
+}
+
+%%%%%%%%%%%%%	FOOTNOTES
+\makeatletter
+\renewcommand\footnoterule{%
+  \vskip 10pt % Space above the line
+  \hrule width 0.4\columnwidth height 0.4pt
+  \kern 5pt  % Space below the line
+}
+\makeatother
+
+%%%%%%%%%%      FIGURE CAPTIONS
+\usepackage{caption}
+\captionsetup{
+	format=hang,
+	indention=0cm,
+	labelformat= simple,		%%%%%    or 'empty'
+	labelsep=period,		    %%%%%    or 'none', 'colon', 'space'
+	labelfont=bf,
+	width=.6\textwidth,
+	skip=15pt
+}

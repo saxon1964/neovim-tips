@@ -1,0 +1,195 @@
+%%%%%%%%%%	DESCRIPTION / ITEMIZE / ENUMERATE
+\newsavebox{\labelbox}
+\newlength{\mylabelwidth}
+
+\newcommand{\boxlabel}[2]{
+    \sbox{\labelbox}{
+        \tcbox[
+            colframe=white,
+            boxrule=0pt,
+            colback=gray!20,
+            sharp corners,
+            boxsep=0pt,
+            left=4pt,
+            right=4pt, top=4pt, bottom=2pt
+        ]{\parbox{#2}{\textbf{#1}}}
+    }
+    \setlength{\mylabelwidth}{\wd\labelbox}
+    \usebox{\labelbox}}
+
+\setlist[description]{
+    leftmargin=!,
+    labelwidth=!,
+    labelindent=0\parindent,
+    labelsep=1em,
+    topsep=\baselineskip,
+    itemsep=1.5\baselineskip,
+    parsep=-.75\baselineskip,
+    style=sameline}
+
+\renewcommand{\labelitemi}{\scalebox{.85}{$\diamond$}}
+\setlist[itemize]{style=multiline,
+	topsep=\baselineskip,
+	itemsep=-.4cm,
+	parsep=.5cm,
+	labelwidth=.4cm,
+	labelindent=\parindent,
+	leftmargin=1cm}
+
+\setlist[enumerate,1]{label=(\arabic*)}
+\setlist[enumerate]{style=multiline,
+	topsep=\baselineskip,
+    itemsep=-.4cm,
+	parsep=.5cm,
+	labelwidth=.65cm,
+	labelindent=\parindent,
+    leftmargin=1cm}
+
+%%%%%%%%%%	MATH ENVIRONMENTS
+\usepackage{thmtools}
+\tcbuselibrary{theorems}
+
+%%%%%%%%%%  PROOF
+\declaretheoremstyle[spaceabove=8pt,
+	spacebelow=8pt,
+	headfont=\normalfont\bfseries,
+	bodyfont=\normalfont,
+	postheadspace=.5cm,
+	qed=$\square$,
+	headpunct={\;}
+]{SettingProof}
+\declaretheorem[name={Proof}, style=SettingProof, unnumbered]{Proof}
+
+%%%THEOREM
+\newtcbtheorem[number within=section]{The}{\TheoremName}{
+  colback=white,
+  fonttitle=\bfseries\color{black},
+  breakable,
+  enhanced jigsaw,
+  boxrule=0pt,
+  left=4mm,
+  right=2mm,
+  top=3.5mm,
+  bottom=0mm,
+  attach boxed title to top left={yshift=-2.5mm, xshift=2.5mm},
+  boxed title style={colback=white!50,colframe=white},
+  before=\vspace{\baselineskip}
+}{the}
+
+%%%EXAMPLE
+\newtcbtheorem[use counter from=The]{Exa}{\ExampleName}{
+  colback=gray!25,
+  fonttitle=\bfseries\color{black},
+  breakable,
+  enhanced jigsaw,
+  boxrule=0pt,
+  left=4mm,
+  right=2mm,
+  top=3.5mm,
+  bottom=0mm,
+  attach boxed title to top left={yshift=-2.5mm, xshift=1mm},
+  boxed title style={colback=white!50, colframe=white, left=-0.025cm, right=.025cm, bottom=.025cm},
+  before=\vspace{\baselineskip}
+}{exa}
+
+%%%REMARK
+\newtcbtheorem[use counter from=The]{Rmk}{\RemarkName}{
+  colback=gray!25,
+  fonttitle=\bfseries\color{black},
+  breakable,
+  enhanced jigsaw,
+  boxrule=0pt,
+  left=4mm,
+  right=2mm,
+  top=3.5mm,
+  bottom=0mm,
+  attach boxed title to top left={yshift=-2.5mm, xshift=2.5mm},
+  boxed title style={colback=white!50, colframe=white, left=-0.025cm, right=.025cm, bottom=.025cm},
+  before=\vspace{\baselineskip}
+}{rmk}
+
+%%%PROPOSITION
+\newtcbtheorem[use counter from=The]{Pro}{\PropositionName}{
+  colback=white,
+  fonttitle=\bfseries\color{black},
+  breakable,
+  enhanced jigsaw,
+  boxrule=0pt,
+  left=4mm,
+  right=2mm,
+  top=3.5mm,
+  bottom=0mm,
+  attach boxed title to top left={yshift=-2.5mm, xshift=2.5mm},
+  boxed title style={colback=white!50, colframe=white},
+  before=\vspace{\baselineskip}
+}{pro}
+
+%%%LEMMA
+\newtcbtheorem[use counter from=The]{Le}{\LemmaName}{
+  colback=white,
+  fonttitle=\bfseries\color{black},
+  breakable,
+  enhanced jigsaw,
+  boxrule=0pt,
+  left=4mm,
+  right=2mm,
+  top=3.5mm,
+  bottom=0mm,
+  attach boxed title to top left={yshift=-2.5mm, xshift=2.5mm},
+  boxed title style={colback=white!50, colframe=white},
+  before=\vspace{\baselineskip}
+}{le}
+
+%%%COROLLARY
+\newtcbtheorem[use counter from=The]{Co}{\CorollaryName}{
+  colback=white,
+  fonttitle=\bfseries\color{black},
+  breakable,
+  enhanced jigsaw,
+  boxrule=0pt,
+  left=4mm,
+  right=2mm,
+  top=3.5mm,
+  bottom=0mm,
+  attach boxed title to top left={yshift=-2.5mm, xshift=2.5mm},
+  boxed title style={colback=white!50, colframe=white},
+  before=\vspace{\baselineskip}
+}{co}
+
+%%%LEMMA
+\newtcbtheorem[use counter from=The]{De}{\DefinitionName}{
+  colback=white,
+  fonttitle=\bfseries\color{black},
+  breakable,
+  enhanced jigsaw,
+  boxrule=0pt,
+  left=4mm,
+  right=2mm,
+  top=3.5mm,
+  bottom=0mm,
+  attach boxed title to top left={yshift=-2.5mm, xshift=2.5mm},
+  boxed title style={colback=white!50, colframe=white},
+  before=\vspace{\baselineskip}
+}{de}
+
+        %%%%%%%%%% BOX
+\declaretheoremstyle[headpunct={}, mdframed={innertopmargin=15pt, innerbottommargin=5pt, innerleftmargin=.2cm, innerrightmargin=.2cm, roundcorner=50pt, backgroundcolor=black!5, linecolor=white, fontcolor=black, skipabove = -5pt, skipbelow=-5pt}]{SettingBox}
+\declaretheorem[name={}, numbered=no, style=SettingBox]{Boxed}
+
+        %%%%%%%%%%  TITLE FORMAT
+\usepackage[sf,sl,outermarks]{titlesec}		% Typesetting
+\setcounter{secnumdepth}{4}
+
+	% SECTION
+\titleformat{\section}{\normalfont\sffamily\Large\bfseries}{\thesection}{.5em}{}
+\titlespacing*{\section}{0pt}{1.75\baselineskip}{.75\baselineskip}
+	% SUBSECTION
+\titleformat{\subsection}{\large\sffamily\FontSubsec\bfseries}{\thesubsection}{.5em}{}
+\titlespacing*{\subsection}{0pt}{1\baselineskip}{0.5\baselineskip}
+	% SUBSUBSECTION
+\titleformat{\subsubsection}{\normalfont\sffamily\bfseries}{\thesubsubsection}{.5em}{}
+\titlespacing*{\subsubsection}{0pt}{1\baselineskip}{0.5\baselineskip}
+    % SUBPARAGRAPH
+\renewcommand{\thesubparagraph}{\Alph{subparagraph}}
+\titleformat{\subparagraph}[runin]{\normalfont\normalsize\bfseries}{\thesubparagraph}{1em}{}
+\titlespacing*{\subparagraph} {\parindent}{.025ex plus 0ex minus .25ex}{1em}

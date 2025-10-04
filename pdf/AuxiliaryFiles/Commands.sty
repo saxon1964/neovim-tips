@@ -1,0 +1,402 @@
+%%%%%						LETTERS
+\newcommand{\A}{\mathbb{A}}
+\renewcommand{\AA}{\mathcal{A}}
+\newcommand{\AAA}{\mathscr{A}}
+
+\newcommand{\B}{\mathbb{B}}
+\newcommand{\BB}{\mathcal{B}}
+\newcommand{\BBB}{\mathscr{B}}
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\CC}{\mathcal{C}}
+\newcommand{\CCC}{\mathscr{C}}
+
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\DD}{\mathcal{D}}
+\newcommand{\DDD}{\mathscr{D}}
+
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\EE}{\mathcal{E}}
+\newcommand{\EEE}{\mathscr{E}}
+
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\FF}{\mathcal{F}}
+\newcommand{\FFF}{\mathscr{F}}
+
+\newcommand{\G}{\mathbb{G}}
+\newcommand{\GG}{\mathcal{G}}
+\newcommand{\GGG}{\mathscr{G}}
+
+\renewcommand{\H}{\mathbb{H}}
+\newcommand{\HH}{\mathcal{H}}
+\newcommand{\HHH}{\mathscr{H}}
+
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\II}{\mathcal{I}}
+\newcommand{\III}{\mathscr{I}}
+
+\newcommand{\J}{\mathbb{J}}
+\newcommand{\JJ}{\mathcal{J}}
+\newcommand{\JJJ}{\mathscr{J}}
+
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\KK}{\mathcal{K}}
+\newcommand{\KKK}{\mathscr{K}}
+
+\renewcommand{\L}{\mathbb{L}}
+\newcommand{\LL}{\mathcal{L}}
+\newcommand{\LLL}{\mathscr{L}}
+
+\newcommand{\M}{\mathbb{M}}
+\newcommand{\MM}{\mathcal{M}}
+\newcommand{\MMM}{\mathscr{M}}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\NN}{\mathcal{N}}
+\newcommand{\NNN}{\mathscr{N}}
+
+\renewcommand{\O}{\mathbb{O}}
+\newcommand{\OO}{\mathcal{O}}
+\newcommand{\OOO}{\mathscr{O}}
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\PP}{\mathcal{P}}
+\newcommand{\PPP}{\mathscr{P}}
+
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\QQ}{\mathcal{Q}}
+\newcommand{\QQQ}{\mathscr{Q}}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\RR}{\mathcal{R}}
+\newcommand{\RRR}{\mathscr{R}}
+
+\renewcommand{\S}{\mathbb{S}}
+\renewcommand{\SS}{\mathcal{S}}
+\newcommand{\SSS}{\mathscr{S}}
+
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\TT}{\mathcal{T}}
+\newcommand{\TTT}{\mathscr{T}}
+
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\UU}{\mathcal{U}}
+\newcommand{\UUU}{\mathscr{U}}
+
+\newcommand{\V}{\mathbb{V}}
+\newcommand{\VV}{\mathcal{V}}
+\newcommand{\VVV}{\mathscr{V}}
+
+\newcommand{\W}{\mathbb{W}}
+\newcommand{\WW}{\mathcal{W}}
+\newcommand{\WWW}{\mathscr{W}}
+
+\newcommand{\X}{\mathbb{X}}
+\newcommand{\XX}{\mathcal{X}}
+\newcommand{\XXX}{\mathscr{X}}
+
+\newcommand{\Y}{\mathbb{Y}}
+\newcommand{\YY}{\mathcal{Y}}
+\newcommand{\YYY}{\mathscr{Y}}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ZZ}{\mathcal{Z}}
+\newcommand{\ZZZ}{\mathscr{Z}}
+
+%%%%%						MARGIN NOTES
+\newcommand{\note}[1]{\marginnote{\checkoddpage
+    \ifoddpage
+        \raggedleftmarginnote
+    \else
+        \raggedrightmarginnote
+    \fi
+    \smallnote\normalfont{\color{black} #1}}}
+
+\newcommand{\expl}[1]{\marginnote{\checkoddpage
+    \ifoddpage
+        \raggedleftmarginnote
+    \else
+        \raggedrightmarginnote
+    \fi
+    \smallnote\normalfont{\color{MarginNote}#1}}}
+
+%%%%%						SYMBOLS
+\renewcommand{\d}[0]{\text{\normalfont d}}
+\newcommand{\e}{\text{\normalfont e}}
+\newcommand{\g}[0]{\textsl{g}}
+\renewcommand{\i}{\imath}
+\renewcommand{\j}{\jmath}
+\renewcommand{\k}[0]{\text{\normalfont k}}
+\renewcommand{\l}[0]{\ell}
+\renewcommand{\o}{{\text{\normalfont o}}}
+\newcommand{\one}[0]{\boldsymbol{1}}
+\renewcommand{\t}{\text{\normalfont t}}
+\newcommand{\Zero}[0]{{\boldsymbol{0}}}
+
+
+%%%%%						OPERATORS
+\renewcommand{\*}{\cdot}
+\renewcommand{\binom}[2]{\left(\genfrac{}{}{0pt}{0}{#1}{#2}\right)}
+\newcommand{\CF}[1]{\left\langle#1\right\rangle}
+\newcommand{\codim}[2]{\text{codim}_{#2}\left(#1\right)}
+\newcommand{\Diff}[2]{\text{d}{#1}_{#2}}
+\renewcommand{\dim}[2]{\text{dim}_{#1}\hspace{-.05cm}\left(#2\right)}
+\renewcommand{\exp}[1]{\text{exp}\hspace{-.05cm}\left(#1\right)}
+\newcommand{\Floor}[1]{\left\lfloor#1\right\rfloor}
+\newcommand{\Id}[1]{\text{Id}_{#1}}
+\renewcommand{\Im}[1]{\text{Im}\left(#1\right)}
+\newcommand{\Leg}[2]{\left(\genfrac{}{}{.75pt}{0}{#1}{#2}\right)}
+\newcommand{\Lie}[2]{\left[{#1},{#2}\right]}
+\newcommand{\Norma}[1]{\left\|#1\right\|}
+\newcommand{\PS}[2]{\left(#1,#2\right)}
+\newcommand{\rank}[1]{\text{rank}\hspace{-.05cm}\left(#1\right)}
+\renewcommand{\Re}[1]{\text{Re}\hspace{-.05cm}\left(#1\right)}
+\newcommand{\Res}[2]{\left.#1\right|_{#2}}
+\newcommand{\Stirling}[2]{\left[\genfrac{}{}{0pt}{0}{#1}{#2}\right]}
+\newcommand{\SStirling}[2]{\left\{\genfrac{}{}{0pt}{0}{#1}{#2}\right\}}
+\newcommand{\Tr}[1]{\text{Tr}\hspace{-.05cm}\left(#1\right)}
+\newcommand{\trdeg}[2]{\text{trdeg}\hspace{.05cm}_{#2}\hspace{-.05cm}(#1)}
+
+%%%%%%%%%%  SETS AND CATEGORIES
+\newcommand{\Alg}{\text{-}{\bf Alg}}
+\newcommand{\Ann}[1]{\text{Ann}\hspace{-.05cm}\left(#1\right)}
+\newcommand{\Aut}[1]{\text{Aut}\hspace{-.05cm}\left(#1\right)}
+\newcommand{\dlim}[2]{\varinjlim_{#1}{#2}}
+\newcommand{\Ext}[2]{#1\hspace{-.025cm}\left|\hspace{.025cm}#2\right.}
+\newcommand{\Fix}[1]{\text{Fix}\hspace{-.05cm}\left(#1\right)}
+\newcommand{\Gal}[1]{\text{Gal}\hspace{-.05cm}\left(#1\right)}
+\newcommand{\GalD}[3]{\text{Gal}_{#3}\hspace{-.05cm}\left(\Ext{#1}{#2}\right)}
+\newcommand{\GL}[2]{\text{GL}_{#1}\hspace{-.05cm}\left(#2\right)}
+\newcommand{\GLF}[1]{\text{\bf GL}_{#1}}
+\newcommand{\GLV}[1]{\text{GL}\hspace{-.05cm}\left(#1\right)}
+\newcommand{\Grp}{{\bf Grp}}
+\newcommand{\Ker}[1]{\text{Ker}\hspace{-.05cm}\left(#1\right)}
+\newcommand{\OM}[2]{\text{O}_{#1}\hspace{-.05cm}\left(#2\right)}
+\newcommand{\plim}[2]{\varprojlim_{#1}{#2}}
+\newcommand{\Seq}[3]{\left({#1}_{#2}\right)_{#3}}
+\newcommand{\Set}[1]{\left\{#1\right\}}
+\newcommand{\SetC}{\text{\bf Set}}
+\newcommand{\SLM}[2]{\text{SL}_{#1}\hspace{-.05cm}\left(#2\right)}
+\newcommand{\SO}[2]{\text{SO}_{#1}\hspace{-.05cm}\left(#2\right)}
+\newcommand{\Span}[2]{\text{Span}_{#1}\hspace{-.05cm}\left(#2\right)}
+\newcommand{\Spec}[1]{\text{Spec}\hspace{-.05cm}\left(#1\right)}
+\newcommand{\Stab}[2]{\text{Stab}_{#2}\hspace{-.05cm}\left(#1\right)}
+\newcommand{\VecF}{\text{-}{\bf VecF}}
+
+%%%%%						EQUATIONS
+\newtagform{squarebrackets}[\textbf]{[}{]}
+\usetagform{squarebrackets}
+
+\newcommand{\EqL}[2]{\begin{align}\label{#2}#1\end{align}}
+\newcommand{\Eq}[1]{\begin{align}#1\end{align}}
+
+%%%%%						MAPS AND FUNCTORS
+	\newcommand{\Map}[5]{
+		\begin{array}{rccl}
+			{\displaystyle #1\colon}&{\displaystyle #2}&\todisp&{\displaystyle #3}\\
+			&{\displaystyle #4}&{\displaystyle\mapsto}&{\displaystyle #5}
+		\end{array}}
+
+    \newcommand{\MapH}[6]{
+		\begin{array}{rccl}
+			{\displaystyle #1\colon}&{\displaystyle #2}&\todisp&{\displaystyle #3}\\[#6]
+			&{\displaystyle #4}&{\displaystyle\mapsto}&{\displaystyle #5}
+		\end{array}}
+
+	\newcommand{\NMap}[4]{
+		\begin{array}{rcl}
+			#1&\todisp & #2\\
+			#3&\mapsto & #4
+		\end{array}}
+
+	\newcommand{\NMapH}[5]{
+		\begin{array}{rcl}
+			#1&\todisp & #2\\[#5]
+			#3&\mapsto & #4
+		\end{array}}
+
+\newcommand{\NFunctorC}[8]{\begin{tikzcd}[ampersand replacement=\&]
+#1 \arrow[r] \&  #2 \\[-20pt]
+#3 \arrow[d, "{#7}"']\arrow[r,mapsto]  \& #4\\
+#5 \arrow[r,mapsto] \& #6\arrow[u,"#8"']
+\end{tikzcd}}
+
+\newcommand{\NFunctor}[8]{\begin{tikzcd}[ampersand replacement=\&]
+#1 \arrow[r] \&  #2 \\[-20pt]
+#3 \arrow[d, "{#7}"']\arrow[r,mapsto]  \& #4\arrow[d,"#8"] \\
+#5 \arrow[r,mapsto] \& #6
+\end{tikzcd}}
+
+\newcommand{\Functor}[9]{\begin{tikzcd}[ampersand replacement=\&]
+#1\colon\hspace{-1cm} \& #2 \arrow[r] \&  #3 \\[-20pt]
+\&#4 \arrow[d, "{#8}"']\arrow[r,mapsto]  \& #5\arrow[d,"#9"] \\
+\&#6 \arrow[r,mapsto] \& #7
+\end{tikzcd}}
+
+\newcommand{\FunctorC}[9]{\begin{tikzcd}[ampersand replacement=\&]
+#1\colon\hspace{-1cm} \& #2 \arrow[r] \&  #3 \\[-20pt]
+\&#4 \arrow[d, "{#8}"']\arrow[r,mapsto]  \& #5 \\
+\&#6 \arrow[r,mapsto] \& #7\arrow[u,"#9"']
+\end{tikzcd}}
+
+\newcommand{\FunctorComplete}[2]{\hspace{-.1cm}\adjustbox{scale=.75}{\begin{tikzcd}[ampersand replacement=\&]
+\\[5pt]
+#1\arrow[d,mapsto, shorten <=0pt]\\
+#2
+\end{tikzcd}}}
+
+
+%%%%%                       SUBPARAGRAPH
+\newcommand{\sub}{\subparagraph*{}\nobreak\vspace{0\baselineskip}}
+
+%%%%%						ARROWS AND DIAGRAMS
+\newcommand{\twow}[1]{
+    \begin{tikzpicture}
+        \node[inner sep=4.2] (textnode) {\footnotesize $#1$};
+        \draw[line width=.02cm, -{Straight Barb[sep=-1pt, scale=.6, angle=90:5pt] Straight Barb[scale=.6, angle=90:5pt]}]
+        ([yshift=.09cm]textnode.south west) -- ([yshift=.1cm,xshift=.09cm]textnode.south east);
+    \end{tikzpicture}\,
+}
+
+\newcommand{\tow}[1]{
+    \begin{tikzpicture}
+        \node[inner sep=4.2] (textnode) {\footnotesize $#1$};
+        \draw[line width=.025cm, -{Straight Barb[sep=-1pt, scale=.6, angle=90:5pt]}]
+        ([yshift=.09cm]textnode.south west) -- ([yshift=.09cm,xshift=.09cm]textnode.south east);
+    \end{tikzpicture}\,
+}
+
+\newcommand{\two}{
+    \,\,\begin{tikzpicture}
+        \node[inner sep=4.2] (textnode) {};
+        \draw[line width=.025cm, -{Straight Barb[sep=-1pt, scale=.6, angle=90:5pt] Straight Barb[scale=.6, angle=90:5pt]}]
+        ([yshift=.1cm]textnode.south west) -- ([yshift=.1cm,xshift=.1cm]textnode.south east);
+    \end{tikzpicture}\,
+}
+
+\newcommand{\hook}{
+    \hspace{-.15cm}\begin{tikzpicture}
+        \node[inner sep=4.2] (textnode) {};
+        \draw[rounded corners=5pt, line width=.025cm, -{Straight Barb[sep=-1pt, scale=.6, angle=90:5pt]}]
+        (.225,0) -- (0,-.075) -- (.55,-.075);
+    \end{tikzpicture}\;
+}
+
+\renewcommand{\to}{\xrightarrow{\hspace{0.265cm}}}
+
+\let\told\to\renewcommand{\to}{\hspace{-.05cm}\told\hspace{-.05cm}}
+\newcommand{\todisp}{\hspace{.05cm}\told\hspace{.05cm}}
+
+\tikzcdset{
+  arrow style=tikz,
+  diagrams={line width=.02cm, >={Straight Barb[sep=-1pt, scale=.6, angle=90:5pt]}}
+}
+
+\tikzcdset{arrow style=tikz}
+\tikzset{>=stealth}
+
+\usepackage{extpfeil}
+\DeclareRobustCommand\longtwoheadrightarrow{\xtwoheadrightarrow{}}
+\DeclareRobustCommand\longto{\relbar\joinrel\xrightarrow{\ \ \ }}
+
+
+%%%%%						Minipage
+	\newcommand{\Minipage}[4]{\noindent 					% Avoid overfull
+		\begin{minipage}[t][][b]{#1\textwidth}{#2}\end{minipage}
+			\hfill
+		\begin{minipage}[t][][b]{#3\textwidth}{#4}\end{minipage}
+
+    \noindent}
+
+%%%%%
+\BeforeBeginEnvironment{wrapfigure}{\setlength{\intextsep}{2pt}}
+\newcommand{\EvOdd}[3]{
+	\ifnumodd{\thepage}
+		{
+
+        \noindent\begin{wrapfigure}[#1]{r}{#2}{#3}\end{wrapfigure}}
+		{
+
+        \noindent\begin{wrapfigure}[#1]{l}{#2}{#3}\end{wrapfigure}}}
+
+%%%%%						Citazioni
+\newcommand{\Quote}[2]{
+    \epigraph{\textit{#1}}{#2}}
+
+%%%%%						BALANCEMENT OF ( )
+\makeatletter
+	\def\resetMathstrut@{
+		\setbox\z@\hbox{
+			\mathchardef\@tempa\mathcode`\[\relax
+			\def\@tempb##1"##2##3{\the\textfont"##3\char"}
+			\expandafter\@tempb\meaning\@tempa\relax}
+		\ht\Mathstrutbox@\ht\z@ \dp\Mathstrutbox@\dp\z@}
+\makeatother
+
+\begingroup
+	\catcode`(\active \xdef({\left\string(}
+	\catcode`)\active \xdef){\right\string)}
+\endgroup
+\mathcode`(="8000 \mathcode`)="8000
+
+%%%%%						BETTER DOTS
+\renewcommand{\dots}[0]{\hdots}
+
+%%%%%		INTRO (FOR THE COLOUR, INSERT [colbacktitle=] IN THE DOCUMENT AFTER \begin{Intro})
+\newtcolorbox{Intro}[2][]{
+	enhanced, before skip=2mm, after skip=2mm,
+	colback=black!5, colframe=white, boxrule=0mm, attach boxed title to top left={xshift=.5cm, yshift*=1mm-\tcboxedtitleheight},
+	varwidth boxed title*=-2cm,
+	boxed title style={frame code={
+			\path[fill=tcbcolback!95!black]
+			([yshift=-1mm, xshift=-1mm]frame.north west)
+			arc[start angle=0, end angle=180, radius=1mm]
+			([yshift=-1mm, xshift=1mm]frame.north east)
+			arc[start angle=180, end angle=0,radius=1mm];
+			\path[top color=tcbcolback, middle color=tcbcolback!80, bottom color = tcbcolback!40!white]
+			([xshift=-2mm]frame.north west) --
+						([xshift=2mm]frame.north east)
+			[rounded corners=1mm] -- ([xshift=1mm, yshift=-1mm]frame.north east)
+			-- (frame.south east) -- (frame.south west)
+			-- ([xshift=-1mm, yshift=-1mm]frame.north west)
+			[sharp corners]-- cycle;
+			}, interior engine=empty},
+   %%%% TITLE OPTIONS
+	fonttitle={\bfseries \color{black}},
+	title={#2},#1}
+
+\newtcolorbox{RightIntro}[2][]{
+	enhanced, before skip=2mm, after skip=2mm,
+	colback=black!5, colframe=white, boxrule=0mm, attach boxed title to top right={xshift=-.5cm, yshift*=1mm-\tcboxedtitleheight},
+	varwidth boxed title*=2cm,
+	boxed title style={frame code={
+			\path[fill=tcbcolback!95!black]
+			([yshift=-1mm, xshift=-1mm]frame.north west)
+			arc[start angle=0, end angle=180, radius=1mm]
+			([yshift=-1mm, xshift=1mm]frame.north east)
+			arc[start angle=180, end angle=0, radius=1mm];
+			\path[top color=tcbcolback, middle
+				color=tcbcolback!90, bottom color=tcbcolback!40!white]
+			([xshift=-2mm]frame.north west) --
+						([xshift=2mm]frame.north east)
+			[rounded corners=1mm] --([xshift=1mm, yshift=-1mm]frame.north east)
+			-- (frame.south east) -- (frame.south west)
+			-- ([xshift=-1mm, yshift=-1mm]frame.north west)
+			[sharp corners]-- cycle;
+			}, interior engine=empty},
+   %%%% TITLE OPTIONS
+	fonttitle={\bfseries \color{black}},
+	title={#2},#1}
+
+%%%%%       UNDERLINEBOX
+    \newcommand{\UnderlineBox}[1]{
+\begin{tcolorbox}[colback=white, colframe=white, right=10mm, top=0mm, left=2.5mm]{#1}\\[-5pt]
+\tikz{\draw (0,0)--(13.5,0);
+\draw (0,.05)--(13.5,.05);
+}
+\end{tcolorbox}
+}
+
+\usepackage{stmaryrd}
+\SetSymbolFont{stmry}{bold}{U}{stmry}{m}{n}
+\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}

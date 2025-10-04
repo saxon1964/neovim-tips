@@ -1,0 +1,65 @@
+\frontmatter
+
+%%%%%%%% PAGE FORMAT
+\newgeometry{
+	top=3cm,
+	bottom=3cm,
+	left=75pt,
+	right=50pt,
+	marginparsep=0cm,
+	marginparwidth=0cm,
+	voffset=0pt,
+	hoffset=0pt,
+	headheight=0pt,
+	headsep=0pt,
+	footskip=14pt,
+	footnotesep=0pt
+}
+
+%%%%%%%% PAGESTYLE
+\fancypagestyle{fancyfront}{
+	\renewcommand{\headrulewidth}{0pt}
+	\renewcommand{\footrulewidth}{0.1pt}
+	\pagenumbering{Roman}
+	\fancyhead[L,R]{}
+	\fancyfoot[C]{\small\thepage}
+	\fancyfoot[LO,RE]{}
+	\fancyfoot[LE,RO]{}}
+
+\pagestyle{fancyfront}
+
+%%%%%%%% TABLE OF CONTENTS
+\ifnum\IndexYes=1
+\contentsmargin{0cm}
+	% TOC Part
+\titlecontents{part}[4pc]
+{\addvspace{8pt}}{}
+{\Large\bfseries}
+{\tiny\color{black!50}\;\;\dotfill\;\large\bfseries\color{black}\PageName\, \thecontentspage}
+	% TOC Chapter
+\titlecontents{chapter}[4pc]
+{\addvspace{16pt}\Large\bfseries\thecontentslabel}{\hspace{.5cm}}{}
+{\tiny\color{black!50}\;\;\dotfill\;\large\bfseries\color{black}\PageName\, \thecontentspage}
+    % TOC Section
+\titlecontents{section}[5pc]
+{\addvspace{2pt}\bfseries\thecontentslabel\normalfont}{\hspace{.5cm}}{}
+{\tiny\color{black!50}\;\;\dotfill\;\normalsize\color{black}\PageName\, \thecontentspage}
+	% TOC Subsection
+\titlecontents{subsection}[6pc]
+{\addvspace{2pt}\bfseries\thecontentslabel\normalfont}{\hspace{.5cm}}{}
+{\tiny\color{black!50}\;\;\dotfill\;\normalsize\color{black}\PageName\, \thecontentspage}
+{
+    \let\cleardoublepage\relax
+	\renewcommand\contentsname{}
+    \begin{minipage}[r]{.95\textwidth}\raggedleft
+    \vspace{2.5cm}
+    \HUGE\bfseries\ContentsName
+	\vspace{-1cm}
+    \end{minipage}
+
+	\tableofcontents
+	\vspace{.25cm}
+}
+\fi
+
+\restoregeometry
