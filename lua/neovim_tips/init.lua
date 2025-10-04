@@ -80,6 +80,44 @@ function M.setup(opts)
     { desc = "Open random tip" }
   )
 
+  vim.api.nvim_create_user_command("NeovimTipsPdf",
+    function()
+      local pdf_path = vim.fn.fnamemodify(debug.getinfo(1).source:sub(2), ":h:h:h") .. "/pdf/book/NeovimTips.pdf"
+
+      -- Check if PDF exists
+      if vim.fn.filereadable(pdf_path) == 0 then
+        utils.error("PDF not found at: " .. pdf_path)
+        return
+      end
+
+      -- Detect OS and use appropriate command
+      local open_cmd
+      if vim.fn.has("mac") == 1 then
+        open_cmd = "open"
+      elseif vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1 then
+        open_cmd = "start"
+      else
+        -- Linux/Unix - try xdg-open first, fallback to others
+        if vim.fn.executable("xdg-open") == 1 then
+          open_cmd = "xdg-open"
+        elseif vim.fn.executable("gnome-open") == 1 then
+          open_cmd = "gnome-open"
+        elseif vim.fn.executable("kde-open") == 1 then
+          open_cmd = "kde-open"
+        else
+          utils.error("No suitable PDF viewer command found")
+          return
+        end
+      end
+
+      -- Open PDF
+      local cmd = string.format('%s "%s"', open_cmd, pdf_path)
+      vim.fn.system(cmd)
+      utils.info("Opening PDF: " .. pdf_path)
+    end,
+    { desc = "Open Neovim Tips PDF book" }
+  )
+
   -- Reload tips on user file save
   vim.api.nvim_create_autocmd("BufWritePost", {
     pattern = user_file,
