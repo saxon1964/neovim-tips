@@ -298,3 +298,28 @@ Use `\(` and `\)` for grouping and capturing, `\1` to `\9` for backreferences.
 :%s/\(\w\+\) \(\w\+\)/\2, \1/g  " swap first and last name
 ```
 ***
+# Title: Search and replace using custom lua functions
+# Category: Advanced Search
+# Tags: group, capture, search, replace, lua, function
+---
+You can define your own function directly in Neovim. It won't survive Neovim restart but such functions can be useful anyway. For example, the following function capitalizes the first letter in the text:
+
+```vim
+:lua function capitalize(text) return text:sub(1,1):upper() .. text:sub(2) end
+```
+
+You can now use your own custom function to capitalize every word in the document using `%s/<pattern>/\=v:lua.your_fun(submatch(0))/`.
+
+
+```vim
+:%s/\w\+/\=v:lua.capitalize(submatch(0))/gc
+```
+
+You can also apply your custom function to every line that is matching the given pattern using `g/<pattern>/s//\=v:lua.your_fun(submatch(0))`
+
+```vim
+:g/\w\+/s//\=v:lua.capitalize(submatch(0))
+```
+
+Credits: Different-Ad-8707@Reddit
+***
