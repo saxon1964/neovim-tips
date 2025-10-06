@@ -81,6 +81,7 @@ Ctrl+x Ctrl+l   " complete whole lines
 Ctrl+x Ctrl+n   " complete keywords in current file
 Ctrl+x Ctrl+k   " complete from dictionary
 Ctrl+x Ctrl+t   " complete from thesaurus
+Ctrl+x Ctrl+f   " complete file names
 Ctrl+x Ctrl+i   " complete from included files
 Ctrl+x Ctrl+]   " complete from tags
 Ctrl+x Ctrl+s   " spelling suggestions
