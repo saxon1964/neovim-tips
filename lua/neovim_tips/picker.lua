@@ -3,7 +3,7 @@
 local M = {}
 
 -- Forward to the new modular picker init
-local picker_init = require("neovim_tips.picker.init")
+local picker_init = require("neovim_tips.tips_picker.init")
 
 -- Export the same interface
 M.new = picker_init.new

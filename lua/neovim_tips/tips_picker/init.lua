@@ -3,10 +3,10 @@
 local M = {}
 
 -- Import components
-local search_parser = require("neovim_tips.picker.search_parser")
-local help_picker = require("neovim_tips.picker.help_picker")
-local layout = require("neovim_tips.picker.layout")
-local events = require("neovim_tips.picker.events")
+local search_parser = require("neovim_tips.tips_picker.search_parser")
+local help_picker = require("neovim_tips.tips_picker.help_picker")
+local layout = require("neovim_tips.tips_picker.tips_picker_layout")
+local events = require("neovim_tips.tips_picker.events")
 
 -- Import other modules
 local config = require("neovim_tips.config")

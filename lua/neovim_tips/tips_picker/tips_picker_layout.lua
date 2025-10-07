@@ -89,6 +89,8 @@ function M.create_layout()
       wrap = true,
       number = false,
       winhighlight = "FloatBorder:Normal",
+      conceallevel = 2,
+      concealcursor = "nc",
     },
   })
 
@@ -99,7 +101,7 @@ function M.create_layout()
     border = {
       style = "rounded",
       text = {
-        top = " Contribute ",
+        top = " Help ",
         top_align = "center",
       },
     },
@@ -112,6 +114,8 @@ function M.create_layout()
       wrap = false,
       number = false,
       winhighlight = "FloatBorder:Normal",
+      conceallevel = 2,
+      concealcursor = "nc",
     },
   })
 
@@ -243,12 +247,12 @@ function M.update_preview_content(preview_popup, title, content, renderer)
   vim.api.nvim_buf_set_lines(preview_popup.bufnr, 0, -1, false, lines)
   vim.bo[preview_popup.bufnr].filetype = "markdown"
 
+  vim.bo[preview_popup.bufnr].modifiable = false
+
   -- Render markdown
   if renderer then
     renderer.render(preview_popup.bufnr)
   end
-
-  vim.bo[preview_popup.bufnr].modifiable = false
 end
 
 ---Set up the footer popup with help message
@@ -270,3 +274,4 @@ function M.setup_footer(footer_popup, message, renderer)
 end
 
 return M
+

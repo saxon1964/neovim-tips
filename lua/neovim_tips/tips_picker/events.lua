@@ -96,7 +96,7 @@ function M.setup_autocmds(layout, handlers)
 
       -- Check for help triggers and handle them
       if handlers.on_help_trigger then
-        local search_parser = require("neovim_tips.picker.search_parser")
+        local search_parser = require("neovim_tips.tips_picker.search_parser")
         local trigger_type = search_parser.check_help_triggers(search_text)
         if trigger_type then
           handlers.on_help_trigger(trigger_type, search_text)
