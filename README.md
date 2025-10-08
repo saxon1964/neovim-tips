@@ -59,6 +59,7 @@ I have provided a solid initial batch of tips and if you have your favorite one 
 - **Simple navigation**: Seamless mouse and keyboard navigation with smart mode switching
 - **Copy-friendly**: Easy copying of tip content and code snippets from both picker and daily tip
 - **Cursor preservation**: Returns to your exact cursor position and mode after closing
+- **Bookmark system**: Save favorite tips with customizable visual indicators (🌟 ⭐ ✨ 💫 🔥 💎 etc.)
 - Support for categories, tags, and rich text
 - Lazy loading for optimal startup performance
 - The plugin comes with a starting set of 900+ curated tips
@@ -90,6 +91,8 @@ I have provided a solid initial batch of tips and if you have your favorite one 
     -- OPTIONAL: Daily tip mode (default: 1)
     -- 0 = off, 1 = once per day, 2 = every startup
     daily_tip = 1,
+    -- OPTIONAL: Bookmark symbol (default: "🌟 ")
+    bookmark_symbol = "🌟 ",
   },
   init = function()
     -- OPTIONAL: Change to your liking or drop completely
@@ -430,13 +433,28 @@ c:search           → finds all tips in "Search" category
 c:"Key Mappings"   → finds tips in "Key Mappings" category (quoted for spaces)
 ```
 
+### Bookmark Search
+
+Use `b:` prefix to search your bookmarked tips:
+```
+b:                 → shows all your bookmarked tips
+b:delete           → shows bookmarked tips with "delete" in title
+b:motion           → shows bookmarked tips with "motion" in title
+```
+
+**Bookmarking Tips:**
+- Press **`Ctrl+b`** in the picker or daily tip to bookmark/unbookmark
+- Bookmarked tips display with your configured symbol (default: 🌟)
+- Works from any pane (search bar, tips list, or preview)
+
 ### Combined Search
 
 Mix different search types with spaces (all must match):
 ```
 motion c:editing t:operator    → tips with "motion" in title, "Editing" category, and "operator" tag
 insert file t:save             → tips with "insert file" in title and "save" tag
-c:search t:pattern replace     → "Search" category tips with "pattern" tag and "replace" in title
+b: c:editing t:motion          → bookmarked tips in "Editing" category with "motion" tag
+b:delete c:text                → bookmarked tips with "delete" in title from "Text" category
 ```
 
 ### Search Help
@@ -633,6 +651,9 @@ require("neovim_tips").setup({
 
   -- Daily tip mode: 0=off, 1=once per day, 2=every startup
   daily_tip = 1,
+
+  -- Bookmark symbol (default: 🌟)
+  bookmark_symbol = "🌟 ",
 })
 ```
 
@@ -647,6 +668,31 @@ user_tip_prefix = "🔧 "         -- "Join lines" becomes "🔧 Join lines"
 
 -- No prefix (not recommended, may cause conflicts)
 user_tip_prefix = ""            -- "Join lines" stays "Join lines"
+```
+
+### Bookmark Symbol Examples
+
+```lua
+-- Default star emoji
+bookmark_symbol = "🌟 "          -- bright gold star
+
+-- Alternative star options
+bookmark_symbol = "⭐ "          -- classic star
+bookmark_symbol = "✨ "          -- sparkles
+bookmark_symbol = "💫 "          -- dizzy star
+
+-- Other colorful options
+bookmark_symbol = "🔥 "          -- fire
+bookmark_symbol = "💎 "          -- gem
+bookmark_symbol = "🏆 "          -- trophy
+bookmark_symbol = "⚡ "          -- lightning
+bookmark_symbol = "🎯 "          -- target
+bookmark_symbol = "📌 "          -- pin
+
+-- Simple text options
+bookmark_symbol = "★ "           -- unicode star
+bookmark_symbol = "[★] "         -- bracketed star
+bookmark_symbol = "• "           -- bullet point
 ```
 
 ### Features

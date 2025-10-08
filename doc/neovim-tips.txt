@@ -162,6 +162,9 @@ The plugin accepts the following configuration options:
 
       -- Daily tip mode: 0=off, 1=once per day, 2=every startup
       daily_tip = 1,
+
+      -- Bookmark symbol (default: "🌟 ")
+      bookmark_symbol = "🌟 ",
     })
 <
 
@@ -185,6 +188,11 @@ daily_tip                  Daily tip popup behavior
                            0 = disabled
                            1 = once per day (default)
                            2 = every startup
+
+*neovim-tips-config-bookmark*
+bookmark_symbol            Symbol displayed for bookmarked tips
+                           Default: "🌟 "
+                           Examples: "⭐ ", "✨ ", "💫 ", "🔥 ", "💎 "
 
 ==============================================================================
 5. COMMANDS                                             *neovim-tips-commands*
@@ -244,17 +252,33 @@ Use `c:` prefix to search by categories:
     c:"Key Mappings"   → finds tips in "Key Mappings" (quoted for spaces)
 <
 
-6.4 Combined Search ~
+6.4 Bookmark Search ~
+                                                   *neovim-tips-search-bookmarks*
+
+Use `b:` prefix to search your bookmarked tips:
+>
+    b:                 → shows all your bookmarked tips
+    b:delete           → shows bookmarked tips with "delete" in title
+    b:motion           → shows bookmarked tips with "motion" in title
+<
+
+**Bookmarking Tips:**
+• Press `Ctrl+b` in the picker or daily tip to bookmark/unbookmark
+• Bookmarked tips display with your configured symbol (default: 🌟)
+• Works from any pane (search bar, tips list, or preview)
+
+6.5 Combined Search ~
                                                      *neovim-tips-search-combined*
 
 Mix different search types (all must match):
 >
     motion c:editing t:operator    → tips with "motion" + "Editing" + "operator"
     insert file t:save             → tips with "insert file" + "save" tag
-    c:search t:pattern replace     → "Search" tips + "pattern" tag + "replace"
+    b: c:editing t:motion          → bookmarked tips in "Editing" + "motion" tag
+    b:delete c:text                → bookmarked tips with "delete" + "Text" category
 <
 
-6.5 Search Help ~
+6.6 Search Help ~
                                                         *neovim-tips-search-help*
 
 Get help with available tags and categories:
@@ -268,7 +292,7 @@ Help picker navigation:
 • Enter                   Select the item
 • Esc or q               Cancel
 
-6.6 Search Features ~
+6.7 Search Features ~
 
 • Case insensitive matching
 • Word-based search (all words must match)

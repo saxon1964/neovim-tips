@@ -101,6 +101,11 @@ function NuiPicker:filter_titles()
         matches = matches and search_parser.title_matches(title, self.active_query.title_words)
       end
 
+      -- Check bookmark filters
+      if #self.active_query.bookmarks > 0 then
+        matches = matches and search_parser.bookmark_matches(title, self.active_query.bookmarks)
+      end
+
       if matches then
         table.insert(self.filtered_titles, title)
       end
@@ -276,6 +281,30 @@ function NuiPicker:move_selection(direction)
   end
 end
 
+---Toggle bookmark status for currently selected tip
+---@return nil
+function NuiPicker:toggle_bookmark()
+  if #self.filtered_titles == 0 then
+    vim.notify("No tips to bookmark", vim.log.levels.WARN, { title = "Neovim Tips" })
+    return
+  end
+
+  local selected_title = self.filtered_titles[self.selected_index]
+  if not selected_title then
+    return
+  end
+
+  local bookmarks = require("neovim_tips.bookmarks")
+  local new_status = bookmarks.toggle_bookmark(selected_title)
+  
+  -- Update display to show new bookmark status
+  self:update_titles_display()
+  
+  -- Show brief notification
+  local status_text = new_status and "bookmarked" or "unbookmarked"
+  vim.notify("Tip " .. status_text, vim.log.levels.INFO, { title = "Neovim Tips" })
+end
+
 ---Create event handlers for the picker
 ---@return table handlers Event handler functions
 function NuiPicker:create_event_handlers()
@@ -316,6 +345,9 @@ function NuiPicker:create_event_handlers()
     end,
     close_picker = function()
       self:close()
+    end,
+    toggle_bookmark = function()
+      self:toggle_bookmark()
     end
   }
 end

@@ -95,14 +95,17 @@ local function show_daily_tip(update_last_shown)
   -- Close any existing plugin windows first to prevent layering issues
   utils.close_plugin_windows()
 
-  -- Create main tip popup
+  -- Create main tip popup with initial bookmark status
+  local bookmarks = require("neovim_tips.bookmarks")
+  local initial_star = bookmarks.is_bookmarked(tip.title) and config.options.bookmark_symbol or ""
+  
   local main_popup = Popup({
     enter = true,
     focusable = true,
     border = {
       style = "rounded",
       text = {
-        top = " Neovim tips: Did you know? ",
+        top = " " .. initial_star .. "Neovim tips: Did you know? ",
         top_align = "center",
       },
     },
@@ -150,7 +153,7 @@ local function show_daily_tip(update_last_shown)
       },
       size = {
         width = "70%",
-        height = "50%",
+        height = "65%",
       },
       relative = "editor",
     },
@@ -211,6 +214,20 @@ local function show_daily_tip(update_last_shown)
       layout:unmount()
     end, { noremap = true, silent = true })
   end
+
+  -- Toggle bookmark for current tip
+  main_popup:map("n", "<C-b>", function()
+    local bookmarks = require("neovim_tips.bookmarks")
+    local new_status = bookmarks.toggle_bookmark(tip.title)
+    
+    -- Update title to show new bookmark status
+    local star = bookmarks.is_bookmarked(tip.title) and config.options.bookmark_symbol or ""
+    main_popup.border:set_text("top", " " .. star .. "Neovim tips: Did you know? ", "center")
+    
+    -- Show notification
+    local status_text = new_status and "bookmarked" or "unbookmarked"
+    vim.notify("Tip " .. status_text, vim.log.levels.INFO, { title = "Neovim Tips" })
+  end, { noremap = true, silent = true })
 
   -- Auto-close when user enters command mode to prevent hijacking
   main_popup:map("n", ":", function()
