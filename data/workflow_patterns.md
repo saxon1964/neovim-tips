@@ -545,8 +545,6 @@ endfunction
 ---
 Use `:cfdo` with `append()` function to add lines at specific positions across multiple files in the quickfix list.
 
-#### Example
-
 ```vim
 " Add line after line 4 in all quickfix files
 :cfdo call append(4, '"status": "not started"') | update

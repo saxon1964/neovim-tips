@@ -4,8 +4,6 @@
 ---
 Use `set virtualedit=all` to allow cursor movement beyond end of lines, useful for block editing and column alignment.
 
-#### Example
-
 ```vim
 :set virtualedit=all    " cursor can go anywhere
 :set virtualedit=block  " only in visual block mode
@@ -17,8 +15,6 @@ Use `set virtualedit=all` to allow cursor movement beyond end of lines, useful f
 # Tags: wildmenu, completion, cmdline, enhanced
 ---
 Use `set wildmenu` with `set wildmode=longest:full,full` for enhanced command-line completion with visual menu.
-
-#### Example
 
 ```vim
 :set wildmenu
@@ -32,8 +28,6 @@ Use `set wildmenu` with `set wildmode=longest:full,full` for enhanced command-li
 ---
 Use `set undofile` to maintain undo history across vim sessions. Set `undodir` to control where undo files are stored.
 
-#### Example
-
 ```vim
 :set undofile
 :set undodir=~/.vim/undodir
@@ -45,8 +39,6 @@ Use `set undofile` to maintain undo history across vim sessions. Set `undodir` t
 # Tags: ignorecase, smartcase, search, intelligent
 ---
 Use `set ignorecase smartcase` for intelligent case handling - ignore case unless uppercase letters are typed.
-
-#### Example
 
 ```vim
 :set ignorecase smartcase
@@ -60,8 +52,6 @@ Use `set ignorecase smartcase` for intelligent case handling - ignore case unles
 ---
 Use `set list listchars=tab:>\  ,eol:$,trail:.,space:.` to visualize invisible characters like tabs, spaces, and line endings.
 
-#### Example
-
 ```vim
 :set list
 :set listchars=tab:>\ ,eol:$,trail:.,space:.
@@ -73,8 +63,6 @@ Use `set list listchars=tab:>\  ,eol:$,trail:.,space:.` to visualize invisible c
 # Tags: inccommand, preview, substitute, live
 ---
 Use `set inccommand=split` to preview substitute commands in real-time with a split window showing changes.
-
-#### Example
 
 ```vim
 :set inccommand=split
@@ -88,8 +76,6 @@ Use `set inccommand=split` to preview substitute commands in real-time with a sp
 ---
 Use `set mouse=a` to enable full mouse support in terminal Neovim for scrolling, selecting, and window operations.
 
-#### Example
-
 ```vim
 :set mouse=a          " enable mouse in all modes
 :set mouse=n          " only in normal mode
@@ -101,8 +87,6 @@ Use `set mouse=a` to enable full mouse support in terminal Neovim for scrolling,
 # Tags: textwidth, wrap, formatoptions, auto
 ---
 Use `set textwidth=80` with appropriate `formatoptions` to automatically wrap text at specified column width.
-
-#### Example
 
 ```vim
 :set textwidth=80
@@ -117,8 +101,6 @@ Use `set textwidth=80` with appropriate `formatoptions` to automatically wrap te
 ---
 Use `set relativenumber` with `set number` to show both absolute and relative line numbers for easier navigation.
 
-#### Example
-
 ```vim
 :set number relativenumber
 " Shows current line number and relative distances
@@ -130,8 +112,6 @@ Use `set relativenumber` with `set number` to show both absolute and relative li
 # Tags: spell, spellfile, spelllang, dictionary
 ---
 Use `set spell spelllang=en_us` to enable spell checking and configure custom word lists with `spellfile`.
-
-#### Example
 
 ```vim
 :set spell spelllang=en_us
@@ -146,8 +126,6 @@ Use `set spell spelllang=en_us` to enable spell checking and configure custom wo
 ---
 Use `set sessionoptions` to control what gets saved in sessions, enabling automatic workspace restoration.
 
-#### Example
-
 ```vim
 :set sessionoptions=buffers,curdir,folds,help,tabpages,winsize,winpos
 :mksession! ~/mysession.vim    " save session
@@ -159,8 +137,6 @@ Use `set sessionoptions` to control what gets saved in sessions, enabling automa
 # Tags: diffopt, diff, comparison, algorithm
 ---
 Use `set diffopt` to configure diff behavior, including algorithm choice and display options for better file comparison.
-
-#### Example
 
 ```vim
 :set diffopt=internal,filler,closeoff,hiddenoff,algorithm:patience
@@ -175,8 +151,6 @@ Use `set diffopt` to configure diff behavior, including algorithm choice and dis
 ---
 Use `set clipboard=unnamedplus` to automatically use system clipboard for yank and paste operations.
 
-#### Example
-
 ```vim
 :set clipboard=unnamedplus     " use system clipboard
 :set clipboard=unnamed         " use * register (X11 primary)
@@ -188,8 +162,6 @@ Use `set clipboard=unnamedplus` to automatically use system clipboard for yank a
 # Tags: hlsearch, timeout, highlight, search
 ---
 Use `set hlsearch` with timeouts to automatically clear search highlighting after inactivity.
-
-#### Example
 
 ```vim
 :set hlsearch
@@ -203,8 +175,6 @@ Use `set hlsearch` with timeouts to automatically clear search highlighting afte
 # Tags: completeopt, completion, popup, menu
 ---
 Use `set completeopt=menu,menuone,noselect,preview` to configure completion popup behavior and appearance.
-
-#### Example
 
 ```vim
 :set completeopt=menu,menuone,noselect,preview
@@ -220,8 +190,6 @@ Use `set completeopt=menu,menuone,noselect,preview` to configure completion popu
 ---
 Use `set foldcolumn=4` to display fold indicators in a dedicated column, making fold structure visible.
 
-#### Example
-
 ```vim
 :set foldcolumn=4     " show fold column with width 4
 :set foldcolumn=0     " hide fold column
@@ -233,8 +201,6 @@ Use `set foldcolumn=4` to display fold indicators in a dedicated column, making 
 # Tags: cursorline, cursorcolumn, highlight, position
 ---
 Use `set cursorline cursorcolumn` to highlight current cursor position with line and column indicators.
-
-#### Example
 
 ```vim
 :set cursorline       " highlight current line
@@ -248,8 +214,6 @@ Use `set cursorline cursorcolumn` to highlight current cursor position with line
 ---
 Use `set linebreak` with `set breakat` to wrap long lines at word boundaries rather than character boundaries.
 
-#### Example
-
 ```vim
 :set linebreak
 :set breakat=\ \t!@*-+;:,./?   " break at these characters
@@ -262,8 +226,6 @@ Use `set linebreak` with `set breakat` to wrap long lines at word boundaries rat
 ---
 Use `set scrolloff=8 sidescrolloff=8` to maintain context lines around cursor when scrolling vertically and horizontally.
 
-#### Example
-
 ```vim
 :set scrolloff=8        " keep 8 lines above/below cursor
 :set sidescrolloff=8    " keep 8 columns left/right of cursor
@@ -275,8 +237,6 @@ Use `set scrolloff=8 sidescrolloff=8` to maintain context lines around cursor wh
 # Tags: backupdir, directory, swap, backup
 ---
 Use `set backupdir` and `set directory` to organize backup and swap files in dedicated directories.
-
-#### Example
 
 ```vim
 :set backupdir=~/.vim/backup//

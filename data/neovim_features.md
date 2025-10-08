@@ -4,8 +4,6 @@
 ---
 Use `cgn` after searching to change next match, then press `.` to repeat on subsequent matches.
 
-#### Example
-
 ```vim
 /word   " search for 'word'
 cgn     " change next match
@@ -17,8 +15,6 @@ cgn     " change next match
 # Tags: treesitter, textobject, modern
 ---
 Use `vaf` to select around function, `vif` for inside function, `vac` for around class (requires treesitter text objects).
-
-#### Example
 
 ```vim
 vaf  " select around function
@@ -32,8 +28,6 @@ vac  " select around class
 ---
 Use `:cn` to go to next error/item in quickfix list, `:cp` for previous, `:copen` to open quickfix window.
 
-#### Example
-
 ```vim
 :cn     " next quickfix item
 :cp     " previous quickfix item
@@ -46,8 +40,6 @@ Use `:cn` to go to next error/item in quickfix list, `:cp` for previous, `:copen
 ---
 Use `:term` to open terminal, `Ctrl+\` followed by `Ctrl+n` to exit terminal mode to normal mode.
 
-#### Example
-
 ```vim
 :term           " open terminal
 Ctrl+\ Ctrl+n   " exit terminal mode
@@ -58,8 +50,6 @@ Ctrl+\ Ctrl+n   " exit terminal mode
 # Tags: lua, configuration, modern, scripting
 ---
 Use Lua for configuration instead of Vimscript for better performance and modern syntax.
-
-#### Example
 
 ```lua
 -- ~/.config/nvim/init.lua
@@ -73,8 +63,6 @@ vim.keymap.set('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
 # Tags: snippets, completion, modern
 ---
 Neovim 0.10+ has built-in snippet support for LSP and completion engines.
-
-#### Example
 
 ```lua
 -- Expand snippet
@@ -92,8 +80,6 @@ vim.snippet.jump(-1)
 # Tags: floating, windows, api, modern
 ---
 Create floating windows for custom UI elements using Neovim's floating window API.
-
-#### Example
 
 ```lua
 local buf = vim.api.nvim_create_buf(false, true)
@@ -114,8 +100,6 @@ local win = vim.api.nvim_open_win(buf, true, {
 ---
 Use extmarks for advanced text annotations and virtual text that persists across edits.
 
-#### Example
-
 ```lua
 local ns = vim.api.nvim_create_namespace('my_namespace')
 vim.api.nvim_buf_set_extmark(0, ns, 0, 0, {
@@ -129,8 +113,6 @@ vim.api.nvim_buf_set_extmark(0, ns, 0, 0, {
 # Tags: diagnostics, api, lsp, modern
 ---
 Use Neovim's built-in diagnostic API for showing errors, warnings, and info messages.
-
-#### Example
 
 ```lua
 -- Set diagnostics
@@ -153,8 +135,6 @@ vim.diagnostic.open_float()
 ---
 Create auto commands using Lua API for better organization and type safety.
 
-#### Example
-
 ```lua
 vim.api.nvim_create_autocmd('BufWritePre', {
   pattern = '*.lua',
@@ -171,8 +151,6 @@ vim.api.nvim_create_autocmd('BufWritePre', {
 ---
 Create custom user commands with Lua for better functionality and completion.
 
-#### Example
-
 ```lua
 vim.api.nvim_create_user_command('Hello', function(opts)
   print('Hello ' .. (opts.args or 'World'))
@@ -188,8 +166,6 @@ end, {
 ---
 Display virtual text inline for diagnostics, git blame, or other contextual information.
 
-#### Example
-
 ```lua
 local ns = vim.api.nvim_create_namespace('virtual_text')
 vim.api.nvim_buf_set_extmark(0, ns, 0, -1, {
@@ -204,8 +180,6 @@ vim.api.nvim_buf_set_extmark(0, ns, 0, -1, {
 ---
 Customize statusline and tabline using Lua functions for dynamic content.
 
-#### Example
-
 ```lua
 function _G.custom_statusline()
   return '%f %m %r%=%l,%c %p%%'
@@ -219,8 +193,6 @@ vim.opt.statusline = '%!v:lua.custom_statusline()'
 # Tags: rpc, jobs, async, communication
 ---
 Use Neovim's job control and RPC capabilities for asynchronous operations.
-
-#### Example
 
 ```lua
 local job_id = vim.fn.jobstart({'ls', '-la'}, {
@@ -239,8 +211,6 @@ local job_id = vim.fn.jobstart({'ls', '-la'}, {
 # Tags: health, check, diagnostics, system
 ---
 Use `:checkhealth` to diagnose Neovim installation and plugin issues.
-
-#### Example
 
 ```vim
 :checkhealth           " check all health

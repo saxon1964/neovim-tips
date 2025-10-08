@@ -4,8 +4,6 @@
 ---
 Use `o` to open new line below current line and `O` to open new line above current line.
 
-#### Example
-
 ```vim
 o  " new line below
 O  " new line above
@@ -16,8 +14,6 @@ O  " new line above
 # Tags: paste, insert, register, clipboard
 ---
 Use `Ctrl+r "` to paste from default register, or `Ctrl+r a` to paste from register 'a' while in insert mode.
-
-#### Example
 
 ```vim
 " In insert mode:
@@ -30,8 +26,6 @@ Ctrl+r a     " paste from register 'a'
 # Tags: completion, autocomplete, popup
 ---
 Use `Ctrl+n` for next completion match and `Ctrl+p` for previous completion match. Use `Ctrl+x Ctrl+f` for filename completion.
-
-#### Example
 
 ```vim
 " In insert mode:
@@ -46,8 +40,6 @@ Ctrl+x Ctrl+f " filename completion
 ---
 Use `Ctrl+k` followed by two characters to insert digraphs (special characters). Use `:digraphs` to see available combinations.
 
-#### Example
-
 ```vim
 " In insert mode:
 Ctrl+k a:    " insert ä
@@ -61,8 +53,6 @@ Ctrl+k <<    " insert «
 ---
 Use `Ctrl+r =` to insert the result of an expression calculation in insert mode.
 
-#### Example
-
 ```vim
 " In insert mode:
 Ctrl+r =2+3<Enter>  " inserts 5
@@ -75,8 +65,6 @@ Ctrl+r =strftime("%Y-%m-%d")<Enter>  " inserts current date
 ---
 Use `R` to enter replace mode where typed characters overwrite existing text. Use `gR` for virtual replace mode.
 
-#### Example
-
 ```vim
 R   " enter replace mode
 gR  " enter virtual replace mode
@@ -87,8 +75,6 @@ gR  " enter virtual replace mode
 # Tags: line, break, split
 ---
 Use `Ctrl+j` or `Ctrl+m` to create a new line in insert mode (equivalent to pressing Enter).
-
-#### Example
 
 ```vim
 " In insert mode:
@@ -102,8 +88,6 @@ Ctrl+m  " new line (alternative)
 ---
 Use `gO` to insert a line above current line without moving cursor position, useful for adding code above current line.
 
-#### Example
-
 ```vim
 gO  " insert line above without moving cursor
 ```
@@ -113,8 +97,6 @@ gO  " insert line above without moving cursor
 # Tags: repeat, insert, text, previous
 ---
 Use `Ctrl+a` to insert previously inserted text, or `Ctrl+@` to insert previously inserted text and immediately exit insert mode.
-
-#### Example
 
 ```vim
 " In insert mode:
@@ -128,8 +110,6 @@ Ctrl+@  " insert previous text and exit insert mode
 ---
 Use `Ctrl+y` to copy the character above the cursor and `Ctrl+e` to copy the character below the cursor while in insert mode.
 
-#### Example
-
 ```vim
 " In insert mode:
 Ctrl+y  " copy character from line above
@@ -141,8 +121,6 @@ Ctrl+e  " copy character from line below
 # Tags: indent, indentation, shift
 ---
 Use `Ctrl+t` to add one shiftwidth of indentation and `Ctrl+d` to remove one shiftwidth of indentation while in insert mode.
-
-#### Example
 
 ```vim
 " In insert mode:
@@ -156,8 +134,6 @@ Ctrl+d  " decrease indent
 ---
 Use `Ctrl+c` to quit insert mode without checking abbreviations, or `Ctrl+[` as an alternative to Escape key.
 
-#### Example
-
 ```vim
 " In insert mode:
 Ctrl+c  " quit insert mode (no abbreviation check)
@@ -169,8 +145,6 @@ Ctrl+[  " same as Escape key
 # Tags: cursor, movement, insertion, point
 ---
 Use `Ctrl+g j` to move cursor down to the column where insertion started and `Ctrl+g k` to move cursor up to that column.
-
-#### Example
 
 ```vim
 " In insert mode:
@@ -184,8 +158,6 @@ Ctrl+g k  " move up to insertion start column
 ---
 Use `Ctrl+g u` to start a new undoable edit and `Ctrl+g U` to prevent the next cursor movement from breaking the undo sequence.
 
-#### Example
-
 ```vim
 " In insert mode:
 Ctrl+g u  " start new undo block
@@ -198,8 +170,6 @@ Ctrl+g U  " don't break undo with next movement
 ---
 Use `Ctrl+]` to manually trigger abbreviation expansion in insert mode.
 
-#### Example
-
 ```vim
 " In insert mode (after setting abbreviation):
 :iab teh the
@@ -211,8 +181,6 @@ teh<Ctrl+]>  " expands to 'the'
 # Tags: completion, submode, advanced
 ---
 After `Ctrl+x`, use `Ctrl+d` for defined identifiers, `Ctrl+f` for filenames, `Ctrl+e` to scroll up in completion menu, `Ctrl+y` to scroll down.
-
-#### Example
 
 ```vim
 " In insert mode:
@@ -228,8 +196,6 @@ Ctrl+x Ctrl+y  " scroll down in completion
 ---
 Use `Ctrl+i` as an alternative to the Tab key for inserting tab characters in insert mode.
 
-#### Example
-
 ```vim
 " In insert mode:
 Ctrl+i  " insert tab character (same as Tab key)
@@ -240,8 +206,6 @@ Ctrl+i  " insert tab character (same as Tab key)
 # Tags: scroll, window, view, insert
 ---
 Use `Ctrl+x Ctrl+e` to scroll the window down and `Ctrl+x Ctrl+y` to scroll the window up without leaving insert mode.
-
-#### Example
 
 ```vim
 " In insert mode:
@@ -255,8 +219,6 @@ Ctrl+x Ctrl+y  " scroll window up
 ---
 Use `Ctrl+r 0` to paste yanked text in insert mode, or `Ctrl+r "` for default register.
 
-#### Example
-
 ```vim
 " In insert mode:
 Ctrl+r 0  " paste from yank register
@@ -269,8 +231,6 @@ Ctrl+r +  " paste from system clipboard
 # Tags: character, decimal, value, ascii, unicode
 ---
 Use `Ctrl+v` followed by decimal numbers to insert characters by their ASCII/Unicode decimal value.
-
-#### Example
 
 ```vim
 " In insert mode:

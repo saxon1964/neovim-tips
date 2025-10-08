@@ -4,8 +4,6 @@
 ---
 Use `vim.opt.clipboard="unnamedplus"` to sync yank/paste with system clipboard automatically.
 
-#### Example
-
 ```vim
 :lua vim.opt.clipboard = "unnamedplus"
 ```
@@ -16,8 +14,6 @@ Use `vim.opt.clipboard="unnamedplus"` to sync yank/paste with system clipboard a
 ---
 Use `vim.fn.setreg("+", "text")` to set system clipboard content from Lua.
 
-#### Example
-
 ```vim
 :lua vim.fn.setreg("+", "hello world")
 ```
@@ -27,8 +23,6 @@ Use `vim.fn.setreg("+", "text")` to set system clipboard content from Lua.
 # Tags: clipboard, system, copy, paste, register
 ---
 Access system clipboard using `+` and `*` registers for seamless integration with other applications.
-
-#### Example
 
 ```vim
 " Copy to system clipboard
@@ -47,8 +41,6 @@ gg"+yG      " copy entire buffer to system clipboard
 ---
 Integrate Vim with macOS clipboard using pbcopy and pbpaste utilities.
 
-#### Example
-
 ```vim
 " macOS clipboard integration
 vnoremap <C-c> :w !pbcopy<CR><CR>
@@ -63,8 +55,6 @@ set clipboard=unnamed
 # Tags: linux, clipboard, xclip, copy, paste
 ---
 Use xclip utility for clipboard integration on GNU/Linux systems.
-
-#### Example
 
 ```vim
 " Copy/paste with xclip

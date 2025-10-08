@@ -4,8 +4,6 @@
 ---
 Use dynamic plugin installation and loading patterns inspired by TJ DeVries for self-bootstrapping configurations.
 
-#### Example
-
 ```vim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.uv.fs_stat(lazypath) then
@@ -23,8 +21,6 @@ vim.opt.rtp:prepend(lazypath)
 # Tags: environment, conditional, config, dotenv
 ---
 Use environment variables and conditional loading for portable configurations across different machines.
-
-#### Example
 
 ```vim
 " Load local environment variables
@@ -44,8 +40,6 @@ endif
 ---
 Use Lua's require system with custom import directories for organized, modular configuration management.
 
-#### Example
-
 ```vim
 -- Structure: ~/.config/nvim/lua/custom/
 require('lazy').setup({
@@ -62,8 +56,6 @@ require('lazy').setup({
 ---
 Use custom mapping to open help documentation in new tabs for better reference workflow during coding.
 
-#### Example
-
 ```vim
 :nnoremap <leader>h :tabnew<CR>:help<CR><C-w><C-w>:quit<CR>
 " Opens help in new tab, focuses on help content, closes empty buffer
@@ -76,8 +68,6 @@ Use custom mapping to open help documentation in new tabs for better reference w
 ---
 Use Alt key combinations to add new lines above/below without leaving insert mode or changing cursor position.
 
-#### Example
-
 ```vim
 :inoremap <M-o> <Esc>o<Esc>a    " add line below, return to insert
 :inoremap <M-O> <Esc>O<Esc>a    " add line above, return to insert
@@ -89,8 +79,6 @@ Use Alt key combinations to add new lines above/below without leaving insert mod
 # Tags: completion, ctrl-x, advanced, shortcuts
 ---
 Use Ctrl+X completion modes for different types of intelligent completion in insert mode.
-
-#### Example
 
 ```vim
 " In insert mode:
@@ -108,8 +96,6 @@ Ctrl+x Ctrl+o  " omni completion (context-aware)
 ---
 Use F-key mapping for instant trailing whitespace removal with user feedback across entire buffer.
 
-#### Example
-
 ```vim
 :noremap <F5> :%s/\s\+$//<CR>:echo 'All trailing whitespace removed.'<CR>
 " One key press to clean entire file and confirm action
@@ -121,8 +107,6 @@ Use F-key mapping for instant trailing whitespace removal with user feedback acr
 # Tags: builtin, completion, native, plugin-free
 ---
 Use Neovim's built-in completion capabilities for intelligent code completion without external plugins.
-
-#### Example
 
 ```vim
 :set completeopt=menu,menuone,noselect,preview
@@ -138,8 +122,6 @@ Use Neovim's built-in completion capabilities for intelligent code completion wi
 ---
 Use command-line window for advanced command history editing and complex command construction.
 
-#### Example
-
 ```vim
 q:  " open command history in editable window
 q/  " open search history in editable window  
@@ -154,8 +136,6 @@ q?  " open search history (backward) in editable window
 ---
 Use buffer-local settings and autocmds for file-type specific configurations and optimizations.
 
-#### Example
-
 ```vim
 :autocmd BufEnter *.lua setlocal tabstop=2 shiftwidth=2
 :autocmd BufEnter *.py setlocal tabstop=4 shiftwidth=4
@@ -168,8 +148,6 @@ Use buffer-local settings and autocmds for file-type specific configurations and
 # Tags: fold, navigation, quick, movement
 ---
 Use fold navigation commands for efficient code structure navigation and overview.
-
-#### Example
 
 ```vim
 zj  " move to next fold
@@ -186,8 +164,6 @@ zx  " update folds
 ---
 Use register operations for sophisticated copy-paste workflows and text manipulation chains.
 
-#### Example
-
 ```vim
 "ay5y    " yank 5 lines into register 'a'
 "Ay3y    " append 3 lines to register 'a'
@@ -201,8 +177,6 @@ Use register operations for sophisticated copy-paste workflows and text manipula
 # Tags: motion, editing, patterns, efficiency
 ---
 Use motion commands combined with operators for efficient text editing patterns and muscle memory.
-
-#### Example
 
 ```vim
 ci"     " change inside quotes
@@ -219,8 +193,6 @@ vap     " visually select around paragraph
 ---
 Use session commands for project-based workflow management and context switching.
 
-#### Example
-
 ```vim
 :mksession! ~/project.vim     " save current session
 :source ~/project.vim         " load session
@@ -235,8 +207,6 @@ Use session commands for project-based workflow management and context switching
 ---
 Use tabs for logical grouping of related files and context-based editing workflows.
 
-#### Example
-
 ```vim
 :tabnew file.lua              " open file in new tab
 :tabonly                      " close all other tabs
@@ -250,8 +220,6 @@ gt / gT                       " navigate between tabs
 # Tags: split, windows, mastery, layout
 ---
 Use advanced window splitting and management for efficient multi-file editing and reference workflows.
-
-#### Example
 
 ```vim
 :vsplit file.txt              " vertical split
@@ -268,8 +236,6 @@ Use advanced window splitting and management for efficient multi-file editing an
 ---
 Use command abbreviations for frequently used commands and common typo corrections.
 
-#### Example
-
 ```vim
 :cabbrev W w
 :cabbrev Wq wq
@@ -285,8 +251,6 @@ Use command abbreviations for frequently used commands and common typo correctio
 ---
 Use insert mode navigation keys for efficient editing without leaving insert mode frequently.
 
-#### Example
-
 ```vim
 <C-h>   " backspace (delete left)
 <C-w>   " delete word left  
@@ -301,8 +265,6 @@ Use insert mode navigation keys for efficient editing without leaving insert mod
 # Tags: marks, navigation, workflow, jumping
 ---
 Use marks for efficient navigation between important locations in large files and projects.
-
-#### Example
 
 ```vim
 ma      " set mark 'a' at current position

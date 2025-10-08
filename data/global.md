@@ -6,8 +6,6 @@ Use `:ter[minal]` to open a terminal window. When the window shows up, press `i`
 
 **TIP**: Once in terminal, type `vimtutor` for a nice vim tutorial, excellent for starters.
 
-#### Example
-
 ```vim
 :ter
 ```
@@ -17,8 +15,6 @@ Use `:ter[minal]` to open a terminal window. When the window shows up, press `i`
 # Tags: man pages, documentation, help
 ---
 Use `K` to open a man page or other type of available documentation for the word under the cursor. 
-
-#### Example
 
 ```vim
 K

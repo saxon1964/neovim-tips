@@ -446,8 +446,6 @@ Integrate with various testing frameworks for efficient testing workflow.
 ---
 Use Gitsigns plugin commands for advanced git integration directly in Neovim.
 
-#### Example
-
 ```vim
 " Diff current buffer against previous version
 :Gitsigns diffthis ~1

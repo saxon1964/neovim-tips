@@ -4,8 +4,6 @@
 ---
 Use `jobstart()` and `jobstop()` to manage background processes and communicate with terminal jobs.
 
-#### Example
-
 ```vim
 :lua local job_id = vim.fn.jobstart({'python', 'script.py'}, {
   on_stdout = function(id, data) print(table.concat(data, '\n')) end
@@ -18,8 +16,6 @@ Use `jobstart()` and `jobstop()` to manage background processes and communicate 
 # Tags: terminal, mode, mappings, tnoremap
 ---
 Use terminal mode mappings to customize key behavior inside built-in terminal emulator.
-
-#### Example
 
 ```vim
 :tnoremap <Esc> <C-\><C-n>                    " easier normal mode
@@ -34,8 +30,6 @@ Use terminal mode mappings to customize key behavior inside built-in terminal em
 ---
 Use `scrollback` option to control terminal history and access previous output in terminal buffers.
 
-#### Example
-
 ```vim
 :set termguicolors        " enable 24-bit colors
 :let g:terminal_scrollback_buffer_size = 10000
@@ -48,8 +42,6 @@ Use `scrollback` option to control terminal history and access previous output i
 # Tags: terminal, split, workflow, development
 ---
 Use terminal splits for integrated development workflows without leaving Neovim.
-
-#### Example
 
 ```vim
 :split | terminal         " horizontal split terminal
@@ -64,8 +56,6 @@ Use terminal splits for integrated development workflows without leaving Neovim.
 ---
 Use `:terminal` with specific shell or command for customized terminal environments.
 
-#### Example
-
 ```vim
 :terminal bash            " specific shell
 :terminal python3         " Python REPL
@@ -78,8 +68,6 @@ Use `:terminal` with specific shell or command for customized terminal environme
 # Tags: terminal, buffer, naming, identification
 ---
 Use buffer naming to identify and switch between multiple terminal instances easily.
-
-#### Example
 
 ```vim
 :terminal ++title=server " named terminal buffer
@@ -94,8 +82,6 @@ Use buffer naming to identify and switch between multiple terminal instances eas
 ---
 Use environment variable control for terminal processes launched from Neovim.
 
-#### Example
-
 ```vim
 :let $EDITOR = 'nvim'
 :let $TERM = 'xterm-256color'
@@ -109,8 +95,6 @@ Use environment variable control for terminal processes launched from Neovim.
 ---
 Use `++cwd` to start terminals in specific working directories for project-based workflows.
 
-#### Example
-
 ```vim
 :terminal ++cwd=~/project " start in specific directory
 :split | terminal ++cwd=%:h " terminal in current file's directory
@@ -122,8 +106,6 @@ Use `++cwd` to start terminals in specific working directories for project-based
 # Tags: terminal, size, dimensions, rows, cols
 ---
 Use terminal size options to create terminals with specific dimensions for different tasks.
-
-#### Example
 
 ```vim
 :terminal ++rows=20       " terminal with 20 rows
@@ -138,8 +120,6 @@ Use terminal size options to create terminals with specific dimensions for diffe
 ---
 Use `chansend()` to send input to terminal processes programmatically.
 
-#### Example
-
 ```vim
 :lua local term_id = vim.fn.bufnr()
 :lua vim.fn.chansend(term_id, "ls -la\n")
@@ -152,8 +132,6 @@ Use `chansend()` to send input to terminal processes programmatically.
 # Tags: terminal, output, processing, callback
 ---
 Use terminal output callbacks to process terminal output and integrate with editor workflows.
-
-#### Example
 
 ```vim
 :lua vim.fn.termopen('make', {
@@ -173,8 +151,6 @@ Use terminal output callbacks to process terminal output and integrate with edit
 ---
 Use hidden terminals to run background processes while maintaining editor workflow.
 
-#### Example
-
 ```vim
 :lua local buf = vim.api.nvim_create_buf(false, true)
 :lua local job = vim.fn.termopen('tail -f logfile.log', {
@@ -191,8 +167,6 @@ Use hidden terminals to run background processes while maintaining editor workfl
 ---
 Use terminal-specific highlighting and color configuration for better visual integration.
 
-#### Example
-
 ```vim
 :hi Terminal ctermfg=white ctermbg=black
 :hi TermCursor ctermfg=red ctermbg=red
@@ -206,8 +180,6 @@ Use terminal-specific highlighting and color configuration for better visual int
 ---
 Use terminal-specific autocommand events to customize terminal behavior and appearance.
 
-#### Example
-
 ```vim
 :autocmd TermOpen * setlocal nonumber norelativenumber
 :autocmd TermOpen * nnoremap <buffer> <C-c> i<C-c>
@@ -220,8 +192,6 @@ Use terminal-specific autocommand events to customize terminal behavior and appe
 # Tags: terminal, quickfix, integration, errors
 ---
 Use terminal output parsing to populate quickfix list with build errors and navigation.
-
-#### Example
 
 ```vim
 :set errorformat=%f:%l:%m  " set error format
@@ -238,8 +208,6 @@ Use terminal output parsing to populate quickfix list with build errors and navi
 ---
 Use terminal session restoration to maintain terminal state across Neovim sessions.
 
-#### Example
-
 ```vim
 " In session file, terminals are saved as:
 :terminal ++restore
@@ -255,8 +223,6 @@ end
 ---
 Use advanced window management for terminal-focused layouts and workflows.
 
-#### Example
-
 ```vim
 :tabnew | terminal        " dedicated terminal tab
 :only | split | terminal  " editor above, terminal below
@@ -269,8 +235,6 @@ Use advanced window management for terminal-focused layouts and workflows.
 # Tags: terminal, plugin, integration, compatibility
 ---
 Use terminal integration patterns that work well with common Neovim plugins and workflows.
-
-#### Example
 
 ```vim
 " Terminal-friendly settings
@@ -285,8 +249,6 @@ Use terminal integration patterns that work well with common Neovim plugins and 
 ---
 Use terminal for integrated debugging sessions with GDB, Python debugger, or other CLI debuggers.
 
-#### Example
-
 ```vim
 :terminal gdb ./program   " GDB in terminal
 :terminal python -m pdb script.py  " Python debugger
@@ -299,8 +261,6 @@ Use terminal for integrated debugging sessions with GDB, Python debugger, or oth
 # Tags: terminal, repl, workflow, interactive
 ---
 Use terminal for REPL-driven development with language-specific interactive environments.
-
-#### Example
 
 ```vim
 :terminal python3         " Python REPL

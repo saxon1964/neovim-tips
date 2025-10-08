@@ -4,8 +4,6 @@
 ---
 Use `I` to insert at beginning of line, `A` to append at end of line.
 
-#### Example
-
 ```vim
 I  " insert at line start
 A  " append at line end
@@ -16,8 +14,6 @@ A  " append at line end
 # Tags: open, newline, insert
 ---
 Use `o` to open new line below cursor, `O` to open new line above cursor.
-
-#### Example
 
 ```vim
 o  " open line below
@@ -30,8 +26,6 @@ O  " open line above
 ---
 Use `s` to substitute character (delete and enter insert mode), `S` for entire line.
 
-#### Example
-
 ```vim
 s  " substitute character
 S  " substitute line
@@ -42,8 +36,6 @@ S  " substitute line
 # Tags: yank, copy, clipboard
 ---
 Use `yy` to yank entire line, `yw` to yank word, `y$` to yank to end of line.
-
-#### Example
 
 ```vim
 yy  " yank entire line
@@ -57,8 +49,6 @@ y$  " yank to end of line
 ---
 Use `p` to paste after cursor, `P` to paste before cursor.
 
-#### Example
-
 ```vim
 p  " paste after cursor
 P  " paste before cursor
@@ -69,8 +59,6 @@ P  " paste before cursor
 # Tags: calculate, math, expression, replace
 ---
 Use `<C-r>=` in insert mode to calculate mathematical expressions and insert the result.
-
-#### Example
 
 ```vim
 " In insert mode:
@@ -84,8 +72,6 @@ Use `<C-r>=` in insert mode to calculate mathematical expressions and insert the
 ---
 Use `S` to delete the entire line and start insert mode with proper indentation.
 
-#### Example
-
 ```vim
 S  " delete line and start insert at correct indentation
 ```
@@ -95,8 +81,6 @@ S  " delete line and start insert at correct indentation
 # Tags: capitalize, words, case, format
 ---
 Use `guw~` to make word lowercase then capitalize first letter, or create mapping for title case.
-
-#### Example
 
 ```vim
 guw~        " lowercase word then capitalize first letter
@@ -109,8 +93,6 @@ nnoremap <leader>tc guw~
 # Tags: insert, character, single, quick
 ---
 Use `i{char}<Esc>` or create mapping with `s` to quickly insert single character without staying in insert mode.
-
-#### Example
 
 ```vim
 " Insert single character and return to normal mode
@@ -125,8 +107,6 @@ s{char}<Esc>  " replace character under cursor
 ---
 Use `daw` to delete word including surrounding whitespace, `diw` for word only, `dW` for WORD including punctuation.
 
-#### Example
-
 ```vim
 daw  " delete a word (including spaces)
 diw  " delete inner word (no spaces)
@@ -139,8 +119,6 @@ daW  " delete a WORD (including spaces)
 # Tags: insert, lines, multiple, batch
 ---
 Use `o<Esc>` followed by repeat count, or `{count}o` to insert multiple empty lines at once.
-
-#### Example
 
 ```vim
 5o<Esc>     " insert 5 empty lines below
@@ -155,8 +133,6 @@ o<Esc>4.    " insert line, then repeat 4 times
 ---
 Use `o<Esc>` to insert line below or `O<Esc>` to insert line above without staying in insert mode.
 
-#### Example
-
 ```vim
 o<Esc>      " insert empty line below, stay in normal mode
 O<Esc>      " insert empty line above, stay in normal mode
@@ -170,8 +146,6 @@ nnoremap <leader>O O<Esc>
 # Tags: undo, redo, changes, history, time
 ---
 Use advanced undo/redo with time-based navigation and undo tree features.
-
-#### Example
 
 ```vim
 u           " undo last change
@@ -191,8 +165,6 @@ g+          " go to newer text state
 # Tags: completion, omni, smart, autocomplete
 ---
 Configure and use intelligent omni completion for programming languages.
-
-#### Example
 
 ```vim
 " Enable omni completion
@@ -215,8 +187,6 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 ---
 Use `:d` to delete lines, `:y` to yank, `:m` to move, `:co` or `:t` to copy, with ranges like `1,5` or `%`.
 
-#### Example
-
 ```vim
 :5d           " delete line 5
 :1,10d        " delete lines 1-10
@@ -233,8 +203,6 @@ ggdG          " same as above
 ---
 Use `:undo` and `:redo` for undo/redo, `:earlier` and `:later` for time-based undo.
 
-#### Example
-
 ```vim
 :undo         " undo last change
 :redo         " redo last undone change
@@ -248,8 +216,6 @@ Use `:undo` and `:redo` for undo/redo, `:earlier` and `:later` for time-based un
 # Tags: ex, sort, format, center, left, right
 ---
 Use `:sort` to sort lines, `:center` to center text, `:left` and `:right` for alignment.
-
-#### Example
 
 ```vim
 :%sort        " sort all lines
@@ -266,8 +232,6 @@ Use `:sort` to sort lines, `:center` to center text, `:left` and `:right` for al
 ---
 Use `:edit +{line} {file}` to open file and jump directly to specified line number.
 
-#### Example
-
 ```vim
 :edit +25 config.vim  " open config.vim at line 25
 :edit +/pattern file.txt  " open file.txt at first line matching pattern
@@ -281,8 +245,6 @@ vim +42 file.txt      " from command line: open at line 42
 ---
 Use `:join` or `:j` to join lines, with count to join multiple lines.
 
-#### Example
-
 ```vim
 :join         " join current line with next
 :j            " short form of join
@@ -295,8 +257,6 @@ Use `:join` or `:j` to join lines, with count to join multiple lines.
 # Tags: ex, marks, jump, position, navigate
 ---
 Use `:mark` to set mark, `:jumps` to show jump list, `:changes` for change list, `:delmarks` to delete marks.
-
-#### Example
 
 ```vim
 :mark a       " set mark 'a' at current line
@@ -313,8 +273,6 @@ Use `:mark` to set mark, `:jumps` to show jump list, `:changes` for change list,
 ---
 Use `:m'}-1` to move current line to end of current paragraph.
 
-#### Example
-
 ```vim
 :m'}-1        " move current line to end of paragraph
 :m'}          " move current line after end of paragraph
@@ -326,8 +284,6 @@ Use `:m'}-1` to move current line to end of current paragraph.
 # Tags: normal, command, mapping, script, execute
 ---
 Use `normal!` in scripts to execute normal-mode commands without triggering user mappings.
-
-#### Example
 
 ```vim
 " In a script or function:
@@ -342,8 +298,6 @@ execute "normal! \<C-v>j"  " block select down
 ---
 Use `:bufdo %s/old/new/ge` to substitute in all open buffers, `e` flag suppresses errors.
 
-#### Example
-
 ```vim
 :bufdo %s/old/new/ge    " substitute in all buffers
 :bufdo %s/TODO/DONE/ge  " replace TODO with DONE in all buffers
@@ -355,8 +309,6 @@ Use `:bufdo %s/old/new/ge` to substitute in all open buffers, `e` flag suppresse
 # Tags: number, line, sequence, increment, script
 ---
 Add line numbers to text using substitute command with expression.
-
-#### Example
 
 ```vim
 :%s/^/\=line('.') . '. '/  " add line numbers with dots
@@ -370,8 +322,6 @@ Add line numbers to text using substitute command with expression.
 ---
 Use mark `"0` to jump to position where Vim was last exited from current file.
 
-#### Example
-
 ```vim
 `"0     " jump to last exit position
 '"0     " jump to last exit position (line start)
@@ -383,8 +333,6 @@ Use mark `"0` to jump to position where Vim was last exited from current file.
 # Tags: html, tag, wrap, surround, format
 ---
 Use visual selection and substitute to wrap text in HTML tags.
-
-#### Example
 
 ```vim
 " Select text in visual mode, then:
@@ -398,8 +346,6 @@ Use visual selection and substitute to wrap text in HTML tags.
 # Tags: copy, move, mark, line, range
 ---
 Use `:t` to copy lines to marks, `:.t'a` to copy current line to mark 'a', `:152,154t.` to copy range to current position.
-
-#### Example
 
 ```vim
 ma           " set mark 'a' at current line
@@ -415,8 +361,6 @@ ma           " set mark 'a' at current line
 ---
 Use global command with counter to incrementally replace search results with sequential numbers.
 
-#### Example
-
 ```vim
 " Replace all '2.gif' with incremental numbers:
 :let idx=0 | g/2\.gif/ let idx += 1 | s//\= idx . '.gif'/
@@ -431,8 +375,6 @@ Use global command with counter to incrementally replace search results with seq
 ---
 Use `:g/pattern/ normal {commands}` to execute normal mode commands on all matching lines.
 
-#### Example
-
 ```vim
 :g/console.log/ normal gcc    " comment all lines with 'console.log'
 :g/TODO/ normal dw            " delete first word on lines with 'TODO'
@@ -444,8 +386,6 @@ Use `:g/pattern/ normal {commands}` to execute normal mode commands on all match
 # Tags: put, paste, above, below, line
 ---
 Use `:pu` to paste below current line, `:pu!` to paste above current line, regardless of cursor position.
-
-#### Example
 
 ```vim
 :pu         " paste register contents below current line
@@ -459,8 +399,6 @@ Use `:pu` to paste below current line, `:pu!` to paste above current line, regar
 # Tags: select, yank, append, register, pattern
 ---
 Use normal mode with append register to collect text from multiple lines into one register.
-
-#### Example
 
 ```vim
 " Yank text inside {} from multiple lines to register A:
@@ -479,8 +417,6 @@ qAq
 # Tags: move, marks, line, navigation
 ---
 Use `:m'a` to move current line to mark 'a', or `:.m'b` to move current line to mark 'b'. Useful when target is not visible on screen.
-
-#### Example
 
 ```vim
 ma      " mark current line as 'a'

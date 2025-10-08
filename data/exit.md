@@ -4,8 +4,6 @@
 ---
 Use `:q` to quit, `:q!` to quit without saving, `:wq` or `:x` to write and quit, `ZZ` to save and exit, 'ZQ' to quit withut saving. 
 
-#### Example
-
 ```vim
 :q   " quit
 :q!  " quit without saving

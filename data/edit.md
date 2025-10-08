@@ -4,8 +4,6 @@
 ---
 Use `:earlier 10m` to revert buffer to state 10 minutes ago, or `:later 5m` to go forward 5 minutes.
 
-#### Example
-
 ```vim
 :earlier 10m  " revert to 10 minutes ago
 :later 5m     " go forward 5 minutes
@@ -17,8 +15,6 @@ Use `:earlier 10m` to revert buffer to state 10 minutes ago, or `:later 5m` to g
 ---
 Use `Ctrl+l` to redraw the screen, useful when display gets corrupted or needs refreshing.
 
-#### Example
-
 ```vim
 Ctrl+l  " redraw screen
 ```
@@ -29,8 +25,6 @@ Ctrl+l  " redraw screen
 ---
 Use `Ctrl+g` to display current file name, cursor position, and buffer information.
 
-#### Example
-
 ```vim
 Ctrl+g  " show file info and cursor position
 ```
@@ -40,8 +34,6 @@ Ctrl+g  " show file info and cursor position
 # Tags: substitute, character, delete, insert
 ---
 Use `s` to substitute (delete character under cursor and enter insert mode) and `S` to substitute entire line.
-
-#### Example
 
 ```vim
 s   " substitute character under cursor
@@ -55,8 +47,6 @@ S   " substitute entire line
 ---
 Use `.` (dot) to repeat the last change command.
 
-#### Example
-
 ```vim
 .  " repeat last change
 ```
@@ -66,8 +56,6 @@ Use `.` (dot) to repeat the last change command.
 # Tags: operator, pending, mode, motion
 ---
 After typing an operator (d, c, y, etc.), you enter operator-pending mode where you can provide motion or text object to complete the operation.
-
-#### Example
 
 ```vim
 d    " delete operator (enters pending mode)
@@ -81,8 +69,6 @@ ci(  " change inside parentheses (operator + text object)
 ---
 Use `v` for characterwise, `V` for linewise, `Ctrl+v` for blockwise operation after an operator.
 
-#### Example
-
 ```vim
 dvw   " force characterwise delete word
 dV    " force linewise delete (whole line)
@@ -95,8 +81,6 @@ dCtrl+v}  " force blockwise delete to closing brace
 ---
 Use `Esc` to abandon the operator or `Backspace` to undo/cancel the operator in pending mode.
 
-#### Example
-
 ```vim
 d<Esc>         " abandon delete operation
 c<Backspace>   " cancel change operation
@@ -107,8 +91,6 @@ c<Backspace>   " cancel change operation
 # Tags: operator, motion, combination, examples
 ---
 Operators like `d` (delete), `c` (change), `y` (yank), `>` (indent) work with any motion or text object.
-
-#### Example
 
 ```vim
 dw    " delete word
@@ -123,8 +105,6 @@ y$    " yank to end of line
 # Tags: operator, text, object, combination
 ---
 All text objects (iw, aw, i(, a(, ip, ap, etc.) work in operator-pending mode for precise text manipulation.
-
-#### Example
 
 ```vim
 ciw   " change inside word

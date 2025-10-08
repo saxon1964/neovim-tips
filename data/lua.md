@@ -4,8 +4,6 @@
 ---
 Use `:lua` to run Lua code directly in Neovim.
 
-#### Example
-
 ```vim
 :lua print("Hello from Lua!")
 ```
@@ -15,8 +13,6 @@ Use `:lua` to run Lua code directly in Neovim.
 # Tags: lua, debug, inspect
 ---
 Use `vim.inspect()` to debug and pretty-print Lua values.
-
-#### Example
 
 ```vim
 :lua print(vim.inspect(vim.fn.getbufinfo()))
@@ -28,8 +24,6 @@ Use `vim.inspect()` to debug and pretty-print Lua values.
 ---
 Use `:luafile %` to execute the current Lua file inside Neovim.
 
-#### Example
-
 ```vim
 :luafile %  " run current Lua file
 ```
@@ -40,8 +34,6 @@ Use `:luafile %` to execute the current Lua file inside Neovim.
 ---
 Use `vim.keymap.set()` to create keymaps with inline Lua functions.
 
-#### Example
-
 ```vim
 :lua vim.keymap.set("n", "<leader>hi", function() print("Hello!") end)
 ```
@@ -51,8 +43,6 @@ Use `vim.keymap.set()` to create keymaps with inline Lua functions.
 # Tags: modules, loaded, debug
 ---
 Use `package.loaded` to view all loaded Lua modules.
-
-#### Example
 
 ```vim
 :lua print(vim.inspect(package.loaded))

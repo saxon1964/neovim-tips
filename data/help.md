@@ -4,8 +4,6 @@
 ---
 Use `:help pattern` to search help documentation for specific keywords or patterns.
 
-#### Example
-
 ```vim
 :help pattern  " search help for 'pattern'
 ```
@@ -16,8 +14,6 @@ Use `:help pattern` to search help documentation for specific keywords or patter
 ---
 Use `:h index.txt` to access the master help index with all available commands.
 
-#### Example
-
 ```vim
 :h index.txt  " master help index
 ```
@@ -27,8 +23,6 @@ Use `:h index.txt` to access the master help index with all available commands.
 # Tags: ex, help, documentation, version, info
 ---
 Use `:version` for version info, `:intro` for intro message, `:messages` for message history, `:checkhealth` for diagnostics.
-
-#### Example
 
 ```vim
 :version      " show Neovim version and build info
@@ -43,8 +37,6 @@ Use `:version` for version info, `:intro` for intro message, `:messages` for mes
 ---
 Use `:helpgrep` to search help, `:ptag` for preview, `:pop` to go back, `:tag` to jump to tag.
 
-#### Example
-
 ```vim
 :helpgrep pattern   " search all help for pattern
 :ptag function      " preview tag in preview window
@@ -58,8 +50,6 @@ Use `:helpgrep` to search help, `:ptag` for preview, `:pop` to go back, `:tag` t
 # Tags: man, help, documentation
 ---
 Use `:Man` to open a man-page in a read-only mode. You can navigate the page like any other Neovim content. You can jump arround, copy parts of it, search for a word and perform all other standard Neovim operations. Once you have a man-page on the screen, you can generate its content by using stadnard `gO` command in normal mode.
-
-#### Example
 
 ```vim
 :Man ls   "Opens man-page for linux ls command

@@ -4,8 +4,6 @@
 ---
 Use `:jumps` to show the jump list with all stored positions.
 
-#### Example
-
 ```vim
 :jumps  " show jump list
 ```
@@ -27,8 +25,6 @@ gx  " open URL under cursor in browser (https://example.com)
 ---
 Use `gr` to go to references of symbol under cursor (requires LSP server).
 
-#### Example
-
 ```vim
 gr  " go to references
 ```
@@ -38,8 +34,6 @@ gr  " go to references
 # Tags: lsp, declaration, goto
 ---
 Use `gD` to go to declaration of symbol under cursor.
-
-#### Example
 
 ```vim
 gD  " go to declaration
@@ -51,8 +45,6 @@ gD  " go to declaration
 ---
 Use `` `. `` to jump to the exact location of the last edit.
 
-#### Example
-
 ```vim
 `.  " jump to last edit location
 ```
@@ -63,8 +55,6 @@ Use `` `. `` to jump to the exact location of the last edit.
 ---
 Use `:ju` to list all jump locations in the jump list.
 
-#### Example
-
 ```vim
 :ju  " list jump locations
 ```
@@ -74,8 +64,6 @@ Use `:ju` to list all jump locations in the jump list.
 # Tags: quickfix, navigation, errors
 ---
 Use `:cnext` to go to next item in quickfix list and `:cprev` to go to previous item.
-
-#### Example
 
 ```vim
 :cnext  " next quickfix item
@@ -101,8 +89,6 @@ Use `[q` and `]q` to navigate quickfix items, `[l` and `]l` for location list it
 ---
 Use `[{` to jump to start of current block and `]}` to jump to end of current block.
 
-#### Example
-
 ```vim
 [{  " jump to block start
 ]}  " jump to block end
@@ -113,8 +99,6 @@ Use `[{` to jump to start of current block and `]}` to jump to end of current bl
 # Tags: function, jump, treesitter
 ---
 Use `]m` to jump to next function start and `[m` to jump to previous function start.
-
-#### Example
 
 ```vim
 ]m  " next function start
@@ -127,8 +111,6 @@ Use `]m` to jump to next function start and `[m` to jump to previous function st
 ---
 Use `Ctrl+]` to jump to tag under cursor, or `Ctrl+T` to jump back. Requires tags file.
 
-#### Example
-
 ```vim
 Ctrl+]  " jump to tag
 Ctrl+T  " jump back
@@ -139,8 +121,6 @@ Ctrl+T  " jump back
 # Tags: alternate, file, header, source
 ---
 Use `:A` to switch to alternate file (e.g., .h to .c), or `Ctrl+^` to switch to previous buffer.
-
-#### Example
 
 ```vim
 :A      " alternate file
@@ -153,8 +133,6 @@ Ctrl+^  " previous buffer
 ---
 Use `Ctrl+W ]` to open tag definition in new split window.
 
-#### Example
-
 ```vim
 Ctrl+W ]  " open tag in split
 ```
@@ -164,8 +142,6 @@ Ctrl+W ]  " open tag in split
 # Tags: buffer, switching, shortcuts, quick
 ---
 Use `:ls` to list buffers, `:b#` for previous buffer, or create mappings for quick buffer navigation.
-
-#### Example
 
 ```vim
 :ls         " list all buffers
@@ -180,8 +156,6 @@ Ctrl+^      " alternate between current and previous buffer
 ---
 Use `:{number}G` or `:{number}` to jump to specific line, or `:echo line('$')` to see total lines.
 
-#### Example
-
 ```vim
 :42G        " jump to line 42
 :42         " jump to line 42 (alternative)
@@ -194,8 +168,6 @@ G           " jump to last line
 # Tags: buffer, fast, access, number
 ---
 Create mappings to quickly access first nine buffers using leader key combinations.
-
-#### Example
 
 ```vim
 nnoremap <leader>1 :1b<CR>
@@ -212,8 +184,6 @@ nnoremap <leader>5 :5b<CR>
 ---
 Use `%` to jump to matching brace/bracket/parenthesis, works with (), [], {}, and more.
 
-#### Example
-
 ```vim
 %   " jump to matching brace/bracket/parenthesis
 [%  " jump to previous unmatched (
@@ -225,8 +195,6 @@ Use `%` to jump to matching brace/bracket/parenthesis, works with (), [], {}, an
 # Tags: bracket, unmatched, navigation
 ---
 Use `[(` and `])` to jump to unmatched parentheses, `[{` and `]}` to jump to unmatched braces.
-
-#### Example
 
 ```vim
 [(  " jump to previous unmatched (
@@ -241,8 +209,6 @@ Use `[(` and `])` to jump to unmatched parentheses, `[{` and `]}` to jump to unm
 ---
 Use `[[` and `]]` to jump between sections, `[]` and `][` to jump between SECTIONS (different formatting).
 
-#### Example
-
 ```vim
 [[  " jump to previous section
 ]]  " jump to next section
@@ -255,8 +221,6 @@ Use `[[` and `]]` to jump between sections, `[]` and `][` to jump between SECTIO
 # Tags: mark, navigation, position
 ---
 Use `['` and `]'` to jump to previous/next lowercase mark (first non-blank), `` [` `` and `` ]` `` to jump to exact mark position.
-
-#### Example
 
 ```vim
 ['  " jump to previous mark (first non-blank)
@@ -271,8 +235,6 @@ Use `['` and `]'` to jump to previous/next lowercase mark (first non-blank), `` 
 ---
 Use `[/` and `]/` to jump to start/end of C-style comments. Use `[*` as alternative to `[/`.
 
-#### Example
-
 ```vim
 [/  " jump to previous start of C comment
 ]/  " jump to next end of C comment
@@ -286,8 +248,6 @@ Use `[/` and `]/` to jump to start/end of C-style comments. Use `[*` as alternat
 ---
 Use `[#` and `]#` to jump between #if/#else/#endif blocks.
 
-#### Example
-
 ```vim
 [#  " jump to previous #if, #else, or #ifdef
 ]#  " jump to next #endif or #else
@@ -298,8 +258,6 @@ Use `[#` and `]#` to jump between #if/#else/#endif blocks.
 # Tags: definition, include, search
 ---
 Use `[Ctrl+d`/`]Ctrl+d` to jump to #define, `[Ctrl+i`/`]Ctrl+i` to jump to lines containing word under cursor.
-
-#### Example
 
 ```vim
 [Ctrl+d  " jump to previous #define matching word
@@ -314,8 +272,6 @@ Use `[Ctrl+d`/`]Ctrl+d` to jump to #define, `[Ctrl+i`/`]Ctrl+i` to jump to lines
 ---
 Use `[D`/`]D` to list all #defines, `[I`/`]I` to list all lines containing word under cursor.
 
-#### Example
-
 ```vim
 [D  " list all #defines matching word under cursor
 ]D  " list all #defines matching word under cursor  
@@ -328,8 +284,6 @@ Use `[D`/`]D` to list all #defines, `[I`/`]I` to list all lines containing word 
 # Tags: show, definition, preview
 ---
 Use `[d`/`]d` to show first #define, `[i`/`]i` to show first line containing word under cursor.
-
-#### Example
 
 ```vim
 [d  " show first #define matching word
@@ -344,8 +298,6 @@ Use `[d`/`]d` to show first #define, `[i`/`]i` to show first line containing wor
 ---
 Use `[c` and `]c` to jump between changes in diff mode.
 
-#### Example
-
 ```vim
 [c  " jump to previous change
 ]c  " jump to next change
@@ -356,8 +308,6 @@ Use `[c` and `]c` to jump between changes in diff mode.
 # Tags: spelling, error, navigation
 ---
 Use `[s` and `]s` to jump between misspelled words.
-
-#### Example
 
 ```vim
 [s  " jump to previous misspelled word
@@ -370,8 +320,6 @@ Use `[s` and `]s` to jump between misspelled words.
 ---
 Use `[z` and `]z` to jump to start/end of open fold.
 
-#### Example
-
 ```vim
 [z  " jump to start of open fold
 ]z  " jump to end of open fold
@@ -383,8 +331,6 @@ Use `[z` and `]z` to jump to start/end of open fold.
 ---
 Use `[m` and `]m` to jump between member function starts.
 
-#### Example
-
 ```vim
 [m  " jump to previous start of member function
 ]m  " jump to next start of member function
@@ -395,8 +341,6 @@ Use `[m` and `]m` to jump between member function starts.
 # Tags: netrw, explorer, toggle, file, browser
 ---
 Use `:Lexplore` to toggle the netrw file explorer in a vertical split on the left side.
-
-#### Example
 
 ```vim
 :Lexplore    " toggle left explorer
@@ -410,8 +354,6 @@ Use `:Lexplore` to toggle the netrw file explorer in a vertical split on the lef
 # Tags: parenthesis
 ---
 Position your cursor on `(`, `)`, `[`, `]`, `{`, `}`. Use `%` to jump between corresponding opening and closing symbols.
-
-### Example
 
 ```vim
 %   "jumps between corresponding parenthesis

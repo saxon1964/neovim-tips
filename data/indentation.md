@@ -4,8 +4,6 @@
 ---
 Use `==` to auto-indent current line, or `{number}==` to auto-indent multiple lines.
 
-#### Example
-
 ```vim
 ==   " auto-indent current line
 5==  " auto-indent 5 lines
@@ -16,8 +14,6 @@ Use `==` to auto-indent current line, or `{number}==` to auto-indent multiple li
 # Tags: indent, shift, format
 ---
 Use `>>` to indent current line right, `<<` to indent left, or use with numbers for multiple lines.
-
-#### Example
 
 ```vim
 >>   " indent line right

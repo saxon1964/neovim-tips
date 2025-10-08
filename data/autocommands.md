@@ -18,8 +18,6 @@ vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost" }, {
 ---
 Use `FocusLost` autocommand to automatically save all buffers when vim loses focus.
 
-#### Example
-
 ```vim
 :autocmd FocusLost * :wa
 " Auto-save all buffers when switching away from vim
@@ -30,8 +28,6 @@ Use `FocusLost` autocommand to automatically save all buffers when vim loses foc
 # Tags: autocmd, checktime, FileChangedShellPost, reload
 ---
 Use `FileChangedShellPost` and `checktime` to automatically reload files changed by external programs.
-
-#### Example
 
 ```vim
 :set autoread
@@ -45,8 +41,6 @@ Use `FileChangedShellPost` and `checktime` to automatically reload files changed
 ---
 Use `BufWritePre` autocommand to automatically remove trailing whitespace before saving files.
 
-#### Example
-
 ```vim
 :autocmd BufWritePre * :%s/\s\+$//e
 " Remove trailing whitespace on all file saves
@@ -59,8 +53,6 @@ Use `BufWritePre` autocommand to automatically remove trailing whitespace before
 ---
 Use `BufWritePre` to automatically create parent directories when saving files to new paths.
 
-#### Example
-
 ```vim
 :autocmd BufWritePre * call mkdir(expand('<afile>:p:h'), 'p')
 " Creates parent directories if they don't exist
@@ -72,8 +64,6 @@ Use `BufWritePre` to automatically create parent directories when saving files t
 # Tags: autocmd, BufReadPost, cursor, position
 ---
 Use `BufReadPost` to automatically jump to the last known cursor position when reopening files.
-
-#### Example
 
 ```vim
 :autocmd BufReadPost * 
@@ -89,8 +79,6 @@ Use `BufReadPost` to automatically jump to the last known cursor position when r
 ---
 Use `BufRead` autocommands to set file types based on file content or patterns not caught by default detection.
 
-#### Example
-
 ```vim
 :autocmd BufRead,BufNewFile *.conf set filetype=conf
 :autocmd BufRead,BufNewFile Jenkinsfile set filetype=groovy  
@@ -102,8 +90,6 @@ Use `BufRead` autocommands to set file types based on file content or patterns n
 # Tags: autocmd, BufWritePre, format, lsp
 ---
 Use `BufWritePre` with LSP or external formatters to automatically format code before saving.
-
-#### Example
 
 ```vim
 :autocmd BufWritePre *.js,*.ts,*.jsx,*.tsx lua vim.lsp.buf.format()
@@ -118,8 +104,6 @@ Use `BufWritePre` with LSP or external formatters to automatically format code b
 ---
 Use autocommands to dynamically highlight long lines or set color column based on file type.
 
-#### Example
-
 ```vim
 :autocmd FileType python setlocal colorcolumn=88
 :autocmd FileType javascript,typescript setlocal colorcolumn=100
@@ -132,8 +116,6 @@ Use autocommands to dynamically highlight long lines or set color column based o
 # Tags: autocmd, BufWritePost, compile, build
 ---
 Use `BufWritePost` to automatically compile or build files after saving them.
-
-#### Example
 
 ```vim
 :autocmd BufWritePost *.c,*.cpp !gcc % -o %:r
@@ -148,8 +130,6 @@ Use `BufWritePost` to automatically compile or build files after saving them.
 ---
 Use `WinEnter` and `WinLeave` to show cursor line highlighting only in the active window.
 
-#### Example
-
 ```vim
 :autocmd WinEnter * set cursorline
 :autocmd WinLeave * set nocursorline
@@ -162,8 +142,6 @@ Use `WinEnter` and `WinLeave` to show cursor line highlighting only in the activ
 ---
 Use `VimResized` autocommand to automatically redistribute window sizes when terminal is resized.
 
-#### Example
-
 ```vim
 :autocmd VimResized * wincmd =
 " Equalizes window sizes when vim is resized
@@ -175,8 +153,6 @@ Use `VimResized` autocommand to automatically redistribute window sizes when ter
 # Tags: autocmd, BufEnter, cd, directory
 ---
 Use `BufEnter` to automatically change working directory to the current file's directory.
-
-#### Example
 
 ```vim
 :autocmd BufEnter * cd %:p:h
@@ -191,8 +167,6 @@ Use `BufEnter` to automatically change working directory to the current file's d
 ---
 Use `BufNewFile` to automatically insert templates or skeleton code for new files.
 
-#### Example
-
 ```vim
 :autocmd BufNewFile *.html 0r ~/.vim/templates/html_template.html
 :autocmd BufNewFile *.py 0r ~/.vim/templates/python_template.py
@@ -204,8 +178,6 @@ Use `BufNewFile` to automatically insert templates or skeleton code for new file
 # Tags: autocmd, InsertEnter, InsertLeave, relativenumber
 ---
 Use insert mode events to toggle relative line numbers, showing absolute numbers in insert mode.
-
-#### Example
 
 ```vim
 :autocmd InsertEnter * set norelativenumber
@@ -219,8 +191,6 @@ Use insert mode events to toggle relative line numbers, showing absolute numbers
 ---
 Use `FileType` autocommands to enable spell checking for text-based file types automatically.
 
-#### Example
-
 ```vim
 :autocmd FileType markdown,text,gitcommit set spell spelllang=en_us
 :autocmd FileType help set nospell
@@ -232,8 +202,6 @@ Use `FileType` autocommands to enable spell checking for text-based file types a
 # Tags: autocmd, QuickFixCmdPost, quickfix, close
 ---
 Use `QuickFixCmdPost` to automatically close quickfix window when it's empty or open it when populated.
-
-#### Example
 
 ```vim
 :autocmd QuickFixCmdPost [^l]* copen
@@ -248,8 +216,6 @@ Use `QuickFixCmdPost` to automatically close quickfix window when it's empty or 
 ---
 Use `TextYankPost` to briefly highlight yanked text, making copy operations more visible.
 
-#### Example
-
 ```vim
 :autocmd TextYankPost * silent! lua vim.highlight.on_yank()
 " In vimscript: 
@@ -263,8 +229,6 @@ Use `TextYankPost` to briefly highlight yanked text, making copy operations more
 ---
 Use `BufWritePre` to create timestamped backups of important configuration files before saving.
 
-#### Example
-
 ```vim
 :autocmd BufWritePre .vimrc,init.lua,init.vim 
     \ execute 'write! ' . expand('%') . '.backup.' . strftime('%Y%m%d_%H%M%S')
@@ -277,8 +241,6 @@ Use `BufWritePre` to create timestamped backups of important configuration files
 ---
 Use `FileType` autocommands to set language-specific indentation and tab settings.
 
-#### Example
-
 ```vim
 :autocmd FileType python setlocal tabstop=4 shiftwidth=4 expandtab
 :autocmd FileType javascript,json setlocal tabstop=2 shiftwidth=2 expandtab
@@ -290,8 +252,6 @@ Use `FileType` autocommands to set language-specific indentation and tab setting
 # Tags: autocmd, BufWritePost, chmod, executable
 ---
 Use `BufWritePost` to automatically make shell scripts executable after saving them.
-
-#### Example
 
 ```vim
 :autocmd BufWritePost *.sh,*.py,*.pl,*.rb silent !chmod +x %

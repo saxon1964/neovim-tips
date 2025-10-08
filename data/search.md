@@ -4,8 +4,6 @@
 ---
 Use `:%s/old/new/g` to replace all occurrences of 'old' with 'new' in the entire file.
 
-#### Example
-
 ```vim
 :%s/foo/bar/g  " replace all 'foo' with 'bar'
 ```
@@ -15,8 +13,6 @@ Use `:%s/old/new/g` to replace all occurrences of 'old' with 'new' in the entire
 # Tags: search, highlight, remove
 ---
 Use `:nohl` to remove search highlighting after performing a search.
-
-#### Example
 
 ```vim
 :nohl
@@ -28,8 +24,6 @@ Use `:nohl` to remove search highlighting after performing a search.
 ---
 Use `:'<,'>s/old/new/g` to replace only in visual selection.
 
-#### Example
-
 ```vim
 :'<,'>s/foo/bar/g  " replace in selection
 ```
@@ -39,8 +33,6 @@ Use `:'<,'>s/old/new/g` to replace only in visual selection.
 # Tags: search, case, insensitive
 ---
 Use `/pattern\c` for case insensitive search, or `/pattern\C` for case sensitive search.
-
-#### Example
 
 ```vim
 /hello\c  " case insensitive
@@ -53,8 +45,6 @@ Use `/pattern\c` for case insensitive search, or `/pattern\C` for case sensitive
 ---
 Use `\v` at start of search pattern for "very magic" mode, making regex more intuitive (similar to other languages).
 
-#### Example
-
 ```vim
 /\v(hello|world)  " search for 'hello' or 'world'
 /\vd+             " search for one or more digits
@@ -65,8 +55,6 @@ Use `\v` at start of search pattern for "very magic" mode, making regex more int
 # Tags: search, backward, reverse
 ---
 Use `?pattern` to search backward for a pattern. Press `n` to go to next match and `N` for previous.
-
-#### Example
 
 ```vim
 ?hello  " search backward for 'hello'
@@ -80,8 +68,6 @@ N       " previous match (forward)
 ---
 Use `:vimgrep /pattern/ **/*.ext` to search for pattern recursively in files with specific extension.
 
-#### Example
-
 ```vim
 :vimgrep /pattern/ **/*.lua  " search in all .lua files
 ```
@@ -91,8 +77,6 @@ Use `:vimgrep /pattern/ **/*.ext` to search for pattern recursively in files wit
 # Tags: replace, regex, advanced
 ---
 Use `:%s/\v(foo|bar)/baz/g` to replace either 'foo' or 'bar' with 'baz' using very magic mode.
-
-#### Example
 
 ```vim
 :%s/\v(foo|bar)/baz/g  " replace foo or bar with baz
@@ -104,8 +88,6 @@ Use `:%s/\v(foo|bar)/baz/g` to replace either 'foo' or 'bar' with 'baz' using ve
 ---
 Use `:%s//replacement/g` to use the last search pattern in substitution command.
 
-#### Example
-
 ```vim
 :%s//new_text/g  " replace last searched pattern with new_text
 ```
@@ -115,8 +97,6 @@ Use `:%s//replacement/g` to use the last search pattern in substitution command.
 # Tags: delete, pattern, global, lines
 ---
 Use `:g/pattern/d` to delete all lines containing a pattern, or `:g!/pattern/d` to delete lines NOT containing pattern.
-
-#### Example
 
 ```vim
 :g/pattern/d        " delete all lines containing 'pattern'
@@ -131,8 +111,6 @@ Use `:g/pattern/d` to delete all lines containing a pattern, or `:g!/pattern/d` 
 ---
 Use `:g/pattern/command` to execute a command on all lines matching pattern.
 
-#### Example
-
 ```vim
 :g/TODO/d        " delete all lines containing TODO
 :g/function/p    " print all lines containing 'function'
@@ -144,8 +122,6 @@ Use `:g/pattern/command` to execute a command on all lines matching pattern.
 # Tags: search, regex, word, boundary, magic
 ---
 Use `\v` for very magic mode to make regex more intuitive, or `\<word\>` for exact word boundaries.
-
-#### Example
 
 ```vim
 /\v(hello|world)  " search for 'hello' or 'world' (very magic)
@@ -159,8 +135,6 @@ Use `\v` for very magic mode to make regex more intuitive, or `\<word\>` for exa
 ---
 Use `:g/pattern/command` to execute command on all lines matching pattern.
 
-#### Example
-
 ```vim
 :g/TODO/d        " delete all lines containing TODO
 :g/^$/d          " delete all empty lines
@@ -173,8 +147,6 @@ Use `:g/pattern/command` to execute command on all lines matching pattern.
 ---
 Use `:v/pattern/command` or `:g!/pattern/command` to execute command on lines NOT matching pattern.
 
-#### Example
-
 ```vim
 :v/pattern/d     " delete lines NOT containing pattern
 :g!/TODO/p       " print lines NOT containing TODO
@@ -185,8 +157,6 @@ Use `:v/pattern/command` or `:g!/pattern/command` to execute command on lines NO
 # Tags: search, multiline, pattern, regex
 ---
 Use `\_s` for whitespace including newlines, `\_.*` to match across lines in search patterns.
-
-#### Example
 
 ```vim
 /function\_s*name    " function followed by whitespace/newlines
@@ -199,8 +169,6 @@ Use `\_s` for whitespace including newlines, `\_.*` to match across lines in sea
 ---
 Use `/pattern/+n` to position cursor n lines after match, or `/pattern/-n` for n lines before.
 
-#### Example
-
 ```vim
 /function/+2     " position cursor 2 lines after 'function'
 /end/-1          " position cursor 1 line before 'end'
@@ -211,8 +179,6 @@ Use `/pattern/+n` to position cursor n lines after match, or `/pattern/-n` for n
 # Tags: replace, visual, selection, visual-pattern
 ---
 Use `\%V` in search pattern to restrict replacement to only the visual selection area.
-
-#### Example
 
 ```vim
 " After making visual selection:

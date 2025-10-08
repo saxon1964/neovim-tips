@@ -4,8 +4,6 @@
 ---
 Use `=ap` to format syntax-aware regions using Treesitter (when available).
 
-#### Example
-
 ```vim
 =ap  " format around paragraph with Treesitter
 ```
@@ -15,8 +13,6 @@ Use `=ap` to format syntax-aware regions using Treesitter (when available).
 # Tags: paragraph, textwidth, reflow
 ---
 Automatically format paragraphs to specified width using textwidth and format commands.
-
-#### Example
 
 ```vim
 :set textwidth=60      " set line width to 60 characters
@@ -29,8 +25,6 @@ gqip                   " reformat inner paragraph
 # Tags: comment, filetype, toggle
 ---
 Automatically comment/uncomment lines based on current file type.
-
-#### Example
 
 ```vim
 function CommentIt()
@@ -50,8 +44,6 @@ autocmd BufEnter * call CommentIt()
 # Tags: text, width, format, autowrap, textwidth
 ---
 Use `:set textwidth=80` to automatically wrap lines at 80 characters while typing.
-
-#### Example
 
 ```vim
 :set textwidth=80   " wrap at 80 characters

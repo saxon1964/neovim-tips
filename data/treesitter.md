@@ -4,8 +4,6 @@
 ---
 Use `Ctrl-space` to start incremental selection, then repeat to expand selection based on syntax tree.
 
-#### Example
-
 ```vim
 Ctrl-space  " start/expand selection
 Ctrl-x      " shrink selection (if configured)
@@ -17,8 +15,6 @@ Ctrl-x      " shrink selection (if configured)
 ---
 Use `:TSPlaygroundToggle` to open treesitter playground for exploring syntax tree interactively.
 
-#### Example
-
 ```vim
 :TSPlaygroundToggle  " toggle treesitter playground
 ```
@@ -28,8 +24,6 @@ Use `:TSPlaygroundToggle` to open treesitter playground for exploring syntax tre
 # Tags: treesitter, folding, code, structure
 ---
 Set `foldmethod=expr` and `foldexpr=nvim_treesitter#foldexpr()` to use treesitter-based folding.
-
-#### Example
 
 ```vim
 :set foldmethod=expr
@@ -41,8 +35,6 @@ Set `foldmethod=expr` and `foldexpr=nvim_treesitter#foldexpr()` to use treesitte
 # Tags: treesitter, navigation, nodes, movement
 ---
 Use `]f` and `[f` to navigate between function nodes, or `]c` and `[c` for class nodes (if configured).
-
-#### Example
 
 ```vim
 ]f  " next function
@@ -57,8 +49,6 @@ Use `]f` and `[f` to navigate between function nodes, or `]c` and `[c` for class
 ---
 Use treesitter to swap function parameters or other syntax nodes using configured keymaps.
 
-#### Example
-
 ```vim
 gs  " swap with next parameter/node
 gS  " swap with previous parameter/node
@@ -69,8 +59,6 @@ gS  " swap with previous parameter/node
 # Tags: treesitter, install, parser, language
 ---
 Use `:TSInstall <language>` to install treesitter parser for a specific language.
-
-#### Example
 
 ```vim
 :TSInstall lua        " install Lua parser

@@ -16,8 +16,6 @@ dg_    " delete to last non-blank character
 ---
 Use `h`, `j`, `k`, `l` to move the cursor left, down, up, and right respectively.
 
-#### Example
-
 ```vim
 h  " move left
 j  " move down
@@ -31,8 +29,6 @@ l  " move right
 ---
 Use `w` to jump to the start of the next word, `e` to jump to the end of the current word, and `b` to jump backwards to the start of the previous word.
 
-#### Example
-
 ```vim
 w  " next word start
 e  " end of word
@@ -44,8 +40,6 @@ b  " previous word start
 # Tags: line, navigation, movement
 ---
 Use `0` to jump to the beginning of the line, `^` to jump to the first non-blank character, and `$` to jump to the end of the line.
-
-#### Example
 
 ```vim
 0  " line start
@@ -59,8 +53,6 @@ $  " line end
 ---
 Use `gg` to go to the first line of the document and `G` to go to the last line.
 
-#### Example
-
 ```vim
 gg  " first line
 G   " last line
@@ -71,8 +63,6 @@ G   " last line
 # Tags: scroll, screen, navigation
 ---
 Use `Ctrl+e` to scroll down and `Ctrl+y` to scroll up without moving the cursor position.
-
-#### Example
 
 ```vim
 Ctrl+e  " scroll down
@@ -85,8 +75,6 @@ Ctrl+y  " scroll up
 ---
 Use `zz` to center the current line on screen, `zt` to move it to the top, and `zb` to move it to the bottom.
 
-#### Example
-
 ```vim
 zz  " center line
 zt  " line to top
@@ -98,8 +86,6 @@ zb  " line to bottom
 # Tags: page, scroll, movement
 ---
 Use `Ctrl+f` to move forward one full page, `Ctrl+b` to move backward one full page, `Ctrl+d` to move down half page, and `Ctrl+u` to move up half page.
-
-#### Example
 
 ```vim
 Ctrl+f  " forward full page
@@ -114,8 +100,6 @@ Ctrl+u  " up half page
 ---
 Use `{number}G` to jump to a specific line number, or `:{number}` as an alternative.
 
-#### Example
-
 ```vim
 42G   " jump to line 42
 :42   " jump to line 42
@@ -126,8 +110,6 @@ Use `{number}G` to jump to a specific line number, or `:{number}` as an alternat
 # Tags: character, find, line
 ---
 Use `f{char}` to find next occurrence of character, `F{char}` to find previous occurrence, `t{char}` to move to before next occurrence, and `T{char}` to move to after previous occurrence.
-
-#### Example
 
 ```vim
 fa  " find next 'a'
@@ -142,8 +124,6 @@ Ta  " move to after previous 'a'
 ---
 Use `;` to repeat last character search in the same direction and `,` to repeat in the opposite direction.
 
-#### Example
-
 ```vim
 ;  " repeat search forward
 ,  " repeat search backward
@@ -155,8 +135,6 @@ Use `;` to repeat last character search in the same direction and `,` to repeat 
 ---
 Use `%` to jump to the matching bracket, parenthesis, or brace.
 
-#### Example
-
 ```vim
 %  " jump to matching bracket
 ```
@@ -166,8 +144,6 @@ Use `%` to jump to the matching bracket, parenthesis, or brace.
 # Tags: screen, position, navigation
 ---
 Use `H` to move cursor to top of screen and `L` to move cursor to bottom of screen.
-
-#### Example
 
 ```vim
 H  " move to top of screen
@@ -180,8 +156,6 @@ L  " move to bottom of screen
 ---
 Use `gd` to jump to the definition of the symbol under the cursor (requires LSP). Use `gD` to go to declaration instead of definition.
 
-#### Example
-
 ```vim
 gd  " go to definition
 gD  " go to declaration
@@ -192,8 +166,6 @@ gD  " go to declaration
 # Tags: jump, list, navigation
 ---
 Use `Ctrl+o` to go back to previous location and `Ctrl+i` to go forward in the jump list. Use `:jumps` to see the jump list.
-
-#### Example
 
 ```vim
 Ctrl+o  " previous location
@@ -207,8 +179,6 @@ Ctrl+i  " next location
 ---
 Use `g;` to go to previous change location and `g,` to go to next change location. Use `:changes` to see the change list.
 
-#### Example
-
 ```vim
 g;       " previous change
 g,       " next change
@@ -221,8 +191,6 @@ g,       " next change
 ---
 Use `M` to move cursor to the middle line of the screen.
 
-#### Example
-
 ```vim
 M  " move to middle of screen
 ```
@@ -232,8 +200,6 @@ M  " move to middle of screen
 # Tags: paragraph, navigation, text
 ---
 Use `{` to move to the beginning of current paragraph and `}` to move to the beginning of next paragraph.
-
-#### Example
 
 ```vim
 {  " previous paragraph
@@ -246,8 +212,6 @@ Use `{` to move to the beginning of current paragraph and `}` to move to the beg
 ---
 Use `(` to move to the beginning of current sentence and `)` to move to the beginning of next sentence.
 
-#### Example
-
 ```vim
 (  " previous sentence
 )  " next sentence
@@ -258,8 +222,6 @@ Use `(` to move to the beginning of current sentence and `)` to move to the begi
 # Tags: word, WORD, movement, whitespace
 ---
 Use `W` to jump to start of next WORD, `E` to jump to end of current WORD, and `B` to jump to start of previous WORD (WORD means whitespace-separated).
-
-#### Example
 
 ```vim
 W  " next WORD (whitespace-separated)
@@ -272,8 +234,6 @@ B  " previous WORD
 # Tags: alternative, movement, keys
 ---
 Use `Ctrl+h` (same as `h`), `Ctrl+j` (same as `j`), `Ctrl+k` (same as `k`), `Ctrl+n` (same as `j`), `Ctrl+p` (same as `k`) as alternative movement keys.
-
-#### Example
 
 ```vim
 Ctrl+h  " same as h (left)
@@ -288,8 +248,6 @@ Ctrl+p  " same as k (up)
 # Tags: line, number, goto, absolute
 ---
 Use `{number}gg` or `{number}G` to go to absolute line number, where `{number}` is the line you want to jump to.
-
-#### Example
 
 ```vim
 42gg  " go to line 42
@@ -309,8 +267,6 @@ Use `Ctrl+z` to suspend Neovim and return to shell (terminal). You can do whatev
 
 The number in square brackets is the number of the job that can be resumed. Just use `fg #` (in the shell) followed by job number to resume the job:
 
-#### Example
-
 ```vim
 Ctrl+z  " suspend to shell
 jobs    " list suspended jobs
@@ -322,8 +278,6 @@ fg #5   " resume job #5
 # Tags: scroll, page, cursor, position
 ---
 Use `Ctrl+f` to scroll forward full page, `Ctrl+b` backward full page, `Ctrl+d` down half page, `Ctrl+u` up half page, `Ctrl+e` scroll up (cursor stays), `Ctrl+y` scroll down (cursor stays).
-
-#### Example
 
 ```vim
 Ctrl+f  " page forward
@@ -340,8 +294,6 @@ Ctrl+y  " scroll down (cursor stays)
 ---
 Use `z<Enter>` to redraw with cursor at top (first non-blank), `z.` for center, `z-` for bottom.
 
-#### Example
-
 ```vim
 z<Enter>  " redraw, cursor line at top (first non-blank)
 z.        " redraw, cursor line at center (first non-blank)  
@@ -353,8 +305,6 @@ z-        " redraw, cursor line at bottom (first non-blank)
 # Tags: scroll, horizontal, wrap, screen
 ---
 Use `zh`/`zl` to scroll left/right by character, `zH`/`zL` for half-screen, `zs`/`ze` to position cursor at start/end.
-
-#### Example
 
 ```vim
 zh  " scroll right (when wrap is off)
@@ -371,8 +321,6 @@ ze  " scroll cursor to end of screen
 ---
 Use `z{height}<Enter>` to set window height and redraw, `z+` for line below window, `z^` for line above.
 
-#### Example
-
 ```vim
 z20<Enter>  " make window 20 lines high
 z+          " cursor to line below window
@@ -384,8 +332,6 @@ z^          " cursor to line above window
 # Tags: jump, lines, arrows, count
 ---
 Use number + arrow keys to jump multiple lines quickly. More intuitive than `j`/`k` for some users.
-
-#### Example
 
 ```vim
 5↑    " jump 5 lines up

@@ -4,8 +4,6 @@
 ---
 Use `vim.loop.spawn()` to run shell commands asynchronously without blocking Neovim.
 
-#### Example
-
 ```vim
 :lua vim.loop.spawn("ls", {args={"-la"}}, function() print("Done!") end)
 ```
@@ -15,8 +13,6 @@ Use `vim.loop.spawn()` to run shell commands asynchronously without blocking Neo
 # Tags: command, output, read, external
 ---
 Use `:r !command` to read external command output into current buffer at cursor position.
-
-#### Example
 
 ```vim
 :r !ls              " insert file listing
@@ -31,8 +27,6 @@ Use `:r !command` to read external command output into current buffer at cursor 
 ---
 Use `:w !command` to pipe buffer contents to external command without saving file.
 
-#### Example
-
 ```vim
 :w !wc              " count words without saving
 :w !python          " execute buffer as Python script
@@ -45,8 +39,6 @@ Use `:w !command` to pipe buffer contents to external command without saving fil
 # Tags: execute, line, command, shell
 ---
 Use `!!` to replace current line with output of line executed as shell command.
-
-#### Example
 
 ```vim
 !!date              " replace line with current date
@@ -62,8 +54,6 @@ V!!sort             " sort selected lines in place
 ---
 Use `:!command` to run external commands, `:!!` to repeat last command, `:silent !` to run without output.
 
-#### Example
-
 ```vim
 :!ls              " run ls command
 :!make            " run make command
@@ -77,8 +67,6 @@ Use `:!command` to run external commands, `:!!` to repeat last command, `:silent
 ---
 Use `:shell` to start shell, `:cd` to change directory, `:pwd` to show current directory, `:lcd` for local directory.
 
-#### Example
-
 ```vim
 :shell         " start interactive shell
 :cd /home/user " change to directory
@@ -91,8 +79,6 @@ Use `:shell` to start shell, `:cd` to change directory, `:pwd` to show current d
 # Tags: ex, make, quickfix, error, jump
 ---
 Use `:make` to run make command, `:copen` for quickfix window, `:cnext`/`:cprev` to navigate errors.
-
-#### Example
 
 ```vim
 :make           " run make command
@@ -110,8 +96,6 @@ Use `:make` to run make command, `:copen` for quickfix window, `:cnext`/`:cprev`
 ---
 Use `:!mkdir`, `:!rm`, `:!mv` for file operations, or use Neovim's built-in file functions.
 
-#### Example
-
 ```vim
 :!mkdir newdir        " create directory
 :!rm file.txt         " delete file
@@ -124,8 +108,6 @@ Use `:!mkdir`, `:!rm`, `:!mv` for file operations, or use Neovim's built-in file
 # Tags: redirect, output, capture, redir
 ---
 Use `:redir` to redirect command output to variables, registers, or files for later use.
-
-#### Example
 
 ```vim
 :redir @a           " redirect to register 'a'
@@ -143,8 +125,6 @@ Use `:redir` to redirect command output to variables, registers, or files for la
 # Tags: confirm, dialog, save, quit, dangerous
 ---
 Use `:confirm {command}` to show confirmation dialog for potentially dangerous operations.
-
-#### Example
 
 ```vim
 :confirm quit     " show dialog if unsaved changes exist

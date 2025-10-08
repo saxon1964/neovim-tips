@@ -4,8 +4,6 @@
 ---
 Use Lua's require system to load and organize Neovim configuration modules with automatic caching and reloading.
 
-#### Example
-
 ```vim
 " Create ~/.config/nvim/lua/config/keymaps.lua
 :lua require('config.keymaps')
@@ -18,8 +16,6 @@ Use Lua's require system to load and organize Neovim configuration modules with 
 # Tags: extmarks, highlight, persistent, namespace
 ---
 Use extmarks to create persistent, trackable highlights that survive buffer changes, unlike matchadd().
-
-#### Example
 
 ```vim
 :lua ns = vim.api.nvim_create_namespace('my_highlights')
@@ -35,8 +31,6 @@ Use extmarks to create persistent, trackable highlights that survive buffer chan
 ---
 Use virtual text to display inline annotations like diagnostics, git blame, or documentation without modifying buffer content.
 
-#### Example
-
 ```vim
 :lua vim.api.nvim_buf_set_extmark(0, ns, vim.fn.line('.')-1, 0, {
   virt_text = {{'← This is a note', 'Comment'}},
@@ -51,8 +45,6 @@ Use virtual text to display inline annotations like diagnostics, git blame, or d
 ---
 Use `vim.b` to access buffer-local variables from Lua, providing cleaner syntax than traditional vim variables.
 
-#### Example
-
 ```vim
 :lua vim.b.my_setting = 'value'
 :lua print(vim.b.my_setting)
@@ -66,8 +58,6 @@ Use `vim.b` to access buffer-local variables from Lua, providing cleaner syntax 
 ---
 Use `vim.w` to manage window-local variables from Lua for window-specific settings and state.
 
-#### Example
-
 ```vim
 :lua vim.w.quickfix_title = 'My Results'
 :lua vim.w[1001].custom_setting = true  " specific window ID
@@ -79,8 +69,6 @@ Use `vim.w` to manage window-local variables from Lua for window-specific settin
 # Tags: global, variables, vim.g, configuration
 ---
 Use `vim.g` to manage global variables from Lua, providing type-safe access to vim global variables.
-
-#### Example
 
 ```vim
 :lua vim.g.mapleader = ' '
@@ -95,8 +83,6 @@ Use `vim.g` to manage global variables from Lua, providing type-safe access to v
 ---
 Use `vim.t` to manage tab-local variables for tab-specific settings and state management.
 
-#### Example
-
 ```vim
 :lua vim.t.project_root = vim.fn.getcwd()
 :lua vim.t[2].custom_title = 'Tab 2'  " specific tab
@@ -108,8 +94,6 @@ Use `vim.t` to manage tab-local variables for tab-specific settings and state ma
 # Tags: lua, heredoc, multiline, syntax
 ---
 Use Lua heredoc syntax in vimscript for clean multiline Lua code blocks within vim configuration.
-
-#### Example
 
 ```vim
 lua << EOF
@@ -127,8 +111,6 @@ EOF
 ---
 Use `vim.keymap.set()` to create keymaps with descriptions and options, supporting which-key integration.
 
-#### Example
-
 ```vim
 :lua vim.keymap.set('n', '<leader>f', '<cmd>find<CR>', {
   desc = 'Find file', silent = true, buffer = 0
@@ -141,8 +123,6 @@ Use `vim.keymap.set()` to create keymaps with descriptions and options, supporti
 # Tags: user, command, lua, api
 ---
 Use `vim.api.nvim_create_user_command()` to create custom commands with Lua functions and completion.
-
-#### Example
 
 ```vim
 :lua vim.api.nvim_create_user_command('Hello', 
@@ -158,8 +138,6 @@ Use `vim.api.nvim_create_user_command()` to create custom commands with Lua func
 ---
 Use `vim.opt` for intuitive option management from Lua with proper data types and operations.
 
-#### Example
-
 ```vim
 :lua vim.opt.number = true
 :lua vim.opt.tabstop = 4
@@ -172,8 +150,6 @@ Use `vim.opt` for intuitive option management from Lua with proper data types an
 # Tags: filetype, detection, api, lua
 ---
 Use `vim.filetype.add()` to register custom filetype detection patterns and functions.
-
-#### Example
 
 ```vim
 :lua vim.filetype.add({
@@ -189,8 +165,6 @@ Use `vim.filetype.add()` to register custom filetype detection patterns and func
 ---
 Use `vim.api.nvim_set_hl()` to programmatically define and modify highlight groups from Lua.
 
-#### Example
-
 ```vim
 :lua vim.api.nvim_set_hl(0, 'MyHighlight', {
   fg = '#ff0000', bg = '#000000', bold = true
@@ -205,8 +179,6 @@ Use `vim.api.nvim_set_hl()` to programmatically define and modify highlight grou
 ---
 Use `vim.snippet` API for snippet expansion and navigation without external snippet engines.
 
-#### Example
-
 ```vim
 :lua vim.snippet.expand('for var in iterable:\n\tpass')
 :lua if vim.snippet.active() then vim.snippet.jump(1) end
@@ -218,8 +190,6 @@ Use `vim.snippet` API for snippet expansion and navigation without external snip
 # Tags: event, loop, schedule, async
 ---
 Use `vim.schedule()` to defer function execution to the next event loop iteration for async operations.
-
-#### Example
 
 ```vim
 :lua vim.schedule(function()
@@ -235,8 +205,6 @@ end)
 ---
 Use Neovim's enhanced undo system with ring buffer capabilities for advanced undo tree navigation.
 
-#### Example
-
 ```vim
 :lua print(vim.fn.undotree())  " inspect undo tree
 :earlier 1f  " go back 1 file write
@@ -250,8 +218,6 @@ Use Neovim's enhanced undo system with ring buffer capabilities for advanced und
 ---
 Use `vim.treesitter` API to query and manipulate the abstract syntax tree programmatically.
 
-#### Example
-
 ```vim
 :lua local parser = vim.treesitter.get_parser(0, 'lua')
 :lua local tree = parser:parse()[1]
@@ -264,8 +230,6 @@ Use `vim.treesitter` API to query and manipulate the abstract syntax tree progra
 # Tags: rpc, job, control, async
 ---
 Use `vim.system()` for modern job control and `vim.rpcnotify()` for RPC communication with external processes.
-
-#### Example
 
 ```vim
 :lua local job = vim.system({'ls', '-la'}, {
@@ -281,8 +245,6 @@ Use `vim.system()` for modern job control and `vim.rpcnotify()` for RPC communic
 ---
 Use UI event hooks to customize Neovim's behavior for different UI clients and frontends.
 
-#### Example
-
 ```vim
 :lua vim.api.nvim_set_option_value('guifont', 'Monospace:h12', {})
 :lua if vim.g.neovide then vim.g.neovide_cursor_animation_length = 0.1 end
@@ -294,8 +256,6 @@ Use UI event hooks to customize Neovim's behavior for different UI clients and f
 # Tags: namespace, management, api, isolation
 ---
 Use namespaces to isolate highlights, extmarks, and diagnostics from different sources or plugins.
-
-#### Example
 
 ```vim
 :lua local ns1 = vim.api.nvim_create_namespace('source1')
@@ -310,8 +270,6 @@ Use namespaces to isolate highlights, extmarks, and diagnostics from different s
 ---
 Use `vim.inspect()` to pretty-print complex Lua data structures for debugging and development.
 
-#### Example
-
 ```vim
 :lua local data = {a = {b = {c = 'nested'}}, list = {1, 2, 3}}
 :lua print(vim.inspect(data))
@@ -324,8 +282,6 @@ Use `vim.inspect()` to pretty-print complex Lua data structures for debugging an
 # Tags: secure, mode, restrictions, safety
 ---
 Use secure mode and option restrictions to safely execute untrusted vim configurations and scripts.
-
-#### Example
 
 ```vim
 :set secure               " enable secure mode
@@ -340,8 +296,6 @@ Use secure mode and option restrictions to safely execute untrusted vim configur
 ---
 Use runtime path manipulation to dynamically load configurations and plugins at runtime.
 
-#### Example
-
 ```vim
 :lua vim.opt.rtp:prepend('~/my-custom-config')
 :lua vim.opt.rtp:append('~/additional-plugins')  
@@ -354,8 +308,6 @@ Use runtime path manipulation to dynamically load configurations and plugins at 
 # Tags: completion, custom, source, omnifunc
 ---
 Use `vim.lsp.omnifunc` and custom completion functions to create intelligent completion sources.
-
-#### Example
 
 ```vim
 function! MyCompletion(findstart, base)
@@ -374,8 +326,6 @@ endfunction
 ---
 Use window configuration API for advanced window management and layout control.
 
-#### Example
-
 ```vim
 :lua vim.api.nvim_win_set_config(0, {
   relative = 'win', win = vim.api.nvim_get_current_win(),
@@ -391,8 +341,6 @@ Use window configuration API for advanced window management and layout control.
 ---
 Use Neovim's health check system to create custom health checks for your configurations and environments.
 
-#### Example
-
 ```vim
 :checkhealth            " run all health checks
 :checkhealth vim.lsp    " check specific component
@@ -405,8 +353,6 @@ Use Neovim's health check system to create custom health checks for your configu
 # Tags: command, preview, substitution, inccommand
 ---
 Use `inccommand` for live preview of Ex commands, especially substitution with real-time feedback.
-
-#### Example
 
 ```vim
 :set inccommand=split     " preview in split window

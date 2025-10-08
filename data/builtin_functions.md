@@ -4,8 +4,6 @@
 ---
 Use `getftype()` to determine file type and `getfperm()` to get file permissions for the current or specified file.
 
-#### Example
-
 ```vim
 :echo getftype(expand('%'))     " file type (file, dir, link, etc.)
 :echo getfperm(expand('%'))     " file permissions (rwxrwxrwx)
@@ -18,8 +16,6 @@ Use `getftype()` to determine file type and `getfperm()` to get file permissions
 ---
 Use `substitute()`, `matchstr()`, and `split()` functions for powerful string manipulation without changing buffers.
 
-#### Example
-
 ```vim
 :echo substitute("hello world", "world", "vim", "g")  " hello vim
 :echo matchstr("file.txt", '\\.\\w\\+$')             " .txt
@@ -31,8 +27,6 @@ Use `substitute()`, `matchstr()`, and `split()` functions for powerful string ma
 # Tags: bufnr, winnr, tabpagenr, info
 ---
 Use `bufnr()`, `winnr()`, `tabpagenr()` to get current buffer, window, and tab numbers for scripting.
-
-#### Example
 
 ```vim
 :echo bufnr('%')        " current buffer number
@@ -47,8 +41,6 @@ Use `bufnr()`, `winnr()`, `tabpagenr()` to get current buffer, window, and tab n
 ---
 Use `fnamemodify()` to manipulate file paths and `resolve()` to resolve symbolic links and shortcuts.
 
-#### Example
-
 ```vim
 :echo fnamemodify(expand('%'), ':p:h')     " full directory path
 :echo fnamemodify(expand('%'), ':t:r')     " filename without extension
@@ -61,8 +53,6 @@ Use `fnamemodify()` to manipulate file paths and `resolve()` to resolve symbolic
 # Tags: search, searchpos, match, pattern
 ---
 Use `search()`, `searchpos()`, and `match()` functions for programmatic searching without moving cursor.
-
-#### Example
 
 ```vim
 :echo search('pattern')                    " find pattern, return line number
@@ -77,8 +67,6 @@ Use `search()`, `searchpos()`, and `match()` functions for programmatic searchin
 ---
 Use `line()`, `col()`, `getline()`, `setline()` for precise cursor positioning and line manipulation.
 
-#### Example
-
 ```vim
 :echo line('.')         " current line number
 :echo col('.')          " current column number
@@ -91,8 +79,6 @@ Use `line()`, `col()`, `getline()`, `setline()` for precise cursor positioning a
 # Tags: strftime, localtime, getftime, date
 ---
 Use `strftime()` and `localtime()` for date/time manipulation, and `getftime()` for file timestamps.
-
-#### Example
 
 ```vim
 :echo strftime('%Y-%m-%d %H:%M:%S')       " current date/time
@@ -107,8 +93,6 @@ Use `strftime()` and `localtime()` for date/time manipulation, and `getftime()` 
 ---
 Use `system()` and `systemlist()` to execute shell commands and `getenv()` to access environment variables.
 
-#### Example
-
 ```vim
 :echo system('date')                      " execute shell command
 :echo systemlist('ls -la')               " return as list
@@ -121,8 +105,6 @@ Use `system()` and `systemlist()` to execute shell commands and `getenv()` to ac
 # Tags: len, empty, has_key, keys, values
 ---
 Use `len()`, `empty()`, `has_key()`, `keys()`, `values()` for working with lists and dictionaries.
-
-#### Example
 
 ```vim
 :let mylist = [1, 2, 3]
@@ -139,8 +121,6 @@ Use `len()`, `empty()`, `has_key()`, `keys()`, `values()` for working with lists
 ---
 Use `type()`, `islocked()`, and `exists()` functions to check variable types and existence.
 
-#### Example
-
 ```vim
 :echo type(42)                   " 0 (Number)
 :echo type("string")             " 1 (String)  
@@ -154,8 +134,6 @@ Use `type()`, `islocked()`, and `exists()` functions to check variable types and
 # Tags: abs, pow, sqrt, sin, cos, math
 ---
 Use built-in math functions like `abs()`, `pow()`, `sqrt()`, `sin()`, `cos()` for calculations in vim script.
-
-#### Example
 
 ```vim
 :echo abs(-5)                    " absolute value: 5
@@ -171,8 +149,6 @@ Use built-in math functions like `abs()`, `pow()`, `sqrt()`, `sin()`, `cos()` fo
 ---
 Use `getbufline()` and `setbufline()` to read and modify buffer content without switching to the buffer.
 
-#### Example
-
 ```vim
 :echo getbufline(1, 1, 10)              " get lines 1-10 from buffer 1
 :call setbufline(2, 1, 'new first line') " set line 1 in buffer 2
@@ -186,8 +162,6 @@ Use `getbufline()` and `setbufline()` to read and modify buffer content without 
 ---
 Use `input()`, `inputlist()`, `confirm()` functions to create interactive vim scripts with user prompts.
 
-#### Example
-
 ```vim
 :let name = input('Enter name: ')         " prompt for input
 :let choice = inputlist(['1. Red', '2. Blue', '3. Green'])
@@ -200,8 +174,6 @@ Use `input()`, `inputlist()`, `confirm()` functions to create interactive vim sc
 # Tags: winheight, winwidth, tabpagebuflist, winsaveview
 ---
 Use window dimension and state functions to manage window layouts programmatically.
-
-#### Example
 
 ```vim
 :echo winheight(0)               " current window height
@@ -217,8 +189,6 @@ Use window dimension and state functions to manage window layouts programmatical
 ---
 Use syntax highlighting functions to query and manipulate syntax highlighting programmatically.
 
-#### Example
-
 ```vim
 :echo synID(line('.'), col('.'), 1)      " syntax ID under cursor
 :echo synIDattr(synID(line('.'), col('.'), 1), 'name')  " syntax name
@@ -231,8 +201,6 @@ Use syntax highlighting functions to query and manipulate syntax highlighting pr
 # Tags: matchadd, matchdelete, matchlist, regex
 ---
 Use `matchadd()`, `matchdelete()`, `matchlist()` for advanced pattern matching and highlighting.
-
-#### Example
 
 ```vim
 :let m = matchadd('Search', 'TODO')      " highlight all TODO
@@ -247,8 +215,6 @@ Use `matchadd()`, `matchdelete()`, `matchlist()` for advanced pattern matching a
 ---
 Use folding functions to query and manipulate code folds programmatically.
 
-#### Example
-
 ```vim
 :echo foldclosed(line('.'))      " check if current line is folded
 :echo foldlevel(line('.'))       " fold level of current line
@@ -261,8 +227,6 @@ Use folding functions to query and manipulate code folds programmatically.
 # Tags: glob, globpath, isdirectory, readable
 ---
 Use `glob()`, `globpath()`, `isdirectory()` for file system operations and path expansion.
-
-#### Example
 
 ```vim
 :echo glob('*.txt')              " find all .txt files
@@ -277,8 +241,6 @@ Use `glob()`, `globpath()`, `isdirectory()` for file system operations and path 
 ---
 Use `getreg()`, `setreg()`, `getregtype()` to programmatically work with vim registers.
 
-#### Example
-
 ```vim
 :echo getreg('"')                " get default register content
 :call setreg('a', 'hello world') " set register 'a'
@@ -291,8 +253,6 @@ Use `getreg()`, `setreg()`, `getregtype()` to programmatically work with vim reg
 # Tags: cursor, getpos, setpos, marks
 ---
 Use `cursor()`, `getpos()`, `setpos()` for precise cursor and mark manipulation.
-
-#### Example
 
 ```vim
 :call cursor(10, 5)              " move cursor to line 10, column 5
