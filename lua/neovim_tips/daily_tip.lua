@@ -173,23 +173,11 @@ local function show_daily_tip(update_last_shown)
   -- Prepare main content
   local lines = {}
 
-  -- Add tip title as first line
-  table.insert(lines, "# " .. tip.title)
-
-  -- Add tip description (skip the first title line from description)
+  -- Add tip description (now includes the title with consistent formatting)
   if tip.description then
     local description_lines = vim.split(tip.description, "\n")
-    -- Skip lines until we find the first non-title line
-    local start_index = 1
-    for i, line in ipairs(description_lines) do
-      if not line:match("^##?%s") then -- Skip ## Title lines
-        start_index = i
-        break
-      end
-    end
-
-    for i = start_index, #description_lines do
-      table.insert(lines, description_lines[i])
+    for _, line in ipairs(description_lines) do
+      table.insert(lines, line)
     end
   end
 

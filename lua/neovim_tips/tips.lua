@@ -92,12 +92,12 @@ function M.get_description(title)
   if (not descriptions_map[title]) then
     local tip = tips_map[title]
     local description = {}
-    table.insert(description, "## " .. tip.title)
+    table.insert(description, "# " .. tip.title)
     if tip.category and #tip.category > 0 then
-      table.insert(description, "### Category: " .. tip.category)
+      table.insert(description, "## Category: " .. tip.category)
     end
     if tip.tags and #tip.tags > 0 then
-      table.insert(description, "### Tags: " .. table.concat(tip.tags, ", "))
+      table.insert(description, "## Tags: " .. table.concat(tip.tags, ", "))
     end
     table.insert(description, tip.description)
     if not md_supported then
