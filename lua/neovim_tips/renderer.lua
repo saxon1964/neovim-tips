@@ -3,7 +3,7 @@ local M = { active_renderer_index = 0 }
 --- Supported renderers
 M.renderers = {
   { name = "markview", package = "markview",          render = function(bufnr) M.render_markview(bufnr) end },
-  { name = "markdown", package = "renderer-markdown", render = function(bufnr) M.render_markdown(bufnr) end },
+  { name = "markdown", package = "render-markdown", render = function(bufnr) M.render_markdown(bufnr) end },
 }
 
 --- Returns renderer if one is found from the list of supported renderers
@@ -34,12 +34,27 @@ function M.renderer_available()
   return M.active_renderer_index > 0
 end
 
+--- Get window options with appropriate conceal settings for the active renderer
+--- @param base_options table Base window options to extend
+--- @return table win_options Window options with renderer-specific settings
+function M.get_win_options(base_options)
+  local win_options = vim.deepcopy(base_options or {})
+  
+  -- Add conceal settings for renderers that need them
+  local active_renderer = M.get_active_renderer()
+  if active_renderer and active_renderer.name == "markview" then
+    win_options.conceallevel = 2
+    win_options.concealcursor = "nc"
+  end
+  
+  return win_options
+end
+
 ---Main entry point: Renders markdown for the given buffer
 ---@parm bufnr integer Buffer number
 function M.render(bufnr)
   local renderer = M.get_active_renderer()
   if renderer then
-    vim.notify("Rendering with " .. renderer.name)
     renderer.render(bufnr)
   end
 end

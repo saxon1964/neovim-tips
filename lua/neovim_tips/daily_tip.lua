@@ -111,13 +111,11 @@ local function show_daily_tip(update_last_shown)
       modifiable = false,
       readonly = false,
     },
-    win_options = {
+    win_options = renderer.get_win_options({
       wrap = true,
       number = false,
       winhighlight = "FloatBorder:Normal",
-      conceallevel = 2,
-      concealcursor = "nc",
-    },
+    }),
   })
 
   -- Create footer popup
@@ -136,13 +134,11 @@ local function show_daily_tip(update_last_shown)
       modifiable = true,
       readonly = false,
     },
-    win_options = {
+    win_options = renderer.get_win_options({
       wrap = false,
       number = false,
       winhighlight = "FloatBorder:Normal",
-      conceallevel = 2,
-      concealcursor = "nc",
-    },
+    }),
   })
 
   -- Create layout similar to picker

@@ -4,6 +4,7 @@ local M = {}
 
 local Popup = require("nui.popup")
 local Layout = require("nui.layout")
+local renderer = require("neovim_tips.renderer")
 
 ---@class PickerLayout
 ---@field layout NuiLayout|nil Main layout container
@@ -85,13 +86,11 @@ function M.create_layout()
       modifiable = false,
       readonly = false,
     },
-    win_options = {
+    win_options = renderer.get_win_options({
       wrap = true,
       number = false,
       winhighlight = "FloatBorder:Normal",
-      conceallevel = 2,
-      concealcursor = "nc",
-    },
+    }),
   })
 
   -- Create footer popup
@@ -110,13 +109,11 @@ function M.create_layout()
       modifiable = true,
       readonly = false,
     },
-    win_options = {
+    win_options = renderer.get_win_options({
       wrap = false,
       number = false,
       winhighlight = "FloatBorder:Normal",
-      conceallevel = 2,
-      concealcursor = "nc",
-    },
+    }),
   })
 
   -- Create layout
@@ -247,12 +244,12 @@ function M.update_preview_content(preview_popup, title, content, renderer)
   vim.api.nvim_buf_set_lines(preview_popup.bufnr, 0, -1, false, lines)
   vim.bo[preview_popup.bufnr].filetype = "markdown"
 
-  vim.bo[preview_popup.bufnr].modifiable = false
-
   -- Render markdown
   if renderer then
     renderer.render(preview_popup.bufnr)
   end
+
+  vim.bo[preview_popup.bufnr].modifiable = false
 end
 
 ---Set up the footer popup with help message
@@ -274,4 +271,3 @@ function M.setup_footer(footer_popup, message, renderer)
 end
 
 return M
-
