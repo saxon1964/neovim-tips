@@ -52,9 +52,10 @@ I have provided a solid initial batch of tips and if you have your favorite one 
 ## ✨ Features
 - **Beautiful custom picker**: Three-pane interface with search, tips list, and live markdown preview
 - **Daily tip popup**: Get a random tip on startup (configurable: off, daily, or every launch)
-- **Lightweight dependencies**: Only requires `nui.nvim` and `render-markdown` - no heavyweight pickers (fzf-lua, telescope, snacks, mini...)
+- **Lightweight dependencies**: Only requires `nui.nvim` - no heavyweight pickers (fzf-lua, telescope, snacks, mini...)
+- **Flexible markdown rendering**: Supports `markview.nvim`, `render-markdown.nvim`, or raw markdown display (auto-detected)
 - **Word-based search**: Intelligent search that matches all words (e.g., "insert character" finds "character to insert")
-- **Live markdown rendering**: Preview rendered descriptions with full markdown support
+- **Live markdown preview**: Rich formatted descriptions or clean raw markdown based on your preference
 - **Simple navigation**: Seamless mouse and keyboard navigation with smart mode switching
 - **Copy-friendly**: Easy copying of tip content and code snippets from both picker and daily tip
 - **Cursor preservation**: Returns to your exact cursor position and mode after closing
@@ -75,7 +76,9 @@ I have provided a solid initial batch of tips and if you have your favorite one 
   version = "*", -- Only update on tagged releases
   dependencies = {
     "MunifTanjim/nui.nvim",
-    "MeanderingProgrammer/render-markdown.nvim"
+    -- OPTIONAL: Choose your preferred markdown renderer (or omit for raw markdown)
+    "MeanderingProgrammer/render-markdown.nvim", -- Clean rendering
+    -- OR: "OXY2DEV/markview.nvim", -- Rich rendering with advanced features
   },
   opts = {
     -- OPTIONAL: Location of user defined tips (default value shown below)
@@ -110,7 +113,8 @@ use {
   tag = "*", -- Only update on tagged releases
   requires = {
     "MunifTanjim/nui.nvim",
-    "MeanderingProgrammer/render-markdown.nvim"
+    -- OPTIONAL: Choose your preferred renderer
+    "MeanderingProgrammer/render-markdown.nvim", -- OR "OXY2DEV/markview.nvim"
   },
   config = function()
     require("neovim_tips").setup {
@@ -334,7 +338,36 @@ The PDF is located at `pdf/book/NeovimTips.pdf` within the plugin directory and 
 - `:NeovimTipsEdit` — Edit your personal tips file
 - `:NeovimTipsAdd` — Insert a new tip template into your personal file and start editing
 - `:NeovimTipsRandom` — Displays random tip upon user request
-- `:NeovimTipsPdf` — Open the Neovim Tips PDF book (cross-platform: macOS, Linux, Windows)
+
+## 🎨 Markdown Rendering
+
+The plugin automatically detects and uses available markdown renderers for enhanced tip display:
+
+### 📋 Rendering Options
+
+1. **markview.nvim** (Priority 1)
+   - Rich rendering with advanced features
+   - Beautiful typography and syntax highlighting
+   - Install: Add `"OXY2DEV/markview.nvim"` to dependencies
+
+2. **render-markdown.nvim** (Priority 2)  
+   - Clean, lightweight rendering
+   - Excellent performance
+   - Install: Add `"MeanderingProgrammer/render-markdown.nvim"` to dependencies
+
+3. **Raw Markdown** (Fallback)
+   - Clean, readable plain text
+   - Zero dependencies beyond `nui.nvim`
+   - Many users prefer this for its simplicity
+
+### 🔄 Automatic Detection
+
+The plugin automatically:
+- Detects which renderer is available
+- Uses markview.nvim if present (highest priority)
+- Falls back to render-markdown.nvim if markview not found
+- Displays raw markdown if no renderer installed
+- **No configuration required** - just install your preferred renderer
 
 ## 📖 Help System
 
@@ -662,14 +695,20 @@ require('cmp').setup({
 
 ## 🔄 Roadmap Ideas
 
+### ✅ Completed Features
 - ~~Category/Tag filtering~~ ✅ **Completed** - Advanced search with `t:tag` and `c:category` syntax
 - ~~Help system for discovering tags/categories~~ ✅ **Completed** - Interactive help picker with `t:?` and `c:?`
-- Search descriptions - Extend search to include tip content, not just titles, tags and categories
-- Multiple tip sources - Support loading tips from multiple directories/files
-- Export functionality - Export filtered tips to various formats (PDF, HTML, etc.)
-- API improvements - Better programmatic access for other plugins
-- Theme customization - Customizable colors and UI themes
-- Tip rating system - Allow users to rate and sort tips by usefulness
+- ~~Support for markview and render-markdown plugins~~ ✅ **Completed** - Automatic renderer detection with fallback
+
+### 🚀 Planned Features
+- **Bookmark tips** - Mark favorite tips for easy access and learning (highly requested)
+- **Faster startup** - Optimize daily tip timing to avoid conflicts with fzf/telescope file searches
+- **Search descriptions** - Extend search to include tip content, not just titles, tags and categories
+- **Multiple tip sources** - Support loading tips from multiple directories/files
+- **Enhanced export** - Export filtered tips to additional formats (HTML, plain text, etc.)
+- **API improvements** - Better programmatic access for other plugins
+- **Theme customization** - Customizable colors and UI themes
+- **Tip rating system** - Allow users to rate and sort tips by usefulness
 
 ---
 
