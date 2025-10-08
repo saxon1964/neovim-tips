@@ -164,28 +164,7 @@ class Tip:
       return ''
 
     body = self.content.split('---', 1)[1].strip()
-
-    # Filter out "# Example" / "## Example" / etc. lines (with optional colon) and the following empty line
-    lines = body.split('\n')
-    filtered_lines = []
-    i = 0
-    while i < len(lines):
-      stripped = lines[i].strip()
-      # Check if line matches pattern: one or more # followed by "Example" with optional colon
-      if stripped.startswith('#') and 'Example' in stripped:
-        # Extract the part after the # symbols
-        hash_removed = stripped.lstrip('#').strip()
-        if hash_removed == 'Example' or hash_removed == 'Example:':
-          # Skip this line and the next line if it's empty
-          i += 1
-          if i < len(lines) and lines[i].strip() == '':
-            i += 1
-          continue
-
-      filtered_lines.append(lines[i])
-      i += 1
-
-    return '\n'.join(filtered_lines).strip()
+    return body
 
   def get_title_latex(self) -> str:
     """Returns LaTeX-escaped title (safe for use in \\section)."""

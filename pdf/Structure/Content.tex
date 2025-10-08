@@ -1337,6 +1337,38 @@ Use {\footnotesize \Verb§\%(\)§} and backreferences for matching nested struct
 \end{Verbatim}
 \end{Exa*}
 
+\section{Search and replace using custom lua functions}
+
+\textbf{Category}: Advanced Search\\ \textbf{Tags}: group, capture, search, replace, lua, function
+\vspace{0.5cm}
+
+You can define your own function directly in Neovim. It won't survive Neovim restart but such functions can be useful anyway. For example, the following function capitalizes the first letter in the text:
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+:lua function capitalize(text) return text:sub(1,1):upper() .. text:sub(2) end
+\end{Verbatim}
+\end{Exa*}
+
+You can now use your own custom function to capitalize every word in the document using {\footnotesize \Verb§%s/<pattern>/\=v:lua.your_fun(submatch(0))/§}.
+
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+:%s/\w\+/\=v:lua.capitalize(submatch(0))/gc
+\end{Verbatim}
+\end{Exa*}
+
+You can also apply your custom function to every line that is matching the given pattern using {\footnotesize \Verb§g/<pattern>/s//\=v:lua.your_fun(submatch(0))§}
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+:g/\w\+/s//\=v:lua.capitalize(submatch(0))
+\end{Verbatim}
+\end{Exa*}
+
+Credits: Different-Ad-8707@Reddit
+
 \section{Search and replace with expressions}
 
 \textbf{Category}: Advanced Search\\ \textbf{Tags}: expression, function, dynamic, replace
@@ -8011,6 +8043,20 @@ Use {\footnotesize \Verb§:helpgrep§} to search help, {\footnotesize \Verb§:pt
 \end{Verbatim}
 \end{Exa*}
 
+\section{Man pages}
+
+\textbf{Category}: Help\\ \textbf{Tags}: man, help, documentation
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§:Man§} to open a man-page in a read-only mode. You can navigate the page like any other Neovim content. You can jump arround, copy parts of it, search for a word and perform all other standard Neovim operations. Once you have a man-page on the screen, you can generate its content by using stadnard {\footnotesize \Verb§gO§} command in normal mode.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+:Man ls   "Opens man-page for linux ls command
+gO        "Generates TOC in normal mode for the selected man-page
+\end{Verbatim}
+\end{Exa*}
+
 \section{Master help index}
 
 \textbf{Category}: Help\\ \textbf{Tags}: help, index, reference
@@ -8384,6 +8430,7 @@ Ctrl+x Ctrl+l   " complete whole lines
 Ctrl+x Ctrl+n   " complete keywords in current file
 Ctrl+x Ctrl+k   " complete from dictionary
 Ctrl+x Ctrl+t   " complete from thesaurus
+Ctrl+x Ctrl+f   " complete file names
 Ctrl+x Ctrl+i   " complete from included files
 Ctrl+x Ctrl+]   " complete from tags
 Ctrl+x Ctrl+s   " spelling suggestions
