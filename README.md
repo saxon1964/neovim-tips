@@ -24,6 +24,7 @@
   - [minpac](#minpac)
   - [paq-nvim](#paq-nvim)
   - [dein.vim](#deinvim)
+  - [vim.pack](#vimpack)
   - [kickstart.nvim](#kickstartnvim)
   - [AstroNvim](#astronvim)
 - [💡 Daily Tip Feature](#-daily-tip-feature)
@@ -228,6 +229,41 @@ EOF
 
 ```
 
+### vim.pack
+
+WORK IN PROGRESS built-in plugin manager! Early testing of existing features is appreciated, but expect breaking changes without notice.
+More information can be found in the [official documentation](https://neovim.io/doc/user/pack.html#vim.pack).
+
+```lua
+
+vim.pack.add({
+	"https://github.com/MunifTanjim/nui.nvim",
+	"https://github.com/saxon1964/neovim-tips",
+})
+
+require("neovim_tips").setup({
+	-- Path to user tips file
+	user_file = vim.fn.stdpath("config") .. "/neovim_tips/user_tips.md",
+
+	-- Prefix added to user tip titles to prevent conflicts
+	user_tip_prefix = "[User] ",
+
+	-- Show warnings when user tips have conflicting titles with builtin tips
+	warn_on_conflicts = true,
+
+	-- Daily tip mode: 0=off, 1=once per day, 2=every startup
+	daily_tip = 1,
+})
+
+local map = vim.keymap.set
+map("n", "<leader>nto", ":NeovimTips<CR>", { desc = "Neovim tips", noremap = true, silent = true })
+map("n", "<leader>nte", ":NeovimTipsEdit<CR>", { desc = "Edit your Neovim tips", noremap = true, silent = true })
+map("n", "<leader>nta", ":NeovimTipsAdd<CR>", { desc = "Add your Neovim tip", noremap = true, silent = true })
+map("n", "<leader>nth", ":help neovim-tips<CR>", { desc = "Neovim tips help", noremap = true, silent = true })
+map("n", "<leader>ntr", ":NeovimTipsRandom<CR>", { desc = "Show random tip", noremap = true, silent = true })
+map("n", "<leader>ntp", ":NeovimTipsPdf<CR>", { desc = "Open Neovim tips PDF", noremap = true, silent = true })
+```
+
 ### kickstart.nvim
 
 ```lua
@@ -287,6 +323,8 @@ return {
   },
 }
 ```
+
+
 
 ## 💡 Daily Tip Feature
 
