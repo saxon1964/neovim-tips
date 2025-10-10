@@ -6,11 +6,31 @@
 
 **This Lua plugin for Neovim brings together hundreds of helpful tips, tricks, and shortcuts, all available through a custom picker. It's easy to expand with your own entries, so the collection grows with you and your workflow.**
 
-![Neovim tips plugin screenshot](images/s1.png)
+## 📷 Screenshots
 
-![Neovim tips tip of the day](images/s2.png)
+<p align="center">Neovim Tips main screen</p>
 
-![Neovim tips advanced search](images/s3.png)
+![Neovim tips main screen](images/s1.png)
+
+<p align="center">Neovim Daily/Random tip</p>
+
+![Neovim Daily/Random tip](images/s2.png)
+
+<p align="center">Bookmarking Daily/Random tip</p>
+
+![Bookmarking Daily/Random tip](images/s3.png)
+
+<p align="center">List your bookmarked tips</p>
+
+![List your bookmarked tips](images/s4.png)
+
+<p align="center">Searching tips database</p>
+
+![Searching tips database](images/s5.png)
+
+<p align="center">Advanced tips search using categories, tags and bookmarks</p>
+
+![Advanced tips search using categories, tags and bookmarks](images/s6.png)
 
 ## 📚 Table of Contents
 
@@ -51,6 +71,7 @@ The plugin should help you to learn some basic (:wq, write and quit) and some no
 I have provided a solid initial batch of tips and if you have your favorite one that is not listed, I will be happy to include it in the next release **with proper credits**. Send your commands, tips and tricks to me, create an issue or submit a pull request. You can also add your own tips and tricks that will be stored on your local computer, you don't have to share anything with me.
 
 ## ✨ Features
+
 - **Beautiful custom picker**: Three-pane interface with search, tips list, and live markdown preview
 - **Daily tip popup**: Get a random tip on startup (configurable: off, daily, or every launch)
 - **Lightweight dependencies**: Only requires `nui.nvim` - no heavyweight pickers (fzf-lua, telescope, snacks, mini...)
@@ -238,11 +259,9 @@ EOF
 
 ### vim.pack
 
-WORK IN PROGRESS built-in plugin manager! Early testing of existing features is appreciated, but expect breaking changes without notice.
-More information can be found in the [official documentation](https://neovim.io/doc/user/pack.html#vim.pack).
+> WARNING: vim.pac, Neovim's built-in plugin manager, is still being developed! Early testing of existing features is appreciated, but expect breaking changes without notice. More information can be found in the [official documentation](https://neovim.io/doc/user/pack.html#vim.pack).
 
 ```lua
-
 vim.pack.add({
 	"https://github.com/MunifTanjim/nui.nvim",
 	"https://github.com/saxon1964/neovim-tips",
@@ -331,8 +350,6 @@ return {
 }
 ```
 
-
-
 ## 💡 Daily Tip Feature
 
 The plugin can show you a random tip in a beautiful popup when you start Neovim. This helps you discover new tips and improve your workflow naturally.
@@ -391,7 +408,7 @@ The plugin automatically detects and uses available markdown renderers for enhan
    - Beautiful typography and syntax highlighting
    - Install: Add `"OXY2DEV/markview.nvim"` to dependencies
 
-2. **render-markdown.nvim** (Priority 2)  
+2. **render-markdown.nvim** (Priority 2)
    - Clean, lightweight rendering
    - Excellent performance
    - Install: Add `"MeanderingProgrammer/render-markdown.nvim"` to dependencies
