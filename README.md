@@ -24,6 +24,7 @@
   - [minpac](#minpac)
   - [paq-nvim](#paq-nvim)
   - [dein.vim](#deinvim)
+  - [vim.pack](#vimpack)
   - [kickstart.nvim](#kickstartnvim)
   - [AstroNvim](#astronvim)
 - [💡 Daily Tip Feature](#-daily-tip-feature)
@@ -235,7 +236,10 @@ EOF
 
 ```
 
-### Vim.pack
+### vim.pack
+
+WORK IN PROGRESS built-in plugin manager! Early testing of existing features is appreciated, but expect breaking changes without notice.
+More information can be found in the [official documentation](https://neovim.io/doc/user/pack.html#vim.pack).
 
 ```lua
 
