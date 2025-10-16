@@ -226,6 +226,25 @@ Use `:sort` to sort lines, `:center` to center text, `:left` and `:right` for al
 :right 70     " right align to column 70
 ```
 ***
+# Title: Advanced sort options
+# Category: Editing
+# Tags: sort, advanced, numeric, reverse, case
+---
+Use advanced `:sort` options for more complex sorting needs like numeric sorting, reverse sorting, and case-insensitive sorting.
+
+```vim
+:sort!        " reverse sort (Z to A)
+:sort i       " case-insensitive sort
+:sort n       " numeric sort (by first number in line)
+:sort u       " unique - sort and remove duplicates
+:sort! n      " reverse numeric sort
+:sort f       " float sort (for decimal numbers)
+
+" Combine options:
+:sort in      " case-insensitive numeric sort
+:sort! u      " reverse sort and remove duplicates
+```
+***
 # Title: Edit file at specific line
 # Category: Editing
 # Tags: file, line, open, position, jump
