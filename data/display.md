@@ -4,8 +4,6 @@
 ---
 Use `:set list!` to toggle display of invisible characters (tabs, spaces, etc.).
 
-#### Example
-
 ```vim
 :set list!  " toggle invisible characters
 ```
@@ -16,8 +14,6 @@ Use `:set list!` to toggle display of invisible characters (tabs, spaces, etc.).
 ---
 Use `:set cursorline!` to toggle highlighting of the current cursor line.
 
-#### Example
-
 ```vim
 :set cursorline!  " toggle cursor line highlight
 ```
@@ -27,8 +23,6 @@ Use `:set cursorline!` to toggle highlighting of the current cursor line.
 # Tags: ex, display, ui, show, list
 ---
 Use `:set list` to show whitespace, `:set wrap` for line wrapping, `:set ruler` for cursor position, `:set showcmd` for command display.
-
-#### Example
 
 ```vim
 :set list         " show whitespace characters
@@ -45,8 +39,6 @@ Use `:set list` to show whitespace, `:set wrap` for line wrapping, `:set ruler` 
 ---
 Use `:set number` for line numbers, `:set relativenumber` for relative numbers, `:set colorcolumn` for guide column.
 
-#### Example
-
 ```vim
 :set number           " show line numbers
 :set relativenumber   " show relative line numbers
@@ -61,8 +53,6 @@ Use `:set number` for line numbers, `:set relativenumber` for relative numbers, 
 ---
 Use `:set scrolloff` for scroll offset, `:set sidescrolloff` for horizontal offset, `:set scrollbind` to bind scrolling.
 
-#### Example
-
 ```vim
 :set scrolloff=5      " keep 5 lines above/below cursor
 :set sidescrolloff=8  " keep 8 columns left/right of cursor
@@ -76,8 +66,6 @@ Use `:set scrolloff` for scroll offset, `:set sidescrolloff` for horizontal offs
 ---
 Use `:set foldcolumn` to show fold column, `:set foldtext` for custom fold text, `:set fillchars` for fill characters.
 
-#### Example
-
 ```vim
 :set foldcolumn=4     " show fold indicators in 4-char column
 :set fillchars=fold:.,vert:|  " customize fill characters
@@ -90,8 +78,6 @@ Use `:set foldcolumn` to show fold column, `:set foldtext` for custom fold text,
 ---
 Use `:set laststatus` for status line, `:set showtabline` for tab line, `:set statusline` for custom status.
 
-#### Example
-
 ```vim
 :set laststatus=2     " always show status line
 :set showtabline=2    " always show tab line
@@ -103,8 +89,6 @@ Use `:set laststatus` for status line, `:set showtabline` for tab line, `:set st
 # Tags: conceal, hide, text, syntax, conceallevel
 ---
 Use `:set conceallevel=2` to hide concealed text and `:syntax match` with `conceal` to define what to hide.
-
-#### Example
 
 ```vim
 :set conceallevel=2       " hide concealed text completely

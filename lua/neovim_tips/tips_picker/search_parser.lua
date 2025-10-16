@@ -6,16 +6,18 @@ local M = {}
 ---@field categories string[] Array of category filters
 ---@field tags string[] Array of tag filters
 ---@field title_words string[] Array of title word filters
+---@field bookmarks string[] Array of bookmark filters
 
----Parse search query to extract categories, tags, and title words
----Supports syntax: t:tag c:category and quoted multi-word values
+---Parse search query to extract categories, tags, bookmarks, and title words
+---Supports syntax: t:tag c:category b:bookmark and quoted multi-word values
 ---@param search_text string The search query to parse
----@return SearchQuery query Parsed query with categories, tags, and title_words arrays
+---@return SearchQuery query Parsed query with categories, tags, bookmarks, and title_words arrays
 function M.parse_search_query(search_text)
   local query = {
     categories = {},
     tags = {},
-    title_words = {}
+    title_words = {},
+    bookmarks = {}
   }
 
   if not search_text or search_text == "" then
@@ -38,10 +40,10 @@ function M.parse_search_query(search_text)
     local is_prefix_token = false
     local prefix = ""
 
-    -- Check if this starts with a prefix pattern (t: or c:)
+    -- Check if this starts with a prefix pattern (t:, c:, or b:)
     if i + 1 <= #search_lower and search_lower:sub(i + 1, i + 1) == ":" then
       local potential_prefix = search_lower:sub(i, i)
-      if potential_prefix == "t" or potential_prefix == "c" then
+      if potential_prefix == "t" or potential_prefix == "c" or potential_prefix == "b" then
         is_prefix_token = true
         prefix = potential_prefix
         i = i + 2 -- Skip past prefix:
@@ -71,8 +73,11 @@ function M.parse_search_query(search_text)
       end
     end
 
-    -- Only process tokens that are at least 2 characters or are quoted
-    if #token >= 2 or (search_lower:sub(token_start, token_start) == '"') then
+    -- Handle bookmark prefix differently - allow empty token for b: alone
+    if is_prefix_token and prefix == "b" then
+      -- For bookmarks, allow empty token (b: alone) or any content (b:delete)
+      table.insert(query.bookmarks, token) -- token can be empty string
+    elseif #token >= 2 or (search_lower:sub(token_start, token_start) == '"') then
       if is_prefix_token then
         if prefix == "t" and #token > 0 then
           table.insert(query.tags, token)
@@ -150,6 +155,41 @@ function M.title_matches(title, title_word_filters)
     end
   end
   return true
+end
+
+---Check if a tip matches bookmark filters
+---@param title string The tip title
+---@param bookmark_filters string[] Array of bookmark filters to match
+---@return boolean matches True if tip matches bookmark criteria
+function M.bookmark_matches(title, bookmark_filters)
+  if #bookmark_filters == 0 then
+    return true -- No bookmark filter applied
+  end
+  
+  local bookmarks = require("neovim_tips.bookmarks")
+  local is_bookmarked = bookmarks.is_bookmarked(title)
+  
+  -- If tip is not bookmarked, it never matches bookmark filters
+  if not is_bookmarked then
+    return false
+  end
+  
+  -- If any filter is empty string (b: alone), just check if bookmarked
+  for _, filter in ipairs(bookmark_filters) do
+    if filter == "" then
+      return true -- Already confirmed bookmarked above
+    end
+  end
+  
+  -- Check if title matches any non-empty bookmark filters
+  local title_lower = string.lower(title)
+  for _, filter in ipairs(bookmark_filters) do
+    if filter ~= "" and string.find(title_lower, filter, 1, true) then
+      return true
+    end
+  end
+  
+  return false
 end
 
 ---Check if search text has help triggers (t:? or c:?)

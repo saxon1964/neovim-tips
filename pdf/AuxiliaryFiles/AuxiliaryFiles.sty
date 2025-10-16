@@ -32,26 +32,17 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%       MAINMATTER PAGE FORMAT
 \fancypagestyle{fancymain}{
-\renewcommand{\headrulewidth}{0.1pt}
-\fancyhead[LE, RO]{\small\parbox{.45\textwidth}{
-    \checkoddpage
-    \ifoddpage
-        \raggedleft
-    \else
-        \raggedright
-    \fi
-    \bfseries\nouppercase{\leftmark}}\vspace{.065cm}}
-\fancyhead[LO, RE]{\small\parbox{.45\textwidth}{
-    \checkoddpage
-    \ifoddpage
-        \raggedright
-    \else
-        \raggedleft
-    \fi
-    \nouppercase{\rightmark}}\vspace{.065cm}}
-\fancyfoot[LE,RO]{\small\thepage}
-\fancyfoot[C]{}
-\fancyfoot[LO,RE]{\small \EMail}}
+  \renewcommand{\headrulewidth}{0.1pt}
+
+  % Header — same on all pages
+  \fancyhead[L]{\small\bfseries\nouppercase{\leftmark}}
+  \fancyhead[R]{\small\nouppercase{\rightmark}}
+
+  % Footer — same on all pages
+  \fancyfoot[L]{\small \EMail}
+  \fancyfoot[C]{}
+  \fancyfoot[R]{\small \thepage}
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%       SPACING
 \strictpagecheck

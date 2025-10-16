@@ -2,20 +2,25 @@
 
 %%%%%%%%%                       (BIBLIOGRAPHY PAGE FORMAT)
 \fancypagestyle{fancyBibliography}{
-	\renewcommand{\headrulewidth}{0.25pt}
-	\renewcommand{\footrulewidth}{0.25pt}
-	\fancyfoot[LE,RO]{}
-	\fancyhead[LO,RE]{\bf\small \BibliographyName}}
+  \renewcommand{\headrulewidth}{0.25pt}
+  \renewcommand{\footrulewidth}{0.25pt}
+  \fancyhead[L]{\bfseries\small \BibliographyName}
+  \fancyhead[R]{}
+  \fancyfoot[L]{}
+  \fancyfoot[C]{}
+  \fancyfoot[R]{}
+}
 
 %%%%%%%%%%                      (ANALYTIC INDEX PAGE FORMAT)
 \fancypagestyle{fancyIndex}{
-	\renewcommand{\headrulewidth}{0.25pt}
-	\renewcommand{\footrulewidth}{0.25pt}
-	\fancyhead[L,R]{}
-	\fancyfoot[L,R]{}
-	\fancyfoot[C]{\small\thepage}
-	\fancyfoot[LE,RO]{}
-	\fancyhead[LO,RE]{\bf\small \AnalyticIndexName}}
+  \renewcommand{\headrulewidth}{0.25pt}
+  \renewcommand{\footrulewidth}{0.25pt}
+  \fancyhead[L]{\bfseries\small \AnalyticIndexName}
+  \fancyhead[R]{}
+  \fancyfoot[L]{}
+  \fancyfoot[C]{\small\thepage}
+  \fancyfoot[R]{}
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%    (BIBLIOGRAPHY)
 \pagestyle{fancyBibliography}

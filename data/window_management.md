@@ -4,8 +4,6 @@
 ---
 Use `Ctrl+w h/j/k/l` to move to left/down/up/right windows, `Ctrl+w w` to cycle through windows, `Ctrl+w p` for previous window.
 
-#### Example
-
 ```vim
 Ctrl+w h  " move to left window
 Ctrl+w j  " move to window below
@@ -21,8 +19,6 @@ Ctrl+w p  " go to previous window
 ---
 Use `Ctrl+w c` to close current window, `Ctrl+w o` to close all windows except current, `Ctrl+w q` to quit current window.
 
-#### Example
-
 ```vim
 Ctrl+w c  " close current window
 Ctrl+w o  " close all other windows
@@ -35,8 +31,6 @@ Ctrl+w q  " quit current window
 ---
 Use `Ctrl+w t` to go to top window and `Ctrl+w b` to go to bottom window.
 
-#### Example
-
 ```vim
 Ctrl+w t  " go to top window
 Ctrl+w b  " go to bottom window
@@ -47,8 +41,6 @@ Ctrl+w b  " go to bottom window
 # Tags: window, special, file, tag
 ---
 Use `Ctrl+w f` to split and open file under cursor, `Ctrl+w ]` to split and jump to tag, `Ctrl+w x` to exchange windows.
-
-#### Example
 
 ```vim
 Ctrl+w f  " split and open file under cursor
@@ -62,8 +54,6 @@ Ctrl+w x  " exchange current window with another
 ---
 Use `Ctrl+w T` to move current window to a new tab page.
 
-#### Example
-
 ```vim
 Ctrl+w T  " move current window to new tab
 ```
@@ -73,8 +63,6 @@ Ctrl+w T  " move current window to new tab
 # Tags: window, equalize, rotate, maximize, advanced
 ---
 Use `Ctrl+w =` to equalize windows, `Ctrl+w r` to rotate windows, `Ctrl+w |` to maximize horizontally.
-
-#### Example
 
 ```vim
 Ctrl+w =    " equalize window sizes
@@ -90,8 +78,6 @@ Ctrl+w _    " maximize current window vertically
 ---
 Use `Ctrl+w +` to increase height, `Ctrl+w -` to decrease height, `Ctrl+w >` to increase width, `Ctrl+w <` to decrease width.
 
-#### Example
-
 ```vim
 Ctrl+w +  " increase window height
 Ctrl+w -  " decrease window height
@@ -104,8 +90,6 @@ Ctrl+w <  " decrease window width
 # Tags: window, move, position
 ---
 Use `Ctrl+w H/J/K/L` to move current window to far left/bottom/top/right.
-
-#### Example
 
 ```vim
 Ctrl+w H  " move window to far left
@@ -120,8 +104,6 @@ Ctrl+w L  " move window to far right
 ---
 Use mapped keys for fast window resizing without complex key combinations.
 
-#### Example
-
 ```vim
 " Map + and - for easy window resizing
 if bufwinnr(1)
@@ -135,8 +117,6 @@ endif
 # Tags: cursor, middle, navigation, movement
 ---
 Improved gm command that moves cursor to the middle of the physical line, ignoring whitespace.
-
-#### Example
 
 ```vim
 function! s:Gm()
@@ -156,8 +136,6 @@ onoremap <silent> gm :call <SID>Gm()<CR>
 ---
 Keep cursor centered vertically on screen for better visibility while editing.
 
-#### Example
-
 ```vim
 " Keep cursor centered when scrolling
 nnoremap <C-d> <C-d>zz
@@ -175,8 +153,6 @@ set scrolloff=999
 ---
 Configure different cursor shapes for different modes to provide visual feedback.
 
-#### Example
-
 ```vim
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 " Block in normal, vertical bar in insert, horizontal in replace
@@ -188,8 +164,6 @@ set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 ---
 Use `:bp|bd #` to close buffer without closing the window layout.
 
-#### Example
-
 ```vim
 :bp|bd #        " go to previous buffer, delete current
 :enew|bd #      " create new buffer, delete previous
@@ -200,8 +174,6 @@ Use `:bp|bd #` to close buffer without closing the window layout.
 # Tags: split, window, layout, organize
 ---
 Create and organize window splits for efficient multi-file editing.
-
-#### Example
 
 ```vim
 :split          " horizontal split
@@ -217,8 +189,6 @@ Create and organize window splits for efficient multi-file editing.
 # Tags: tabs, navigation, workspace, organize
 ---
 Use tabs as workspaces to organize different projects or contexts.
-
-#### Example
 
 ```vim
 :tabnew         " create new tab
@@ -236,8 +206,6 @@ gT              " previous tab (normal mode)
 # Tags: navigation, window, mapping, efficient
 ---
 Map window navigation to single keys for faster movement between splits.
-
-#### Example
 
 ```vim
 " Map Alt+hjkl for window navigation
@@ -258,8 +226,6 @@ nnoremap <leader>l <C-w>l
 # Tags: focus, writing, distraction, zen
 ---
 Create a distraction-free environment for writing and focused editing.
-
-#### Example
 
 ```vim
 " Simple focus mode
@@ -285,8 +251,6 @@ nnoremap <F12> :call ToggleFocusMode()<CR>
 ---
 Use Vim's diff mode to compare and merge files effectively.
 
-#### Example
-
 ```vim
 :vimdiff file1 file2    " start vimdiff from command line
 :diffthis               " make current window part of diff
@@ -304,8 +268,6 @@ dp                      " diff put (put change to other)
 # Tags: explorer, netrw, files, browse
 ---
 Use built-in file explorer (netrw) for quick file navigation and management.
-
-#### Example
 
 ```vim
 :Explore            " open file explorer in current window
@@ -328,8 +290,6 @@ Use built-in file explorer (netrw) for quick file navigation and management.
 ---
 Use `:only` or `:on` to close all windows except the current one, making it take up the full screen.
 
-#### Example
-
 ```vim
 :only   " close all other windows (keep current)
 :on     " short form of :only
@@ -341,8 +301,6 @@ Ctrl+w o " normal mode shortcut for :only
 # Tags: wincmd, window, command, ex, mode
 ---
 Use `:wincmd {key}` to execute window commands from Ex mode, useful in scripts and mappings.
-
-#### Example
 
 ```vim
 :wincmd j     " same as Ctrl+w j (move to window below)

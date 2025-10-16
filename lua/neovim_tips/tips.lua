@@ -15,6 +15,12 @@ local titles = {}
 local tips_map = {}
 local descriptions_map = {}
 
+---Clear all cached descriptions (useful for debugging or forcing refresh)
+---@return nil
+function M.clear_descriptions_cache()
+  descriptions_map = {}
+end
+
 ---Set the tips data and build internal indexes
 ---Processes tips into searchable titles and formatted descriptions
 ---@param all_tips Tip[] Array of tip objects to process
@@ -23,7 +29,7 @@ function M.set_tips(all_tips)
   tips = all_tips
   titles = {}
   tips_map = {}
-  descriptions_map = {}
+  descriptions_map = {} -- Clear description cache for fresh formatting
   for _, tip in ipairs(tips) do
     local title = tip.title
     table.insert(titles, title)
@@ -92,12 +98,12 @@ function M.get_description(title)
   if (not descriptions_map[title]) then
     local tip = tips_map[title]
     local description = {}
-    table.insert(description, "## " .. tip.title)
+    table.insert(description, "# " .. tip.title)
     if tip.category and #tip.category > 0 then
-      table.insert(description, "### Category: " .. tip.category)
+      table.insert(description, "## Category: " .. tip.category)
     end
     if tip.tags and #tip.tags > 0 then
-      table.insert(description, "### Tags: " .. table.concat(tip.tags, ", "))
+      table.insert(description, "## Tags: " .. table.concat(tip.tags, ", "))
     end
     table.insert(description, tip.description)
     if not md_supported then

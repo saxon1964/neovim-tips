@@ -4,8 +4,6 @@
 ---
 Use advanced text object variations for more precise text selection and manipulation.
 
-#### Example
-
 ```vim
 " Next/Last variations
 in(     " inside next (
@@ -36,8 +34,6 @@ vac     " around class (with treesitter)
 ---
 Use the expression register `"=` to perform calculations and dynamic text insertion.
 
-#### Example
-
 ```vim
 " In insert mode:
 <C-r>=42*7<CR>          " inserts 294
@@ -61,8 +57,6 @@ Use the expression register `"=` to perform calculations and dynamic text insert
 # Tags: regex, assertion, lookahead, lookbehind, pattern
 ---
 Use zero-width assertions (`\@=`, `\@!`, `\@<=`, `\@<!`) for complex search patterns that match without consuming characters.
-
-#### Example
 
 ```vim
 " Positive lookahead (\@=)
@@ -91,8 +85,6 @@ Use zero-width assertions (`\@=`, `\@!`, `\@<=`, `\@<!`) for complex search patt
 # Tags: register, chain, manipulation, sequence, advanced
 ---
 Chain register operations and use registers creatively for complex text manipulation workflows.
-
-#### Example
 
 ```vim
 " Chain multiple register operations

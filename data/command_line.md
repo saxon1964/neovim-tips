@@ -4,8 +4,6 @@
 ---
 Use `Tab` for command completion and `Ctrl+d` to list all possible completions.
 
-#### Example
-
 ```vim
 :ed<Tab>   " complete to :edit
 :h vim<Tab>  " complete help topics
@@ -18,8 +16,6 @@ Use `Tab` for command completion and `Ctrl+d` to list all possible completions.
 ---
 Use `Ctrl+r Ctrl+w` to insert the word under cursor into command line.
 
-#### Example
-
 ```vim
 :Ctrl+r Ctrl+w  " insert word under cursor
 ```
@@ -29,8 +25,6 @@ Use `Ctrl+r Ctrl+w` to insert the word under cursor into command line.
 # Tags: command, edit, navigation
 ---
 Use `Ctrl+b` to go to beginning of line, `Ctrl+e` to end, `Ctrl+h` to delete character, `Ctrl+w` to delete word.
-
-#### Example
 
 ```vim
 :Ctrl+b  " go to beginning of command line
@@ -45,8 +39,6 @@ Use `Ctrl+b` to go to beginning of line, `Ctrl+e` to end, `Ctrl+h` to delete cha
 ---
 Use `q:` to open command history in a searchable window.
 
-#### Example
-
 ```vim
 q:  " open command history window
 ```
@@ -56,8 +48,6 @@ q:  " open command history window
 # Tags: command, cursor, movement, navigation
 ---
 Use arrow keys or `Ctrl+b`/`Ctrl+e` for movement, `Shift+Left`/`Shift+Right` or `Ctrl+Left`/`Ctrl+Right` for word movement.
-
-#### Example
 
 ```vim
 " In command mode:
@@ -73,8 +63,6 @@ Ctrl+Left/Right    " move by word (alternative)
 ---
 Use `Backspace` or `Ctrl+h` to delete character, `Del` to delete forward, `Ctrl+w` to delete word, `Ctrl+u` to clear line.
 
-#### Example
-
 ```vim
 " In command mode:
 <BS>/Ctrl+h  " delete character backward
@@ -89,8 +77,6 @@ Ctrl+u       " clear from cursor to beginning
 ---
 Use `Shift+Up`/`Shift+Down` or `PageUp`/`PageDown` to recall commands that start with current text.
 
-#### Example
-
 ```vim
 " Type partial command, then:
 :se<Shift+Up>    " find previous commands starting with 'se'
@@ -102,8 +88,6 @@ Use `Shift+Up`/`Shift+Down` or `PageUp`/`PageDown` to recall commands that start
 # Tags: command, completion, tab, modes
 ---
 Use `Tab` for next completion, `Shift+Tab` for previous, `Ctrl+d` to list all, `Ctrl+a` to insert all matches, `Ctrl+l` for longest common part.
-
-#### Example
 
 ```vim
 " In command mode:
@@ -120,8 +104,6 @@ Use `Tab` for next completion, `Shift+Tab` for previous, `Ctrl+d` to list all, `
 ---
 Use `Ctrl+r` followed by register name to insert register contents into command line.
 
-#### Example
-
 ```vim
 " In command mode:
 :Ctrl+r "     " insert default register
@@ -136,8 +118,6 @@ Use `Ctrl+r` followed by register name to insert register contents into command 
 # Tags: command, insert, word, filename, line
 ---
 Use `Ctrl+r` with special keys to insert current context: `Ctrl+w` for word, `Ctrl+f` for filename, `Ctrl+l` for line.
-
-#### Example
 
 ```vim
 " In command mode:
@@ -154,8 +134,6 @@ Use `Ctrl+r` with special keys to insert current context: `Ctrl+w` for word, `Ct
 ---
 Use `Ctrl+v` or `Ctrl+q` to insert the next character literally (useful for special characters).
 
-#### Example
-
 ```vim
 " In command mode:
 :echo "Ctrl+v<Tab>"   " insert literal tab character
@@ -167,8 +145,6 @@ Use `Ctrl+v` or `Ctrl+q` to insert the next character literally (useful for spec
 # Tags: command, mode, switch, abandon
 ---
 Use `Ctrl+c` or `Esc` to abandon command, `Ctrl+\ Ctrl+n` or `Ctrl+\ Ctrl+g` to go to normal mode.
-
-#### Example
 
 ```vim
 " In command mode:
@@ -184,8 +160,6 @@ Ctrl+\ Ctrl+g    " go to normal mode (alternative)
 ---
 Use `Ctrl+f` to open command-line window for full editing, `Ctrl+o` to execute one normal mode command.
 
-#### Example
-
 ```vim
 " In command mode:
 Ctrl+f  " open command-line window for editing
@@ -197,8 +171,6 @@ Ctrl+o  " execute one normal mode command and return
 # Tags: command, word, delete, kill, clear
 ---
 Use `Ctrl+w` to delete word before cursor, `Ctrl+u` to delete from cursor to beginning of line.
-
-#### Example
 
 ```vim
 " In command mode:

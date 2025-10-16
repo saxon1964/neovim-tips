@@ -4,6 +4,8 @@ local M = {}
 
 local Popup = require("nui.popup")
 local Layout = require("nui.layout")
+local renderer = require("neovim_tips.renderer")
+
 
 ---@class PickerLayout
 ---@field layout NuiLayout|nil Main layout container
@@ -25,7 +27,7 @@ function M.create_layout()
     border = {
       style = "rounded",
       text = {
-        top = " Search Tips (t:tag c:category) ",
+        top = " Search Tips (c:category t:tag b:bookmark) ",
         top_align = "center",
       },
     },
@@ -85,11 +87,11 @@ function M.create_layout()
       modifiable = false,
       readonly = false,
     },
-    win_options = {
+    win_options = renderer.get_win_options({
       wrap = true,
       number = false,
       winhighlight = "FloatBorder:Normal",
-    },
+    }),
   })
 
   -- Create footer popup
@@ -99,7 +101,7 @@ function M.create_layout()
     border = {
       style = "rounded",
       text = {
-        top = " Contribute ",
+        top = " Help ",
         top_align = "center",
       },
     },
@@ -108,11 +110,11 @@ function M.create_layout()
       modifiable = true,
       readonly = false,
     },
-    win_options = {
+    win_options = renderer.get_win_options({
       wrap = false,
       number = false,
       winhighlight = "FloatBorder:Normal",
-    },
+    }),
   })
 
   -- Create layout
@@ -168,9 +170,12 @@ function M.update_titles_display(titles_popup, filtered_titles, all_titles, sele
   if not titles_popup then return end
 
   local lines = {}
+  local bookmarks = require("neovim_tips.bookmarks")
+  local config = require("neovim_tips.config")
   for i, title in ipairs(filtered_titles or {}) do
     local prefix = (i == selected_index) and "> " or "  "
-    table.insert(lines, prefix .. title)
+    local star = bookmarks.is_bookmarked(title) and config.options.bookmark_symbol or ""
+    table.insert(lines, prefix .. star .. title)
   end
 
   -- Show empty state if no results
@@ -191,6 +196,9 @@ function M.update_titles_display(titles_popup, filtered_titles, all_titles, sele
   if active_filters and active_filters.tags and #active_filters.tags > 0 then
     table.insert(filters, "t:" .. table.concat(active_filters.tags, ","))
   end
+  if active_filters and active_filters.bookmarks and #active_filters.bookmarks > 0 then
+    table.insert(filters, "b:" .. table.concat(active_filters.bookmarks, ","))
+  end
   if #filters > 0 then
     title_text = title_text .. "[" .. table.concat(filters, " ") .. "] "
   end
@@ -205,6 +213,7 @@ function M.update_titles_display(titles_popup, filtered_titles, all_titles, sele
   -- Highlight selected line
   local ns_id = vim.api.nvim_create_namespace("neovim_tips_picker")
   vim.api.nvim_buf_clear_namespace(titles_popup.bufnr, ns_id, 0, -1)
+
   if selected_index > 0 and selected_index <= #lines then
     local line_content = lines[selected_index]
     local line_length = #line_content
@@ -233,8 +242,11 @@ end
 function M.update_preview_content(preview_popup, title, content, renderer)
   if not preview_popup then return end
 
-  -- Update title
-  preview_popup.border:set_text("top", " " .. title .. " ", "center")
+  -- Update title with star if bookmarked
+  local bookmarks = require("neovim_tips.bookmarks")
+  local config = require("neovim_tips.config")
+  local star = bookmarks.is_bookmarked(title) and config.options.bookmark_symbol or ""
+  preview_popup.border:set_text("top", " " .. star .. title .. " ", "center")
 
   -- Update content
   local lines = vim.split(content, "\n")

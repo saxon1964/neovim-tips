@@ -4,8 +4,6 @@
 ---
 Use `vim.opt.statusline` to set a custom statusline format.
 
-#### Example
-
 ```vim
 :lua vim.opt.statusline = "%f %y %m %= %l:%c"
 ```
@@ -15,8 +13,6 @@ Use `vim.opt.statusline` to set a custom statusline format.
 # Tags: highlight, groups, colors
 ---
 Use `:hi` to view all highlight groups and their current settings.
-
-#### Example
 
 ```vim
 :hi  " show all highlight groups

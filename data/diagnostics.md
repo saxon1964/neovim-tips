@@ -4,8 +4,6 @@
 ---
 Use `:checkhealth` to run health diagnostics for your Neovim setup.
 
-#### Example
-
 ```vim
 :checkhealth  " run health diagnostics
 ```
@@ -15,8 +13,6 @@ Use `:checkhealth` to run health diagnostics for your Neovim setup.
 # Tags: messages, log, history
 ---
 Use `:messages` to view past messages and notifications.
-
-#### Example
 
 ```vim
 :messages  " view past messages
@@ -28,8 +24,6 @@ Use `:messages` to view past messages and notifications.
 ---
 Use `:verbose map <key>` to see where a specific mapping was defined.
 
-#### Example
-
 ```vim
 :verbose map <leader>f  " see where <leader>f was mapped
 ```
@@ -39,8 +33,6 @@ Use `:verbose map <key>` to see where a specific mapping was defined.
 # Tags: option, verbose, source
 ---
 Use `:verbose set option?` to see where a specific option was last set.
-
-#### Example
 
 ```vim
 :verbose set number?  " see where 'number' option was set

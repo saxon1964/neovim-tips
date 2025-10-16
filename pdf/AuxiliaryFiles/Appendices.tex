@@ -31,13 +31,16 @@
 
 %%%%%%%%    (APPENDICES PAGE FORMAT)
 \fancypagestyle{fancyapp}{
-\renewcommand{\headrulewidth}{0.25pt}
-	\fancyhead[LE, RO]{\small\parbox{.45\textwidth}{\checkoddpage
-\ifoddpage \raggedleft \else \raggedright \fi \bfseries\nouppercase{\leftmark}}\vspace{.065cm}}
-	\fancyhead[LO, RE]{\small\parbox{.45\textwidth}{\checkoddpage
-\ifoddpage \raggedright \else \raggedleft \fi \nouppercase{\rightmark}}\vspace{.065cm}}
-	\fancyfoot[LE,RO]{\small\thepage}
-	\fancyfoot[C]{}
-	\fancyfoot[LO,RE]{\small \EMail}}
+  \renewcommand{\headrulewidth}{0.25pt}
+
+  % Header: left = chapter title, right = section title
+  \fancyhead[L]{\small\bfseries\nouppercase{\leftmark}}
+  \fancyhead[R]{\small\nouppercase{\rightmark}}
+
+  % Footer: left = email, center = empty, right = page number
+  \fancyfoot[L]{\small \EMail}
+  \fancyfoot[C]{}
+  \fancyfoot[R]{\small\thepage}
+}
 
 \pagestyle{fancyapp}

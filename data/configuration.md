@@ -16,8 +16,6 @@ Use `:sandbox` to execute commands safely without side effects like persistent u
 ---
 Use `:echo &runtimepath` to see all runtime paths Neovim is using.
 
-#### Example
-
 ```vim
 :echo &runtimepath  " show runtime paths
 ```
@@ -27,8 +25,6 @@ Use `:echo &runtimepath` to see all runtime paths Neovim is using.
 # Tags: colors, terminal, display
 ---
 Configure terminal to support 256 colors with proper settings.
-
-#### Example
 
 ```vim
 set t_Co=256
@@ -43,8 +39,6 @@ export TERM='xterm-256color'
 # Tags: completion, tab, autocomplete
 ---
 Configure TAB to autocomplete words while preserving normal TAB functionality.
-
-#### Example
 
 ```vim
 function! Tab_Or_Complete()
@@ -63,8 +57,6 @@ set dictionary="/usr/dict/words"
 # Tags: cursor, position, session, restore
 ---
 Automatically restore cursor position when reopening files.
-
-#### Example
 
 ```vim
 function! ResCur()
@@ -89,8 +81,6 @@ set viminfo='10,\"100,:20,%,n~/.viminfo
 ---
 Set up paste toggle to prevent auto-indenting when pasting from clipboard in terminal.
 
-#### Example
-
 ```vim
 set pastetoggle=<F2>
 nnoremap <F2> :set invpaste paste?<CR>
@@ -103,8 +93,6 @@ set showmode
 # Tags: auto, reload, file, changes
 ---
 Automatically reload file when it changes externally, with optional warning.
-
-#### Example
 
 ```vim
 set autoread
@@ -121,8 +109,6 @@ au CursorHold * :silent! checktime
 ---
 Automatically switch between light and dark color schemes based on time of day.
 
-#### Example
-
 ```vim
 if strftime("%H") < 18 && strftime("%H") > 6
   colorscheme morning
@@ -137,8 +123,6 @@ endif
 ---
 Use `:set option` to enable, `:set nooption` to disable, `:set option?` to query, `:set option&` to reset to default.
 
-#### Example
-
 ```vim
 :set number        " enable line numbers
 :set nonumber      " disable line numbers
@@ -151,8 +135,6 @@ Use `:set option` to enable, `:set nooption` to disable, `:set option?` to query
 # Tags: ex, set, value, assignment, string
 ---
 Use `:set option=value` to assign value, `:set option+=value` to append, `:set option-=value` to remove.
-
-#### Example
 
 ```vim
 :set tabstop=4        " set tab width to 4
@@ -167,8 +149,6 @@ Use `:set option=value` to assign value, `:set option+=value` to append, `:set o
 ---
 Use `:autocmd` to set up automatic commands, `:autocmd!` to clear, `:doautocmd` to trigger events.
 
-#### Example
-
 ```vim
 :autocmd BufWritePost *.py !python %  " run python after save
 :autocmd! BufRead       " clear all BufRead autocmds
@@ -181,8 +161,6 @@ Use `:autocmd` to set up automatic commands, `:autocmd!` to clear, `:doautocmd` 
 # Tags: ex, map, abbrev, shortcut, key
 ---
 Use `:map` for mappings, `:abbrev` for abbreviations, `:unmap` and `:unabbrev` to remove.
-
-#### Example
 
 ```vim
 :map <F2> :w<CR>        " map F2 to save
@@ -198,8 +176,6 @@ Use `:map` for mappings, `:abbrev` for abbreviations, `:unmap` and `:unabbrev` t
 ---
 Use `:highlight` to set colors, `:syntax` for syntax highlighting, `:colorscheme` to change themes.
 
-#### Example
-
 ```vim
 :highlight Comment ctermfg=green   " set comment color
 :syntax on                         " enable syntax highlighting
@@ -214,8 +190,6 @@ Use `:highlight` to set colors, `:syntax` for syntax highlighting, `:colorscheme
 ---
 Use `:source` to load script, `:runtime` to load from runtime path, `:scriptnames` to list loaded scripts.
 
-#### Example
-
 ```vim
 :source ~/.vimrc        " load configuration file
 :runtime! plugin/**/*.vim  " load all plugins
@@ -228,8 +202,6 @@ Use `:source` to load script, `:runtime` to load from runtime path, `:scriptname
 # Tags: home, key, mapping, smart, navigation
 ---
 Map Home key to toggle between beginning of line and first non-blank character.
-
-#### Example
 
 ```vim
 " Smart Home key mapping:
@@ -253,8 +225,6 @@ endfunction
 ---
 Use `:execute` to allow `|` pipe character to separate multiple commands in mappings.
 
-#### Example
-
 ```vim
 " Without execute, | ends the mapping:
 nnoremap <F5> :w | echo "Saved"<CR>  " Wrong - | ends mapping
@@ -269,8 +239,6 @@ nnoremap <F5> :execute "w \| echo 'Saved'"<CR>  " Correct
 ---
 Use `:verbose map <key>` to see which script defined a mapping and where.
 
-#### Example
-
 ```vim
 :verbose map <F1>     " show where F1 mapping was defined
 :verbose imap <Tab>   " show insert mode Tab mapping source
@@ -283,8 +251,6 @@ Use `:verbose map <key>` to see which script defined a mapping and where.
 ---
 Use `:noautocmd vimgrep` to speed up vimgrep by disabling autocmds during search.
 
-#### Example
-
 ```vim
 :noautocmd vimgrep /pattern/ **/*.txt  " faster vimgrep
 :noautocmd bufdo %s/old/new/ge         " faster buffer operations
@@ -295,8 +261,6 @@ Use `:noautocmd vimgrep` to speed up vimgrep by disabling autocmds during search
 # Tags: plugin, mapping, check, usage, debug
 ---
 Use `echo maparg("key", "mode")` to check what key mapping is assigned in specific mode.
-
-#### Example
 
 ```vim
 :echo maparg("S", "v")      " check visual mode 'S' mapping
@@ -309,8 +273,6 @@ Use `echo maparg("key", "mode")` to check what key mapping is assigned in specif
 # Tags: environment, variable, conditional, config, lua
 ---
 Use `os.getenv()` in Lua configuration to conditionally set options based on environment variables.
-
-#### Example
 
 ```vim
 -- In init.lua:
@@ -329,8 +291,6 @@ end
 ---
 Start Neovim with alternate configuration using `-u` flag for testing or minimal setups.
 
-#### Example
-
 ```vim
 " Start with minimal config:
 nvim -u ~/.config/nvim/minimal.lua
@@ -348,8 +308,6 @@ nvim -u ~/.vimrc.test
 ---
 Use `:set hidden` to allow switching between files without saving changes, preventing "No write since last change" errors.
 
-#### Example
-
 ```vim
 :set hidden        " allow unsaved buffer switching
 :set nohidden      " require saving before switching (default)
@@ -362,8 +320,6 @@ Use `:set hidden` to allow switching between files without saving changes, preve
 ---
 Use `:set option+=value` to append a value to an option.
 
-#### Example
-
 ```vim
 :set path+=./include  " add to search path
 :set wildignore+=*.pyc  " ignore Python bytecode
@@ -375,8 +331,6 @@ Use `:set option+=value` to append a value to an option.
 ---
 Use `:set option-=value` to remove a value from an option.
 
-#### Example
-
 ```vim
 :set path-=./include  " remove from search path
 :set wildignore-=*.pyc  " stop ignoring Python bytecode
@@ -387,8 +341,6 @@ Use `:set option-=value` to remove a value from an option.
 # Tags: markdown, syntax, highlighting, fenced, languages
 ---
 Configure syntax highlighting for fenced code blocks in markdown files by setting supported languages.
-
-#### Example
 
 ```lua
 -- In init.lua

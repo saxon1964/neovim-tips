@@ -18,8 +18,6 @@ Use `!{motion}{command}` to filter text through external commands for text proce
 ---
 Use `guu` to lowercase current line or `gUU` to uppercase current line.
 
-#### Example
-
 ```vim
 guu  " lowercase current line
 gUU  " uppercase current line
@@ -31,8 +29,6 @@ gUU  " uppercase current line
 ---
 Use `gUw` to uppercase current word.
 
-#### Example
-
 ```vim
 gUw  " uppercase current word
 ```
@@ -42,8 +38,6 @@ gUw  " uppercase current word
 # Tags: format, paragraph, wrap
 ---
 Use `gqap` to format/wrap a paragraph according to textwidth.
-
-#### Example
 
 ```vim
 gqap  " format around paragraph
@@ -55,8 +49,6 @@ gqap  " format around paragraph
 ---
 Use `:%s/\s\+$//` to remove trailing whitespace from all lines.
 
-#### Example
-
 ```vim
 :%s/\s\+$//  " remove trailing whitespace
 ```
@@ -66,8 +58,6 @@ Use `:%s/\s\+$//` to remove trailing whitespace from all lines.
 # Tags: delete, blank, lines
 ---
 Use `:g/^$/d` to delete all blank/empty lines in the buffer.
-
-#### Example
 
 ```vim
 :g/^$/d  " delete blank lines
@@ -79,8 +69,6 @@ Use `:g/^$/d` to delete all blank/empty lines in the buffer.
 ---
 Use `:v/pattern/d` to delete all lines that do NOT match the pattern.
 
-#### Example
-
 ```vim
 :v/TODO/d  " delete lines that don't contain 'TODO'
 ```
@@ -90,8 +78,6 @@ Use `:v/pattern/d` to delete all lines that do NOT match the pattern.
 # Tags: numbering, sequence, insert, auto
 ---
 Use `:put =range(1,10)` to insert numbers 1-10, or select lines and use `:s/^/\=line('.')-line("'<")+1.'. '/` for relative numbering.
-
-#### Example
 
 ```vim
 :put =range(1,10)  " insert numbers 1-10
@@ -105,8 +91,6 @@ Use `:put =range(1,10)` to insert numbers 1-10, or select lines and use `:s/^/\=
 ---
 Use `:retab` to convert tabs to spaces using current tabstop setting, or `:set expandtab | retab` to convert and set future tabs as spaces.
 
-#### Example
-
 ```vim
 :retab              " convert tabs to spaces
 :set expandtab | retab  " convert and set expandtab
@@ -117,8 +101,6 @@ Use `:retab` to convert tabs to spaces using current tabstop setting, or `:set e
 # Tags: join, separator, custom, lines
 ---
 Use `:'<,'>s/\n/, /g` to join selected lines with custom separator (comma-space in example).
-
-#### Example
 
 ```vim
 :'<,'>s/\n/, /g     " join lines with ", "
@@ -131,8 +113,6 @@ Use `:'<,'>s/\n/, /g` to join selected lines with custom separator (comma-space 
 ---
 Use `:g/^/m0` to reverse all lines in buffer, or select lines and use `:'<,'>g/^/m '<-1` for selection.
 
-#### Example
-
 ```vim
 :g/^/m0             " reverse all lines
 :'<,'>g/^/m'<-1     " reverse selected lines
@@ -143,8 +123,6 @@ Use `:g/^/m0` to reverse all lines in buffer, or select lines and use `:'<,'>g/^
 # Tags: column, insert, visual, block
 ---
 Use visual block mode (`Ctrl+V`), select column, press `I` to insert, type text, then `Esc` to apply to all lines.
-
-#### Example
 
 ```vim
 Ctrl+V  " start visual block
@@ -159,8 +137,6 @@ Esc     " apply to all selected lines
 ---
 Use `:put =range(1,10)` to insert numbers 1-10, or use visual block with `g<C-a>` to create sequences.
 
-#### Example
-
 ```vim
 :put =range(1,10)        " insert numbers 1 through 10
 " Or select column with Ctrl+V, then:
@@ -172,8 +148,6 @@ g<C-a>                   " increment each line by 1 more than previous
 # Tags: align, numbers, decimal, format
 ---
 Use visual selection and substitute to align decimal numbers at their decimal points.
-
-#### Example
 
 ```vim
 " Select lines with numbers, then:
@@ -188,8 +162,6 @@ Use visual selection and substitute to align decimal numbers at their decimal po
 ---
 Create abbreviations to automatically fix common typing mistakes.
 
-#### Example
-
 ```vim
 iab teh the
 iab adn and
@@ -203,8 +175,6 @@ iab definately definitely
 # Tags: count, words, statistics, analyze
 ---
 Use `g Ctrl+g` for word count, or external commands for detailed statistics.
-
-#### Example
 
 ```vim
 g<C-g>              " show word count for buffer/selection
@@ -221,8 +191,6 @@ endfunction
 # Tags: csv, columns, data, tabular
 ---
 Use CSV plugin commands to navigate and manipulate comma-separated data.
-
-#### Example
 
 ```vim
 " With CSV plugin:
@@ -241,8 +209,6 @@ H, J, K, L          " navigate between cells
 ---
 Use sort with unique flag or visual block operations to remove duplicate lines.
 
-#### Example
-
 ```vim
 :%!sort -u          " sort and remove duplicates
 :sort u             " vim's built-in sort unique
@@ -255,8 +221,6 @@ Use sort with unique flag or visual block operations to remove duplicate lines.
 # Tags: numbers, increment, column, sequence, generate
 ---
 Generate a column of increasing numbers using visual block mode and increment commands.
-
-#### Example
 
 ```vim
 " Method 1: Visual Incrementing script
@@ -280,8 +244,6 @@ q               " stop recording
 ---
 Remove duplicate lines while keeping unique entries using sort and uniq operations.
 
-#### Example
-
 ```vim
 :%!sort | uniq       " sort and remove duplicates (external)
 :sort u              " sort and remove duplicates (internal)
@@ -293,8 +255,6 @@ Remove duplicate lines while keeping unique entries using sort and uniq operatio
 # Tags: transpose, swap, characters, exchange
 ---
 Swap adjacent characters or transpose text elements efficiently.
-
-#### Example
 
 ```vim
 xp              " transpose characters (delete and paste)
@@ -310,8 +270,6 @@ P               " paste before cursor
 # Tags: align, pad, format, columns, spacing
 ---
 Align text in columns and add padding for better formatting.
-
-#### Example
 
 ```vim
 " Align on specific character (e.g., =)
@@ -329,8 +287,6 @@ Align text in columns and add padding for better formatting.
 ---
 Apply ROT13 cipher to selected text using `g?` operator or external command.
 
-#### Example
-
 ```vim
 g??         " ROT13 current line
 g?ap        " ROT13 around paragraph
@@ -342,8 +298,6 @@ g?ap        " ROT13 around paragraph
 # Tags: binary, numbers, conversion, base
 ---
 Convert and manipulate binary numbers using expressions and external tools.
-
-#### Example
 
 ```vim
 " In insert mode, convert decimal to binary:
@@ -362,8 +316,6 @@ Ctrl+r =printf("0x%x", 42)<Enter>   " inserts 0x2a
 ---
 Get detailed text statistics including character, word, and line counts.
 
-#### Example
-
 ```vim
 g<C-g>              " detailed stats for selection/buffer
 :%s/word//gn        " count occurrences of 'word'
@@ -377,8 +329,6 @@ g<C-g>              " detailed stats for selection/buffer
 # Tags: increment, decrement, numbers, math
 ---
 Modify numbers in text using increment and decrement operations.
-
-#### Example
 
 ```vim
 Ctrl+a              " increment number under cursor
@@ -394,8 +344,6 @@ g<C-x>              " decrement each selected number progressively
 # Tags: comment, uncomment, code, blocks
 ---
 Add or remove comment markers from blocks of code.
-
-#### Example
 
 ```vim
 " For line comments (e.g., //):
@@ -416,8 +364,6 @@ Add or remove comment markers from blocks of code.
 ---
 Duplicate current line or selected text efficiently.
 
-#### Example
-
 ```vim
 yyp                 " duplicate current line (yank and paste)
 "ayy"ap             " duplicate line using register a
@@ -432,8 +378,6 @@ yyp                 " duplicate current line (yank and paste)
 ---
 Use `u` to undo changes, `Ctrl+r` to redo undone changes, and `U` to undo all changes on current line.
 
-#### Example
-
 ```vim
 u      " undo last change
 Ctrl+r " redo (undo the undo)
@@ -445,8 +389,6 @@ U      " undo all changes on current line
 # Tags: put, paste, register
 ---
 Use `p` to put (paste) text after cursor and `P` to put text before cursor.
-
-#### Example
 
 ```vim
 p  " put text after cursor
@@ -460,8 +402,6 @@ P  " put text before cursor
 ---
 Use `R` to enter Replace mode where typed characters overwrite existing text. Use `r{char}` to replace single character.
 
-#### Example
-
 ```vim
 R    " enter Replace mode
 ra   " replace character under cursor with 'a'
@@ -474,8 +414,6 @@ ra   " replace character under cursor with 'a'
 ---
 Use `x` to delete character under cursor and `X` to delete character before cursor.
 
-#### Example
-
 ```vim
 x   " delete character under cursor
 X   " delete character before cursor
@@ -487,8 +425,6 @@ X   " delete character before cursor
 # Tags: increment, sequence, numbers, visual, ctrl-a
 ---
 Use `g Ctrl+a` in visual block mode to create incremental number sequences instead of incrementing all numbers by the same amount.
-
-#### Example
 
 ```vim
 " Select multiple lines with numbers, then:

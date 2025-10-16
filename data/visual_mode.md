@@ -19,8 +19,6 @@ Use `gv` to reselect the last visual selection at a new location, then use `.` t
 ---
 Use `v` for character-wise visual mode, `V` for line-wise visual mode, and `Ctrl+v` for block-wise visual mode.
 
-#### Example
-
 ```vim
 v      " character visual
 V      " line visual
@@ -33,8 +31,6 @@ Ctrl+v " block visual
 ---
 Use `y` to yank (copy) selected text and `d` to delete selected text in visual mode.
 
-#### Example
-
 ```vim
 y  " yank selected text
 d  " delete selected text
@@ -46,8 +42,6 @@ d  " delete selected text
 ---
 Create an autocmd to highlight yanked text briefly for visual feedback.
 
-#### Example
-
 ```vim
 :lua vim.api.nvim_create_autocmd("TextYankPost", {callback = function() vim.highlight.on_yank() end})
 ```
@@ -57,8 +51,6 @@ Create an autocmd to highlight yanked text briefly for visual feedback.
 # Tags: visual, block, append, column
 ---
 Use `Ctrl+v` to select visual block, then `A` to append text to end of each selected line.
-
-#### Example
 
 ```vim
 Ctrl+v  " select visual block
@@ -73,8 +65,6 @@ Esc     " apply to all lines
 ---
 Use `gv` to reselect the last visual selection area.
 
-#### Example
-
 ```vim
 gv  " reselect last visual selection
 ```
@@ -84,8 +74,6 @@ gv  " reselect last visual selection
 # Tags: visual, corner, block, movement
 ---
 Use `o` to move cursor to opposite corner of selection, `O` to move to other corner in block mode.
-
-#### Example
 
 ```vim
 " In visual mode:
@@ -98,8 +86,6 @@ O   " move to other corner (block mode only)
 # Tags: visual, toggle, change, type
 ---
 Use `v`, `V`, `Ctrl+v` in visual mode to change selection type or exit. Use `Ctrl+g` to toggle between Visual and Select mode.
-
-#### Example
 
 ```vim
 " In visual mode:
@@ -114,8 +100,6 @@ Ctrl+g  " toggle Visual/Select mode
 # Tags: visual, operator, transform, case
 ---
 Apply operators to visual selections: `c` (change), `d` (delete), `y` (yank), `~` (toggle case), `u` (lowercase), `U` (uppercase).
-
-#### Example
 
 ```vim
 " After making visual selection:
@@ -133,8 +117,6 @@ U   " make selection uppercase
 ---
 Use `J` to join selected lines with spaces, `gJ` to join without spaces, `s` to substitute selection, `r` to replace each character.
 
-#### Example
-
 ```vim
 " After making visual selection:
 J    " join lines with spaces
@@ -149,8 +131,6 @@ rx   " replace each character with 'x'
 ---
 Use `p` or `P` to replace visual selection with register contents. This is useful for swapping text.
 
-#### Example
-
 ```vim
 " Copy text first, then select other text:
 p   " replace selection with register contents
@@ -162,8 +142,6 @@ P   " same as p in visual mode
 # Tags: visual, ex, command, range
 ---
 Press `:` in visual mode to run Ex commands on the selected range. The range `'<,'>` is automatically inserted.
-
-#### Example
 
 ```vim
 " After making visual selection:
@@ -178,8 +156,6 @@ Press `:` in visual mode to run Ex commands on the selected range. The range `'<
 # Tags: visual, tag, keyword, jump
 ---
 Use `Ctrl+]` to jump to tag of selected text, `K` to run keywordprg on selection.
-
-#### Example
 
 ```vim
 " After selecting text:

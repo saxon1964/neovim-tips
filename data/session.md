@@ -4,8 +4,6 @@
 ---
 Use `:mksession!` to save session and `:source Session.vim` to restore it.
 
-#### Example
-
 ```vim
 :mksession!        " save session
 :source Session.vim " restore session
@@ -16,8 +14,6 @@ Use `:mksession!` to save session and `:source Session.vim` to restore it.
 # Tags: ex, session, options, save, restore
 ---
 Use `:set sessionoptions` to control what gets saved, `:mksession {file}` for custom filename, `:source` to restore.
-
-#### Example
 
 ```vim
 :set sessionoptions=buffers,curdir,folds,help,tabpages,winsize
@@ -32,8 +28,6 @@ Use `:set sessionoptions` to control what gets saved, `:mksession {file}` for cu
 ---
 Use `:wviminfo` to write viminfo, `:rviminfo` to read, `:wshada` and `:rshada` for Neovim's shada file.
 
-#### Example
-
 ```vim
 :wshada          " write shada file
 :rshada          " read shada file
@@ -46,8 +40,6 @@ Use `:wviminfo` to write viminfo, `:rviminfo` to read, `:wshada` and `:rshada` f
 # Tags: ex, arglist, args, project, files
 ---
 Use `:args` to set argument list, `:argadd` to add files, `:next`/`:prev` to navigate, `:argdo` for commands on all.
-
-#### Example
 
 ```vim
 :args *.py       " set arglist to all Python files
@@ -62,8 +54,6 @@ Use `:args` to set argument list, `:argadd` to add files, `:next`/`:prev` to nav
 # Tags: ex, multiple, files, bufdo, windo, tabdo
 ---
 Use `:bufdo` for all buffers, `:windo` for all windows, `:tabdo` for all tabs to execute commands across multiple contexts.
-
-#### Example
 
 ```vim
 :bufdo %s/old/new/ge  " substitute in all buffers

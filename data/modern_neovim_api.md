@@ -4,8 +4,6 @@
 ---
 Use `vim.api.nvim_open_win()` to create floating windows programmatically for custom interfaces and popups.
 
-#### Example
-
 ```lua
 -- Create a floating window
 local buf = vim.api.nvim_create_buf(false, true)
@@ -35,8 +33,6 @@ vim.keymap.set('n', 'q', '<cmd>close<cr>', { buffer = buf })
 ---
 Use `vim.api.nvim_create_user_command()` to create custom commands with intelligent completion and argument handling.
 
-#### Example
-
 ```lua
 -- Command with file completion
 vim.api.nvim_create_user_command('EditConfig', function(opts)
@@ -63,8 +59,6 @@ end, {
 # Tags: buffer, local, mapping, option, scope
 ---
 Use `vim.opt_local` and buffer-specific keymaps to create settings that only apply to specific buffers.
-
-#### Example
 
 ```lua
 -- Buffer-local options (reset when switching buffers)
@@ -93,8 +87,6 @@ vim.api.nvim_create_autocmd('FileType', {
 # Tags: autocmd, pattern, group, multiple, events
 ---
 Use advanced patterns and groups with `vim.api.nvim_create_autocmd()` for sophisticated event handling.
-
-#### Example
 
 ```lua
 -- Create autocommand group for organization
@@ -129,8 +121,6 @@ vim.api.nvim_create_autocmd('BufWritePre', {
 # Tags: diagnostic, lsp, configuration, signs, virtual
 ---
 Use `vim.diagnostic.config()` to customize how diagnostics are displayed and behave.
-
-#### Example
 
 ```lua
 -- Configure diagnostic display

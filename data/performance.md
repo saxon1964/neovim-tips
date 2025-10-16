@@ -4,8 +4,6 @@
 ---
 Use `nvim --startuptime profile.log` to profile Neovim startup time.
 
-#### Example
-
 ```bash
 nvim --startuptime profile.log
 ```
@@ -15,8 +13,6 @@ nvim --startuptime profile.log
 # Tags: lazy, loading, plugins, optimization
 ---
 Use lazy loading for plugins that aren't needed immediately to improve startup time.
-
-#### Example
 
 ```lua
 -- lazy.nvim example
@@ -32,8 +28,6 @@ Use lazy loading for plugins that aren't needed immediately to improve startup t
 # Tags: disable, features, optimization, settings
 ---
 Disable unused built-in features to improve performance and reduce memory usage.
-
-#### Example
 
 ```lua
 vim.g.loaded_gzip = 1
@@ -51,8 +45,6 @@ vim.g.loaded_netrwPlugin = 1
 ---
 Set appropriate updatetime for better responsiveness (default 4000ms is often too slow).
 
-#### Example
-
 ```lua
 vim.opt.updatetime = 250  -- faster completion and diagnostics
 ```
@@ -62,8 +54,6 @@ vim.opt.updatetime = 250  -- faster completion and diagnostics
 # Tags: swap, files, memory, performance
 ---
 Configure swap files for better performance and crash recovery.
-
-#### Example
 
 ```lua
 vim.opt.swapfile = true
@@ -76,8 +66,6 @@ vim.opt.updatecount = 100  -- write swap after 100 keystrokes
 # Tags: numbers, relative, performance, display
 ---
 Use relative line numbers only when needed, as they can impact performance on large files.
-
-#### Example
 
 ```lua
 vim.opt.number = true
@@ -95,8 +83,6 @@ vim.api.nvim_create_autocmd({'BufEnter', 'FocusGained', 'InsertLeave'}, {
 ---
 Use lazyredraw to improve performance during macros and complex operations.
 
-#### Example
-
 ```lua
 vim.opt.lazyredraw = true  -- don't redraw during macros
 ```
@@ -106,8 +92,6 @@ vim.opt.lazyredraw = true  -- don't redraw during macros
 # Tags: profile, lua, performance, debug
 ---
 Use built-in Lua profiler to identify performance bottlenecks in your config.
-
-#### Example
 
 ```lua
 -- Start profiler
@@ -130,8 +114,6 @@ print(string.format("Elapsed: %.2fms", elapsed / 1e6))
 ---
 Use efficient filetype detection and disable unnecessary patterns.
 
-#### Example
-
 ```lua
 vim.g.do_filetype_lua = 1  -- use Lua for filetype detection
 vim.g.did_load_filetypes = 0  -- don't use Vim script detection
@@ -143,8 +125,6 @@ vim.g.did_load_filetypes = 0  -- don't use Vim script detection
 ---
 Monitor Neovim memory usage to identify memory leaks or excessive usage.
 
-#### Example
-
 ```vim
 :lua print(collectgarbage("count") .. " KB")  " current memory usage
 :lua collectgarbage()  " force garbage collection
@@ -155,8 +135,6 @@ Monitor Neovim memory usage to identify memory leaks or excessive usage.
 # Tags: syntax, highlighting, limits, large files
 ---
 Set limits for syntax highlighting to maintain performance on large files.
-
-#### Example
 
 ```lua
 vim.opt.synmaxcol = 200  -- don't highlight lines longer than 200 chars

@@ -4,8 +4,6 @@
 ---
 Use `gi` to jump to implementation of symbol under cursor.
 
-#### Example
-
 ```vim
 gi  " jump to implementation
 ```
@@ -15,8 +13,6 @@ gi  " jump to implementation
 # Tags: lsp, rename, refactor
 ---
 Use `:lua vim.lsp.buf.rename()` to rename symbol under cursor across the project.
-
-#### Example
 
 ```vim
 :lua vim.lsp.buf.rename()
@@ -28,8 +24,6 @@ Use `:lua vim.lsp.buf.rename()` to rename symbol under cursor across the project
 ---
 Use `:lua vim.lsp.buf.signature_help()` to show function signature help.
 
-#### Example
-
 ```vim
 :lua vim.lsp.buf.signature_help()
 ```
@@ -39,8 +33,6 @@ Use `:lua vim.lsp.buf.signature_help()` to show function signature help.
 # Tags: lsp, actions, refactor, fix
 ---
 Use `:lua vim.lsp.buf.code_action()` to show available code actions.
-
-#### Example
 
 ```vim
 :lua vim.lsp.buf.code_action()
@@ -52,8 +44,6 @@ Use `:lua vim.lsp.buf.code_action()` to show available code actions.
 ---
 Use `:lua vim.lsp.buf.format()` to format current buffer using LSP.
 
-#### Example
-
 ```vim
 :lua vim.lsp.buf.format()
 ```
@@ -63,8 +53,6 @@ Use `:lua vim.lsp.buf.format()` to format current buffer using LSP.
 # Tags: lsp, calls, incoming, hierarchy
 ---
 Use `:lua vim.lsp.buf.incoming_calls()` to show incoming call hierarchy.
-
-#### Example
 
 ```vim
 :lua vim.lsp.buf.incoming_calls()
@@ -76,8 +64,6 @@ Use `:lua vim.lsp.buf.incoming_calls()` to show incoming call hierarchy.
 ---
 Use `:lua vim.lsp.buf.remove_workspace_folder()` to remove folder from workspace.
 
-#### Example
-
 ```vim
 :lua vim.lsp.buf.remove_workspace_folder()
 ```
@@ -87,8 +73,6 @@ Use `:lua vim.lsp.buf.remove_workspace_folder()` to remove folder from workspace
 # Tags: lsp, workspace, folder, list
 ---
 Use `:lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))` to list workspace folders.
-
-#### Example
 
 ```vim
 :lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))

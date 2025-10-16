@@ -4,8 +4,6 @@
 ---
 Use `:registers` to show the contents of all registers.
 
-#### Example
-
 ```vim
 :registers
 ```
@@ -15,8 +13,6 @@ Use `:registers` to show the contents of all registers.
 # Tags: clipboard, system, yank
 ---
 Use `"+y` to yank to the system clipboard and `"+p` to paste from the system clipboard.
-
-#### Example
 
 ```vim
 "+y  " yank to system clipboard
@@ -29,8 +25,6 @@ Use `"+y` to yank to the system clipboard and `"+p` to paste from the system cli
 ---
 Use `"xy` to yank into specific register x. Replace x with any letter or number.
 
-#### Example
-
 ```vim
 "ay  " yank into register a
 "bp  " paste from register b
@@ -42,8 +36,6 @@ Use `"xy` to yank into specific register x. Replace x with any letter or number.
 ---
 Use `"_d` to delete text without affecting the default register (sends to blackhole register).
 
-#### Example
-
 ```vim
 "_d  " delete to blackhole register
 ```
@@ -54,8 +46,6 @@ Use `"_d` to delete text without affecting the default register (sends to blackh
 ---
 Use `:let @a='text'` to manually set the contents of register a.
 
-#### Example
-
 ```vim
 :let @a='hello world'  " set register a to 'hello world'
 ```
@@ -65,8 +55,6 @@ Use `:let @a='text'` to manually set the contents of register a.
 # Tags: register, clear, empty, macro
 ---
 Use `q{register}q` to clear/empty a specific register by recording an empty macro.
-
-#### Example
 
 ```vim
 qAq    " clear register 'A'
@@ -81,8 +69,6 @@ q:q    " clear command register
 ---
 Use `"%p` to paste current filename, `:let @+=@%` to copy buffer name to system clipboard.
 
-#### Example
-
 ```vim
 "%p            " paste current filename
 ":let @+=@%     " copy current buffer name to system clipboard
@@ -95,8 +81,6 @@ Use `"%p` to paste current filename, `:let @+=@%` to copy buffer name to system 
 ---
 Use `P` (capital) in visual mode to paste without overwriting the register, allowing multiple pastes.
 
-#### Example
-
 ```vim
 " Select text, then:
 P     " paste without overwriting register (can repeat)
@@ -108,8 +92,6 @@ p     " paste and overwrite register with selected text
 # Tags: register, append, uppercase
 ---
 Use uppercase letter to append to a register instead of replacing its contents.
-
-#### Example
 
 ```vim
 "ayy   " yank line into register a

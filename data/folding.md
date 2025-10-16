@@ -4,8 +4,6 @@
 ---
 Use `za` to toggle fold under cursor open/closed.
 
-#### Example
-
 ```vim
 za  " toggle fold under cursor
 ```
@@ -15,8 +13,6 @@ za  " toggle fold under cursor
 # Tags: fold, all, global
 ---
 Use `zR` to open all folds in buffer and `zM` to close all folds in buffer.
-
-#### Example
 
 ```vim
 zR  " open all folds
@@ -29,8 +25,6 @@ zM  " close all folds
 ---
 Use `zf` to create a fold from visual selection or with motion (e.g., `zf5j` to fold 5 lines down).
 
-#### Example
-
 ```vim
 zf5j  " create fold 5 lines down
 zf    " create fold from visual selection
@@ -42,8 +36,6 @@ zf    " create fold from visual selection
 ---
 Use `zm` to increase fold level (close more folds) and `zr` to reduce fold level (open more folds).
 
-#### Example
-
 ```vim
 zm  " increase fold level
 zr  " reduce fold level
@@ -54,8 +46,6 @@ zr  " reduce fold level
 # Tags: fold, indent, automatic, method
 ---
 Automatically fold code based on indentation levels using foldmethod=indent.
-
-#### Example
 
 ```vim
 set foldmethod=indent   " fold based on indentation
@@ -69,8 +59,6 @@ set foldnestmax=3       " limit nested fold depth
 ---
 Use syntax-aware folding for programming languages that support fold markers in syntax files.
 
-#### Example
-
 ```vim
 set foldmethod=syntax   " fold based on file syntax
 set foldlevel=2         " set initial fold level
@@ -81,8 +69,6 @@ set foldlevel=2         " set initial fold level
 # Tags: fold, insert, preserve, maintain
 ---
 Configure Vim to maintain fold state when entering insert mode.
-
-#### Example
 
 ```vim
 " Prevent folds from opening when inserting
@@ -98,8 +84,6 @@ vnoremap <F9> zf
 # Tags: fold, create, lines
 ---
 Use `zF` to create fold for N lines or `zf{motion}` to create fold with motion.
-
-#### Example
 
 ```vim
 5zF   " create fold for 5 lines

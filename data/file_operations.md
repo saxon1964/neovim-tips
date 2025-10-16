@@ -4,8 +4,6 @@
 ---
 Use `:w` to save current file, `:w {file}` to save as new file, or `:wall` to save all files.
 
-#### Example
-
 ```vim
 :w             " save current file
 :w newfile.txt " save as new file
@@ -18,8 +16,6 @@ Use `:w` to save current file, `:w {file}` to save as new file, or `:wall` to sa
 ---
 Use `:sav[eas] filepath` to save file under a different name
 
-#### Example
-
 ```vim
 :sav ~/tmp/work.txt
 ```
@@ -29,8 +25,6 @@ Use `:sav[eas] filepath` to save file under a different name
 # Tags: date, insert, command
 ---
 Use `:r !date` to insert current date at cursor position.
-
-#### Example
 
 ```vim
 :r !date  " insert current date
@@ -42,8 +36,6 @@ Use `:r !date` to insert current date at cursor position.
 ---
 Use `:r filename` to insert contents of another file at cursor position.
 
-#### Example
-
 ```vim
 :r file.txt  " insert contents of file.txt
 ```
@@ -54,8 +46,6 @@ Use `:r filename` to insert contents of another file at cursor position.
 ---
 Use `:e!` to reload current file from disk, discarding unsaved changes.
 
-#### Example
-
 ```vim
 :e!  " reload file from disk
 ```
@@ -65,8 +55,6 @@ Use `:e!` to reload current file from disk, discarding unsaved changes.
 # Tags: ex, read, write, append, output
 ---
 Use `:read` or `:r` to read file into buffer, `:write` range to write part of buffer, `:.,$w` for current to end.
-
-#### Example
 
 ```vim
 :r file.txt     " read file into current buffer
@@ -81,8 +69,6 @@ Use `:read` or `:r` to read file into buffer, `:write` range to write part of bu
 ---
 Use `:set readonly` to make read-only, `:set nomodifiable` to prevent changes, `:set fileformat` for line endings.
 
-#### Example
-
 ```vim
 :set readonly      " make buffer read-only
 :set nomodifiable  " prevent any modifications
@@ -96,8 +82,6 @@ Use `:set readonly` to make read-only, `:set nomodifiable` to prevent changes, `
 ---
 Use `:wa` to save all modified files, `:xa` to save all and exit, `:wqa` to save all and quit.
 
-#### Example
-
 ```vim
 :wa      " write (save) all modified files
 :xa      " write all modified files and exit
@@ -110,8 +94,6 @@ Use `:wa` to save all modified files, `:xa` to save all and exit, `:wqa` to save
 # Tags: path, separator, backslash, forward, slash
 ---
 Use `:s` commands to easily convert between backslash and forward slash in file paths.
-
-#### Example
 
 ```vim
 " Convert backslashes to forward slashes:
@@ -130,8 +112,6 @@ Use `:s` commands to easily convert between backslash and forward slash in file 
 ---
 Use `:update` to save file only if it has been modified, more efficient than `:write`.
 
-#### Example
-
 ```vim
 :update           " save only if file is modified
 :map <F2> :update<CR>  " map F2 to conditional save
@@ -142,8 +122,6 @@ Use `:update` to save file only if it has been modified, more efficient than `:w
 # Tags: file, format, mac, dos, unix, encoding
 ---
 Use `:e ++ff=mac` to reload file with Mac format, `++ff=dos` for DOS, `++ff=unix` for Unix.
-
-#### Example
 
 ```vim
 :e ++ff=mac       " reload with Mac line endings
@@ -158,8 +136,6 @@ Use `:e ++ff=mac` to reload file with Mac format, `++ff=dos` for DOS, `++ff=unix
 ---
 Use `:set isfname+=32` to allow opening file names containing spaces with `gf` command.
 
-#### Example
-
 ```vim
 :set isfname+=32    " add space (ASCII 32) to filename chars
 " Now gf works on: /path/to/file with spaces.txt
@@ -171,8 +147,6 @@ Use `:set isfname+=32` to allow opening file names containing spaces with `gf` c
 # Tags: file, exist, check, script, function
 ---
 Use `filereadable()` to check if file exists and is readable, `readfile()` to read all lines.
-
-#### Example
 
 ```vim
 " In Vim script:
@@ -190,8 +164,6 @@ let lines = readfile('data.txt')
 ---
 Use `:browse {command}` to open file browser dialog for commands that take filenames (GUI only).
 
-#### Example
-
 ```vim
 :browse edit      " open file browser to edit file
 :browse saveas    " open save-as dialog
@@ -204,8 +176,6 @@ Use `:browse {command}` to open file browser dialog for commands that take filen
 # Tags: file, save, write
 ---
 Use this command to write file if the full path contains non-existent directories. All directories that do not exist will be created before the save:
-
-#### Example
 
 ```vim
 :write ++p

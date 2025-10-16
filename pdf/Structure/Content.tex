@@ -1337,6 +1337,38 @@ Use {\footnotesize \Verb§\%(\)§} and backreferences for matching nested struct
 \end{Verbatim}
 \end{Exa*}
 
+\section{Search and replace using custom lua functions}
+
+\textbf{Category}: Advanced Search\\ \textbf{Tags}: group, capture, search, replace, lua, function
+\vspace{0.5cm}
+
+You can define your own function directly in Neovim. It won't survive Neovim restart but such functions can be useful anyway. For example, the following function capitalizes the first letter in the text:
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+:lua function capitalize(text) return text:sub(1,1):upper() .. text:sub(2) end
+\end{Verbatim}
+\end{Exa*}
+
+You can now use your own custom function to capitalize every word in the document using {\footnotesize \Verb§%s/<pattern>/\=v:lua.your_fun(submatch(0))/§}.
+
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+:%s/\w\+/\=v:lua.capitalize(submatch(0))/gc
+\end{Verbatim}
+\end{Exa*}
+
+You can also apply your custom function to every line that is matching the given pattern using {\footnotesize \Verb§g/<pattern>/s//\=v:lua.your_fun(submatch(0))§}
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+:g/\w\+/s//\=v:lua.capitalize(submatch(0))
+\end{Verbatim}
+\end{Exa*}
+
+Credits: Different-Ad-8707@Reddit
+
 \section{Search and replace with expressions}
 
 \textbf{Category}: Advanced Search\\ \textbf{Tags}: expression, function, dynamic, replace
@@ -4805,6 +4837,28 @@ Use {\footnotesize \Verb§:earlier 10m§} to revert buffer to state 10 minutes a
 \end{Exa*}
 
 \chapter{Editing}
+\section{Advanced sort options}
+
+\textbf{Category}: Editing\\ \textbf{Tags}: sort, advanced, numeric, reverse, case
+\vspace{0.5cm}
+
+Use advanced {\footnotesize \Verb§:sort§} options for more complex sorting needs like numeric sorting, reverse sorting, and case-insensitive sorting.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+:sort!        " reverse sort (Z to A)
+:sort i       " case-insensitive sort
+:sort n       " numeric sort (by first number in line)
+:sort u       " unique - sort and remove duplicates
+:sort! n      " reverse numeric sort
+:sort f       " float sort (for decimal numbers)
+
+" Combine options:
+:sort in      " case-insensitive numeric sort
+:sort! u      " reverse sort and remove duplicates
+\end{Verbatim}
+\end{Exa*}
+
 \section{Calculate expressions}
 
 \textbf{Category}: Editing\\ \textbf{Tags}: calculate, math, expression, replace
@@ -7948,7 +8002,392 @@ Find the answer by typing the following command:
 \end{Verbatim}
 \end{Exa*}
 
+\chapter{G commands}
+\section{Change case with gu and gU}
+
+\textbf{Category}: Text\\ \textbf{Tags}: g-commands, case, uppercase, lowercase
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§gu§} and {\footnotesize \Verb§gU§} to change the case of text with motion or in visual mode.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+" In normal mode:
+guw   " lowercase word
+gUw   " uppercase word
+guiw  " lowercase inner word
+gU$   " uppercase to end of line
+
+" In visual mode:
+gu    " lowercase selection
+gU    " uppercase selection
+\end{Verbatim}
+\end{Exa*}
+
+\section{Edit file under cursor with gf}
+
+\textbf{Category}: Navigation\\ \textbf{Tags}: g-commands, file, navigation, cursor
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§gf§} to edit the file whose path is under the cursor. Useful for navigating to files in code.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+" Place cursor on a file path and press:
+gf  " open file in current window
+
+" Related commands:
+CTRL-W f  " open file in new window
+CTRL-W gf " open file in new tab
+\end{Verbatim}
+\end{Exa*}
+
+\section{Format text with gq}
+
+\textbf{Category}: Formatting\\ \textbf{Tags}: g-commands, format, text, wrap
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§gq§} to format text according to 'textwidth' and other formatting options.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+gqap  " format around paragraph
+gqq   " format current line
+gq}   " format until end of paragraph
+
+" In visual mode:
+gq    " format selection
+\end{Verbatim}
+\end{Exa*}
+
+\section{Format without moving cursor with gw}
+
+\textbf{Category}: Formatting\\ \textbf{Tags}: g-commands, format, cursor, text
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§gw§} to format text like {\footnotesize \Verb§gq§} but keep the cursor position.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+gwap  " format around paragraph, cursor stays
+gww   " format current line, cursor stays
+\end{Verbatim}
+\end{Exa*}
+
+\section{Go to previous/next tab with gT and gt}
+
+\textbf{Category}: Tabs\\ \textbf{Tags}: g-commands, tabs, navigation
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§gt§} and {\footnotesize \Verb§gT§} to navigate between tabs.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+gt   " go to next tab
+gT   " go to previous tab
+{n}gt " go to tab number n
+\end{Verbatim}
+\end{Exa*}
+
+\section{Increment numbers in sequence with g CTRL-A}
+
+\textbf{Category}: Editing\\ \textbf{Tags}: g-commands, numbers, increment, sequence
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§g CTRL-A§} in visual mode to increment numbers sequentially (1, 2, 3, ...).
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+" Select multiple lines with same number:
+1
+1
+1
+
+" Press g CTRL-A to get:
+1
+2
+3
+
+" Similarly, g CTRL-X decrements sequentially
+\end{Verbatim}
+\end{Exa*}
+
+\section{Insert at line start with gI}
+
+\textbf{Category}: Insert\\ \textbf{Tags}: g-commands, insert, column, line-start
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§gI§} to insert text at the first column of the line (before any indentation).
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+gI  " insert at column 1 (ignoring indentation)
+I   " insert before first non-blank character (respects indentation)
+\end{Verbatim}
+\end{Exa*}
+
+\section{Join lines without spaces with gJ}
+
+\textbf{Category}: Text\\ \textbf{Tags}: g-commands, join, lines
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§gJ§} to join lines without inserting spaces between them.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+gJ   " join current line with next, no space added
+J    " join with space added (standard join)
+\end{Verbatim}
+\end{Exa*}
+
+\section{Move to middle of screen line with gm}
+
+\textbf{Category}: Navigation\\ \textbf{Tags}: g-commands, navigation, screen, middle
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§gm§} to move the cursor to the middle of the screen line.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+gm  " jump to middle of screen line
+\end{Verbatim}
+\end{Exa*}
+
+\section{Move to screen line positions with g0, g\textasciicircum{}, g\$}
+
+\textbf{Category}: Navigation\\ \textbf{Tags}: g-commands, navigation, screen-lines, position
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§g0§}, {\footnotesize \Verb§g^§}, and {\footnotesize \Verb§g$§} to move to positions within screen lines (for wrapped text).
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+g0  " move to first character of screen line
+g^  " move to first non-blank of screen line
+g$  " move to last character of screen line
+
+" Compare with regular commands:
+0   " first character of actual line
+^   " first non-blank of actual line
+$   " last character of actual line
+\end{Verbatim}
+\end{Exa*}
+
+\section{Navigate screen lines with gj and gk}
+
+\textbf{Category}: Navigation\\ \textbf{Tags}: g-commands, navigation, screen-lines, wrapped
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§gj§} and {\footnotesize \Verb§gk§} to move by screen lines instead of actual lines (useful for wrapped text).
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+gj  " move down one screen line
+gk  " move up one screen line
+
+" Compare with:
+j   " move down one actual line
+k   " move up one actual line
+\end{Verbatim}
+\end{Exa*}
+
+\section{Open URL or file with gx}
+
+\textbf{Category}: Navigation\\ \textbf{Tags}: g-commands, url, file, open, external
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§gx§} to open the file or URL under the cursor with the system's default application.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+" Place cursor on URL or file path:
+gx  " open with default application (browser for URLs, etc.)
+\end{Verbatim}
+\end{Exa*}
+
+\section{Repeat last command with g.}
+
+\textbf{Category}: Editing\\ \textbf{Tags}: g-commands, repeat, command, redo
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§g.§} to jump to the position of the last change.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+g;  " go to position of previous change (older)
+g,  " go to position of next change (newer)
+\end{Verbatim}
+\end{Exa*}
+
+\section{Reselect last visual selection with gv}
+
+\textbf{Category}: Visual\\ \textbf{Tags}: g-commands, visual, selection, reselect
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§gv§} to reselect the last visual selection. Useful for reapplying operations.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+" After making a visual selection and returning to normal mode:
+gv  " reselect the same area
+\end{Verbatim}
+\end{Exa*}
+
+\section{Return to last insert position with gi}
+
+\textbf{Category}: Navigation\\ \textbf{Tags}: g-commands, insert, navigation, jump
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§gi§} to jump to the last position where you were in INSERT mode and enter INSERT mode.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+gi  " jump to last insertion point and enter INSERT mode
+\end{Verbatim}
+\end{Exa*}
+
+\section{Select last search match with gn}
+
+\textbf{Category}: Search\\ \textbf{Tags}: g-commands, search, visual, selection
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§gn§} to visually select the next match of the last search pattern. Powerful for targeted changes.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+" After searching with /pattern:
+gn    " select next match
+cgn   " change next match (then use . to repeat)
+dgn   " delete next match
+\end{Verbatim}
+\end{Exa*}
+
+\section{Show ASCII value with ga}
+
+\textbf{Category}: Utilities\\ \textbf{Tags}: g-commands, ascii, character, info
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§ga§} to display the ASCII/Unicode value of the character under the cursor.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+" Place cursor on a character:
+ga  " shows decimal, hex, and octal values
+\end{Verbatim}
+\end{Exa*}
+
+\section{Swap character case with g\textasciitilde{}}
+
+\textbf{Category}: Text\\ \textbf{Tags}: g-commands, case, swap, toggle
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§g~§} to swap the case of text (uppercase ↔ lowercase).
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+g~w   " swap case of word
+g~iw  " swap case of inner word
+g~$   " swap case to end of line
+
+" In visual mode:
+g~    " swap case of selection
+\end{Verbatim}
+\end{Exa*}
+
 \chapter{Global}
+\section{Global command - advanced patterns}
+
+\textbf{Category}: Global\\ \textbf{Tags}: global, regex, pattern, advanced
+\vspace{0.5cm}
+
+Combine global command with advanced patterns for complex operations.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+:g/^\s*$/d                " delete all blank lines (whitespace only)
+:g/pattern1/.,/pattern2/d " delete from pattern1 to pattern2
+:g/^/m0                   " reverse all lines in file
+:g/^/t.                   " duplicate every line
+\end{Verbatim}
+\end{Exa*}
+
+\section{Global command - copy matching lines}
+
+\textbf{Category}: Global\\ \textbf{Tags}: global, copy, pattern, duplicate
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§:g§} with {\footnotesize \Verb§:t§} (copy) to duplicate matching lines to a location.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+:g/error/t$               " copy all error lines to end of file
+:g/TODO/t0                " copy all TODO lines to top of file
+\end{Verbatim}
+\end{Exa*}
+
+\section{Global command - execute on matching lines}
+
+\textbf{Category}: Global\\ \textbf{Tags}: global, command, pattern, ex
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§:g/pattern/command§} to execute a command on all lines matching a pattern. One of Vim's most powerful features.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+:g/TODO/d           " delete all lines containing TODO
+:g/function/p       " print all lines with 'function'
+:g/error/norm gUU   " uppercase lines containing 'error'
+:g!/pattern/d       " delete lines NOT matching pattern (inverse)
+:v/pattern/d        " same as :g! (v for inVerse)
+\end{Verbatim}
+\end{Exa*}
+
+\section{Global command - move matching lines}
+
+\textbf{Category}: Global\\ \textbf{Tags}: global, move, pattern, reorder
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§:g§} with {\footnotesize \Verb§:m§} to move all matching lines to a specific location.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+:g/TODO/m$                " move all lines with TODO to end of file
+:g/^import/m0             " move all import lines to top of file
+:g/function/m'a           " move all lines with 'function' to mark 'a'
+\end{Verbatim}
+\end{Exa*}
+
+\section{Global command with line ranges}
+
+\textbf{Category}: Global\\ \textbf{Tags}: global, range, lines, pattern
+\vspace{0.5cm}
+
+Combine {\footnotesize \Verb§:g§} with line ranges to limit where the global command operates.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+:10,50g/pattern/d         " delete matching lines only in range 10-50
+:'<,'>g/pattern/norm A!   " append ! to matching lines in visual selection
+:1,$g/^$/d                " delete all empty lines in file
+\end{Verbatim}
+\end{Exa*}
+
+\section{Global command with normal mode commands}
+
+\textbf{Category}: Global\\ \textbf{Tags}: global, normal, command, pattern
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§:g/pattern/norm <commands>§} to execute normal mode commands on matching lines.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+:g/TODO/norm A !!!          " append !!! to lines with TODO
+:g/^#/norm >>               " indent all lines starting with #
+:g/function/norm dwelp      " swap first two words on lines with 'function'
+:g/console\.log/norm gcc    " comment out console.log lines (with commentary.vim)
+\end{Verbatim}
+\end{Exa*}
+
 \section{Open documentation for word under the cursor}
 
 \textbf{Category}: Global\\ \textbf{Tags}: man pages, documentation, help
@@ -8008,6 +8447,20 @@ Use {\footnotesize \Verb§:helpgrep§} to search help, {\footnotesize \Verb§:pt
 :pop                " go back in tag stack
 :tag function       " jump to tag
 :tags               " show tag stack
+\end{Verbatim}
+\end{Exa*}
+
+\section{Man pages}
+
+\textbf{Category}: Help\\ \textbf{Tags}: man, help, documentation
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§:Man§} to open a man-page in a read-only mode. You can navigate the page like any other Neovim content. You can jump arround, copy parts of it, search for a word and perform all other standard Neovim operations. Once you have a man-page on the screen, you can generate its content by using stadnard {\footnotesize \Verb§gO§} command in normal mode.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+:Man ls   "Opens man-page for linux ls command
+gO        "Generates TOC in normal mode for the selected man-page
 \end{Verbatim}
 \end{Exa*}
 
@@ -8384,6 +8837,7 @@ Ctrl+x Ctrl+l   " complete whole lines
 Ctrl+x Ctrl+n   " complete keywords in current file
 Ctrl+x Ctrl+k   " complete from dictionary
 Ctrl+x Ctrl+t   " complete from thesaurus
+Ctrl+x Ctrl+f   " complete file names
 Ctrl+x Ctrl+i   " complete from included files
 Ctrl+x Ctrl+]   " complete from tags
 Ctrl+x Ctrl+s   " spelling suggestions
@@ -9379,6 +9833,487 @@ Use {\footnotesize \Verb§:lua vim.lsp.buf.signature_help()§} to show function 
 \end{Exa*}
 
 \chapter{Lua}
+\section{Access Neovim API functions}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, api, vim.api
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§vim.api§} to access the full Neovim C API with functions prefixed by {\footnotesize \Verb§nvim_§}.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+-- Buffer operations
+local buf = vim.api.nvim_create_buf(false, true)
+vim.api.nvim_buf_set_lines(buf, 0, -1, false, {"Line 1", "Line 2"})
+
+-- Window operations
+local win = vim.api.nvim_get_current_win()
+vim.api.nvim_win_set_height(win, 20)
+
+-- Get/set options
+local value = vim.api.nvim_get_option_value('number', {})
+vim.api.nvim_set_option_value('number', true, {})
+\end{Verbatim}
+\end{Exa*}
+
+\section{Access environment variables in Lua}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, environment, vim.env
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§vim.env§} to access and set environment variables.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+-- Read environment variable
+local home = vim.env.HOME
+local editor = vim.env.EDITOR
+
+-- Set environment variable
+vim.env.MY_VAR = "value"
+\end{Verbatim}
+\end{Exa*}
+
+\section{Call Lua functions from Vimscript}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, vimscript, interop
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§luaeval()§} or {\footnotesize \Verb§v:lua§} to call Lua functions from Vimscript.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+" Using luaeval()
+call luaeval('require("mymodule").my_function(_A)', [arg1, arg2])
+
+" Using v:lua in mappings
+nnoremap <leader>f <Cmd>lua require('mymodule').my_function()<CR>
+
+" Using v:lua in expressions
+let result = v:lua.vim.fn.has('nvim-0.9')
+\end{Verbatim}
+\end{Exa*}
+
+\section{Call Vimscript functions from Lua}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, vimscript, vim.fn
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§vim.fn§} to call any Vimscript or user-defined function with automatic type conversion.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+-- Call built-in function
+local line_count = vim.fn.line('$')
+
+-- Call user function
+local result = vim.fn.MyCustomFunction('arg1', 'arg2')
+\end{Verbatim}
+\end{Exa*}
+
+\section{Check if list is empty}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, tables, utilities
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§vim.tbl_isempty()§} to check if a table is empty.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+local my_table = {}
+
+if vim.tbl_isempty(my_table) then
+  print("Table is empty")
+end
+\end{Verbatim}
+\end{Exa*}
+
+\section{Check if table contains key}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, tables, utilities
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§vim.tbl_contains()§} to check if a table contains a value.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+local modes = {'n', 'v', 'i'}
+
+if vim.tbl_contains(modes, 'n') then
+  print("Normal mode included")
+end
+\end{Verbatim}
+\end{Exa*}
+
+\section{Choose init.vim or init.lua}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, configuration, init
+\vspace{0.5cm}
+
+Use either {\footnotesize \Verb§init.vim§} or {\footnotesize \Verb§init.lua§} for configuration, but not both simultaneously. Neovim will prioritize one over the other.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+-- init.lua example
+vim.opt.number = true
+vim.opt.relativenumber = true
+\end{Verbatim}
+\end{Exa*}
+
+\section{Create abstract base classes with error checking}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, oop, abstract-class, validation
+\vspace{0.5cm}
+
+Implement abstract base class pattern that requires derived classes to implement specific methods.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+---@class Shape (abstract)
+local Shape = {}
+
+function Shape:new(type)
+  local instance = { type = type }
+  self.__index = function(t, k)
+    -- Check if method must be implemented by subclass
+    if k == "area" or k == "perimeter" then
+      error(string.format(
+        "Abstract method '%s' must be implemented by subclass '%s'",
+        k, t.type or "unknown"
+      ))
+    end
+    return self[k]
+  end
+  return setmetatable(instance, self)
+end
+
+---@class Rectangle : Shape
+local Rectangle = Shape:new("Rectangle")
+
+function Rectangle:new(width, height)
+  local instance = Shape.new(self, "Rectangle")
+  instance.width = width
+  instance.height = height
+  return instance
+end
+
+-- Implement required abstract methods
+function Rectangle:area()
+  return self.width * self.height
+end
+
+function Rectangle:perimeter()
+  return 2 * (self.width + self.height)
+end
+
+---@class Circle : Shape
+local Circle = Shape:new("Circle")
+
+function Circle:new(radius)
+  local instance = Shape.new(self, "Circle")
+  instance.radius = radius
+  return instance
+end
+
+function Circle:area()
+  return math.pi * self.radius * self.radius
+end
+
+function Circle:perimeter()
+  return 2 * math.pi * self.radius
+end
+
+-- Usage
+local rect = Rectangle:new(5, 3)
+print("Rectangle area:", rect:area())      -- 15
+print("Rectangle perimeter:", rect:perimeter())  -- 16
+
+local circle = Circle:new(4)
+print("Circle area:", circle:area())       -- ~50.27
+print("Circle perimeter:", circle:perimeter())   -- ~25.13
+
+-- This would error: local shape = Shape:new()
+-- shape:area() -- Error: Abstract method 'area' must be implemented
+\end{Verbatim}
+\end{Exa*}
+
+\section{Create autocommand groups}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, autocommands, groups, api
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§vim.api.nvim_create_augroup()§} to organize autocommands into groups.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+-- Create group
+local mygroup = vim.api.nvim_create_augroup("MyGroup", { clear = true })
+
+-- Add autocommands to group
+vim.api.nvim_create_autocmd("BufWritePre", {
+  group = mygroup,
+  pattern = "*.lua",
+  callback = function()
+    vim.lsp.buf.format()
+  end,
+})
+\end{Verbatim}
+\end{Exa*}
+
+\section{Create autocommands with nvim\_create\_autocmd}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, autocommands, api
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§vim.api.nvim_create_autocmd()§} to create autocommands with Lua callbacks.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+-- Simple autocommand
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.lua",
+  callback = function()
+    vim.lsp.buf.format()
+  end,
+})
+
+-- With multiple events
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+  pattern = {"*.c", "*.h"},
+  callback = function()
+    vim.bo.cindent = true
+  end,
+})
+\end{Verbatim}
+\end{Exa*}
+
+\section{Create buffer-local keymaps}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, keymap, buffer-local
+\vspace{0.5cm}
+
+Use the {\footnotesize \Verb§buffer§} option to create buffer-local keymaps that only work in specific buffers.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+-- Buffer-local keymap for current buffer
+vim.keymap.set('n', '<leader>r', ':!python %<CR>', {
+  buffer = 0,
+  desc = "Run Python file"
+})
+
+-- Buffer-local keymap for specific buffer
+vim.keymap.set('n', 'K', vim.lsp.buf.hover, {
+  buffer = bufnr,
+  desc = "LSP Hover"
+})
+\end{Verbatim}
+\end{Exa*}
+
+\section{Create classes with metatables}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, oop, classes, metatables
+\vspace{0.5cm}
+
+Use metatables to create class-like structures in Lua for object-oriented programming. This pattern uses {\footnotesize \Verb§__index§} metamethod for method lookup and inheritance.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+-- Define a base class
+---@class Animal
+local Animal = {}
+
+-- Constructor method
+function Animal:new(name, type)
+  local instance = {
+    name = name,
+    type = type or "unknown"
+  }
+  -- Set metatable to enable inheritance
+  self.__index = self
+  return setmetatable(instance, self)
+end
+
+-- Instance method
+function Animal:speak()
+  print(self.name .. " makes a sound")
+end
+
+function Animal:info()
+  print("I am a " .. self.type .. " named " .. self.name)
+end
+
+-- Create instance
+local generic = Animal:new("Rex", "animal")
+generic:speak()  -- "Rex makes a sound"
+generic:info()   -- "I am a animal named Rex"
+\end{Verbatim}
+\end{Exa*}
+
+\section{Create keymaps with vim.keymap.set}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, keymap, mapping, vim.keymap
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§vim.keymap.set()§} to create keymaps for multiple modes with options.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+-- Basic mapping
+vim.keymap.set('n', '<leader>w', ':write<CR>')
+
+-- Mapping with Lua function
+vim.keymap.set('n', '<leader>h', function()
+  print("Hello!")
+end, { desc = "Say hello" })
+
+-- Multiple modes
+vim.keymap.set({'n', 'v'}, '<leader>y', '"+y', { desc = "Yank to clipboard" })
+
+-- Buffer-local mapping
+vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = 0, desc = "Hover documentation" })
+\end{Verbatim}
+\end{Exa*}
+
+\section{Create private state with closures}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, oop, encapsulation, closures
+\vspace{0.5cm}
+
+Use closures to create private state that cannot be accessed from outside the object, providing true encapsulation.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+-- Factory function that creates objects with private state
+local function BankAccount(initial_balance)
+  -- Private variables (not accessible outside)
+  local balance = initial_balance or 0
+  local transaction_history = {}
+
+  -- Public interface
+  local self = {}
+
+  function self.deposit(amount)
+    if amount > 0 then
+      balance = balance + amount
+      table.insert(transaction_history, {type = "deposit", amount = amount})
+      return true
+    end
+    return false
+  end
+
+  function self.withdraw(amount)
+    if amount > 0 and amount <= balance then
+      balance = balance - amount
+      table.insert(transaction_history, {type = "withdraw", amount = amount})
+      return true
+    end
+    return false
+  end
+
+  function self.get_balance()
+    return balance
+  end
+
+  function self.get_history()
+    -- Return a copy to prevent external modification
+    local copy = {}
+    for i, v in ipairs(transaction_history) do
+      copy[i] = vim.deepcopy(v)
+    end
+    return copy
+  end
+
+  return self
+end
+
+-- Usage
+local account = BankAccount(100)
+account.deposit(50)
+account.withdraw(30)
+print(account.get_balance())  -- 120
+-- Cannot access 'balance' directly - it's private!
+\end{Verbatim}
+\end{Exa*}
+
+\section{Create singleton pattern with metatables}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, oop, singleton, design-patterns
+\vspace{0.5cm}
+
+Implement the singleton pattern to ensure only one instance of a class exists, useful for managing global state.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+-- Singleton implementation
+local Singleton = {}
+local instance = nil
+
+function Singleton:new()
+  -- Return existing instance if it exists
+  if instance then
+    return instance
+  end
+
+  -- Create new instance
+  local obj = {
+    data = {},
+    created_at = os.time(),
+  }
+
+  self.__index = self
+  instance = setmetatable(obj, self)
+  return instance
+end
+
+function Singleton:set(key, value)
+  self.data[key] = value
+end
+
+function Singleton:get(key)
+  return self.data[key]
+end
+
+-- Usage
+local s1 = Singleton:new()
+s1:set("config", "value1")
+
+local s2 = Singleton:new()
+print(s2:get("config"))  -- "value1"
+
+print(s1 == s2)  -- true (same instance)
+\end{Verbatim}
+\end{Exa*}
+
+\section{Create user commands in Lua}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, commands, user-commands, api
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§vim.api.nvim_create_user_command()§} to create custom commands with Lua callbacks.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+-- Simple command
+vim.api.nvim_create_user_command('Hello', function()
+  print('Hello!')
+end, {})
+
+-- Command with arguments
+vim.api.nvim_create_user_command('Greet', function(opts)
+  print('Hello, ' .. opts.args)
+end, { nargs = 1 })
+
+-- Command with completion
+vim.api.nvim_create_user_command('EditConfig', function(opts)
+  vim.cmd.edit(opts.args)
+end, {
+  nargs = 1,
+  complete = 'file',
+})
+\end{Verbatim}
+\end{Exa*}
+
 \section{Debug Lua values}
 
 \textbf{Category}: Lua\\ \textbf{Tags}: lua, debug, inspect
@@ -9392,6 +10327,376 @@ Use {\footnotesize \Verb§vim.inspect()§} to debug and pretty-print Lua values.
 \end{Verbatim}
 \end{Exa*}
 
+\section{Deep merge tables with vim.tbl\_deep\_extend}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, tables, utilities
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§vim.tbl_deep_extend()§} to deeply merge tables, useful for configuration.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+local defaults = {
+  ui = { border = "rounded" },
+  lsp = { enabled = true },
+}
+
+local user_config = {
+  ui = { width = 80 },
+  lsp = { enabled = false },
+}
+
+local config = vim.tbl_deep_extend('force', defaults, user_config)
+-- Result: { ui = { border = "rounded", width = 80 }, lsp = { enabled = false } }
+\end{Verbatim}
+\end{Exa*}
+
+\section{Defer function execution}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, defer, utilities
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§vim.defer_fn()§} to execute a function after a delay.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+-- Execute after 1000ms (1 second)
+vim.defer_fn(function()
+  print("Delayed message")
+end, 1000)
+
+-- Useful for delayed UI updates
+vim.defer_fn(function()
+  vim.notify("Setup complete!", vim.log.levels.INFO)
+end, 500)
+\end{Verbatim}
+\end{Exa*}
+
+\section{Execute Lua from command line}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, command-line, inline
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§:lua§} with {\footnotesize \Verb§=§} to evaluate and print expressions quickly.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+:lua =vim.version()
+:lua =vim.fn.expand('%:p')
+:lua =package.path
+\end{Verbatim}
+\end{Exa*}
+
+\section{Execute Vim commands from Lua}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, vim-commands, vim.cmd
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§vim.cmd()§} to execute any Vim command from Lua code.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+-- Single command
+vim.cmd("colorscheme habamax")
+
+-- Multiple commands
+vim.cmd([[
+  set number
+  set relativenumber
+  highlight Normal guibg=NONE
+]])
+\end{Verbatim}
+\end{Exa*}
+
+\section{Execute normal mode commands from Lua}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, normal-mode, commands
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§vim.cmd.normal()§} or {\footnotesize \Verb§vim.api.nvim_feedkeys()§} to execute normal mode commands.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+-- Using vim.cmd
+vim.cmd.normal('gg')  -- Go to first line
+vim.cmd.normal('viw')  -- Visual select inner word
+
+-- Using feedkeys for more control
+vim.api.nvim_feedkeys(
+  vim.api.nvim_replace_termcodes('<C-w>v', true, false, true),
+  'n',
+  false
+)
+\end{Verbatim}
+\end{Exa*}
+
+\section{Filter and map tables}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, tables, functional
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§vim.tbl_filter()§} and {\footnotesize \Verb§vim.tbl_map()§} for functional table operations.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+-- Filter table
+local numbers = {1, 2, 3, 4, 5, 6}
+local evens = vim.tbl_filter(function(v)
+  return v % 2 == 0
+end, numbers)
+-- Result: {2, 4, 6}
+
+-- Map table
+local doubled = vim.tbl_map(function(v)
+  return v * 2
+end, numbers)
+-- Result: {2, 4, 6, 8, 10, 12}
+\end{Verbatim}
+\end{Exa*}
+
+\section{Format buffer with LSP}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, lsp, formatting
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§vim.lsp.buf.format()§} to format the current buffer using attached LSP servers.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+-- Format current buffer
+vim.lsp.buf.format()
+
+-- Format with options
+vim.lsp.buf.format({
+  async = true,
+  timeout_ms = 2000,
+  filter = function(client)
+    return client.name ~= "tsserver"
+  end,
+})
+\end{Verbatim}
+\end{Exa*}
+
+\section{Get LSP clients for buffer}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, lsp, buffers
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§vim.lsp.get_clients()§} to get LSP clients attached to a buffer.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+-- Get clients for current buffer
+local clients = vim.lsp.get_clients({ bufnr = 0 })
+
+for _, client in ipairs(clients) do
+  print("Client: " .. client.name)
+end
+\end{Verbatim}
+\end{Exa*}
+
+\section{Get current mode in Lua}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, mode, api
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§vim.api.nvim_get_mode()§} to get the current editor mode.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+local mode = vim.api.nvim_get_mode()
+print("Current mode: " .. mode.mode)
+
+-- Check specific mode
+if mode.mode == 'n' then
+  print("In normal mode")
+end
+\end{Verbatim}
+\end{Exa*}
+
+\section{Implement \_\_tostring metamethod}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, oop, metatables, metamethods
+\vspace{0.5cm}
+
+Use the {\footnotesize \Verb§__tostring§} metamethod to customize how objects are converted to strings, useful for debugging and logging.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+---@class Person
+local Person = {}
+
+function Person:new(name, age)
+  local instance = {
+    name = name,
+    age = age,
+  }
+  self.__index = self
+
+  -- Define how this object should be converted to string
+  self.__tostring = function(obj)
+    return string.format("Person(name='%s', age=%d)", obj.name, obj.age)
+  end
+
+  return setmetatable(instance, self)
+end
+
+-- Usage
+local person = Person:new("Alice", 30)
+
+-- Automatically calls __tostring when converted to string
+print(person)              -- "Person(name='Alice', age=30)"
+print("Hello " .. tostring(person))  -- "Hello Person(name='Alice', age=30)"
+
+-- Useful in logging
+vim.notify("Created: " .. tostring(person))
+\end{Verbatim}
+\end{Exa*}
+
+\section{Implement class inheritance with metatables}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, oop, inheritance, metatables
+\vspace{0.5cm}
+
+Create derived classes by calling the parent's constructor and extending functionality. The {\footnotesize \Verb§__index§} metamethod enables method lookup in the parent class.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+-- Base class
+---@class Animal
+local Animal = {}
+
+function Animal:new(name, type)
+  local instance = { name = name, type = type }
+  self.__index = self
+  return setmetatable(instance, self)
+end
+
+function Animal:info()
+  print("I am a " .. self.type)
+end
+
+-- Derived class (inherits from Animal)
+---@class Dog : Animal
+local Dog = Animal:new(nil, "dog")
+
+-- Override parent method
+function Dog:info()
+  print("Woof! I am a " .. self.type .. " and my name is " .. self.name)
+end
+
+-- Add new method specific to Dog
+function Dog:fetch()
+  print(self.name .. " is fetching the ball!")
+end
+
+-- Create Dog instance
+local buddy = Dog:new("Buddy", "dog")
+buddy:info()   -- "Woof! I am a dog and my name is Buddy"
+buddy:fetch()  -- "Buddy is fetching the ball!"
+
+-- Another derived class
+---@class Cat : Animal
+local Cat = Animal:new(nil, "cat")
+
+function Cat:info()
+  print("Meow! I am a " .. self.type)
+end
+
+function Cat:scratch()
+  print(self.name .. " scratches the furniture")
+end
+
+local whiskers = Cat:new("Whiskers", "cat")
+whiskers:info()     -- "Meow! I am a cat"
+whiskers:scratch()  -- "Whiskers scratches the furniture"
+\end{Verbatim}
+\end{Exa*}
+
+\section{Implement operator overloading with metamethods}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, oop, metatables, metamethods, operators
+\vspace{0.5cm}
+
+Use metamethods to overload operators like {\footnotesize \Verb§+§}, {\footnotesize \Verb§-§}, {\footnotesize \Verb§*§}, {\footnotesize \Verb§==§}, etc., making custom objects behave like built-in types.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+---@class Vector
+local Vector = {}
+
+function Vector:new(x, y)
+  local instance = { x = x or 0, y = y or 0 }
+  self.__index = self
+
+  -- Overload addition operator
+  self.__add = function(v1, v2)
+    return Vector:new(v1.x + v2.x, v1.y + v2.y)
+  end
+
+  -- Overload subtraction operator
+  self.__sub = function(v1, v2)
+    return Vector:new(v1.x - v2.x, v1.y - v2.y)
+  end
+
+  -- Overload multiplication (scalar)
+  self.__mul = function(v, scalar)
+    if type(v) == "number" then
+      v, scalar = scalar, v
+    end
+    return Vector:new(v.x * scalar, v.y * scalar)
+  end
+
+  -- Overload equality operator
+  self.__eq = function(v1, v2)
+    return v1.x == v2.x and v1.y == v2.y
+  end
+
+  -- Custom string representation
+  self.__tostring = function(v)
+    return string.format("Vector(%d, %d)", v.x, v.y)
+  end
+
+  return setmetatable(instance, self)
+end
+
+function Vector:length()
+  return math.sqrt(self.x * self.x + self.y * self.y)
+end
+
+-- Usage
+local v1 = Vector:new(3, 4)
+local v2 = Vector:new(1, 2)
+
+local v3 = v1 + v2        -- Vector(4, 6)
+local v4 = v1 - v2        -- Vector(2, 2)
+local v5 = v1 * 2         -- Vector(6, 8)
+local v6 = 3 * v2         -- Vector(3, 6)
+
+print(v3)                 -- "Vector(4, 6)"
+print(v1 == v2)           -- false
+print(v1 == Vector:new(3, 4))  -- true
+print("Length:", v1:length())  -- "Length: 5.0"
+\end{Verbatim}
+\end{Exa*}
+
+\section{Load Lua modules with require}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, modules, require
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§require()§} to load Lua modules from the {\footnotesize \Verb§lua/§} directory in your runtime path. Modules are automatically cached after first load.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+-- Load lua/mymodule.lua
+local mymodule = require('mymodule')
+
+-- Load lua/other_modules/anothermodule.lua
+local another = require('other_modules.anothermodule')
+\end{Verbatim}
+\end{Exa*}
+
 \section{Lua keymaps}
 
 \textbf{Category}: Lua\\ \textbf{Tags}: lua, keymap, mapping
@@ -9402,6 +10707,203 @@ Use {\footnotesize \Verb§vim.keymap.set()§} to create keymaps with inline Lua 
 \begin{Exa*}{}
 \begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
 :lua vim.keymap.set("n", "<leader>hi", function() print("Hello!") end)
+\end{Verbatim}
+\end{Exa*}
+
+\section{Method chaining with metatables}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, oop, metatables, fluent-interface
+\vspace{0.5cm}
+
+Implement method chaining (fluent interface) by returning {\footnotesize \Verb§self§} from methods, allowing multiple method calls in sequence.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+-- Query builder with method chaining
+---@class QueryBuilder
+local QueryBuilder = {}
+
+function QueryBuilder:new()
+  local instance = {
+    _table = nil,
+    _where = {},
+    _limit = nil,
+    _order = nil,
+  }
+  self.__index = self
+  return setmetatable(instance, self)
+end
+
+function QueryBuilder:from(table_name)
+  self._table = table_name
+  return self  -- Return self for chaining
+end
+
+function QueryBuilder:where(condition)
+  table.insert(self._where, condition)
+  return self
+end
+
+function QueryBuilder:order_by(field)
+  self._order = field
+  return self
+end
+
+function QueryBuilder:limit(n)
+  self._limit = n
+  return self
+end
+
+function QueryBuilder:build()
+  local query = "SELECT * FROM " .. self._table
+
+  if #self._where > 0 then
+    query = query .. " WHERE " .. table.concat(self._where, " AND ")
+  end
+
+  if self._order then
+    query = query .. " ORDER BY " .. self._order
+  end
+
+  if self._limit then
+    query = query .. " LIMIT " .. self._limit
+  end
+
+  return query
+end
+
+-- Usage with method chaining
+local query = QueryBuilder:new()
+  :from("users")
+  :where("age > 18")
+  :where("active = true")
+  :order_by("name")
+  :limit(10)
+  :build()
+
+print(query)
+-- "SELECT * FROM users WHERE age > 18 AND active = true ORDER BY name LIMIT 10"
+\end{Verbatim}
+\end{Exa*}
+
+\section{Module structure best practices}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, modules, best-practices
+\vspace{0.5cm}
+
+Structure Lua modules using the standard pattern with local tables and explicit returns.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+-- lua/mymodule.lua
+local M = {}
+
+M.config = {
+  enabled = true,
+}
+
+function M.setup(opts)
+  M.config = vim.tbl_extend('force', M.config, opts or {})
+end
+
+function M.do_something()
+  if M.config.enabled then
+    print("Doing something!")
+  end
+end
+
+return M
+\end{Verbatim}
+\end{Exa*}
+
+\section{Plugin configuration with metatables}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, oop, metatables, configuration, plugin
+\vspace{0.5cm}
+
+Use metatables to create flexible configuration systems that provide default values while allowing user customization.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+-- Create a configuration system with defaults
+local function make_config_mt(defaults)
+  return {
+    -- Provide default values when key doesn't exist
+    __index = function(t, k)
+      local default_value = defaults[k]
+      if type(default_value) ~= 'table' then
+        return default_value
+      end
+      -- For nested tables, create a new table with metatable
+      rawset(t, k, {})
+      setmetatable(t[k], make_config_mt(default_value))
+      return t[k]
+    end,
+
+    -- Handle setting new values
+    __newindex = function(t, k, v)
+      rawset(t, k, v)
+      -- If value is a table, give it the same metatable behavior
+      if type(v) == 'table' and defaults[k] then
+        setmetatable(v, make_config_mt(defaults[k]))
+      end
+    end
+  }
+end
+
+-- Default configuration
+local defaults = {
+  ui = {
+    border = "rounded",
+    width = 80,
+    height = 20,
+  },
+  lsp = {
+    enabled = true,
+    timeout = 1000,
+  },
+  debug = false,
+}
+
+-- Create user config with defaults
+local config = {}
+setmetatable(config, make_config_mt(defaults))
+
+-- Access default values without setting them
+print(config.ui.border)  -- "rounded"
+print(config.debug)      -- false
+
+-- Override specific values
+config.ui.width = 100
+config.debug = true
+
+-- Nested tables work automatically
+config.lsp.timeout = 2000
+
+print(vim.inspect(config))
+\end{Verbatim}
+\end{Exa*}
+
+\section{Reload Lua modules during development}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, modules, development, reload
+\vspace{0.5cm}
+
+Clear {\footnotesize \Verb§package.loaded§} to force reload of a module during development.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+-- Reload a module
+package.loaded['mymodule'] = nil
+local mymodule = require('mymodule')
+
+-- Helper function to reload
+local function reload_module(name)
+  package.loaded[name] = nil
+  return require(name)
+end
+
+local mymod = reload_module('mymodule')
 \end{Verbatim}
 \end{Exa*}
 
@@ -9431,6 +10933,366 @@ Use {\footnotesize \Verb§:lua§} to run Lua code directly in Neovim.
 \end{Verbatim}
 \end{Exa*}
 
+\section{Safely load modules with pcall}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, modules, error-handling
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§pcall()§} to safely load modules and handle potential errors without crashing.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+local ok, module = pcall(require, 'optional_module')
+if ok then
+  module.setup()
+else
+  print("Module not found: " .. module)
+end
+\end{Verbatim}
+\end{Exa*}
+
+\section{Schedule callbacks with vim.schedule}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, async, callbacks, vim.schedule
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§vim.schedule()§} to schedule callbacks in the main event loop safely.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+-- Schedule from async context
+vim.loop.fs_stat('file.txt', function(err, stat)
+  vim.schedule(function()
+    -- Safe to call Neovim API here
+    print(vim.inspect(stat))
+  end)
+end)
+\end{Verbatim}
+\end{Exa*}
+
+\section{Set buffer-local options}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, options, buffer, vim.bo
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§vim.bo§} to set buffer-local options for the current or specific buffer.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+-- Current buffer
+vim.bo.filetype = 'lua'
+vim.bo.expandtab = true
+
+-- Specific buffer
+vim.bo[5].tabstop = 2
+\end{Verbatim}
+\end{Exa*}
+
+\section{Set buffer-local variables}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, variables, buffer, vim.b
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§vim.b§} to set buffer-local variables for the current or specific buffer.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+-- Current buffer
+vim.b.current_syntax = 'lua'
+
+-- Specific buffer
+vim.b[5].custom_data = { foo = "bar" }
+\end{Verbatim}
+\end{Exa*}
+
+\section{Set cursor position in Lua}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, cursor, navigation
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§vim.api.nvim_win_set_cursor()§} to set cursor position programmatically.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+-- Set cursor to line 10, column 5 (1-indexed line, 0-indexed column)
+vim.api.nvim_win_set_cursor(0, {10, 5})
+
+-- Get current cursor position
+local cursor = vim.api.nvim_win_get_cursor(0)
+local row, col = cursor[1], cursor[2]
+\end{Verbatim}
+\end{Exa*}
+
+\section{Set global variables in Lua}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, variables, vim.g
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§vim.g§} to set global variables with native Lua types.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+-- Set global variable
+vim.g.mapleader = ' '
+vim.g.my_config = { key = "value", enabled = true }
+
+-- Read global variable
+local leader = vim.g.mapleader
+\end{Verbatim}
+\end{Exa*}
+
+\section{Set options with vim.o}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, options, vim.o
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§vim.o§} for direct variable-like access to global options.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+-- Set global option
+vim.o.ignorecase = true
+vim.o.smartcase = true
+
+-- More concise than vim.opt for simple assignments
+vim.o.updatetime = 250
+\end{Verbatim}
+\end{Exa*}
+
+\section{Set options with vim.opt}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, options, vim.opt
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§vim.opt§} to set options with a convenient Lua interface that supports advanced operations.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+-- Set single option
+vim.opt.number = true
+vim.opt.tabstop = 4
+
+-- Append to list option
+vim.opt.wildignore:append('*.pyc')
+
+-- Remove from list option
+vim.opt.wildignore:remove('*.o')
+\end{Verbatim}
+\end{Exa*}
+
+\section{Set tabpage-local variables}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, variables, tabpage, vim.t
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§vim.t§} to set tabpage-local variables.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+-- Current tabpage
+vim.t.tab_name = "Main"
+
+-- Specific tabpage
+vim.t[2].custom_data = {}
+\end{Verbatim}
+\end{Exa*}
+
+\section{Set window-local options}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, options, window, vim.wo
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§vim.wo§} to set window-local options.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+-- Current window
+vim.wo.number = true
+vim.wo.wrap = false
+
+-- Specific window
+vim.wo[1001].cursorline = true
+\end{Verbatim}
+\end{Exa*}
+
+\section{Set window-local variables}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, variables, window, vim.w
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§vim.w§} to set window-local variables.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+-- Current window
+vim.w.quickfix_title = "My Results"
+
+-- Specific window
+vim.w[1001].custom_setting = true
+\end{Verbatim}
+\end{Exa*}
+
+\section{Split and join strings}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, strings, utilities
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§vim.split()§} to split strings into tables.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+-- Split by delimiter
+local parts = vim.split("foo,bar,baz", ",")
+-- Result: {"foo", "bar", "baz"}
+
+-- Split by pattern
+local lines = vim.split(text, "\n", { plain = true })
+\end{Verbatim}
+\end{Exa*}
+
+\section{Trim whitespace from strings}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, strings, utilities
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§vim.trim()§} to remove leading and trailing whitespace.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+local cleaned = vim.trim("  hello world  ")
+-- Result: "hello world"
+\end{Verbatim}
+\end{Exa*}
+
+\section{Use Lua heredoc in Vimscript}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, vimscript, heredoc
+\vspace{0.5cm}
+
+Use Lua heredoc syntax to write Lua code blocks in {\footnotesize \Verb§init.vim§}.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+lua << EOF
+  local function hello()
+    print("Hello from Lua in Vimscript!")
+  end
+  hello()
+EOF
+\end{Verbatim}
+\end{Exa*}
+
+\section{Use vim.loop for async operations}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, async, libuv, vim.loop
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§vim.loop§} (luv) to access libuv for asynchronous operations.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+-- File system operations
+vim.loop.fs_stat('myfile.txt', function(err, stat)
+  if stat then
+    print('File size: ' .. stat.size)
+  end
+end)
+
+-- Timers
+local timer = vim.loop.new_timer()
+timer:start(1000, 0, function()
+  print('Timer fired!')
+  timer:close()
+end)
+\end{Verbatim}
+\end{Exa*}
+
+\section{Use vim.notify for notifications}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, notifications, ui
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§vim.notify()§} to show notifications with different log levels.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+-- Basic notification
+vim.notify("Operation completed")
+
+-- With log level
+vim.notify("Warning message", vim.log.levels.WARN)
+vim.notify("Error occurred", vim.log.levels.ERROR)
+vim.notify("Info message", vim.log.levels.INFO)
+\end{Verbatim}
+\end{Exa*}
+
+\section{Use vim.ui.input for user input}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, ui, input
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§vim.ui.input()§} to prompt user for text input.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+vim.ui.input({
+  prompt = 'Enter your name: ',
+  default = 'Anonymous',
+}, function(input)
+  if input then
+    print('Hello, ' .. input)
+  end
+end)
+\end{Verbatim}
+\end{Exa*}
+
+\section{Use vim.ui.select for user selection}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, ui, selection
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§vim.ui.select()§} to prompt user to select from a list of options.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+vim.ui.select(
+  {'Option 1', 'Option 2', 'Option 3'},
+  {
+    prompt = 'Choose an option:',
+    format_item = function(item)
+      return "→ " .. item
+    end,
+  },
+  function(choice)
+    if choice then
+      print('You selected: ' .. choice)
+    end
+  end
+)
+\end{Verbatim}
+\end{Exa*}
+
+\section{Validate function arguments}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, validation, utilities
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§vim.validate()§} to validate function arguments with clear error messages.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+function my_function(opts)
+  vim.validate({
+    name = {opts.name, 'string'},
+    age = {opts.age, 'number', true},  -- true means optional
+    callback = {opts.callback, 'function'},
+  })
+
+  -- Function implementation
+end
+\end{Verbatim}
+\end{Exa*}
+
 \section{View loaded Lua modules}
 
 \textbf{Category}: Lua\\ \textbf{Tags}: modules, loaded, debug
@@ -9441,6 +11303,52 @@ Use {\footnotesize \Verb§package.loaded§} to view all loaded Lua modules.
 \begin{Exa*}{}
 \begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
 :lua print(vim.inspect(package.loaded))
+\end{Verbatim}
+\end{Exa*}
+
+\section{Work with buffer text in Lua}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, buffer, text, api
+\vspace{0.5cm}
+
+Use buffer API functions to read and modify buffer content.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+-- Get lines from buffer
+local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+
+-- Set lines in buffer
+vim.api.nvim_buf_set_lines(0, 0, -1, false, {"New line 1", "New line 2"})
+
+-- Get specific line
+local current_line = vim.api.nvim_get_current_line()
+
+-- Set specific line
+vim.api.nvim_set_current_line("Modified line")
+\end{Verbatim}
+\end{Exa*}
+
+\section{Work with quickfix list in Lua}
+
+\textbf{Category}: Lua\\ \textbf{Tags}: lua, quickfix, diagnostics
+\vspace{0.5cm}
+
+Use {\footnotesize \Verb§vim.fn.setqflist()§} and {\footnotesize \Verb§vim.fn.getqflist()§} to work with quickfix list.
+
+\begin{Exa*}{}
+\begin{Verbatim}[fontsize=\footnotesize, breaklines, breakanywhere]
+-- Set quickfix list
+vim.fn.setqflist({
+  {filename = 'file1.lua', lnum = 10, text = 'Error message'},
+  {filename = 'file2.lua', lnum = 20, text = 'Warning'},
+})
+
+-- Open quickfix window
+vim.cmd.copen()
+
+-- Get quickfix items
+local qf_items = vim.fn.getqflist()
 \end{Verbatim}
 \end{Exa*}
 

@@ -4,8 +4,6 @@
 ---
 Use `@{letter}` to execute macro stored in register {letter}, or `@@` to repeat the last executed macro.
 
-#### Example
-
 ```vim
 @a  " execute macro 'a'
 @@  " repeat last macro
@@ -17,8 +15,6 @@ Use `@{letter}` to execute macro stored in register {letter}, or `@@` to repeat 
 ---
 Use `:'<,'>normal @q` to run macro q over visual selection.
 
-#### Example
-
 ```vim
 :'<,'>normal @q  " run macro q on selection
 ```
@@ -28,8 +24,6 @@ Use `:'<,'>normal @q` to run macro q over visual selection.
 # Tags: macro, view, register, debug
 ---
 Use `:reg` to view all registers including macros, or `:reg a` to view specific macro in register 'a'.
-
-#### Example
 
 ```vim
 :reg     " view all registers
@@ -42,8 +36,6 @@ Use `:reg` to view all registers including macros, or `:reg a` to view specific 
 ---
 Use `:let @a='` then `Ctrl+R Ctrl+R a` to paste macro contents for editing, then close with `'`.
 
-#### Example
-
 ```vim
 :let @a='<Ctrl+R><Ctrl+R>a'  " edit macro 'a' inline
 ```
@@ -54,8 +46,6 @@ Use `:let @a='` then `Ctrl+R Ctrl+R a` to paste macro contents for editing, then
 ---
 Use `let @a='macro_contents'` in vimrc to make macros persistent across Vim sessions.
 
-#### Example
-
 ```vim
 let @a='ddp'  " save line swap macro permanently
 ```
@@ -65,8 +55,6 @@ let @a='ddp'  " save line swap macro permanently
 # Tags: macro, recursive, loop, automation
 ---
 Create recursive macros by including `@q` (self-reference) within the macro recording to process entire file automatically.
-
-#### Example
 
 ```vim
 qqq         " clear register q
@@ -83,8 +71,6 @@ q           " stop recording
 ---
 Use `:argdo normal @q` to run macro q on all files in argument list, or `:bufdo normal @q` for all buffers.
 
-#### Example
-
 ```vim
 :args *.txt         " load all txt files
 :argdo normal @q    " run macro q on all files
@@ -96,8 +82,6 @@ Use `:argdo normal @q` to run macro q on all files in argument list, or `:bufdo 
 # Tags: macro, recursive, loop, repeat
 ---
 Create a recursive macro that calls itself for repeated operations until a condition is met.
-
-#### Example
 
 ```vim
 " Record recursive macro in register 'a'
@@ -116,8 +100,6 @@ q               " stop recording
 # Tags: macro, transform, data, format
 ---
 Use macros to transform structured data formats efficiently.
-
-#### Example
 
 ```vim
 " Transform tab-separated to Python dict format
@@ -140,8 +122,6 @@ q               " stop recording
 ---
 Set up convenient mappings for macro execution and recording.
 
-#### Example
-
 ```vim
 " Map space to execute last macro
 nnoremap <Space> @@
@@ -160,8 +140,6 @@ vnoremap <leader>m :normal @q<CR>
 # Tags: macro, recursive, modify, qQ
 ---
 Convert an existing macro to recursive by appending the macro call to itself using `qQ@qq`.
-
-#### Example
 
 ```vim
 " After recording macro @q normally:

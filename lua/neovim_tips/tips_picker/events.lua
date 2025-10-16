@@ -15,6 +15,7 @@ local event = require("nui.utils.autocmd").event
 ---@field move_down function Callback to move selection down
 ---@field select_item function Callback to select current item
 ---@field close_picker function Callback to close the picker
+---@field toggle_bookmark function Callback to toggle bookmark for current tip
 
 ---Set up keyboard mappings for all popups
 ---@param layout table The layout components (search_popup, titles_popup, preview_popup)
@@ -39,6 +40,7 @@ function M.setup_keymaps(layout, handlers)
   search_popup:map("i", "<C-k>", handlers.move_up, { noremap = true })
   search_popup:map("i", "<Tab>", handlers.focus_titles, { noremap = true })
   search_popup:map("i", "<C-l>", handlers.focus_preview, { noremap = true })
+  search_popup:map("i", "<C-b>", handlers.toggle_bookmark, { noremap = true })
 
   search_popup:map("n", "<Esc>", handlers.close_picker, { noremap = true })
   search_popup:map("n", "q", handlers.close_picker, { noremap = true })
@@ -47,6 +49,7 @@ function M.setup_keymaps(layout, handlers)
   search_popup:map("n", "k", handlers.move_up, { noremap = true })
   search_popup:map("n", "<Tab>", handlers.focus_titles, { noremap = true })
   search_popup:map("n", "<C-l>", handlers.focus_preview, { noremap = true })
+  search_popup:map("n", "<C-b>", handlers.toggle_bookmark, { noremap = true })
 
   -- Titles popup keymaps
   titles_popup:map("n", "<Esc>", handlers.close_picker, { noremap = true })
@@ -60,6 +63,7 @@ function M.setup_keymaps(layout, handlers)
   titles_popup:map("n", "<Tab>", handlers.focus_preview, { noremap = true })
   titles_popup:map("n", "<C-h>", handlers.focus_search, { noremap = true })
   titles_popup:map("n", "<C-l>", handlers.focus_preview, { noremap = true })
+  titles_popup:map("n", "<C-b>", handlers.toggle_bookmark, { noremap = true })
 
   -- Preview popup keymaps
   preview_popup:map("n", "<Esc>", handlers.close_picker, { noremap = true })
@@ -69,6 +73,7 @@ function M.setup_keymaps(layout, handlers)
   preview_popup:map("n", "<Tab>", handlers.focus_search, { noremap = true })
   preview_popup:map("n", "<C-h>", handlers.focus_titles, { noremap = true })
   preview_popup:map("n", "<C-j>", handlers.focus_search, { noremap = true })
+  preview_popup:map("n", "<C-b>", handlers.toggle_bookmark, { noremap = true })
 end
 
 ---Set up autocmds for real-time search and mouse interaction
@@ -96,7 +101,7 @@ function M.setup_autocmds(layout, handlers)
 
       -- Check for help triggers and handle them
       if handlers.on_help_trigger then
-        local search_parser = require("neovim_tips.picker.search_parser")
+        local search_parser = require("neovim_tips.tips_picker.search_parser")
         local trigger_type = search_parser.check_help_triggers(search_text)
         if trigger_type then
           handlers.on_help_trigger(trigger_type, search_text)

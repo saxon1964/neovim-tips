@@ -10,13 +10,14 @@ CONTENTS                                                *neovim-tips-contents*
 1. Introduction.................................|neovim-tips-introduction|
 2. Features.....................................|neovim-tips-features|
 3. Installation.................................|neovim-tips-installation|
-4. Configuration................................|neovim-tips-configuration|
-5. Commands.....................................|neovim-tips-commands|
-6. Search.......................................|neovim-tips-search|
-7. Categories...................................|neovim-tips-categories|
-8. User Tips....................................|neovim-tips-user-tips|
-9. Daily Tips...................................|neovim-tips-daily|
-10. Troubleshooting.............................|neovim-tips-troubleshooting|
+4. Markdown Rendering...........................|neovim-tips-rendering|
+5. Configuration................................|neovim-tips-configuration|
+6. Commands.....................................|neovim-tips-commands|
+7. Search.......................................|neovim-tips-search|
+8. Categories...................................|neovim-tips-categories|
+9. User Tips....................................|neovim-tips-user-tips|
+10. Daily Tips..................................|neovim-tips-daily|
+11. Troubleshooting.............................|neovim-tips-troubleshooting|
 
 ==============================================================================
 1. INTRODUCTION                                     *neovim-tips-introduction*
@@ -35,9 +36,10 @@ Repository: https://github.com/saxon1964/neovim-tips
 
 • Beautiful custom picker with three-pane interface
 • Daily tip popup (configurable: off, daily, or every launch)
-• Lightweight dependencies (only nui.nvim and render-markdown)
+• Lightweight dependencies (only nui.nvim required)
+• Automatic markdown renderer detection (markview, render-markdown, or raw)
 • Word-based search with intelligent filtering
-• Live markdown rendering in preview pane
+• Live markdown rendering or clean raw markdown display
 • Simple navigation with mouse and keyboard
 • Copy-friendly interface for tips and code snippets
 • Cursor preservation after closing
@@ -50,9 +52,13 @@ Repository: https://github.com/saxon1964/neovim-tips
 ==============================================================================
 3. INSTALLATION                                     *neovim-tips-installation*
 
-The plugin requires these dependencies:
-• MunifTanjim/nui.nvim
-• MeanderingProgrammer/render-markdown.nvim
+The plugin requires only:
+• MunifTanjim/nui.nvim (required)
+
+Optional markdown renderers (auto-detected):
+• OXY2DEV/markview.nvim (priority 1 - rich rendering)
+• MeanderingProgrammer/render-markdown.nvim (priority 2 - clean rendering)
+• Raw markdown display if no renderer installed (many users prefer this)
 
 3.1 Lazy.nvim ~
 >lua
@@ -61,7 +67,9 @@ The plugin requires these dependencies:
       version = "*",
       dependencies = {
         "MunifTanjim/nui.nvim",
-        "MeanderingProgrammer/render-markdown.nvim"
+        -- OPTIONAL: Choose your preferred renderer (or omit for raw markdown)
+        "MeanderingProgrammer/render-markdown.nvim", -- Clean rendering
+        -- OR: "OXY2DEV/markview.nvim", -- Rich rendering
       },
       opts = {},
       init = function()
@@ -100,7 +108,44 @@ The plugin requires these dependencies:
 See the README for additional package manager examples.
 
 ==============================================================================
-4. CONFIGURATION                                   *neovim-tips-configuration*
+4. MARKDOWN RENDERING                                 *neovim-tips-rendering*
+
+The plugin automatically detects and uses available markdown renderers to enhance
+the display of tips in both the picker and daily tip popups.
+
+4.1 Rendering Priority ~
+
+The plugin uses this priority order:
+
+1. markview.nvim (Priority 1)
+   • Rich rendering with advanced typography and syntax highlighting
+   • Beautiful visual enhancements and interactive elements
+   • Install: Add "OXY2DEV/markview.nvim" to your dependencies
+
+2. render-markdown.nvim (Priority 2)
+   • Clean, lightweight rendering with excellent performance  
+   • Simple and fast markdown display
+   • Install: Add "MeanderingProgrammer/render-markdown.nvim" to dependencies
+
+3. Raw Markdown (Fallback)
+   • Clean, readable plain text display
+   • Zero additional dependencies beyond nui.nvim
+   • Many users prefer this for its simplicity and speed
+
+4.2 Automatic Detection ~
+
+No configuration is required. The plugin automatically:
+• Detects which renderer plugins are available in your Neovim setup
+• Uses the highest priority renderer found
+• Falls back gracefully to raw markdown if no renderer is installed
+• Works immediately after installing any supported renderer
+
+You can install multiple renderers; the plugin will automatically choose the
+highest priority one. To change renderers, simply remove/install the plugins
+you prefer.
+
+==============================================================================
+5. CONFIGURATION                                   *neovim-tips-configuration*
 
 The plugin accepts the following configuration options:
 
@@ -117,6 +162,9 @@ The plugin accepts the following configuration options:
 
       -- Daily tip mode: 0=off, 1=once per day, 2=every startup
       daily_tip = 1,
+
+      -- Bookmark symbol (default: "🌟 ")
+      bookmark_symbol = "🌟 ",
     })
 <
 
@@ -140,6 +188,11 @@ daily_tip                  Daily tip popup behavior
                            0 = disabled
                            1 = once per day (default)
                            2 = every startup
+
+*neovim-tips-config-bookmark*
+bookmark_symbol            Symbol displayed for bookmarked tips
+                           Default: "🌟 "
+                           Examples: "⭐ ", "✨ ", "💫 ", "🔥 ", "💎 "
 
 ==============================================================================
 5. COMMANDS                                             *neovim-tips-commands*
@@ -199,17 +252,33 @@ Use `c:` prefix to search by categories:
     c:"Key Mappings"   → finds tips in "Key Mappings" (quoted for spaces)
 <
 
-6.4 Combined Search ~
+6.4 Bookmark Search ~
+                                                   *neovim-tips-search-bookmarks*
+
+Use `b:` prefix to search your bookmarked tips:
+>
+    b:                 → shows all your bookmarked tips
+    b:delete           → shows bookmarked tips with "delete" in title
+    b:motion           → shows bookmarked tips with "motion" in title
+<
+
+**Bookmarking Tips:**
+• Press `Ctrl+b` in the picker or daily tip to bookmark/unbookmark
+• Bookmarked tips display with your configured symbol (default: 🌟)
+• Works from any pane (search bar, tips list, or preview)
+
+6.5 Combined Search ~
                                                      *neovim-tips-search-combined*
 
 Mix different search types (all must match):
 >
     motion c:editing t:operator    → tips with "motion" + "Editing" + "operator"
     insert file t:save             → tips with "insert file" + "save" tag
-    c:search t:pattern replace     → "Search" tips + "pattern" tag + "replace"
+    b: c:editing t:motion          → bookmarked tips in "Editing" + "motion" tag
+    b:delete c:text                → bookmarked tips with "delete" + "Text" category
 <
 
-6.5 Search Help ~
+6.6 Search Help ~
                                                         *neovim-tips-search-help*
 
 Get help with available tags and categories:
@@ -223,7 +292,7 @@ Help picker navigation:
 • Enter                   Select the item
 • Esc or q               Cancel
 
-6.6 Search Features ~
+6.7 Search Features ~
 
 • Case insensitive matching
 • Word-based search (all words must match)

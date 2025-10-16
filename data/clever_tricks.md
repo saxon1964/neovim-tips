@@ -4,8 +4,6 @@
 ---
 Use `xp` to swap current character with next character.
 
-#### Example
-
 ```vim
 xp  " swap characters
 ```
@@ -15,8 +13,6 @@ xp  " swap characters
 # Tags: indent, format, document, auto
 ---
 Use `gg=G` to auto-indent entire document from top to bottom.
-
-#### Example
 
 ```vim
 gg=G  " auto-indent entire file
@@ -28,8 +24,6 @@ gg=G  " auto-indent entire file
 ---
 Use `=%` when cursor is on opening brace to auto-indent entire block.
 
-#### Example
-
 ```vim
 =%  " auto-indent current block/braces
 ```
@@ -39,8 +33,6 @@ Use `=%` when cursor is on opening brace to auto-indent entire block.
 # Tags: file, open, cursor, path
 ---
 Use `gf` to open file whose name is under cursor. Use `gF` to go to specific line number.
-
-#### Example
 
 ```vim
 gf   " open file under cursor
@@ -53,8 +45,6 @@ gF   " open file and go to line number
 ---
 Use `Ctrl+X Ctrl+L` in insert mode to complete entire lines from current buffer.
 
-#### Example
-
 ```vim
 " In insert mode:
 Ctrl+X Ctrl+L  " complete entire line
@@ -66,8 +56,6 @@ Ctrl+X Ctrl+L  " complete entire line
 ---
 Use `ciw{newword}` to change inner word. Position cursor anywhere in word and type replacement.
 
-#### Example
-
 ```vim
 ciwfoo  " change word to 'foo'
 ```
@@ -78,8 +66,6 @@ ciwfoo  " change word to 'foo'
 ---
 Use `i` followed by `Enter` then `Esc`, or more efficiently `r` followed by `Enter` to break line at cursor.
 
-#### Example
-
 ```vim
 i<Enter><Esc>  " split line at cursor
 ```
@@ -89,8 +75,6 @@ i<Enter><Esc>  " split line at cursor
 # Tags: number, increment, math
 ---
 Use `Ctrl+a` to increment number under cursor, `Ctrl+x` to decrement. Works with decimals and hex.
-
-#### Example
 
 ```vim
 Ctrl+a  " increment number
@@ -103,8 +87,6 @@ Ctrl+x  " decrement number
 ---
 Use `V` to select entire line immediately, then `j`/`k` to extend selection.
 
-#### Example
-
 ```vim
 Vjjj  " select current line + 3 below
 ```
@@ -114,8 +96,6 @@ Vjjj  " select current line + 3 below
 # Tags: change, until, character
 ---
 Use `ct{char}` to change text up to but not including character, or `cf{char}` to include the character.
-
-#### Example
 
 ```vim
 ct;  " change until semicolon
@@ -128,8 +108,6 @@ cf;  " change including semicolon
 ---
 Append `zz` after navigation commands to center the line. Works with searches, line jumps, etc.
 
-#### Example
-
 ```vim
 42Gzz   " jump to line 42 and center
 /foozz  " search for 'foo' and center
@@ -140,8 +118,6 @@ Append `zz` after navigation commands to center the line. Works with searches, l
 # Tags: search, variations, boundaries
 ---
 Use `g*` and `g#` to search for word under cursor without word boundaries (matches partial words).
-
-#### Example
 
 ```vim
 g*  " search forward for word without boundaries
@@ -154,8 +130,6 @@ g#  " search backward for word without boundaries
 ---
 Use `g-` and `g+` to navigate through undo branches by time.
 
-#### Example
-
 ```vim
 g-  " go to older text state
 g+  " go to newer text state
@@ -166,8 +140,6 @@ g+  " go to newer text state
 # Tags: screen, line, wrap, movement
 ---
 Use `gj` and `gk` to move by screen lines when text is wrapped, `g0` and `g$` for screen line start/end.
-
-#### Example
 
 ```vim
 gj  " move down by screen line (with wrap)
@@ -182,8 +154,6 @@ g$  " go to end of screen line
 ---
 Use `gm` to go to middle of screen line and `gM` to go to middle of text line.
 
-#### Example
-
 ```vim
 gm  " go to middle of screen line
 gM  " go to middle of text line
@@ -194,8 +164,6 @@ gM  " go to middle of text line
 # Tags: case, convert, upper, lower
 ---
 Use `gU{motion}` for uppercase, `gu{motion}` for lowercase, and `g~{motion}` to toggle case.
-
-#### Example
 
 ```vim
 gUw   " uppercase word
@@ -209,8 +177,6 @@ g~iw  " toggle case of word under cursor
 ---
 Use `gJ` to join lines without inserting a space between them.
 
-#### Example
-
 ```vim
 gJ  " join lines without adding space
 ```
@@ -220,8 +186,6 @@ gJ  " join lines without adding space
 # Tags: search, select, visual, pattern
 ---
 Use `gn` to find and visually select next search match, `gN` for previous match.
-
-#### Example
 
 ```vim
 /pattern<Enter>  " search for pattern first
@@ -235,8 +199,6 @@ gN               " select previous match
 ---
 Use `gp` and `gP` to put text and leave cursor after the pasted text.
 
-#### Example
-
 ```vim
 gp  " put after and leave cursor at end
 gP  " put before and leave cursor at end
@@ -248,8 +210,6 @@ gP  " put before and leave cursor at end
 ---
 Use `gw{motion}` to format text while keeping cursor position unchanged.
 
-#### Example
-
 ```vim
 gwap  " format paragraph, keep cursor position
 ```
@@ -259,8 +219,6 @@ gwap  " format paragraph, keep cursor position
 # Tags: sleep, delay, pause
 ---
 Use `gs` to make Neovim sleep for specified seconds (useful in scripts).
-
-#### Example
 
 ```vim
 3gs  " sleep for 3 seconds
@@ -273,8 +231,6 @@ gs   " sleep for 1 second (default)
 ---
 Use `gx` to execute the default application for the file/URL under cursor.
 
-#### Example
-
 ```vim
 gx  " open file/URL under cursor with default app
 ```
@@ -284,8 +240,6 @@ gx  " open file/URL under cursor with default app
 # Tags: virtual, replace, mode, character
 ---
 Use `gR` to enter virtual replace mode, `gr{char}` to replace character without affecting layout.
-
-#### Example
 
 ```vim
 gR    " enter virtual replace mode
@@ -297,8 +251,6 @@ grx   " replace character with 'x' virtually
 # Tags: select, mode, visual, block
 ---
 Use `gh` for select mode, `gH` for select line mode, `g Ctrl+h` for select block mode.
-
-#### Example
 
 ```vim
 gh       " start select mode
@@ -312,8 +264,6 @@ g Ctrl+h " start select block mode
 ---
 Use `g?{motion}` to apply Rot13 encoding to text (shifts letters by 13).
 
-#### Example
-
 ```vim
 g?iw  " apply Rot13 to word under cursor
 g??   " apply Rot13 to current line
@@ -324,8 +274,6 @@ g??   " apply Rot13 to current line
 # Tags: substitute, repeat, global, command
 ---
 Use `g&` to repeat the last `:substitute` command on all lines.
-
-#### Example
 
 ```vim
 :s/old/new/   " substitute on current line
@@ -338,8 +286,6 @@ g&            " repeat substitute on all lines
 ---
 Use `g<` to display the output of the previous command.
 
-#### Example
-
 ```vim
 g<  " display previous command output
 ```
@@ -349,8 +295,6 @@ g<  " display previous command output
 # Tags: mark, navigation, jumplist
 ---
 Use `g'` and `` g` `` to jump to marks without changing the jumplist.
-
-#### Example
 
 ```vim
 g'a  " jump to mark 'a' without affecting jumplist
@@ -363,8 +307,6 @@ g`a  " jump to exact position of mark 'a' without jumplist
 ---
 Use `@:` to repeat the last Ex command, similar to how `@@` repeats macros.
 
-#### Example
-
 ```vim
 :substitute/old/new/g
 @:  " repeat the last substitute command
@@ -375,8 +317,6 @@ Use `@:` to repeat the last Ex command, similar to how `@@` repeats macros.
 # Tags: repeat, cursor, position, change, dot
 ---
 Map `.` followed by `` ` `` to repeat last command and return cursor to start of change.
-
-#### Example
 
 ```vim
 " Add this mapping:
@@ -392,8 +332,6 @@ nnoremap <leader>. .`[
 ---
 Use `:g//` to list all lines containing the last search pattern without specifying the pattern again.
 
-#### Example
-
 ```vim
 /function   " search for 'function'
 :g//        " list all lines containing 'function'
@@ -406,8 +344,6 @@ Use `:g//` to list all lines containing the last search pattern without specifyi
 ---
 Use `:g/^/exe` to save each line to a separate file with incremental names.
 
-#### Example
-
 ```vim
 :let i = 1 | g/^/exe 'w! line' . i . '.txt' | let i = i + 1
 " Saves each line to line1.txt, line2.txt, etc.
@@ -418,8 +354,6 @@ Use `:g/^/exe` to save each line to a separate file with incremental names.
 # Tags: substitute, delimiter, slash, alternative
 ---
 Use any character as delimiter in substitute commands to avoid escaping slashes in paths.
-
-#### Example
 
 ```vim
 :s#/path/to/old#/path/to/new#g  " using # as delimiter
@@ -432,8 +366,6 @@ Use any character as delimiter in substitute commands to avoid escaping slashes 
 # Tags: calculation, expression, register, math, evaluate
 ---
 Use `=` register to evaluate mathematical expressions and insert results.
-
-#### Example
 
 ```vim
 " In insert mode:
@@ -448,8 +380,6 @@ Ctrl+r =strftime("%Y")<Enter>  " inserts current year
 ---
 Use `g Ctrl+g` to show word count, or `:!wc -w %` for file word count.
 
-#### Example
-
 ```vim
 " Select text in visual mode, then:
 g Ctrl+g     " show character, word, line count of selection
@@ -463,8 +393,6 @@ g Ctrl+g     " show character, word, line count of selection
 # Tags: scroll, window, together, bind, sync
 ---
 Use `:set scrollbind` in multiple windows to scroll them together synchronously.
-
-#### Example
 
 ```vim
 " In first window:
@@ -484,8 +412,6 @@ Use `:set scrollbind` in multiple windows to scroll them together synchronously.
 ---
 Use `:cd %:h` to change directory to the directory of the current file.
 
-#### Example
-
 ```vim
 :cd %:h     " change to current file's directory
 :pwd        " verify current directory
@@ -497,8 +423,6 @@ Use `:cd %:h` to change directory to the directory of the current file.
 # Tags: url, open, browser, web, link
 ---
 Use `gx` to open URL under cursor, or create mapping to open entire line as URL.
-
-#### Example
 
 ```vim
 gx  " open URL under cursor with default browser
@@ -513,8 +437,6 @@ nnoremap <leader>o :!open <cWORD><CR>
 ---
 Add file encoding to status line to see current file's character encoding.
 
-#### Example
-
 ```vim
 :set statusline=%f\ [%{&fileencoding?&fileencoding:&encoding}]\ %y
 " Shows filename, encoding, and filetype
@@ -525,8 +447,6 @@ Add file encoding to status line to see current file's character encoding.
 # Tags: word, frequency, table, count, analysis
 ---
 Create a word frequency analysis using Vim commands and external tools.
-
-#### Example
 
 ```vim
 " Create word frequency table:
@@ -541,8 +461,6 @@ Create a word frequency analysis using Vim commands and external tools.
 ---
 Use `:v/pattern/` or `:g!/pattern/` to work with lines that do NOT match a pattern.
 
-#### Example
-
 ```vim
 :v/TODO/d       " delete lines NOT containing TODO
 :g!/function/p  " print lines NOT containing 'function'
@@ -554,8 +472,6 @@ Use `:v/pattern/` or `:g!/pattern/` to work with lines that do NOT match a patte
 # Tags: swap, assignment, left, right, substitute
 ---
 Use substitute with groups to swap left and right sides of assignment statements.
-
-#### Example
 
 ```vim
 " Swap variable assignment (a = b becomes b = a):
@@ -571,8 +487,6 @@ Use substitute with groups to swap left and right sides of assignment statements
 ---
 Use `z=` for spelling suggestions, `zg` to add word to dictionary, `zw` to mark as misspelled, `zG`/`zW` for temporary marks.
 
-#### Example
-
 ```vim
 z=  " show spelling suggestions for word under cursor
 zg  " add word to personal dictionary (good)
@@ -586,8 +500,6 @@ zW  " temporarily mark word as incorrect
 # Tags: edit, case, tag
 ---
 Use `g~it` to change the case of the text inside a html tag. Cursor should be between opening and closing HTML tag.
-
-### Example
 
 ```vim
 " turns <b>important</b> into <b>IMPORTANT</b>

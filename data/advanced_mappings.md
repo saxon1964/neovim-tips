@@ -4,8 +4,6 @@
 ---
 Use `noremap` and `<silent>` modifiers to create safe, non-recursive mappings that don't echo commands.
 
-#### Example
-
 ```vim
 :nnoremap <silent> <leader>w :w<CR>
 :inoremap jk <Esc>
@@ -18,8 +16,6 @@ Use `noremap` and `<silent>` modifiers to create safe, non-recursive mappings th
 # Tags: buffer, local, mode, specific
 ---
 Use `<buffer>` for buffer-local mappings and different mode prefixes for mode-specific key bindings.
-
-#### Example
 
 ```vim
 :nnoremap <buffer> <F5> :!python %<CR>
@@ -35,8 +31,6 @@ Use `<buffer>` for buffer-local mappings and different mode prefixes for mode-sp
 ---
 Use `mapleader` to create a personal namespace for custom mappings, avoiding conflicts with default keys.
 
-#### Example
-
 ```vim
 :let mapleader = " "           " space as leader
 :nnoremap <leader>f :find<Space>
@@ -51,8 +45,6 @@ Use `mapleader` to create a personal namespace for custom mappings, avoiding con
 ---
 Use `<expr>` mappings to create dynamic key behaviors that evaluate expressions.
 
-#### Example
-
 ```vim
 :inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 :inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
@@ -65,8 +57,6 @@ Use `<expr>` mappings to create dynamic key behaviors that evaluate expressions.
 # Tags: script, local, SID, unique
 ---
 Use `<SID>` (Script ID) to create mappings that call script-local functions, avoiding global namespace pollution.
-
-#### Example
 
 ```vim
 :nnoremap <silent> <F5> :call <SID>CompileAndRun()<CR>
@@ -83,8 +73,6 @@ endfunction
 ---
 Use special key notation like `<C-key>`, `<M-key>`, `<S-key>` for modifier combinations and special keys.
 
-#### Example
-
 ```vim
 :nnoremap <C-j> <C-w>j        " Ctrl+j to move down
 :nnoremap <M-h> :tabprev<CR>  " Alt+h for previous tab
@@ -98,8 +86,6 @@ Use special key notation like `<C-key>`, `<M-key>`, `<S-key>` for modifier combi
 ---
 Use timeout settings to control how long vim waits for key sequence completion in mappings.
 
-#### Example
-
 ```vim
 :set timeoutlen=500    " wait 500ms for mapped sequence
 :set ttimeoutlen=50    " wait 50ms for key code sequence
@@ -112,8 +98,6 @@ Use timeout settings to control how long vim waits for key sequence completion i
 # Tags: abbreviation, iabbrev, expand, text
 ---
 Use abbreviations for text expansion that only triggers after whitespace, unlike mappings which are immediate.
-
-#### Example
 
 ```vim
 :iabbrev teh the
@@ -129,8 +113,6 @@ Use abbreviations for text expansion that only triggers after whitespace, unlike
 ---
 Use proper escaping and notation for mapping special characters like quotes, backslashes, and pipes.
 
-#### Example
-
 ```vim
 :nnoremap <leader>" ciw"<C-r>""<Esc>
 :nnoremap <leader>' ciw'<C-r>"'<Esc>
@@ -143,8 +125,6 @@ Use proper escaping and notation for mapping special characters like quotes, bac
 # Tags: conditional, exists, hasmapto, check
 ---
 Use `exists()` and `hasmapto()` to create conditional mappings that don't override existing ones.
-
-#### Example
 
 ```vim
 if !hasmapto(':make<CR>')
@@ -162,8 +142,6 @@ endif
 ---
 Use `noreabbrev` to prevent recursive abbreviation expansion, similar to noremap for mappings.
 
-#### Example
-
 ```vim
 :abbreviate W w
 :noreabbrev Wq wq
@@ -176,8 +154,6 @@ Use `noreabbrev` to prevent recursive abbreviation expansion, similar to noremap
 # Tags: visual, vnoremap, selection, range
 ---
 Use visual mode mappings to operate on selections with custom key combinations.
-
-#### Example
 
 ```vim
 :vnoremap <leader>s :sort<CR>
@@ -192,8 +168,6 @@ Use visual mode mappings to operate on selections with custom key combinations.
 # Tags: cnoremap, command, line, navigation
 ---
 Use command-line mode mappings to improve command-line editing with familiar key bindings.
-
-#### Example
 
 ```vim
 :cnoremap <C-a> <Home>
@@ -210,8 +184,6 @@ Use command-line mode mappings to improve command-line editing with familiar key
 ---
 Use `<Plug>` prefix to create unique mapping names that users can map to their preferred keys.
 
-#### Example
-
 ```vim
 :nnoremap <Plug>MyPluginFunction :call MyFunction()<CR>
 :nmap <F5> <Plug>MyPluginFunction
@@ -224,8 +196,6 @@ Use `<Plug>` prefix to create unique mapping names that users can map to their p
 # Tags: onoremap, operator, pending, motion
 ---
 Use operator-pending mappings to create custom text objects and motions.
-
-#### Example
 
 ```vim
 :onoremap in( :<C-u>normal! f(vi(<CR>
@@ -240,8 +210,6 @@ Use operator-pending mappings to create custom text objects and motions.
 # Tags: tnoremap, terminal, mode, escape
 ---
 Use terminal mode mappings to control built-in terminal behavior and key bindings.
-
-#### Example
 
 ```vim
 :tnoremap <Esc> <C-\><C-n>
@@ -258,8 +226,6 @@ Use terminal mode mappings to control built-in terminal behavior and key binding
 ---
 Create mappings that respond to multiple key sequences or provide alternative bindings.
 
-#### Example
-
 ```vim
 :nnoremap <leader>fs :w<CR>
 :nnoremap <leader>ff :find<Space>
@@ -275,8 +241,6 @@ Create mappings that respond to multiple key sequences or provide alternative bi
 ---
 Use `<count>` and ranges in mappings to create flexible key bindings that accept numeric arguments.
 
-#### Example
-
 ```vim
 :nnoremap <silent> <leader>d :<C-u>call DeleteLines(v:count1)<CR>
 function! DeleteLines(count)
@@ -290,8 +254,6 @@ endfunction
 # Tags: autopair, brackets, quotes, matching
 ---
 Create smart bracket and quote auto-pairing with conditional mappings.
-
-#### Example
 
 ```vim
 :inoremap <expr> ( getline('.')[col('.')-2] =~ '\w' ? '(' : '()<Left>'
@@ -307,8 +269,6 @@ Create smart bracket and quote auto-pairing with conditional mappings.
 ---
 Map common key combinations to escape key for faster mode switching without reaching for Esc.
 
-#### Example
-
 ```vim
 :inoremap jk <Esc>
 :inoremap kj <Esc>
@@ -322,8 +282,6 @@ Map common key combinations to escape key for faster mode switching without reac
 # Tags: context, aware, conditional, filetype
 ---
 Create mappings that behave differently based on file type, mode, or cursor context.
-
-#### Example
 
 ```vim
 :autocmd FileType python nnoremap <buffer> <F5> :!python %<CR>

@@ -1,4 +1,4 @@
-<img src="images/logo.png" width="150">
+<img src="images/book.png">
 
 # Neovim Tips Plugin
 
@@ -6,11 +6,31 @@
 
 **This Lua plugin for Neovim brings together hundreds of helpful tips, tricks, and shortcuts, all available through a custom picker. It's easy to expand with your own entries, so the collection grows with you and your workflow.**
 
-![Neovim tips plugin screenshot](images/s1.png)
+## 📷 Screenshots
 
-![Neovim tips tip of the day](images/s2.png)
+<p align="center">Neovim Tips main screen</p>
 
-![Neovim tips advanced search](images/s3.png)
+![Neovim tips main screen](images/s1.png)
+
+<p align="center">Neovim Daily/Random tip</p>
+
+![Neovim Daily/Random tip](images/s2.png)
+
+<p align="center">Bookmarking Daily/Random tip</p>
+
+![Bookmarking Daily/Random tip](images/s3.png)
+
+<p align="center">List your bookmarked tips</p>
+
+![List your bookmarked tips](images/s4.png)
+
+<p align="center">Searching tips database</p>
+
+![Searching tips database](images/s5.png)
+
+<p align="center">Advanced tips search using categories, tags and bookmarks</p>
+
+![Advanced tips search using categories, tags and bookmarks](images/s6.png)
 
 ## 📚 Table of Contents
 
@@ -51,14 +71,17 @@ The plugin should help you to learn some basic (:wq, write and quit) and some no
 I have provided a solid initial batch of tips and if you have your favorite one that is not listed, I will be happy to include it in the next release **with proper credits**. Send your commands, tips and tricks to me, create an issue or submit a pull request. You can also add your own tips and tricks that will be stored on your local computer, you don't have to share anything with me.
 
 ## ✨ Features
+
 - **Beautiful custom picker**: Three-pane interface with search, tips list, and live markdown preview
 - **Daily tip popup**: Get a random tip on startup (configurable: off, daily, or every launch)
-- **Lightweight dependencies**: Only requires `nui.nvim` and `render-markdown` - no heavyweight pickers (fzf-lua, telescope, snacks, mini...)
+- **Lightweight dependencies**: Only requires `nui.nvim` - no heavyweight pickers (fzf-lua, telescope, snacks, mini...)
+- **Flexible markdown rendering**: Supports `markview.nvim`, `render-markdown.nvim`, or raw markdown display (auto-detected)
 - **Word-based search**: Intelligent search that matches all words (e.g., "insert character" finds "character to insert")
-- **Live markdown rendering**: Preview rendered descriptions with full markdown support
+- **Live markdown preview**: Rich formatted descriptions or clean raw markdown based on your preference
 - **Simple navigation**: Seamless mouse and keyboard navigation with smart mode switching
 - **Copy-friendly**: Easy copying of tip content and code snippets from both picker and daily tip
 - **Cursor preservation**: Returns to your exact cursor position and mode after closing
+- **Bookmark system**: Save favorite tips with customizable visual indicators (🌟 ⭐ ✨ 💫 🔥 💎 etc.)
 - Support for categories, tags, and rich text
 - Lazy loading for optimal startup performance
 - The plugin comes with a starting set of 900+ curated tips
@@ -76,7 +99,9 @@ I have provided a solid initial batch of tips and if you have your favorite one 
   version = "*", -- Only update on tagged releases
   dependencies = {
     "MunifTanjim/nui.nvim",
-    "MeanderingProgrammer/render-markdown.nvim"
+    -- OPTIONAL: Choose your preferred markdown renderer (or omit for raw markdown)
+    "MeanderingProgrammer/render-markdown.nvim", -- Clean rendering
+    -- OR: "OXY2DEV/markview.nvim", -- Rich rendering with advanced features
   },
   opts = {
     -- OPTIONAL: Location of user defined tips (default value shown below)
@@ -88,6 +113,8 @@ I have provided a solid initial batch of tips and if you have your favorite one 
     -- OPTIONAL: Daily tip mode (default: 1)
     -- 0 = off, 1 = once per day, 2 = every startup
     daily_tip = 1,
+    -- OPTIONAL: Bookmark symbol (default: "🌟 ")
+    bookmark_symbol = "🌟 ",
   },
   init = function()
     -- OPTIONAL: Change to your liking or drop completely
@@ -111,7 +138,8 @@ use {
   tag = "*", -- Only update on tagged releases
   requires = {
     "MunifTanjim/nui.nvim",
-    "MeanderingProgrammer/render-markdown.nvim"
+    -- OPTIONAL: Choose your preferred renderer
+    "MeanderingProgrammer/render-markdown.nvim", -- OR "OXY2DEV/markview.nvim"
   },
   config = function()
     require("neovim_tips").setup {
@@ -231,11 +259,9 @@ EOF
 
 ### vim.pack
 
-WORK IN PROGRESS built-in plugin manager! Early testing of existing features is appreciated, but expect breaking changes without notice.
-More information can be found in the [official documentation](https://neovim.io/doc/user/pack.html#vim.pack).
+> WARNING: **vim.pack**, Neovim's built-in plugin manager, is still being developed! Early testing of existing features is appreciated, but expect breaking changes without notice. More information can be found in the [official documentation](https://neovim.io/doc/user/pack.html#vim.pack).
 
 ```lua
-
 vim.pack.add({
 	"https://github.com/MunifTanjim/nui.nvim",
 	"https://github.com/saxon1964/neovim-tips",
@@ -372,7 +398,36 @@ The PDF is located at `pdf/book/NeovimTips.pdf` within the plugin directory and 
 - `:NeovimTipsEdit` — Edit your personal tips file
 - `:NeovimTipsAdd` — Insert a new tip template into your personal file and start editing
 - `:NeovimTipsRandom` — Displays random tip upon user request
-- `:NeovimTipsPdf` — Open the Neovim Tips PDF book (cross-platform: macOS, Linux, Windows)
+
+## 🎨 Markdown Rendering
+
+The plugin automatically detects and uses available markdown renderers for enhanced tip display:
+
+### 📋 Rendering Options
+
+1. **markview.nvim** (Priority 1)
+   - Rich rendering with advanced features
+   - Beautiful typography and syntax highlighting
+   - Install: Add `"OXY2DEV/markview.nvim"` to dependencies
+
+2. **render-markdown.nvim** (Priority 2)
+   - Clean, lightweight rendering
+   - Excellent performance
+   - Install: Add `"MeanderingProgrammer/render-markdown.nvim"` to dependencies
+
+3. **Raw Markdown** (Fallback)
+   - Clean, readable plain text
+   - Zero dependencies beyond `nui.nvim`
+   - Many users prefer this for its simplicity
+
+### 🔄 Automatic Detection
+
+The plugin automatically:
+- Detects which renderer is available
+- Uses markview.nvim if present (highest priority)
+- Falls back to render-markdown.nvim if markview not found
+- Displays raw markdown if no renderer installed
+- **No configuration required** - just install your preferred renderer
 
 ## 📖 Help System
 
@@ -435,13 +490,28 @@ c:search           → finds all tips in "Search" category
 c:"Key Mappings"   → finds tips in "Key Mappings" category (quoted for spaces)
 ```
 
+### Bookmark Search
+
+Use `b:` prefix to search your bookmarked tips:
+```
+b:                 → shows all your bookmarked tips
+b:delete           → shows bookmarked tips with "delete" in title
+b:motion           → shows bookmarked tips with "motion" in title
+```
+
+**Bookmarking Tips:**
+- Press **`Ctrl+b`** in the picker or daily tip to bookmark/unbookmark
+- Bookmarked tips display with your configured symbol (default: 🌟)
+- Works from any pane (search bar, tips list, or preview)
+
 ### Combined Search
 
 Mix different search types with spaces (all must match):
 ```
 motion c:editing t:operator    → tips with "motion" in title, "Editing" category, and "operator" tag
 insert file t:save             → tips with "insert file" in title and "save" tag
-c:search t:pattern replace     → "Search" category tips with "pattern" tag and "replace" in title
+b: c:editing t:motion          → bookmarked tips in "Editing" category with "motion" tag
+b:delete c:text                → bookmarked tips with "delete" in title from "Text" category
 ```
 
 ### Search Help
@@ -638,6 +708,9 @@ require("neovim_tips").setup({
 
   -- Daily tip mode: 0=off, 1=once per day, 2=every startup
   daily_tip = 1,
+
+  -- Bookmark symbol (default: 🌟)
+  bookmark_symbol = "🌟 ",
 })
 ```
 
@@ -652,6 +725,31 @@ user_tip_prefix = "🔧 "         -- "Join lines" becomes "🔧 Join lines"
 
 -- No prefix (not recommended, may cause conflicts)
 user_tip_prefix = ""            -- "Join lines" stays "Join lines"
+```
+
+### Bookmark Symbol Examples
+
+```lua
+-- Default star emoji
+bookmark_symbol = "🌟 "          -- bright gold star
+
+-- Alternative star options
+bookmark_symbol = "⭐ "          -- classic star
+bookmark_symbol = "✨ "          -- sparkles
+bookmark_symbol = "💫 "          -- dizzy star
+
+-- Other colorful options
+bookmark_symbol = "🔥 "          -- fire
+bookmark_symbol = "💎 "          -- gem
+bookmark_symbol = "🏆 "          -- trophy
+bookmark_symbol = "⚡ "          -- lightning
+bookmark_symbol = "🎯 "          -- target
+bookmark_symbol = "📌 "          -- pin
+
+-- Simple text options
+bookmark_symbol = "★ "           -- unicode star
+bookmark_symbol = "[★] "         -- bracketed star
+bookmark_symbol = "• "           -- bullet point
 ```
 
 ### Features
@@ -700,14 +798,20 @@ require('cmp').setup({
 
 ## 🔄 Roadmap Ideas
 
+### ✅ Completed Features
 - ~~Category/Tag filtering~~ ✅ **Completed** - Advanced search with `t:tag` and `c:category` syntax
 - ~~Help system for discovering tags/categories~~ ✅ **Completed** - Interactive help picker with `t:?` and `c:?`
-- Search descriptions - Extend search to include tip content, not just titles, tags and categories
-- Multiple tip sources - Support loading tips from multiple directories/files
-- Export functionality - Export filtered tips to various formats (PDF, HTML, etc.)
-- API improvements - Better programmatic access for other plugins
-- Theme customization - Customizable colors and UI themes
-- Tip rating system - Allow users to rate and sort tips by usefulness
+- ~~Support for markview and render-markdown plugins~~ ✅ **Completed** - Automatic renderer detection with fallback
+
+### 🚀 Planned Features
+- **Bookmark tips** - Mark favorite tips for easy access and learning (highly requested)
+- **Faster startup** - Optimize daily tip timing to avoid conflicts with fzf/telescope file searches
+- **Search descriptions** - Extend search to include tip content, not just titles, tags and categories
+- **Multiple tip sources** - Support loading tips from multiple directories/files
+- **Enhanced export** - Export filtered tips to additional formats (HTML, plain text, etc.)
+- **API improvements** - Better programmatic access for other plugins
+- **Theme customization** - Customizable colors and UI themes
+- **Tip rating system** - Allow users to rate and sort tips by usefulness
 
 ---
 

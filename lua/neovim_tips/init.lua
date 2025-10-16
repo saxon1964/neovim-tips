@@ -118,6 +118,21 @@ function M.setup(opts)
     { desc = "Open Neovim Tips PDF book" }
   )
 
+  vim.api.nvim_create_user_command("NeovimTipsReload",
+    function()
+      utils.run_async(loader.reload,
+        function(ok, result)
+          if ok and result then
+            utils.info("Neovim tips reloaded successfully")
+          else
+            utils.error("Failed to reload Neovim tips: " .. result)
+          end
+        end
+      )
+    end,
+    { desc = "Reload all Neovim tips (clears cache)" }
+  )
+
   -- Reload tips on user file save
   vim.api.nvim_create_autocmd("BufWritePost", {
     pattern = user_file,
