@@ -802,10 +802,11 @@ require('cmp').setup({
 - ~~Category/Tag filtering~~ ✅ **Completed** - Advanced search with `t:tag` and `c:category` syntax
 - ~~Help system for discovering tags/categories~~ ✅ **Completed** - Interactive help picker with `t:?` and `c:?`
 - ~~Support for markview and render-markdown plugins~~ ✅ **Completed** - Automatic renderer detection with fallback
+- ~~Bookmark tips - Mark favorite tips for easy access and learning (highly requested)~~ ✅ **Completed** - Searchable collection of bookmarks
+- ~~Faster startup - Optimize daily tip timing to avoid conflicts with fzf/telescope file searches~~ ✅ **Completed** - Slashed one second
 
 ### 🚀 Planned Features
-- **Bookmark tips** - Mark favorite tips for easy access and learning (highly requested)
-- **Faster startup** - Optimize daily tip timing to avoid conflicts with fzf/telescope file searches
+- **Performance improvements** - Markdown files with tips are parsed on every plugin startup. Can we keep the parsed results between sessions?
 - **Search descriptions** - Extend search to include tip content, not just titles, tags and categories
 - **Multiple tip sources** - Support loading tips from multiple directories/files
 - **Enhanced export** - Export filtered tips to additional formats (HTML, plain text, etc.)
