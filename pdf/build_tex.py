@@ -296,6 +296,6 @@ class BookWriter:
 
 if __name__ == "__main__":
   # Example usage: Convert markdown tips to LaTeX book
-  writer = BookWriter("../data", ".md", "Structure/Content.tex")
+  writer = BookWriter("../data", ".md", "Tmp/Content.tex")
   writer.write()
   print("Book created")
