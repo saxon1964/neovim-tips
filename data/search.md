@@ -186,3 +186,21 @@ Use `\%V` in search pattern to restrict replacement to only the visual selection
 " \%V ensures replacement only happens in selected text
 ```
 ***
+# Title: Perform change on lines returned by vimgrep regex search
+# Category: Search
+# Tags: replace, regex, search, vimgrep, cdo
+---
+Suppose that you have a set of .html documents and you want to find all <a> tags that have some attribute in it, for example: `text-red`. You want to replace that attribute with `text-blue`. Do the following:
+
+```vim
+:vimgrep /<a [^>]*text-red[^>]*>/gj **/*.html
+```
+
+This will create a quickfix list made of lines that match the regular expression and open the file with the first matching line highlighted. After that you can execute the substitution:
+
+```vim
+:cdo s/text-red/text-blue/gc
+```
+
+Thanks to `c` flag you'll have a cnahce to approve every change. Note that `cfdo` would perform changes on matched FILES, while `cdo` works on matched lines. Also in substitution command use `s/`, not `%s/` because the first one is executed on the current line and the second one would process the whole doucment.
+***
