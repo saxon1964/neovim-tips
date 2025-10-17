@@ -44,4 +44,5 @@ luac.out
 .DS_Store
 
 pdf/build
+pdf/Tmp
 images/raw
