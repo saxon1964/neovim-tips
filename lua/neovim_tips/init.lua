@@ -6,7 +6,7 @@ local config = require("neovim_tips.config")
 local loader = require("neovim_tips.loader")
 local picker = require("neovim_tips.picker")
 local utils = require("neovim_tips.utils")
--- Lazy load daily_tip only when needed
+local daily_tip = require("neovim_tips.daily_tip")
 
 ---Setup the Neovim tips plugin
 ---Configures options, creates user commands, and sets up autocmds for tips management
@@ -75,15 +75,7 @@ function M.setup(opts)
 
   vim.api.nvim_create_user_command("NeovimTipsRandom",
     function()
-      -- Ensure tips are loaded first
-      utils.run_async(loader.load, function(ok, _)
-        if ok then
-          local daily_tip = require("neovim_tips.daily_tip")
-          daily_tip.show()
-        else
-          utils.error("Failed to load tips")
-        end
-      end)
+      daily_tip.show()
     end,
     { desc = "Open random tip" }
   )
@@ -131,7 +123,7 @@ function M.setup(opts)
       utils.run_async(loader.reload,
         function(ok, result)
           if ok and result then
-            utils.info("Neovim tips reloaded successfully (cache cleared)")
+            utils.info("Neovim tips reloaded successfully")
           else
             utils.error("Failed to reload Neovim tips: " .. result)
           end
@@ -187,7 +179,6 @@ function M.setup(opts)
         -- Load tips first, then check for daily tip
         utils.run_async(loader.load, function(ok, _)
           if ok then
-            local daily_tip = require("neovim_tips.daily_tip")
             daily_tip.check_and_show()
           end
         end)
