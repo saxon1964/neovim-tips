@@ -5,6 +5,7 @@ local M = {}
 local config = require("neovim_tips.config")
 local tips = require("neovim_tips.tips")
 local utils = require("neovim_tips.utils")
+local cache = require("neovim_tips.cache")
 
 local builtin_dir = config.options.builtin_dir
 local user_file = config.options.user_file
@@ -100,15 +101,40 @@ local function read_tips_from_directory(dir_path, is_user_tips)
 end
 
 ---Load all tips from builtin and user sources
+---Tries to load from cache first (if enabled), falls back to parsing markdown if cache is invalid
 ---Only loads if not already loaded (checks titles_seen cache)
 ---@return boolean success True if tips were loaded, false if already loaded
 function M.load()
   if next(titles_seen) == nil then
+    local all_tips = nil
+
+    -- Try to load from cache first (if enabled)
+    if config.options.use_cache and cache.is_valid(builtin_dir, user_file) then
+      all_tips = cache.load()
+
+      if all_tips then
+        -- Populate titles_seen from cached tips
+        for _, tip in ipairs(all_tips) do
+          titles_seen[tip.title] = true
+        end
+
+        tips.set_tips(all_tips)
+        return true
+      end
+    end
+
+    -- Cache miss, invalid, or disabled - parse markdown files
     local builtin_tips = read_tips_from_directory(builtin_dir, false)
     local user_tips = read_tip_file(user_file, true)
-    local all_tips = {}
+    all_tips = {}
     vim.list_extend(all_tips, builtin_tips)
     vim.list_extend(all_tips, user_tips)
+
+    -- Save to cache for next time (if enabled)
+    if config.options.use_cache then
+      cache.save(all_tips, builtin_dir, user_file)
+    end
+
     tips.set_tips(all_tips)
     return true
   else
@@ -117,11 +143,18 @@ function M.load()
 end
 
 ---Reload all tips from builtin and user sources
----Clears cache and forces a fresh load of all tips
+---Clears both in-memory and disk cache, forces a fresh parse of all tips
 ---@return boolean success Always returns true after reload
 function M.reload()
   titles_seen = {}
+  cache.clear()
   return M.load()
+end
+
+---Get cache information for debugging
+---@return table info Cache information and statistics
+function M.cache_info()
+  return cache.info()
 end
 
 return M

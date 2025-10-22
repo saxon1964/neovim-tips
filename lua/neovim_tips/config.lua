@@ -11,6 +11,7 @@ local guthub_issues = github_root .. "/issues/new"
 ---@field warn_on_conflicts boolean Show warnings when user tips conflict with builtin tips
 ---@field daily_tip integer Daily tip mode: 0=off, 1=once per day, 2=every startup
 ---@field bookmark_symbol string Symbol to display for bookmarked tips
+---@field use_cache boolean Enable caching of parsed tips for faster loading
 ---@field builtin_dir string Internal: path to builtin tips data directory
 ---@field user_tips_tag string Internal: tag for user tips identification
 ---@field github table Internal: various github urls
@@ -22,6 +23,7 @@ M.options = {
   warn_on_conflicts = true,     -- Show warnings when user tips conflict with builtin
   daily_tip = 1,                -- Daily tip mode: 0=off, 1=once per day, 2=every startup
   bookmark_symbol = "🌟 ",       -- Bookmark symbol (colorful Unicode symbols work great!)
+  use_cache = true,             -- Enable caching for faster loading (recommended)
   ---------------------------------------------------
   --             for internal use only             --
   ---------------------------------------------------
