@@ -553,3 +553,34 @@ Use `:cfdo` with `append()` function to add lines at specific positions across m
 :cfdo execute 'norm 5GO"status": "not started",' | update
 ```
 ***
+# Title: Resolve merge conflicts with git jump
+# Category: Workflow
+# Tags: git, merge, conflict, quickfix, resolution
+---
+Use `git jump merge` to populate quickfix list with all merge conflicts for quick navigation and resolution.
+
+```vim
+" First, install git-jump (part of git-contrib):
+" On macOS: brew install git-extras
+" Or copy from git source: contrib/git-jump/
+
+" Add to shell config:
+" export PATH="$PATH:/path/to/git/contrib/git-jump"
+
+" In Neovim, run git jump and load conflicts:
+:cexpr system('git jump merge')
+:copen
+
+" Or create a command in init.lua:
+vim.api.nvim_create_user_command('GitJumpMerge', function()
+  vim.fn.setqflist({}, 'r', {
+    title = 'Git Merge Conflicts',
+    lines = vim.fn.systemlist('git jump merge')
+  })
+  vim.cmd('copen')
+end, {})
+
+" Usage: :GitJumpMerge
+" Navigate with :cnext, :cprev
+```
+***

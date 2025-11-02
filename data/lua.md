@@ -1340,3 +1340,42 @@ print("Circle perimeter:", circle:perimeter())   -- ~25.13
 -- shape:area() -- Error: Abstract method 'area' must be implemented
 ```
 ***
+# Title: Defer execution with vim.schedule
+# Category: Lua
+# Tags: lua, schedule, defer, async, callback
+---
+Use `vim.schedule()` to defer execution of code to be run on the main event loop, useful for async callbacks and avoiding "textlock" errors.
+
+```lua
+-- Defer UI updates from async context:
+vim.schedule(function()
+  vim.notify("Operation completed", vim.log.levels.INFO)
+end)
+
+-- Safe buffer modification in callback:
+local function async_operation()
+  -- Simulate async work
+  vim.schedule(function()
+    local buf = vim.api.nvim_get_current_buf()
+    vim.api.nvim_buf_set_lines(buf, 0, 1, false, {"New content"})
+  end)
+end
+
+-- Schedule multiple operations:
+for i = 1, 5 do
+  vim.schedule(function()
+    print("Deferred operation " .. i)
+  end)
+end
+
+-- Useful in LSP callbacks:
+vim.lsp.buf.format({
+  async = true,
+  callback = function()
+    vim.schedule(function()
+      vim.cmd('write')
+    end)
+  end
+})
+```
+***

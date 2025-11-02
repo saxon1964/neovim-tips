@@ -593,3 +593,52 @@ vim.keymap.set("n", "<leader>rn", rename_variable,
   {desc = "Rename variable in scope"})
 ```
 ***
+# Title: Enhanced text objects with treesitter
+# Category: Treesitter
+# Tags: text-objects, selection, nvim-treesitter-textobjects, editing
+---
+Use nvim-treesitter-textobjects plugin to add treesitter-aware text objects for functions, classes, parameters, and more.
+
+```lua
+-- Install with lazy.nvim:
+{
+  "nvim-treesitter/nvim-treesitter-textobjects",
+  dependencies = "nvim-treesitter/nvim-treesitter",
+  config = function()
+    require('nvim-treesitter.configs').setup({
+      textobjects = {
+        select = {
+          enable = true,
+          lookahead = true,  -- Automatically jump forward to textobj
+          keymaps = {
+            ["af"] = "@function.outer",
+            ["if"] = "@function.inner",
+            ["ac"] = "@class.outer",
+            ["ic"] = "@class.inner",
+            ["aa"] = "@parameter.outer",
+            ["ia"] = "@parameter.inner",
+          },
+        },
+        move = {
+          enable = true,
+          set_jumps = true,  -- Add to jumplist
+          goto_next_start = {
+            ["]f"] = "@function.outer",
+            ["]c"] = "@class.outer",
+          },
+          goto_previous_start = {
+            ["[f"] = "@function.outer",
+            ["[c"] = "@class.outer",
+          },
+        },
+      },
+    })
+  end,
+}
+
+-- Usage:
+-- vaf - select around function
+-- dif - delete inside function
+-- ]f - jump to next function
+```
+***

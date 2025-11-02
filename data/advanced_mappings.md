@@ -290,3 +290,38 @@ Create mappings that behave differently based on file type, mode, or cursor cont
 " Same key, different behavior per file type
 ```
 ***
+# Title: Buffer-local keymaps with Lua
+# Category: Key Mappings
+# Tags: lua, buffer, local, keymap, nvim_buf_set_keymap
+---
+Create buffer-specific keymaps in Lua that only apply to the current buffer without affecting global mappings.
+
+```lua
+-- Set keymap for current buffer (buffer 0):
+vim.keymap.set('n', '<leader>r', ':!python %<CR>', {
+  buffer = 0,
+  desc = 'Run current file'
+})
+
+-- In autocommand for specific filetype:
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'lua',
+  callback = function(args)
+    vim.keymap.set('n', '<leader>x', ':source %<CR>', {
+      buffer = args.buf,
+      desc = 'Source Lua file'
+    })
+  end,
+})
+
+-- In LspAttach autocommand:
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(args)
+    local opts = { buffer = args.buf }
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+  end,
+})
+```
+***

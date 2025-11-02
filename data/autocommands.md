@@ -255,10 +255,54 @@ Use `BufWritePost` to automatically make shell scripts executable after saving t
 
 ```vim
 :autocmd BufWritePost *.sh,*.py,*.pl,*.rb silent !chmod +x %
-:autocmd BufWritePost * 
-    \ if getline(1) =~ "^#!" | 
-    \   silent !chmod +x % | 
+:autocmd BufWritePost *
+    \ if getline(1) =~ "^#!" |
+    \   silent !chmod +x % |
     \ endif
 " Make files with shebang executable
+```
+***
+# Title: Lua autocommands with pattern matching
+# Category: Autocommands
+# Tags: lua, autocmd, pattern, nvim_create_autocmd, event
+---
+Create autocommands in Lua using `vim.api.nvim_create_autocmd` with powerful pattern matching and callback functions.
+
+```lua
+-- Basic autocommand with single event:
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.lua",
+  callback = function()
+    vim.lsp.buf.format()
+  end,
+  desc = "Format Lua files before saving"
+})
+
+-- Multiple events and patterns:
+vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
+  pattern = {"*.md", "*.markdown"},
+  callback = function()
+    vim.opt_local.spell = true
+    vim.opt_local.conceallevel = 2
+  end,
+})
+
+-- Using augroup for organization:
+local group = vim.api.nvim_create_augroup("MyAutocommands", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+  group = group,
+  pattern = "python",
+  callback = function()
+    vim.opt_local.tabstop = 4
+    vim.opt_local.shiftwidth = 4
+  end,
+})
+
+-- With buffer-specific autocommand:
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = args.buf })
+  end,
+})
 ```
 ***

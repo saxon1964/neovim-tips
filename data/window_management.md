@@ -310,3 +310,29 @@ Use `:wincmd {key}` to execute window commands from Ex mode, useful in scripts a
 :wincmd s     " same as Ctrl+w s (horizontal split)
 ```
 ***
+# Title: Smart window navigation keymaps
+# Category: Window Management
+# Tags: navigation, keymap, window, split, lua
+---
+Create intuitive window navigation keymaps using Ctrl+hjkl for seamless movement between splits.
+
+```lua
+-- Simple window navigation with Ctrl+hjkl:
+vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = 'Move to left window' })
+vim.keymap.set('n', '<C-j>', '<C-w>j', { desc = 'Move to window below' })
+vim.keymap.set('n', '<C-k>', '<C-w>k', { desc = 'Move to window above' })
+vim.keymap.set('n', '<C-l>', '<C-w>l', { desc = 'Move to right window' })
+
+-- Window resizing with arrow keys:
+vim.keymap.set('n', '<C-Up>', ':resize +2<CR>', { desc = 'Increase window height' })
+vim.keymap.set('n', '<C-Down>', ':resize -2<CR>', { desc = 'Decrease window height' })
+vim.keymap.set('n', '<C-Left>', ':vertical resize -2<CR>', { desc = 'Decrease window width' })
+vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>', { desc = 'Increase window width' })
+
+-- Quick window management:
+vim.keymap.set('n', '<leader>wv', '<C-w>v', { desc = 'Split window vertically' })
+vim.keymap.set('n', '<leader>ws', '<C-w>s', { desc = 'Split window horizontally' })
+vim.keymap.set('n', '<leader>wq', '<C-w>q', { desc = 'Close current window' })
+vim.keymap.set('n', '<leader>wo', '<C-w>o', { desc = 'Close other windows' })
+```
+***

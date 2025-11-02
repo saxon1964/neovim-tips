@@ -323,3 +323,28 @@ You can also apply your custom function to every line that is matching the given
 
 Credits: Different-Ad-8707@Reddit
 ***
+# Title: Change "Last, First" to "First Last"
+# Category: Advanced Search
+# Tags: search, replace, regex
+---
+You have a list of names in this form:
+
+```vim
+Doe, John
+Smith, Alan
+```
+
+You want to change it to:
+
+```vim
+John Doe
+Alan Smith
+```
+
+This can be done with just one command:
+
+```vim
+:%s/\([^,]*\), \(.*\)/\2 \1/
+```
+***
+
