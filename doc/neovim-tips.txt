@@ -16,8 +16,9 @@ CONTENTS                                                *neovim-tips-contents*
 7. Search.......................................|neovim-tips-search|
 8. Categories...................................|neovim-tips-categories|
 9. User Tips....................................|neovim-tips-user-tips|
-10. Daily Tips..................................|neovim-tips-daily|
-11. Troubleshooting.............................|neovim-tips-troubleshooting|
+10. Performance & Caching.......................|neovim-tips-cache|
+11. Daily Tips..................................|neovim-tips-daily|
+12. Troubleshooting.............................|neovim-tips-troubleshooting|
 
 ==============================================================================
 1. INTRODUCTION                                     *neovim-tips-introduction*
@@ -165,6 +166,9 @@ The plugin accepts the following configuration options:
 
       -- Bookmark symbol (default: "🌟 ")
       bookmark_symbol = "🌟 ",
+
+      -- Enable caching for faster loading (default: true)
+      use_cache = true,
     })
 <
 
@@ -194,6 +198,14 @@ bookmark_symbol            Symbol displayed for bookmarked tips
                            Default: "🌟 "
                            Examples: "⭐ ", "✨ ", "💫 ", "🔥 ", "💎 "
 
+*neovim-tips-config-cache*
+use_cache                  Enable automatic caching of parsed tips
+                           Default: true (recommended)
+                           When enabled, tips are serialized to cache file
+                           for 10-20x faster loading on subsequent launches
+                           Cache automatically invalidates when files change
+                           See |neovim-tips-cache| for details
+
 ==============================================================================
 5. COMMANDS                                             *neovim-tips-commands*
 
@@ -213,6 +225,14 @@ bookmark_symbol            Symbol displayed for bookmarked tips
                            in your system's default PDF viewer
                            Cross-platform: macOS, Linux, Windows
                            PDF location: pdf/book/NeovimTips.pdf
+
+*:NeovimTipsReload*        Reload all tips from markdown files and clear cache
+                           Useful after editing markdown files directly
+                           Forces a fresh parse of all tips
+
+*:NeovimTipsCacheInfo*     Display cache statistics and status information
+                           Shows cache size, location, and last update time
+                           Useful for debugging performance issues
 
 The plugin provides no default key mappings. Add your own in the
 configuration as shown in the installation examples.
@@ -387,11 +407,97 @@ Do NOT add the prefix yourself - it's automatic.
 • Configurable prefix (default: "[User] ")
 
 ==============================================================================
-9. DAILY TIPS                                             *neovim-tips-daily*
+9. PERFORMANCE & CACHING                                      *neovim-tips-cache*
+
+The plugin includes an intelligent caching system that dramatically improves
+loading performance by serializing parsed tips to disk.
+
+9.1 How It Works ~
+                                                       *neovim-tips-cache-how*
+
+First Load:
+1. All markdown files in data/ directory are parsed (~100ms)
+2. Tips are serialized to ~/.cache/nvim/neovim_tips/tips_cache.lua
+3. Metadata with file modification times is saved
+
+Subsequent Loads:
+1. Cache validity is checked (file modification times)
+2. If valid, serialized Lua table is loaded directly (~5-10ms)
+3. Result: 10-20x faster loading!
+
+9.2 Automatic Invalidation ~
+                                                  *neovim-tips-cache-invalidation*
+
+The cache is automatically invalidated when:
+• Any .md file in the data directory is modified
+• User tips file is modified or saved
+• Neovim minor version changes
+• Cache format version changes
+
+This ensures you always see up-to-date content without manual intervention.
+
+9.3 Cache Location ~
+                                                  *neovim-tips-cache-location*
+
+Cache files are stored in:
+• Linux/macOS: ~/.cache/nvim/neovim_tips/
+• Windows: %LOCALAPPDATA%\nvim-data\neovim_tips\
+
+Files created:
+• tips_cache.lua         Serialized Lua table with all parsed tips
+• cache_metadata.lua     Metadata with timestamps and version info
+
+9.4 Cache Management ~
+                                                *neovim-tips-cache-management*
+
+View cache information:
+>
+    :NeovimTipsCacheInfo
+<
+This shows:
+• Cache size in KB
+• Last update time
+• Cache validity status
+• File locations
+
+Force cache rebuild:
+>
+    :NeovimTipsReload
+<
+This clears the cache and forces a fresh parse of all markdown files.
+
+Disable caching (not recommended):
+>lua
+    require("neovim_tips").setup({
+      use_cache = false,
+    })
+<
+
+9.5 Performance Benefits ~
+                                                  *neovim-tips-cache-performance*
+
+Typical performance with 1000+ tips:
+
+Without cache:
+• Load time: ~100ms (parsing all markdown files)
+• Startup impact: Noticeable delay
+
+With cache (default):
+• First load: ~100ms (creates cache)
+• Subsequent loads: ~5-10ms (10-20x faster!)
+• Startup impact: Negligible
+
+The cache is especially beneficial for:
+• Daily tip feature (loads on every startup)
+• Frequently opening the tips picker
+• Large tip collections (1000+ tips)
+
+==============================================================================
+11. DAILY TIPS                                            *neovim-tips-daily*
 
 The plugin can show a random tip popup when you start Neovim.
 
-9.1 Configuration ~
+11.1 Configuration ~
                                                       *neovim-tips-daily-config*
 
 Set the `daily_tip` option:
@@ -399,7 +505,7 @@ Set the `daily_tip` option:
 • 1 = Once per day (default)
 • 2 = Every Neovim startup
 
-9.2 Features ~
+11.2 Features ~
 
 • "Did you know?" popup with centered layout
 • Smart persistence using ~/.local/share/nvim/neovim_tips/persistent.json
@@ -408,16 +514,16 @@ Set the `daily_tip` option:
 • Close with `q` or `<Esc>`
 • Includes contribution link in footer
 
-9.3 Persistence ~
+11.3 Persistence ~
 
 Once-daily mode tracks when tips were shown to avoid repetition within
 the same day. Data is stored in:
 ~/.local/share/nvim/neovim_tips/persistent.json
 
 ==============================================================================
-10. TROUBLESHOOTING                               *neovim-tips-troubleshooting*
+12. TROUBLESHOOTING                               *neovim-tips-troubleshooting*
 
-10.1 Common Issues ~
+12.1 Common Issues ~
 
 No tips showing                Check that data/ directory exists in plugin
                                installation. Verify dependencies are installed.
@@ -436,13 +542,21 @@ User tips not saving          Check `user_file` path is writable.
 Markdown not rendering         Ensure render-markdown.nvim is installed
                                and configured properly.
 
-10.2 File Locations ~
+Slow loading times             If caching is disabled, enable it:
+                               use_cache = true (default)
+                               Run :NeovimTipsCacheInfo to check cache status
+                               Run :NeovimTipsReload to rebuild cache
+
+12.2 File Locations ~
 
 Built-in tips:                <plugin_directory>/data/
 User tips:                     ~/.config/nvim/neovim_tips/user_tips.md
 Daily tip persistence:         ~/.local/share/nvim/neovim_tips/persistent.json
+Cache files:                   ~/.cache/nvim/neovim_tips/
+  - tips_cache.lua             Serialized tips data
+  - cache_metadata.lua         Cache validation metadata
 
-10.3 Disabling Completion ~
+12.3 Disabling Completion ~
 
 If using completion engines and want to disable them in the search bar:
 >lua

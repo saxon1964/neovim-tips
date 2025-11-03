@@ -344,16 +344,40 @@ Configure syntax highlighting for fenced code blocks in markdown files by settin
 
 ```lua
 -- In init.lua
-vim.g.markdown_fenced_languages = { 
-  "html", 
-  "javascript", 
-  "typescript", 
-  "css", 
-  "scss", 
-  "lua", 
+vim.g.markdown_fenced_languages = {
+  "html",
+  "javascript",
+  "typescript",
+  "css",
+  "scss",
+  "lua",
   "vim",
   "python",
   "bash"
 }
+```
+***
+# Title: Per-project configuration with .nvim.lua
+# Category: Configuration
+# Tags: project, config, local, exrc, security
+---
+Enable per-project configuration by creating `.nvim.lua` files in project directories. This allows project-specific settings without security risks of `.exrc`.
+
+```lua
+-- In init.lua, enable exrc option:
+vim.opt.exrc = true
+
+-- Create .nvim.lua in project root:
+-- .nvim.lua
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.colorcolumn = "80"
+
+-- Project-specific LSP settings
+vim.lsp.start({
+  name = "project-lsp",
+  cmd = {"my-lsp-server"},
+  root_dir = vim.fs.dirname(vim.fs.find({"package.json"}, { upward = true })[1])
+})
 ```
 ***

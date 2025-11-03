@@ -61,14 +61,10 @@ end
 ---@param callback function Callback function called with (ok, result) parameters
 ---@return nil
 function M.run_async(fn, callback)
-  local timer = vim.loop.new_timer()
-  timer:start(0, 0, function()
-    timer:stop()
-    timer:close()
+  -- Use vim.schedule instead of timer for better compatibility with file I/O
+  vim.schedule(function()
     local ok, result = pcall(fn)
-    vim.schedule(function()
-      callback(ok, result)
-    end)
+    callback(ok, result)
   end)
 end
 

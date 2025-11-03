@@ -359,3 +359,36 @@ Position your cursor on `(`, `)`, `[`, `]`, `{`, `}`. Use `%` to jump between co
 %   "jumps between corresponding parenthesis
 ```
 ***
+# Title: Enhanced navigation with Flash.nvim
+# Category: Navigation
+# Tags: plugin, flash, leap, jump, motion, search
+---
+Use Flash.nvim plugin to enhance native Neovim motions like `f`, `t`, `w` with multi-line, labeled jumping.
+
+```lua
+-- Install with lazy.nvim:
+{
+  "folke/flash.nvim",
+  event = "VeryLazy",
+  opts = {
+    modes = {
+      char = {
+        enabled = true,  -- Enable for f, F, t, T motions
+        jump_labels = true
+      }
+    }
+  },
+  keys = {
+    { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+    { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+    { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+    { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+  },
+}
+
+-- Usage:
+-- Press 's' followed by characters to search
+-- Press 'S' for treesitter-aware selection
+-- Use enhanced f/t/w motions with labels
+```
+***

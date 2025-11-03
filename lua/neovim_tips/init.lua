@@ -133,6 +133,29 @@ function M.setup(opts)
     { desc = "Reload all Neovim tips (clears cache)" }
   )
 
+  vim.api.nvim_create_user_command("NeovimTipsCacheInfo",
+    function()
+      local info = loader.cache_info()
+
+      print("=== Neovim Tips Cache Info ===")
+      print("Cache exists: " .. tostring(info.cache_exists))
+      print("Cache path: " .. info.cache_path)
+
+      if info.cache_size then
+        print(string.format("Cache size: %.2f KB", info.cache_size / 1024))
+        print("Last updated: " .. info.cache_mtime)
+      end
+
+      if info.metadata then
+        print("\nMetadata:")
+        print("  Version: " .. info.metadata.version)
+        print("  Timestamp: " .. os.date("%Y-%m-%d %H:%M:%S", info.metadata.timestamp))
+        print("  Neovim version: 0." .. info.metadata.nvim_version)
+      end
+    end,
+    { desc = "Show Neovim tips cache information" }
+  )
+
   -- Reload tips on user file save
   vim.api.nvim_create_autocmd("BufWritePost", {
     pattern = user_file,
@@ -149,18 +172,20 @@ function M.setup(opts)
     end
   })
 
-  -- Set up daily tip on VimEnter
-  vim.api.nvim_create_autocmd("VimEnter", {
-    callback = function()
-      -- Load tips first, then check for daily tip
-      utils.run_async(loader.load, function(ok, _)
-        if ok then
-          daily_tip.check_and_show()
-        end
-      end)
-    end,
-    once = true -- Only run once per session
-  })
+  -- Set up daily tip on VimEnter (only if enabled)
+  if config.options.daily_tip ~= 0 then
+    vim.api.nvim_create_autocmd("VimEnter", {
+      callback = function()
+        -- Load tips first, then check for daily tip
+        utils.run_async(loader.load, function(ok, _)
+          if ok then
+            daily_tip.check_and_show()
+          end
+        end)
+      end,
+      once = true -- Only run once per session
+    })
+  end
 end
 
 return M

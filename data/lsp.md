@@ -78,3 +78,31 @@ Use `:lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))` to list work
 :lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 ```
 ***
+# Title: Toggle LSP inlay hints
+# Category: LSP
+# Tags: lsp, inlay-hints, toggle, display, parameters
+---
+Toggle inlay hints to show/hide parameter names, type annotations, and other inline information provided by LSP.
+
+```lua
+-- Toggle inlay hints on/off:
+vim.keymap.set('n', '<leader>th', function()
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end, { desc = 'Toggle inlay hints' })
+
+-- Enable inlay hints by default for buffer with LSP:
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if client.server_capabilities.inlayHintProvider then
+      vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
+    end
+  end,
+})
+```
+
+```vim
+" Check if inlay hints are available:
+:lua print(vim.lsp.inlay_hint.is_enabled())
+```
+***

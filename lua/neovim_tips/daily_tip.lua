@@ -270,11 +270,9 @@ function M.check_and_show()
   local should_show = (daily_tip_mode == 2) or should_show_today()
 
   if should_show then
-    -- Delay to let Neovim finish startup completely
-    vim.defer_fn(function()
-      -- Shows daily tip and updates last display time
-      show_daily_tip(true)
-    end, 1000)
+    -- Shows daily tip and updates last display time
+    -- No delay here since caller already delays if needed
+    show_daily_tip(true)
   end
 end
 

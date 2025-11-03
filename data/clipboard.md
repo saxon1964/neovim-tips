@@ -82,3 +82,23 @@ vim.keymap.set({ "n", "x" }, "y", '"+y', { desc = "Yank to clipboard", noremap =
 vim.keymap.set("n", "yy", '"+yy', { desc = "Yank to clipboard", noremap = true })
 ```
 ***
+# Title: Preserve register when pasting over selection
+# Category: Clipboard
+# Tags: paste, register, yank, visual, black-hole
+---
+When pasting over a visual selection, the deleted text normally replaces the unnamed register. Use the black hole register to preserve your yanked content.
+
+```lua
+-- Paste without losing the yanked content
+vim.keymap.set("x", "p", '"_dP', { desc = "Paste without yanking", noremap = true })
+
+-- Alternative: use a specific register
+vim.keymap.set("x", "<leader>p", '"0p', { desc = "Paste from yank register", noremap = true })
+```
+
+```vim
+" In vimscript:
+xnoremap p "_dP
+" This deletes to black hole register (_) then pastes
+```
+***

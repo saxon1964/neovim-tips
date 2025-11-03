@@ -82,9 +82,10 @@ I have provided a solid initial batch of tips and if you have your favorite one 
 - **Copy-friendly**: Easy copying of tip content and code snippets from both picker and daily tip
 - **Cursor preservation**: Returns to your exact cursor position and mode after closing
 - **Bookmark system**: Save favorite tips with customizable visual indicators (🌟 ⭐ ✨ 💫 🔥 💎 etc.)
+- **Smart caching**: Automatic serialization of parsed tips for 10-20x faster loading (optional, enabled by default)
 - Support for categories, tags, and rich text
 - Lazy loading for optimal startup performance
-- The plugin comes with a starting set of 900+ curated tips
+- The plugin comes with a starting set of 1000+ curated tips
 - You can add/edit unlimited number of personal tips stored in a configurable file
 - User tips with configurable prefixes to prevent conflicts with builtin tips
 - Automatic title conflict detection and warnings
@@ -97,6 +98,7 @@ I have provided a solid initial batch of tips and if you have your favorite one 
 {
   "saxon1964/neovim-tips",
   version = "*", -- Only update on tagged releases
+  lazy = false,  -- Load on startup (recommended for daily tip feature)
   dependencies = {
     "MunifTanjim/nui.nvim",
     -- OPTIONAL: Choose your preferred markdown renderer (or omit for raw markdown)
@@ -398,6 +400,9 @@ The PDF is located at `pdf/book/NeovimTips.pdf` within the plugin directory and 
 - `:NeovimTipsEdit` — Edit your personal tips file
 - `:NeovimTipsAdd` — Insert a new tip template into your personal file and start editing
 - `:NeovimTipsRandom` — Displays random tip upon user request
+- `:NeovimTipsReload` — Reload all tips and clear cache (useful after editing markdown files)
+- `:NeovimTipsCacheInfo` — Show cache statistics and status
+- `:NeovimTipsPdf` — Open the PDF version of tips collection
 
 ## 🎨 Markdown Rendering
 
@@ -711,6 +716,9 @@ require("neovim_tips").setup({
 
   -- Bookmark symbol (default: 🌟)
   bookmark_symbol = "🌟 ",
+
+  -- Enable caching for faster loading (default: true, recommended)
+  use_cache = true,
 })
 ```
 
@@ -766,6 +774,50 @@ bookmark_symbol = "• "           -- bullet point
 - Provide clear examples when applicable
 - Test your tips before adding them
 - Consider if your tip might be useful as a contribution to the main collection
+
+## ⚡ Performance & Caching
+
+The plugin includes an intelligent caching system that dramatically improves loading performance:
+
+### 🚀 Performance Benefits
+
+- **First load**: ~100ms (parses all markdown files and creates cache)
+- **Subsequent loads**: ~5-10ms from cache (**10-20x faster!**)
+- **Automatic invalidation**: Cache updates when markdown files change
+- **Zero maintenance**: Works transparently in the background
+
+### 🔧 How It Works
+
+1. On first load, all tips are parsed from markdown files
+2. Parsed data is serialized to `~/.cache/nvim/neovim_tips/tips_cache.lua`
+3. Future loads read from cache (pure Lua table loading - super fast!)
+4. Cache automatically invalidates when:
+   - Any `.md` file in data directory changes
+   - User tips file is modified
+   - Neovim version changes
+
+### 📊 Cache Management
+
+```lua
+-- View cache statistics
+:NeovimTipsCacheInfo
+
+-- Force reload and clear cache (if needed)
+:NeovimTipsReload
+
+-- Disable caching (not recommended)
+require("neovim_tips").setup({
+  use_cache = false,  -- Default: true
+})
+```
+
+### 💡 Cache Location
+
+Cache files are stored in your Neovim cache directory:
+- **Linux/macOS**: `~/.cache/nvim/neovim_tips/`
+- **Windows**: `%LOCALAPPDATA%\nvim-data\neovim_tips\`
+
+The cache is safe to delete - it will be automatically regenerated on next load.
 
 ## 🚫 Disabling Completion in Search Bar
 

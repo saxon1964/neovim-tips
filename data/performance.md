@@ -141,3 +141,48 @@ vim.opt.synmaxcol = 200  -- don't highlight lines longer than 200 chars
 vim.g.syntax_timeout = 1000  -- timeout after 1 second
 ```
 ***
+# Title: Lazy-load plugins for faster startup
+# Category: Performance
+# Tags: lazy, plugins, startup, optimization, lazy.nvim
+---
+Use lazy-loading strategies with lazy.nvim to defer plugin loading until needed, significantly improving startup time.
+
+```lua
+-- Lazy-load on file type:
+{
+  "fatih/vim-go",
+  ft = "go",  -- Only load for Go files
+}
+
+-- Lazy-load on command:
+{
+  "mbbill/undotree",
+  cmd = "UndotreeToggle",  -- Only load when command is used
+}
+
+-- Lazy-load on keymap:
+{
+  "folke/trouble.nvim",
+  keys = {
+    { "<leader>xx", "<cmd>TroubleToggle<cr>", desc = "Toggle Trouble" },
+  },
+}
+
+-- Lazy-load on event:
+{
+  "nvim-lualine/lualine.nvim",
+  event = "VeryLazy",  -- Load after startup
+}
+
+-- Conditional loading:
+{
+  "tpope/vim-fugitive",
+  cond = function()
+    return vim.fn.isdirectory(".git") == 1
+  end,
+}
+
+-- Check startup time:
+-- nvim --startuptime startup.log
+```
+***
