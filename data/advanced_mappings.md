@@ -10,6 +10,13 @@ Use `noremap` and `<silent>` modifiers to create safe, non-recursive mappings th
 " noremap prevents recursive mapping, silent suppresses command echo
 " Use noremap by default to avoid unexpected behavior
 ```
+
+Or:
+
+```lua
+vim.keymap.set('n', '<leader>w', '<Cmd>w<CR>', { silent = true })
+vim.keymap.set('i', 'jk', '<Esc>')
+```
 ***
 # Title: Buffer-local and mode-specific mappings
 # Category: Key Mappings
@@ -23,6 +30,15 @@ Use `<buffer>` for buffer-local mappings and different mode prefixes for mode-sp
 :inoremap <C-l> <Right>
 :cnoremap <C-a> <Home>
 " Buffer-local mappings only affect current buffer
+```
+
+Or:
+
+```lua
+vim.keymap.set('n', '<F5>', '<Cmd>python %<CR>', { buffer = true })
+vim.keymap.set('v', '<leader>s', '<Cmd>sortCR>')
+vim.keymap.set('i', '<C-l>', '<Right>')
+vim.keymap.set('c', '<C-a>', '<Home>')
 ```
 ***
 # Title: Leader key mappings
@@ -38,6 +54,15 @@ Use `mapleader` to create a personal namespace for custom mappings, avoiding con
 :nnoremap <leader>w :write<CR>
 " Creates ,f ,b ,w mappings (if comma is leader)
 ```
+
+Or:
+
+```lua
+vim.g.mapleader = " "
+vim.keymap.set('n', '<leader>f', '<Cmd>find<Space>')
+vim.keymap.set('n', '<leader>b', '<Cmd>buffer<Space>')
+vim.keymap.set('n', '<leader>w', '<Cmd>write<Space>')
+```
 ***
 # Title: Expression mappings
 # Category: Key Mappings  
@@ -50,6 +75,20 @@ Use `<expr>` mappings to create dynamic key behaviors that evaluate expressions.
 :inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 :nnoremap <expr> n 'Nn'[v:searchforward]
 " Tab for completion navigation, Enter to accept
+```
+
+Or:
+
+```lua
+vim.keymap.set('i', '<Tab>', function()
+    return vim.fn.pumvisible() == 1 and '<C-n>' or '<Tab>'
+end, { expr = true })
+vim.keymap.set('i', '<CR>', function()
+    return vim.fn.pumvisible() == 1 and '<C-y>' or '<CR>'
+end, { expr = true })
+vim.keymap.set('n', 'n', function()
+    return vim.v.searchforward == 1 and 'n' or 'N'
+end, { expr = true })
 ```
 ***
 # Title: Script-local mappings
@@ -66,6 +105,17 @@ function! s:CompileAndRun()
 endfunction
 " <SID> ensures function is only accessible from this script
 ```
+
+Or:
+
+```lua
+local function compile_and_run()
+    vim.cmd('!ggc % -o %:r && ./%:r')
+end
+
+vim.keymap.set('n', '<F5>', compile_and_run, { silent = true })
+```
+
 ***
 # Title: Special key notation
 # Category: Key Mappings
@@ -79,6 +129,15 @@ Use special key notation like `<C-key>`, `<M-key>`, `<S-key>` for modifier combi
 :nnoremap <S-Tab> :bprev<CR>  " Shift+Tab for previous buffer
 :nnoremap <F12> :set invnumber<CR>  " F12 to toggle line numbers
 ```
+
+Or:
+
+```lua
+vim.keymap.set('n', '<C-j>', '<C-w>j')
+vim.keymap.set('n', '<M-h>', '<Cmd>tabprev<CR>')
+vim.keymap.set('n', '<S-Tab>', '<Cmd>bprev<CR>')
+vim.keymap.set('n', '<F12>', '<Cmd>set invnumber<CR>')
+```
 ***
 # Title: Mapping timeouts
 # Category: Key Mappings
@@ -91,6 +150,13 @@ Use timeout settings to control how long vim waits for key sequence completion i
 :set ttimeoutlen=50    " wait 50ms for key code sequence
 " Affects leader key combinations and escape sequences
 " Lower ttimeoutlen for faster escape in terminal
+```
+
+Or:
+
+```lua
+vim.opt.timeoutlen = 500
+vim.opt.ttimeoutlen = 50
 ```
 ***
 # Title: Abbreviations vs mappings
@@ -106,6 +172,16 @@ Use abbreviations for text expansion that only triggers after whitespace, unlike
 " Abbreviations expand after whitespace/punctuation
 " Mappings activate immediately when typed
 ```
+
+Or:
+
+```lua
+vim.keymap.set('ia', 'teh', 'the')
+vim.keymap.set('ia', '@@', 'your.email@domain.com')
+vim.keymap.set('ia', 'dts', function() 
+    return os.date('%Y-%m-%d')
+end, { expr = true })
+```
 ***
 # Title: Mapping special characters
 # Category: Key Mappings
@@ -118,6 +194,14 @@ Use proper escaping and notation for mapping special characters like quotes, bac
 :nnoremap <leader>' ciw'<C-r>"'<Esc>
 :nnoremap <leader>\ :nohlsearch<CR>
 " Surround word with quotes, backslash to clear search
+```
+
+Or:
+
+```lua
+vim.keymap.set('n', '<leader>"', 'ciw"<C-r>""<Esc>')
+vim.keymap.set('n', "<leader>'", "ciw'<C-r>\"'<Esc>")
+vim.keymap.set('n', '<leader>\\', '<Cmd>nohlsearch<CR>')
 ```
 ***
 # Title: Conditional mappings
@@ -135,6 +219,18 @@ if exists(':Gdiff')
 endif
 " Only create mapping if it doesn't exist or command is available
 ```
+
+Or:
+
+```lua
+if vim.fn.mapcheck('<F5>', 'n') == '' then
+    vim.keymap.set('n', '<F5>', '<Cmd>make<CR>')
+end
+
+if vim.fn.exists(':Gdiff') == 2 then
+    vim.keymap.set('n', '<leader>gd', '<Cmd>Gdiff<CR>')
+end
+```
 ***
 # Title: Recursive abbreviations
 # Category: Key Mappings
@@ -148,6 +244,15 @@ Use `noreabbrev` to prevent recursive abbreviation expansion, similar to noremap
 :abbreviate Q q
 " 'W' expands to 'w', but 'Wq' won't recursively expand the 'W' part
 ```
+
+Or:
+
+```lua
+vim.keymap.set('ca', 'W', 'w')
+vim.keymap.set('ca', 'Wq', 'wq')
+vim.keymap.set('ca', 'Q', 'q')
+```
+
 ***
 # Title: Visual mode mappings
 # Category: Key Mappings
@@ -161,6 +266,15 @@ Use visual mode mappings to operate on selections with custom key combinations.
 :vnoremap * y/\V<C-r>"<CR>
 :vnoremap # y?\V<C-r>"<CR>
 " Sort selection, remove duplicates, search for selection
+```
+
+Or:
+
+```lua
+vim.keymap.set('v', '<leader>s', '<Cmd>sort<CR>')
+vim.keymap.set('v', '<leader>u', '<Cmd>!uniq<CR>')
+vim.keymap.set('v', '*', 'y/\\V<C-r>"<CR>')
+vim.keymap.set('v', '#', 'y?\\V<C-r>"<CR>')
 ```
 ***
 # Title: Command-line mappings
@@ -177,6 +291,16 @@ Use command-line mode mappings to improve command-line editing with familiar key
 :cnoremap <C-d> <Delete>
 " Emacs-style command line navigation
 ```
+
+Or:
+
+```lua
+vim.keymap.set('c', '<C-a>', '<Home>')
+vim.keymap.set('c', '<C-e>', '<End>')
+vim.keymap.set('c', '<C-b>', '<Left>')
+vim.keymap.set('c', '<C-f>', '<Right>')
+vim.keymap.set('c', '<C-d>', '<Delete>')
+```
 ***
 # Title: Plug mappings
 # Category: Key Mappings
@@ -189,6 +313,13 @@ Use `<Plug>` prefix to create unique mapping names that users can map to their p
 :nmap <F5> <Plug>MyPluginFunction
 " Plugin provides <Plug> mapping, user maps it to preferred key
 " Prevents conflicts and allows customization
+```
+
+Or:
+
+```lua
+vim.keymap.set('n', '<Plug>MyPluginFunction', '<Cmd>call MyFunction()<CR>')
+vim.keymap.set('n', '<F5>', '<Plug>MyPluginFunction')
 ```
 ***
 # Title: Operator-pending mappings
@@ -203,6 +334,14 @@ Use operator-pending mappings to create custom text objects and motions.
 :onoremap in{ :<C-u>normal! f{vi{<CR>
 " Creates 'in(' and 'an(' text objects
 " Now you can use din( to delete inside next parentheses
+```
+
+Or:
+
+```lua
+vim.keymap.set('o', 'in(', '<Cmd><C-u>normal! f(vi(<CR>')
+vim.keymap.set('o', 'an(', '<Cmd><C-u>normal! f(va(<CR>')
+vim.keymap.set('o', 'in{', '<Cmd><C-u>normal! f{va{<CR>')
 ```
 ***
 # Title: Terminal mode mappings
@@ -219,6 +358,16 @@ Use terminal mode mappings to control built-in terminal behavior and key binding
 :tnoremap <C-w>l <C-\><C-n><C-w>l
 " Escape to exit terminal mode, window navigation
 ```
+
+Or:
+
+```lua
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
+vim.keymap.set('t', '<C-w>h', '<C-\\><C-n><C-w>h')
+vim.keymap.set('t', '<C-w>j', '<C-\\><C-n><C-w>j')
+vim.keymap.set('t', '<C-w>k', '<C-\\><C-n><C-w>k')
+vim.keymap.set('t', '<C-w>l', '<C-\\><C-n><C-w>l')
+```
 ***
 # Title: Multiple key mappings
 # Category: Key Mappings
@@ -234,6 +383,16 @@ Create mappings that respond to multiple key sequences or provide alternative bi
 :inoremap <C-s> <Esc>:w<CR>a
 " Multiple ways to save: <leader>fs and <C-s>
 ```
+
+Or:
+
+```lua
+vim.keymap.set('n', '<leader>fs', '<Cmd>w<CR>')
+vim.keymap.set('n', '<leader>ff', '<Cmd>find<Space>')
+vim.keymap.set('n', '<leader>fb', '<Cmd>buffer<Space>')
+vim.keymap.set('n', '<C-s>', '<Cmd>w<Space>')
+vim.keymap.set('i', '<C-s>', '<Esc><Cmd>w<CR>a')
+```
 ***
 # Title: Mapping with arguments
 # Category: Key Mappings
@@ -247,6 +406,23 @@ function! DeleteLines(count)
     execute 'normal! ' . a:count . 'dd'
 endfunction
 " 3<leader>d deletes 3 lines
+```
+
+Or:
+
+```lua
+local function delete_lines(count)
+    vim.cmd('normal! ' .. count .. 'dd')
+end
+
+vim.keymap.set('n', '<leader>d' function() 
+    delete_lines(vim.v.count1)
+end)
+
+-- Or even like this
+vim.keymap.set('n', '<leader>d' function() 
+    vim.cmd('normal! ' .. vim.v.count1 .. 'dd')
+end, { silent = true })
 ```
 ***
 # Title: Auto-pair mappings
@@ -262,6 +438,38 @@ Create smart bracket and quote auto-pairing with conditional mappings.
 :inoremap <expr> " '""<Left>'
 " Smart auto-pairing that considers context
 ```
+
+Or:
+
+```lua
+vim.keymap.set('i', '(', function()
+  local line = vim.fn.getline('.')
+  local col = vim.fn.col('.')
+  local char = line:sub(col - 1, col - 1)
+  
+  if char:match('%w') then
+    return '('
+  else
+    return '()<Left>'
+  end
+end, { expr = true })
+
+vim.keymap.set('i', '{', function()
+  local line = vim.fn.getline('.')
+  local col = vim.fn.col('.')
+  local char = line:sub(col - 1, col - 1)
+  
+  if char:match('%w') then
+    return '{'
+  else
+    return '{}<Left>'
+  end
+end, { expr = true })
+
+vim.keymap.set('i', '[', '[]<Left>', { expr = true })
+vim.keymap.set('i', '"', '""<Left>', { expr = true })
+```
+
 ***
 # Title: Escape key alternatives
 # Category: Key Mappings
@@ -276,6 +484,15 @@ Map common key combinations to escape key for faster mode switching without reac
 :vnoremap v <Esc>
 " Popular alternatives: jk, kj, jj, or double-tap current mode key
 ```
+
+Or:
+
+```lua
+vim.keymap.set('i', 'jk', '<Esc>')
+vim.keymap.set('i', 'kj', '<Esc>')
+vim.keymap.set('i', 'jj', '<Esc>')
+vim.keymap.set('v', 'v', '<Esc>')
+```
 ***
 # Title: Context-aware mappings
 # Category: Key Mappings
@@ -288,6 +505,29 @@ Create mappings that behave differently based on file type, mode, or cursor cont
 :autocmd FileType javascript nnoremap <buffer> <F5> :!node %<CR>
 :autocmd FileType sh nnoremap <buffer> <F5> :!bash %<CR>
 " Same key, different behavior per file type
+```
+
+Or:
+
+```lua
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'python',
+    callback = function()
+        vim.keymap.set('n', '<F5>', '<Cmd>python %<CR>', { buffer = true })
+    end
+})
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'javascript',
+    callback = function()
+        vim.keymap.set('n', '<F5>', '<Cmd>node %<CR>', { buffer = true })
+    end
+})
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'sh',
+    callback = function()
+        vim.keymap.set('n', '<F5>', '<Cmd>bash %<CR>', { buffer = true })
+    end
+})
 ```
 ***
 # Title: Buffer-local keymaps with Lua
