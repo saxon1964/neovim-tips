@@ -75,7 +75,16 @@ function M.setup(opts)
 
   vim.api.nvim_create_user_command("NeovimTipsRandom",
     function()
-      daily_tip.show()
+      -- Load tips first, then show random tip
+      utils.run_async(loader.load,
+        function(ok, result)
+          if ok then
+            daily_tip.show()
+          else
+            utils.error("Failed to load Neovim tips: " .. result)
+          end
+        end
+      )
     end,
     { desc = "Open random tip" }
   )
