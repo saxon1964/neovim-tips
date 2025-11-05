@@ -164,6 +164,9 @@ The plugin accepts the following configuration options:
       -- Daily tip mode: 0=off, 1=once per day, 2=every startup
       daily_tip = 1,
 
+      -- Show footer in daily tip popup (set to false to hide)
+      show_daily_tip_footer = true,
+
       -- Bookmark symbol (default: "🌟 ")
       bookmark_symbol = "🌟 ",
 
@@ -192,6 +195,11 @@ daily_tip                  Daily tip popup behavior
                            0 = disabled
                            1 = once per day (default)
                            2 = every startup
+
+*neovim-tips-config-footer*
+show_daily_tip_footer      Show footer with contribution links in daily tip
+                           Default: true
+                           Set to false to hide footer if you find it distracting
 
 *neovim-tips-config-bookmark*
 bookmark_symbol            Symbol displayed for bookmarked tips
