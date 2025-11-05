@@ -10,6 +10,7 @@ local guthub_issues = github_root .. "/issues/new"
 ---@field user_tip_prefix string Prefix for user tips to avoid conflicts
 ---@field warn_on_conflicts boolean Show warnings when user tips conflict with builtin tips
 ---@field daily_tip integer Daily tip mode: 0=off, 1=once per day, 2=every startup
+---@field show_daily_tip_footer boolean Show footer with contribution links in daily tip popup
 ---@field bookmark_symbol string Symbol to display for bookmarked tips
 ---@field use_cache boolean Enable caching of parsed tips for faster loading
 ---@field builtin_dir string Internal: path to builtin tips data directory
@@ -22,6 +23,7 @@ M.options = {
   user_tip_prefix = "[User] ",  -- Configurable prefix for user tips
   warn_on_conflicts = true,     -- Show warnings when user tips conflict with builtin
   daily_tip = 1,                -- Daily tip mode: 0=off, 1=once per day, 2=every startup
+  show_daily_tip_footer = true, -- Show footer in daily tip popup (set to false to hide)
   bookmark_symbol = "🌟 ",       -- Bookmark symbol (colorful Unicode symbols work great!)
   use_cache = true,             -- Enable caching for faster loading (recommended)
   ---------------------------------------------------
@@ -38,8 +40,9 @@ M.options = {
       footer = "**Examples:** `motion c:edit t:operator`, `b:` (bookmarks), `b:delete` | **Bookmark:** `Ctrl+b` | **Help:** `t:?` `c:?` | [**Issues**](" .. guthub_issues .. ") 🚀",
     },
     daily_tip = {
-      footer1 = "**Bookmark:** `Ctrl+b` | Having a **favorite tip**? Found an **error**? Just Shift+Click on the [**Issues**](" .. guthub_issues .. ") link. 🚀",
-      footer2 = "For daily tip setup refer to [**README**](" .. github_root .. ") file.",
+      footer1 = "**Bookmark:** `Ctrl+b` | Found an **error**? Have a **favorite tip**? ",
+      footer2 = "Shift+Click on the [**Issues**](" .. guthub_issues .. ") link to report. 🚀",
+      footer3 = "For daily tip setup refer to [**README**](" .. github_root .. ") file.",
     }
   },
 }

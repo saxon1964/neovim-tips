@@ -121,47 +121,72 @@ local function show_daily_tip(update_last_shown)
     }),
   })
 
-  -- Create footer popup
-  local footer_popup = Popup({
-    enter = false,
-    focusable = false,
-    border = {
-      style = "rounded",
-      text = {
-        top = " Contribute ",
-        top_align = "center",
+  -- Create layout based on footer configuration
+  local layout
+  if config.options.show_daily_tip_footer then
+    -- Create footer popup
+    local footer_popup = Popup({
+      enter = false,
+      focusable = false,
+      border = {
+        style = "rounded",
+        text = {
+          top = " Contribute ",
+          top_align = "center",
+        },
       },
-    },
-    buf_options = {
-      buftype = "nofile",
-      modifiable = true,
-      readonly = false,
-    },
-    win_options = renderer.get_win_options({
-      wrap = false,
-      number = false,
-      winhighlight = "FloatBorder:Normal",
-    }),
-  })
+      buf_options = {
+        buftype = "nofile",
+        modifiable = true,
+        readonly = false,
+      },
+      win_options = renderer.get_win_options({
+        wrap = false,
+        number = false,
+        winhighlight = "FloatBorder:Normal",
+      }),
+    })
 
-  -- Create layout similar to picker
-  local layout = Layout(
-    {
-      position = {
-        row = "50%",
-        col = "50%",
+    -- Create layout with footer
+    layout = Layout(
+      {
+        position = {
+          row = "50%",
+          col = "50%",
+        },
+        size = {
+          width = "70%",
+          height = "65%",
+        },
+        relative = "editor",
       },
-      size = {
-        width = "70%",
-        height = "65%",
+      Layout.Box({
+        Layout.Box(main_popup, { size = "80%" }),
+        Layout.Box(footer_popup, { size = "20%" }),
+      }, { dir = "col" })
+    )
+
+    -- Store footer_popup reference for later setup
+    layout._footer_popup = footer_popup
+  else
+    -- Create layout without footer - just main popup
+    layout = Layout(
+      {
+        position = {
+          row = "50%",
+          col = "50%",
+        },
+        size = {
+          width = "70%",
+          height = "65%",
+        },
+        relative = "editor",
       },
-      relative = "editor",
-    },
-    Layout.Box({
-      Layout.Box(main_popup, { size = "80%" }),
-      Layout.Box(footer_popup, { size = "20%" }),
-    }, { dir = "col" })
-  )
+      Layout.Box({
+        Layout.Box(main_popup, { size = "100%" }),
+      }, { dir = "col" })
+    )
+  end
 
   -- Mount the layout
   layout:mount()
@@ -196,16 +221,20 @@ local function show_daily_tip(update_last_shown)
   -- Position cursor at line 2 so markdown renders properly
   vim.api.nvim_win_set_cursor(main_popup.winid, { 2, 0 })
 
-  -- Set up footer content
-  local footer_lines = {}
-  table.insert(footer_lines, config.options.messages.daily_tip.footer1)
-  table.insert(footer_lines, config.options.messages.daily_tip.footer2)
+  -- Set up footer content if footer is enabled
+  if layout._footer_popup then
+    local footer_popup = layout._footer_popup
+    local footer_lines = {}
+    table.insert(footer_lines, config.options.messages.daily_tip.footer1)
+    table.insert(footer_lines, config.options.messages.daily_tip.footer2)
+    table.insert(footer_lines, config.options.messages.daily_tip.footer3)
 
-  vim.api.nvim_buf_set_lines(footer_popup.bufnr, 0, -1, false, footer_lines)
-  vim.bo[footer_popup.bufnr].filetype = "markdown"
+    vim.api.nvim_buf_set_lines(footer_popup.bufnr, 0, -1, false, footer_lines)
+    vim.bo[footer_popup.bufnr].filetype = "markdown"
 
-  -- Render markdown in footer
-  renderer.render(footer_popup.bufnr)
+    -- Render markdown in footer
+    renderer.render(footer_popup.bufnr)
+  end
 
   -- Set up keymaps to close
   local close_keys = { "q", "<Esc>" }

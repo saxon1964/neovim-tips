@@ -739,6 +739,9 @@ require("neovim_tips").setup({
   -- Daily tip mode: 0=off, 1=once per day, 2=every startup
   daily_tip = 1,
 
+  -- Show footer in daily tip popup (set to false to hide contribution links)
+  show_daily_tip_footer = true,
+
   -- Bookmark symbol (default: 🌟)
   bookmark_symbol = "🌟 ",
 
