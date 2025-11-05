@@ -94,11 +94,13 @@ I have provided a solid initial batch of tips and if you have your favorite one 
 
 ### Lazy.nvim
 
+**Option 1: Lazy load on keybinds (recommended)**
+
 ```lua
 {
   "saxon1964/neovim-tips",
   version = "*", -- Only update on tagged releases
-  lazy = false,  -- Load on startup (recommended for daily tip feature)
+  lazy = true,  -- Load only when keybinds are triggered
   dependencies = {
     "MunifTanjim/nui.nvim",
     -- OPTIONAL: Choose your preferred markdown renderer (or omit for raw markdown)
@@ -106,15 +108,38 @@ I have provided a solid initial batch of tips and if you have your favorite one 
     -- OR: "OXY2DEV/markview.nvim", -- Rich rendering with advanced features
   },
   opts = {
-    -- OPTIONAL: Location of user defined tips (default value shown below)
-    user_file = vim.fn.stdpath("config") .. "/neovim_tips/user_tips.md",
-    -- OPTIONAL: Prefix for user tips to avoid conflicts (default: "[User] ")
-    user_tip_prefix = "[User] ",
-    -- OPTIONAL: Show warnings when user tips conflict with builtin (default: true)
-    warn_on_conflicts = true,
     -- OPTIONAL: Daily tip mode (default: 1)
-    -- 0 = off, 1 = once per day, 2 = every startup
-    daily_tip = 1,
+    -- Note: Set to 0 when using lazy = true, or use Option 2 below
+    daily_tip = 0,  -- 0 = off, 1 = once per day, 2 = every startup
+    -- Other optional settings...
+    bookmark_symbol = "🌟 ",
+  },
+  keys = {
+    { "<leader>nto", ":NeovimTips<CR>", desc = "Neovim tips" },
+    { "<leader>ntr", ":NeovimTipsRandom<CR>", desc = "Show random tip" },
+    { "<leader>nte", ":NeovimTipsEdit<CR>", desc = "Edit your tips" },
+    { "<leader>nta", ":NeovimTipsAdd<CR>", desc = "Add your tip" },
+    { "<leader>ntp", ":NeovimTipsPdf<CR>", desc = "Open tips PDF" },
+  },
+}
+```
+
+**Option 2: Load on startup (for daily tip feature)**
+
+```lua
+{
+  "saxon1964/neovim-tips",
+  version = "*", -- Only update on tagged releases
+  lazy = false,  -- Load on startup for daily tip
+  dependencies = {
+    "MunifTanjim/nui.nvim",
+    -- OPTIONAL: Choose your preferred markdown renderer (or omit for raw markdown)
+    "MeanderingProgrammer/render-markdown.nvim", -- Clean rendering
+    -- OR: "OXY2DEV/markview.nvim", -- Rich rendering with advanced features
+  },
+  opts = {
+    -- OPTIONAL: Daily tip mode (default: 1)
+    daily_tip = 1,  -- 0 = off, 1 = once per day, 2 = every startup
     -- OPTIONAL: Bookmark symbol (default: "🌟 ")
     bookmark_symbol = "🌟 ",
   },
