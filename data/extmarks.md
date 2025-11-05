@@ -74,12 +74,15 @@ vim.opt.conceallevel = 2
 ***
 # Title: Replace keywords visually with extmarks
 # Category: Extmarks
-# Tags: extmarks, overlay, replace, keywords
+# Tags: extmarks, conceal, replace, keywords
 ---
-Use extmarks with `virt_text_pos = "overlay"` to visually replace text like "return" with "ret" without changing the buffer.
+Use extmarks with `conceal` and `virt_text_pos = "inline"` to visually replace text like "return" with "ret" without changing the buffer. Using `overlay` alone will overlay on top rather than replace.
 
 ```lua
 local ns_id = vim.api.nvim_create_namespace('abbreviations')
+
+-- Enable concealing (required for conceal to work)
+vim.opt.conceallevel = 2
 
 -- Find all "return" keywords and replace visually with "ret"
 local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
@@ -91,8 +94,9 @@ for lnum, line in ipairs(lines) do
 
     vim.api.nvim_buf_set_extmark(0, ns_id, lnum - 1, start - 1, {
       end_col = finish,
+      conceal = "",  -- Hide the original text
       virt_text = {{"ret", "Keyword"}},
-      virt_text_pos = "overlay",
+      virt_text_pos = "inline",  -- Insert replacement text
     })
     col = finish + 1
   end
@@ -317,9 +321,9 @@ vim.api.nvim_buf_set_extmark(0, ns_id, 15, 0, {
 ***
 # Title: Build a simple word abbreviation system
 # Category: Extmarks
-# Tags: extmarks, abbreviations, overlay, practical
+# Tags: extmarks, abbreviations, conceal, practical
 ---
-Create a complete system to visually abbreviate long keywords using extmarks overlays.
+Create a complete system to visually abbreviate long keywords using extmarks with conceal and inline virtual text.
 
 ```lua
 -- Abbreviation system
@@ -335,6 +339,9 @@ local abbreviations = {
 
 function M.apply_abbreviations(bufnr)
   bufnr = bufnr or 0
+
+  -- Enable concealing (required)
+  vim.opt.conceallevel = 2
 
   -- Clear old abbreviations
   vim.api.nvim_buf_clear_namespace(bufnr, ns_id, 0, -1)
@@ -355,8 +362,9 @@ function M.apply_abbreviations(bufnr)
         if before:match("[%W_]") and after:match("[%W_]") then
           vim.api.nvim_buf_set_extmark(bufnr, ns_id, lnum - 1, start - 1, {
             end_col = finish,
+            conceal = "",  -- Hide original text
             virt_text = {{abbrev, "Keyword"}},
-            virt_text_pos = "overlay",
+            virt_text_pos = "inline",  -- Insert replacement
           })
         end
 
