@@ -62,10 +62,10 @@ vim.api.nvim_buf_set_extmark(0, ns_id, 5, 0, {
   conceal = "",  -- hide completely (empty string)
 })
 
--- Replace "function" with "fn" visually
+-- Replace "function" with "f" visually
 vim.api.nvim_buf_set_extmark(0, ns_id, 10, 0, {
   end_col = 8,
-  conceal = "fn",  -- show "fn" instead
+  conceal = "f",  -- show "f" instead
 })
 
 -- Note: Make sure conceallevel is set
