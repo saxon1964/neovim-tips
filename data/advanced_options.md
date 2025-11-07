@@ -383,7 +383,7 @@ vim.opt.scrolloff = 999
 ***
 # Title: Backup and swap file locations
 # Category: Configuration
-#ags: backupdir, directory, swap, backup
+# Tags: backupdir, directory, swap, backup
 ---
 Use `set backupdir` and `set directory` to organize backup and swap files in dedicated directories.
 
