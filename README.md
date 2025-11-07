@@ -157,6 +157,13 @@ I have provided a solid initial batch of tips and if you have your favorite one 
 }
 ```
 
+**Note**: All options have sensible defaults, you can safely leave opts table empty. But if you omit the _opts_ section completely, setup(opts) method that initializes the plugin won't be triggered. So it's goog idea to have:
+
+```lua
+opts = {}
+```
+
+...even if you don't want to customize anything.
 ### packer.nvim
 
 ```lua
