@@ -108,8 +108,10 @@ I have provided a solid initial batch of tips and if you have your favorite one 
     -- OR: "OXY2DEV/markview.nvim", -- Rich rendering with advanced features
   },
   opts = {
-    -- OPTIONAL: Daily tip mode (default: 1)
-    -- Note: Set to 0 when using lazy = true, or use Option 2 below
+    -- IMPORTANT: Daily tip DOES NOT WORK with lazy = true
+    -- Reason: lazy = true loads plugin only when keybinds are triggered,
+    --         but daily_tip needs plugin loaded at startup
+    -- Solution: Keep daily_tip = 0 here, or use Option 2 below for daily tips
     daily_tip = 0,  -- 0 = off, 1 = once per day, 2 = every startup
     -- Other optional settings...
     bookmark_symbol = "🌟 ",
