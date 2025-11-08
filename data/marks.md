@@ -20,3 +20,27 @@ Use `'{letter}` to jump to beginning of line with mark, or `` `{letter} `` to ju
 `a   " jump to exact position of mark 'a'
 ```
 ***
+# Title: Jump to last edit location
+# Category: Marks
+# Tags: marks, jump, edit, last, position
+---
+Use `` `. `` to jump to exact position of last edit, or `'.` to jump to the line of last edit.
+
+```vim
+`.   " jump to exact position of last edit
+'.   " jump to line of last edit (first non-blank)
+```
+***
+# Title: Jump to last jump location
+# Category: Marks
+# Tags: marks, jump, last, position, navigation
+---
+Use `` ` ` `` (backtick-backtick) to jump to exact position before last jump, or `''` (quote-quote) to jump to the line.
+
+```vim
+``   " jump to exact position before last jump
+''   " jump to line before last jump (first non-blank)
+```
+
+These are useful for quickly returning after exploring code with search, tag jumps, or other navigation commands.
+***
