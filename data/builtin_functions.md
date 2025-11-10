@@ -9,6 +9,14 @@ Use `getftype()` to determine file type and `getfperm()` to get file permissions
 :echo getfperm(expand('%'))     " file permissions (rwxrwxrwx)
 :echo getfsize(expand('%'))     " file size in bytes
 ```
+
+Or:
+
+```lua
+print(vim.fn.getftype(vim.fn.expand('%')))
+print(vim.fn.getfperm(vim.fn.expand('%')))
+print(vim.fn.getfsize(vim.fn.expand('%')))
+```
 ***
 # Title: String manipulation functions
 # Category: Functions
@@ -20,6 +28,14 @@ Use `substitute()`, `matchstr()`, and `split()` functions for powerful string ma
 :echo substitute("hello world", "world", "vim", "g")  " hello vim
 :echo matchstr("file.txt", '\\.\\w\\+$')             " .txt
 :echo split("a,b,c", ",")                            " ['a', 'b', 'c']
+```
+
+Or:
+
+```lua
+print(vim.fn.substitute("hello world", "world", "vim", "g"))
+print(vim.fn.matchstr("file.txt", '\\.\\w\\+$'))
+print(vim.fn.split("a,b,c", ","))
 ```
 ***
 # Title: Buffer and window information
@@ -34,6 +50,15 @@ Use `bufnr()`, `winnr()`, `tabpagenr()` to get current buffer, window, and tab n
 :echo tabpagenr()       " current tab number
 :echo winnr('$')        " total number of windows
 ```
+
+Or:
+
+```lua
+print(vim.fn.bufnr('%'))
+print(vim.fn.winnr('%'))
+print(vim.fn.tabpagenr('%'))
+print(vim.fn.winnr('%'))
+```
 ***
 # Title: Path manipulation functions
 # Category: Functions
@@ -46,6 +71,15 @@ Use `fnamemodify()` to manipulate file paths and `resolve()` to resolve symbolic
 :echo fnamemodify(expand('%'), ':t:r')     " filename without extension
 :echo resolve(expand('%'))                 " resolve symlinks
 :echo simplify('../path/./file')           " normalize path
+```
+
+Or:
+
+```lua
+print(vim.fn.fnamemodify(vim.fn.expand('%'), ':p:h'))
+print(vim.fn.fnamemodify(vim.fn.expand('%'), ':t:r'))
+print(vim.fn.resolve(vim.fn.expand('%')))
+print(vim.fn.simplify('../path/./file'))
 ```
 ***
 # Title: Search and match functions
@@ -60,6 +94,15 @@ Use `search()`, `searchpos()`, and `match()` functions for programmatic searchin
 :echo match('hello world', 'wor')          " find position in string (6)
 :echo matchend('hello world', 'wor')       " end position (9)
 ```
+
+Or:
+
+```lua
+print(vim.fn.search('pattern'))
+print(vim.fn.searchpos('pattern'))
+print(vim.fn.match('hello world', 'wor'))
+print(vim.fn.matchend('hello world', 'wor'))
+```
 ***
 # Title: Line and column functions
 # Category: Functions
@@ -72,6 +115,15 @@ Use `line()`, `col()`, `getline()`, `setline()` for precise cursor positioning a
 :echo col('.')          " current column number
 :echo getline('.')      " current line text
 :call setline('.', 'new text')  " replace current line
+```
+
+Or:
+
+```lua
+print(vim.fn.line('.'))
+print(vim.fn.col('.'))
+print(vim.fn.getline('.'))
+vim.fn.setline('.', 'new text')
 ```
 ***
 # Title: Date and time functions
@@ -86,6 +138,15 @@ Use `strftime()` and `localtime()` for date/time manipulation, and `getftime()` 
 :echo getftime(expand('%'))               " file modification time
 :put =strftime('%Y-%m-%d')                " insert current date
 ```
+
+Or:
+
+```lua
+print(vim.fn.strftime('%Y-%m-%d %H:%M:%S'))
+print(vim.fn.strftime('%Y-%m-%d', vim.fn.localtime()))
+print(vim.fn.getftime('%Y-%m-%d', vim.fn.expand('%')))
+vim.api.nvim_put({os.date('%Y-%m-%d')}, 'c', true, true)
+```
 ***
 # Title: System and environment functions
 # Category: Functions
@@ -98,6 +159,15 @@ Use `system()` and `systemlist()` to execute shell commands and `getenv()` to ac
 :echo systemlist('ls -la')               " return as list
 :echo getenv('HOME')                      " get environment variable
 :echo exists('$EDITOR')                  " check if env var exists
+```
+
+Or:
+
+```lua
+print(vim.fn.system('date'))
+print(vim.fn.systemlist('ls -la'))
+print(vim.fn.geten('HOME'))
+print(vim.fn.exists('$EDITOR'))
 ```
 ***
 # Title: List and dictionary functions
@@ -114,6 +184,17 @@ Use `len()`, `empty()`, `has_key()`, `keys()`, `values()` for working with lists
 :echo has_key(mydict, 'a')               " true (1)
 :echo keys(mydict)                        " ['a', 'b']
 ```
+
+Or:
+
+```lua
+local mylist = {1, 2, 3}
+print(#mylist)
+print(vim.tbl_isempty(mylist))
+local mydict = {a = 1, b = 2}
+print(mydict.a ~= nil)
+print(vim.inspect(vim.tbl_keys(mydict)))
+```
 ***
 # Title: Type checking functions
 # Category: Functions
@@ -127,6 +208,16 @@ Use `type()`, `islocked()`, and `exists()` functions to check variable types and
 :echo type([])                   " 3 (List)
 :echo type({})                   " 4 (Dictionary)
 :echo exists('g:my_var')         " check if variable exists
+```
+
+Or:
+
+```lua
+print(vim.fn.type(42))
+print(vim.fn.type("string"))
+print(vim.fn.type([]))
+print(vim.fn.type({}))
+print(vim.fn.exists('g:my_var'))
 ```
 ***
 # Title: Mathematical functions
@@ -142,6 +233,16 @@ Use built-in math functions like `abs()`, `pow()`, `sqrt()`, `sin()`, `cos()` fo
 :echo sin(3.14159/2)             " sine: ~1.0
 :echo round(3.7)                 " round: 4
 ```
+
+Or:
+
+```lua
+print(vim.fn.abs(-5))
+print(vim.fn.pow(2, 3))
+print(vim.fn.sqrt(16))
+print(vim.fn.sin(3.14159/2))
+print(vim.fn.round(3.7))
+```
 ***
 # Title: Buffer content functions
 # Category: Functions
@@ -155,6 +256,15 @@ Use `getbufline()` and `setbufline()` to read and modify buffer content without 
 :call append(line('.'), 'new line')      " append after current line
 :call delete(line('.'))                  " delete current line
 ```
+
+Or:
+
+```lua
+print(vim.fn.getbufline(1, 1, 10))
+vim.fn.setbufline(2, 1, 'new first line')
+vim.fn.append(vim.fn.line('.'), 'new line')
+vim.fn.delete(vim.fn.line('.'))
+```
 ***
 # Title: Input and interaction functions
 # Category: Functions
@@ -167,6 +277,15 @@ Use `input()`, `inputlist()`, `confirm()` functions to create interactive vim sc
 :let choice = inputlist(['1. Red', '2. Blue', '3. Green'])
 :let result = confirm('Save changes?', "&Yes\n&No\n&Cancel")
 :echo "You chose: " . choice
+```
+
+Or:
+
+```lua
+local name = vim.fn.input('Enter name: ')
+local choice = vim.fn.inputlist(['1.Red', '2. Blue', '3. Green'])
+local result = vim.fn.confirm('Save changes?', '&Yes\n&No\n&Cancel')
+print("You chose: " .. choice)
 ```
 ***
 # Title: Window and tab functions
@@ -182,6 +301,16 @@ Use window dimension and state functions to manage window layouts programmatical
 :call winrestview(view)          " restore saved view
 :echo tabpagebuflist()           " list buffers in current tab
 ```
+
+Or:
+
+```lua
+print(vim.fn.winheight(0))
+print(vim.fn.winwidth(0))
+local view = vim.fn.winsaveview()
+vim.fn.winrestview(view)
+print(vim.fn.tabpaebuflist())
+```
 ***
 # Title: Highlighting and syntax functions
 # Category: Functions
@@ -194,6 +323,15 @@ Use syntax highlighting functions to query and manipulate syntax highlighting pr
 :echo synIDattr(synID(line('.'), col('.'), 1), 'name')  " syntax name
 :echo hlID('Comment')                    " highlight group ID
 :echo synIDattr(hlID('Comment'), 'fg')   " foreground color
+```
+
+Or:
+
+```lua
+print(vim.fn.synID(vim.fn.line('.'), vim.fn.col('.'), 1))
+print(vim.fn.synIDattr(vim.fn.synId(vim.fn.line('.'), vim.fn.col('.'), 1), 'name'))
+print(vim.fn.hlID('Comment'))
+print(vim.fn.synIDattr(vim.fn.hlID('Comment'), 'fg'))
 ```
 ***
 # Title: Regular expression functions
@@ -208,6 +346,15 @@ Use `matchadd()`, `matchdelete()`, `matchlist()` for advanced pattern matching a
 :echo matchlist('file.txt', '\\(.*\\)\\.\\(.*\\)')  " capture groups
 :echo matchstr('hello123world', '\\d\\+') " extract digits: 123
 ```
+
+Or:
+
+```lua
+local m = vim.fn.matchadd('Search', 'TODO')
+vim.fn.matchdelete(m)
+print(vim.fn.matchlist('file.txt', '\\(.*\\)\\.\\(.*\\)'))
+print(vim.fn.matchstr('hello123world', '\\d\\+'))
+```
 ***
 # Title: Fold information functions
 # Category: Functions
@@ -220,6 +367,15 @@ Use folding functions to query and manipulate code folds programmatically.
 :echo foldlevel(line('.'))       " fold level of current line
 :echo foldtext()                 " default fold text
 :set foldtext=MyCustomFoldText() " custom fold text function
+```
+
+Or:
+
+```lua
+print(vim.fn.foldclosed(vim.fn.line('.')))
+print(vim.fn.foldlevel(vim.fn.line('.')))
+print(vim.fn.foldnext())
+vim.opt.foldtext = MyCustomFoldText()
 ```
 ***
 # Title: File and directory functions
@@ -234,6 +390,15 @@ Use `glob()`, `globpath()`, `isdirectory()` for file system operations and path 
 :echo isdirectory(expand('%:h')) " check if directory exists
 :echo readable(expand('%'))      " check if file is readable
 ```
+
+Or:
+
+```lua
+print(vim.fn.glob('*.txt'))
+print(vim.fn.globpath(&rtp, 'plugin/*.vim'))
+print(vim.fn.isdirectory(vim.fn.expand('%:h')))
+print(vim.fn.readable(vim.fn.expand('%')))
+```
 ***
 # Title: Register manipulation functions
 # Category: Functions
@@ -245,7 +410,16 @@ Use `getreg()`, `setreg()`, `getregtype()` to programmatically work with vim reg
 :echo getreg('"')                " get default register content
 :call setreg('a', 'hello world') " set register 'a'
 :echo getregtype('a')            " get register type (v, V, or Ctrl-V)
-:call setreg('+', @")            " copy default register to clipboard
+:call setreg('+', "@")            " copy default register to clipboard
+```
+
+Or:
+
+```lua
+print(vim.fn.getreg('"'))
+vim.fn.setreg('a', 'hello world')
+print(vim.fn.getregtype('a'))
+vim.fn.setreg('+', "@")
 ```
 ***
 # Title: Cursor and mark functions
@@ -259,5 +433,14 @@ Use `cursor()`, `getpos()`, `setpos()` for precise cursor and mark manipulation.
 :let pos = getpos('.')           " get current cursor position
 :call setpos('.', pos)           " restore cursor position
 :echo getpos("'a")               " get position of mark 'a'
+```
+
+Or:
+
+```lua
+vim.fn.cursor(10, 5)
+local pos = vim.fn.getpos('.')
+vim.fn.setpos('.', pos)
+print(vim.fn.getpos("'a"))
 ```
 ***
