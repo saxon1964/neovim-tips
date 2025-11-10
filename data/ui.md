@@ -18,7 +18,7 @@ Use `:hi` to view all highlight groups and their current settings.
 :hi  " show all highlight groups
 ```
 ***
-# Title: Highlight goroups
+# Title: Highlight groups
 # Category: UI
 # Tags: highlight, groups, fun
 ---
@@ -41,7 +41,7 @@ You can change the highlight group on the fly. For example, the next command cha
 :hi Comment guifg=#ffaa00 gui=italic
 ```
 ***
-# Title: Flesh yanked text
+# Title: Flash yanked text
 # Category: UI
 # Tags: highlight, group, yank, flash
 ---
