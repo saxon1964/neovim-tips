@@ -20,7 +20,7 @@ Use `'{letter}` to jump to beginning of line with mark, or `` `{letter} `` to ju
 `a   " jump to exact position of mark 'a'
 ```
 ***
-# Title: Jump to last edit location
+# Title: Jump to last edit location (exact or non-blank)
 # Category: Marks
 # Tags: marks, jump, edit, last, position
 ---
