@@ -186,7 +186,7 @@ Use `\%V` in search pattern to restrict replacement to only the visual selection
 " \%V ensures replacement only happens in selected text
 ```
 ***
-# Title: Perform change on lines returned by vimgrep regex search
+# Title: Search and replace in multiple files (vimgrep+cdo)
 # Category: Search
 # Tags: replace, regex, search, vimgrep, cdo
 ---
@@ -203,4 +203,24 @@ This will create a quickfix list made of lines that match the regular expression
 ```
 
 Thanks to `c` flag you'll have a cnahce to approve every change. Note that `cfdo` would perform changes on matched FILES, while `cdo` works on matched lines. Also in substitution command use `s/`, not `%s/` because the first one is executed on the current line and the second one would process the whole doucment.
+***
+# Title: Avoid escaping slashes in search and replace operations
+# Category: Search
+# Tags: search, replace, escaping, vimgrep, regex, separator
+
+Suppose that you want to replace all `http://` occurencies with `ftp://`. You can do it easily with:\
+
+```
+%s/http:\/\//fpt:\/\//gc
+```
+
+This is bearely readable. The trick is to use different regex delimiter. Any character will do it, but `#` is often the most common choice:
+
+```
+%s#http://#ftp://#gc
+```
+
+The same also holds for `vimgrep`. Nice, isn't it?
+
+Credits: [Julian Frenzel](https://github.com/b0lle)
 ***
