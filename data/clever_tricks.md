@@ -325,6 +325,12 @@ nnoremap <leader>. .`[
 " Now after making a change:
 <leader>.  " repeat change and go to start position
 ```
+
+Or:
+
+```lua
+vim.keymap.set('n', '<leader>.', '.`[')
+```
 ***
 # Title: List lines matching last search
 # Category: Clever Tricks
@@ -405,6 +411,14 @@ Use `:set scrollbind` in multiple windows to scroll them together synchronously.
 " To disable:
 :set noscrollbind
 ```
+
+Or:
+
+```lua
+vim.opt.scrollbind = true
+vim.opt.scrollbind = true
+vim.opt.scrollbind = false
+```
 ***
 # Title: Change directory to current file
 # Category: Clever Tricks
@@ -429,6 +443,12 @@ gx  " open URL under cursor with default browser
 
 " Custom mapping for entire line:
 nnoremap <leader>o :!open <cWORD><CR>
+```
+
+Or:
+
+```lua
+vim.keymap.set('n', '<leader>o', '<Cmd>!open <cWORD><CR>')
 ```
 ***
 # Title: File encoding in status line
