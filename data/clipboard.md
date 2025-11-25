@@ -7,6 +7,12 @@ Use `vim.opt.clipboard="unnamedplus"` to sync yank/paste with system clipboard a
 ```vim
 :lua vim.opt.clipboard = "unnamedplus"
 ```
+
+Or:
+
+```lua
+vim.opt.clipboard = "unnamedplus"
+```
 ***
 # Title: Set system clipboard from Lua
 # Category: Clipboard
@@ -16,6 +22,12 @@ Use `vim.fn.setreg("+", "text")` to set system clipboard content from Lua.
 
 ```vim
 :lua vim.fn.setreg("+", "hello world")
+```
+
+Or:
+
+```lua
+vim.fn.setreg("+", "hello world")
 ```
 ***
 # Title: System clipboard access with registers
@@ -49,6 +61,15 @@ nnoremap <C-v> :r !pbpaste<CR>
 " Use system clipboard by default
 set clipboard=unnamed
 ```
+
+Or:
+
+```lua
+vim.keymap.set('v', '<C-c>', '<Cmd>w !pbcopy<CR><CR>')
+vim.keymap.set('n', '<C-v>', '<Cmd>r !pbpaste<CR><CR>')
+
+vim.opt.clipboard = "unnamed"
+```
 ***
 # Title: GNU/Linux clipboard with xclip
 # Category: Clipboard
@@ -65,6 +86,17 @@ nnoremap <C-v> :r !xclip -selection clipboard -o<CR>
 function! ClipboardYank()
   call system('xclip -i -selection clipboard', @@)
 endfunction
+```
+
+Or:
+
+```lua
+vim.keymap.set('v', '<C-c>', '<Cmd>!xclip -selection clipboard<CR><CR>')
+vim.keymap.set('n', '<C-v>', '<Cmd>!xclip -selection clipboard -o<CR>')
+
+local function clipboard_yank()
+  vim.fn.system('xclip -i -selection clipboard', vim.fn.getreg('@'))
+end
 ```
 ***
 # Title: System clipboard: handling yank and delete motions differently
@@ -100,5 +132,11 @@ vim.keymap.set("x", "<leader>p", '"0p', { desc = "Paste from yank register", nor
 " In vimscript:
 xnoremap p "_dP
 " This deletes to black hole register (_) then pastes
+```
+
+Or:
+
+```lua
+vim.keymap.set('x', 'p', '"_dP')
 ```
 ***
