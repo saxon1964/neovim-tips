@@ -106,6 +106,16 @@ Create command line abbreviations for frequently used commands.
 :cabbrev vsb vert sb         " expand vsb to 'vert sb'
 :cabbrev today put =strftime('%Y-%m-%d')  " insert today's date
 ```
+
+Or:
+
+```lua
+vim.keymap.set('ca', 'W', 'w')
+vim.keymap.set('ca', 'Q', 'q')
+vim.keymap.set('ca', 'Wq', 'wq')
+vim.keymap.set('ca', 'vsb', 'vert sb')
+vim.keymap.set('ca', 'today', [[put =strftime('%Y-%m-%d')]])
+```
 ***
 # Title: Command line register manipulation
 # Category: Command Line Advanced
@@ -148,6 +158,16 @@ Customize command line completion behavior and appearance.
 :set wildignore=*.o,*.pyc,*.swp  " ignore patterns
 :set wildoptions=pum         " use popup menu for completion
 :set pumheight=15            " limit popup menu height
+```
+
+Or:
+
+```lua
+vim.opt.wildmenu = true
+vim.opt.wildmode = "longest:full,full"
+vim.opt.wildignore = {"*.o", "*.pyc", "*.swp"}
+vim.opt.wildoptions = "pum"
+vim.opt.pumheight = 15
 ```
 ***
 # Title: Command line macro recording and playback
