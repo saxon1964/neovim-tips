@@ -71,16 +71,37 @@ endfunction
 # Category: Clipboard
 # Tags: clipboard, copy, paste
 ---
-Suppose that you want yank and delete motions to behave differently with respect to system clipboard. For example, you want all yanked text to be copied to system clipboard as well to unnamed internal register. But in case of delete motions, you don't want to affect system clipboard. The setup is fairly easy. Just add the following lines to your `init.lua` configuration file
+Integrating system clipboard with Neovim is easy:
 
 ```lua
--- Avoid global clipboard hijacking
-vim.opt.clipboard = {}
--- NOTE: Yank should copy to unnamed register AND system clipboard
--- Deleted text goes to unnamed register only without changing system clipboard
-vim.keymap.set({ "n", "x" }, "y", '"+y', { desc = "Yank to clipboard", noremap = true })
-vim.keymap.set("n", "yy", '"+yy', { desc = "Yank to clipboard", noremap = true })
+vim.o.clipboard="unnamedplus"
 ```
+
+All yanked and deleted content will go to the default register and also to system clipboard. That's the most common setup.
+
+But, suppose that you want yank and delete motions to behave slightly differently with respect to system clipboard. For example, you want all yanked text to go to the unnamed register and to system clipboard. But in case of delete motions, you don't want to affect system clipboard, only the default registry (quite popular setup). The setup is fairly easy. Just add the following lines to your `init.lua` configuration file:
+
+```lua
+-- Don't mention system clipboard,
+-- it won't be affected wuthout the `TextYankPost` callback
+vim.o.clipboard = ""
+
+-- Copy yanked text to system clipboard.
+-- This callback is involed after each yank/delete operation
+vim.api.nvim_create_autocmd("TextYankPost", {
+  callback = function()
+    -- Only trigger on yanks
+    if vim.v.event.operator == "y" and vim.v.event.regname == "" then
+      -- "+" stands for system clipboard
+      vim.fn.setreg("+", vim.fn.getreg('"'))
+      vim.fn.setreg("+", vim.fn.getreg('"', 1)) -- also yank visual selection
+    end
+  end,
+})
+
+```
+
+Yanked text goes to system register AND clipboard. Deleted text goes to system register only and leaves system clipboard attached.
 ***
 # Title: Preserve register when pasting over selection
 # Category: Clipboard
