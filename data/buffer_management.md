@@ -699,3 +699,37 @@ end, {})
 return M
 ```
 ***
+# Title: Close all buffers
+# Category: Buffers
+# Tags: buffers, close
+
+To close all buffers use:
+
+```lua
+:%bd
+```
+
+This will close all read-only and saved buffers but will leave buffers with unsaved changes open. To force buffer closing in all cases, use:
+
+```lua
+%bd!
+```
+***
+# Title: Close all buffers except the current one
+# Category: Buffers
+# Tags: buffers, close
+
+To close all buffers that are read-only or saved except the current one, use:
+
+```lua
+:%bd|e#
+```
+
+You can also map it to a keyboard shortcut:
+
+```vim
+vim.keymap.set("n", "<leader>X", "<cmd>%bd|e#<cr>", { desc = "Close other", noremap = true, silent = true })
+```
+
+Instead of `%bd` you can use `%bd!` to force buffer close even if some buffer has unsaved changes. Caution: If your current buffer has unsaved chages, these will be lost (`%bd!` closes all open buffers unconditionaly, `e#` just opens the file attached to the last i.e. current buffer)
+***
