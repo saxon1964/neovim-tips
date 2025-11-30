@@ -83,9 +83,17 @@ S  " delete line and start insert at correct indentation
 Use `guw~` to make word lowercase then capitalize first letter, or create mapping for title case.
 
 ```vim
+" Vimscript:
 guw~        " lowercase word then capitalize first letter
 " Or map for convenience:
 nnoremap <leader>tc guw~
+```
+
+```lua
+-- Lua:
+-- Use: guw~ (built-in vim motion)
+-- Or map for convenience:
+vim.keymap.set('n', '<leader>tc', 'guw~', { desc = 'Title case word' })
 ```
 ***
 # Title: Insert single character
@@ -95,10 +103,18 @@ nnoremap <leader>tc guw~
 Use `i{char}<Esc>` or create mapping with `s` to quickly insert single character without staying in insert mode.
 
 ```vim
+" Vimscript:
 " Insert single character and return to normal mode
 nnoremap <leader>i i_<Esc>r
 " Or use s to substitute character:
 s{char}<Esc>  " replace character under cursor
+```
+
+```lua
+-- Lua:
+-- Insert single character and return to normal mode
+vim.keymap.set('n', '<leader>i', 'i_<Esc>r', { desc = 'Insert single character' })
+-- Or use: s{char}<Esc> to substitute character under cursor
 ```
 ***
 # Title: Delete words in different way
@@ -134,11 +150,20 @@ o<Esc>4.    " insert line, then repeat 4 times
 Use `o<Esc>` to insert line below or `O<Esc>` to insert line above without staying in insert mode.
 
 ```vim
+" Vimscript:
 o<Esc>      " insert empty line below, stay in normal mode
 O<Esc>      " insert empty line above, stay in normal mode
 " Or map for convenience:
 nnoremap <leader>o o<Esc>
 nnoremap <leader>O O<Esc>
+```
+
+```lua
+-- Lua:
+-- Use: o<Esc> or O<Esc> (built-in commands)
+-- Or map for convenience:
+vim.keymap.set('n', '<leader>o', 'o<Esc>', { desc = 'Insert line below' })
+vim.keymap.set('n', '<leader>O', 'O<Esc>', { desc = 'Insert line above' })
 ```
 ***
 # Title: Enhanced undo and redo
@@ -167,6 +192,7 @@ g+          " go to newer text state
 Configure and use intelligent omni completion for programming languages.
 
 ```vim
+" Vimscript:
 " Enable omni completion
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
@@ -179,6 +205,31 @@ set omnifunc=syntaxcomplete#Complete
 " Enable for specific languages
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+```
+
+```lua
+-- Lua:
+-- Enable omni completion
+vim.cmd('filetype plugin on')
+vim.opt.omnifunc = 'syntaxcomplete#Complete'
+
+-- Use omni completion with: <C-x><C-o> in insert mode
+-- Navigate with: <C-n> (down) and <C-p> (up)
+
+-- Enable for specific languages
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'python',
+  callback = function()
+    vim.opt_local.omnifunc = 'pythoncomplete#Complete'
+  end
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'javascript',
+  callback = function()
+    vim.opt_local.omnifunc = 'javascriptcomplete#CompleteJS'
+  end
+})
 ```
 ***
 # Title: Ex commands - line operations

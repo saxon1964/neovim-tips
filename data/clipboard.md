@@ -42,12 +42,21 @@ gg"+yG      " copy entire buffer to system clipboard
 Integrate Vim with macOS clipboard using pbcopy and pbpaste utilities.
 
 ```vim
-" macOS clipboard integration
+" Vimscript - macOS clipboard integration
 vnoremap <C-c> :w !pbcopy<CR><CR>
 nnoremap <C-v> :r !pbpaste<CR>
 
 " Use system clipboard by default
 set clipboard=unnamed
+```
+
+```lua
+-- Lua - macOS clipboard integration
+vim.keymap.set('v', '<C-c>', ':w !pbcopy<CR><CR>', { desc = 'Copy to macOS clipboard' })
+vim.keymap.set('n', '<C-v>', ':r !pbpaste<CR>', { desc = 'Paste from macOS clipboard' })
+
+-- Use system clipboard by default
+vim.opt.clipboard = 'unnamed'
 ```
 ***
 # Title: GNU/Linux clipboard with xclip
@@ -57,7 +66,7 @@ set clipboard=unnamed
 Use xclip utility for clipboard integration on GNU/Linux systems.
 
 ```vim
-" Copy/paste with xclip
+" Vimscript - Copy/paste with xclip
 vnoremap <C-c> :w !xclip -selection clipboard<CR><CR>
 nnoremap <C-v> :r !xclip -selection clipboard -o<CR>
 
@@ -65,6 +74,20 @@ nnoremap <C-v> :r !xclip -selection clipboard -o<CR>
 function! ClipboardYank()
   call system('xclip -i -selection clipboard', @@)
 endfunction
+```
+
+```lua
+-- Lua - Copy/paste with xclip
+vim.keymap.set('v', '<C-c>', ':w !xclip -selection clipboard<CR><CR>', { desc = 'Copy to clipboard' })
+vim.keymap.set('n', '<C-v>', ':r !xclip -selection clipboard -o<CR>', { desc = 'Paste from clipboard' })
+
+-- Function-based approach
+local function clipboard_yank()
+  vim.fn.system('xclip -i -selection clipboard', vim.fn.getreg('@'))
+end
+
+-- Create a command to use it
+vim.api.nvim_create_user_command('ClipboardYank', clipboard_yank, {})
 ```
 ***
 # Title: System clipboard: handling yank and delete motions differently

@@ -319,11 +319,16 @@ Use `@:` to repeat the last Ex command, similar to how `@@` repeats macros.
 Map `.` followed by `` ` `` to repeat last command and return cursor to start of change.
 
 ```vim
-" Add this mapping:
+" Vimscript:
 nnoremap <leader>. .`[
 
 " Now after making a change:
 <leader>.  " repeat change and go to start position
+```
+
+```lua
+-- Lua:
+vim.keymap.set('n', '<leader>.', '.`[', { desc = 'Repeat change and return to start' })
 ```
 ***
 # Title: List lines matching last search
@@ -395,6 +400,7 @@ g Ctrl+g     " show character, word, line count of selection
 Use `:set scrollbind` in multiple windows to scroll them together synchronously.
 
 ```vim
+" Vimscript:
 " In first window:
 :set scrollbind
 
@@ -405,6 +411,18 @@ Use `:set scrollbind` in multiple windows to scroll them together synchronously.
 " To disable:
 :set noscrollbind
 ```
+
+```lua
+-- Lua:
+-- In first window:
+vim.wo.scrollbind = true
+
+-- In second window:
+vim.wo.scrollbind = true
+
+-- To disable:
+vim.wo.scrollbind = false
+```
 ***
 # Title: Change directory to current file
 # Category: Clever Tricks
@@ -413,9 +431,20 @@ Use `:set scrollbind` in multiple windows to scroll them together synchronously.
 Use `:cd %:h` to change directory to the directory of the current file.
 
 ```vim
+" Vimscript:
 :cd %:h     " change to current file's directory
 :pwd        " verify current directory
 :lcd %:h    " change local directory for current window only
+```
+
+```lua
+-- Lua:
+vim.cmd('cd ' .. vim.fn.expand('%:h'))  -- change to current file's directory
+vim.cmd('pwd')  -- verify current directory
+vim.cmd('lcd ' .. vim.fn.expand('%:h'))  -- change local directory for current window only
+
+-- Or using Lua API:
+vim.fn.chdir(vim.fn.expand('%:h'))
 ```
 ***
 # Title: Open URL from current line
@@ -427,8 +456,13 @@ Use `gx` to open URL under cursor, or create mapping to open entire line as URL.
 ```vim
 gx  " open URL under cursor with default browser
 
-" Custom mapping for entire line:
+" Vimscript - Custom mapping for entire line:
 nnoremap <leader>o :!open <cWORD><CR>
+```
+
+```lua
+-- Lua - Custom mapping for entire line:
+vim.keymap.set('n', '<leader>o', ':!open <cWORD><CR>', { desc = 'Open URL under cursor' })
 ```
 ***
 # Title: File encoding in status line
@@ -438,8 +472,15 @@ nnoremap <leader>o :!open <cWORD><CR>
 Add file encoding to status line to see current file's character encoding.
 
 ```vim
+" Vimscript:
 :set statusline=%f\ [%{&fileencoding?&fileencoding:&encoding}]\ %y
 " Shows filename, encoding, and filetype
+```
+
+```lua
+-- Lua:
+vim.opt.statusline = '%f [%{&fileencoding?&fileencoding:&encoding}] %y'
+-- Shows filename, encoding, and filetype
 ```
 ***
 # Title: Create word frequency table

@@ -15,9 +15,17 @@ Use `=ap` to format syntax-aware regions using Treesitter (when available).
 Automatically format paragraphs to specified width using textwidth and format commands.
 
 ```vim
+" Vimscript:
 :set textwidth=60      " set line width to 60 characters
 :set fo=aw2tq          " format options for auto-formatting
 gqip                   " reformat inner paragraph
+```
+
+```lua
+-- Lua:
+vim.opt.textwidth = 60  -- set line width to 60 characters
+vim.opt.formatoptions = 'aw2tq'  -- format options for auto-formatting
+-- Then use: gqip to reformat inner paragraph
 ```
 ***
 # Title: Comment lines by filetype
@@ -27,6 +35,7 @@ gqip                   " reformat inner paragraph
 Automatically comment/uncomment lines based on current file type.
 
 ```vim
+" Vimscript:
 function CommentIt()
   if &filetype == "vim"
     vmap +# :s/^/"/<CR>
@@ -38,6 +47,26 @@ function CommentIt()
 endfunction
 autocmd BufEnter * call CommentIt()
 ```
+
+```lua
+-- Lua:
+local function comment_it()
+  local ft = vim.bo.filetype
+  if ft == 'vim' then
+    vim.keymap.set('v', '+#', ':s/^/"/<CR>', { buffer = true })
+    vim.keymap.set('v', '-#', ':s/^"//<CR>', { buffer = true })
+  elseif ft == 'python' then
+    vim.keymap.set('v', '+#', ':s/^/#/<CR>', { buffer = true })
+    vim.keymap.set('v', '-#', ':s/^#//<CR>', { buffer = true })
+  end
+end
+
+vim.api.nvim_create_autocmd('BufEnter', {
+  pattern = '*',
+  callback = comment_it,
+  desc = 'Setup comment mappings by filetype'
+})
+```
 ***
 # Title: Automatic text width formatting
 # Category: Formatting
@@ -46,10 +75,19 @@ autocmd BufEnter * call CommentIt()
 Use `:set textwidth=80` to automatically wrap lines at 80 characters while typing.
 
 ```vim
+" Vimscript:
 :set textwidth=80   " wrap at 80 characters
 :set textwidth=0    " disable automatic wrapping
 :set formatoptions+=t  " enable automatic text wrapping
 gqap                " manually format current paragraph to textwidth
+```
+
+```lua
+-- Lua:
+vim.opt.textwidth = 80  -- wrap at 80 characters
+vim.opt.textwidth = 0   -- disable automatic wrapping
+vim.opt.formatoptions:append('t')  -- enable automatic text wrapping
+-- Then use: gqap to manually format current paragraph to textwidth
 ```
 ***
 # Title: Poor men's JSON formatter

@@ -310,6 +310,7 @@ Use runtime path manipulation to dynamically load configurations and plugins at 
 Use `vim.lsp.omnifunc` and custom completion functions to create intelligent completion sources.
 
 ```vim
+" Vimscript:
 function! MyCompletion(findstart, base)
   if a:findstart
     return col('.') - 1
@@ -318,6 +319,22 @@ function! MyCompletion(findstart, base)
   endif
 endfunction
 :set omnifunc=MyCompletion
+```
+
+```lua
+-- Lua:
+local function my_completion(findstart, base)
+  if findstart == 1 then
+    return vim.fn.col('.') - 1
+  else
+    return {'custom1', 'custom2', 'custom3'}
+  end
+end
+
+vim.opt.omnifunc = 'v:lua.my_completion'
+-- Or set it globally:
+_G.my_completion = my_completion
+vim.opt.omnifunc = 'v:lua.my_completion'
 ```
 ***
 # Title: Window configuration API
@@ -355,9 +372,18 @@ Use Neovim's health check system to create custom health checks for your configu
 Use `inccommand` for live preview of Ex commands, especially substitution with real-time feedback.
 
 ```vim
+" Vimscript:
 :set inccommand=split     " preview in split window
 :set inccommand=nosplit   " preview inline
 :%s/old/new/g            " shows live preview while typing
 " Preview works with :substitute, :global, :sort, etc.
+```
+
+```lua
+-- Lua:
+vim.opt.inccommand = 'split'     -- preview in split window
+vim.opt.inccommand = 'nosplit'   -- preview inline
+-- Then use: :%s/old/new/g to see live preview while typing
+-- Preview works with :substitute, :global, :sort, etc.
 ```
 ***

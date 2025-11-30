@@ -70,10 +70,19 @@ Use `:read` or `:r` to read file into buffer, `:write` range to write part of bu
 Use `:set readonly` to make read-only, `:set nomodifiable` to prevent changes, `:set fileformat` for line endings.
 
 ```vim
+" Vimscript:
 :set readonly      " make buffer read-only
 :set nomodifiable  " prevent any modifications
 :set fileformat=unix  " set Unix line endings
 :set fileformat=dos   " set DOS line endings
+```
+
+```lua
+-- Lua:
+vim.opt.readonly = true  -- make buffer read-only
+vim.opt.modifiable = false  -- prevent any modifications
+vim.opt.fileformat = 'unix'  -- set Unix line endings
+vim.opt.fileformat = 'dos'   -- set DOS line endings
 ```
 ***
 # Title: Save multiple files at once

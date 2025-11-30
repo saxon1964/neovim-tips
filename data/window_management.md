@@ -105,11 +105,21 @@ Ctrl+w L  " move window to far right
 Use mapped keys for fast window resizing without complex key combinations.
 
 ```vim
+" Vimscript:
 " Map + and - for easy window resizing
 if bufwinnr(1)
   map + <C-W>+
   map - <C-W>-
 endif
+```
+
+```lua
+-- Lua:
+-- Map + and - for easy window resizing
+if vim.fn.bufwinnr(1) ~= -1 then
+  vim.keymap.set('n', '+', '<C-W>+', { desc = 'Increase window height' })
+  vim.keymap.set('n', '-', '<C-W>-', { desc = 'Decrease window height' })
+end
 ```
 ***
 # Title: Better gm command
@@ -119,6 +129,7 @@ endif
 Improved gm command that moves cursor to the middle of the physical line, ignoring whitespace.
 
 ```vim
+" Vimscript:
 function! s:Gm()
   execute 'normal! ^'
   let first_col = virtcol('.')
@@ -129,6 +140,20 @@ endfunction
 nnoremap <silent> gm :call <SID>Gm()<CR>
 onoremap <silent> gm :call <SID>Gm()<CR>
 ```
+
+```lua
+-- Lua:
+local function better_gm()
+  vim.cmd('normal! ^')
+  local first_col = vim.fn.virtcol('.')
+  vim.cmd('normal! g_')
+  local last_col = vim.fn.virtcol('.')
+  vim.cmd('normal! ' .. math.floor((first_col + last_col) / 2) .. '|')
+end
+
+vim.keymap.set('n', 'gm', better_gm, { silent = true, desc = 'Go to middle of line' })
+vim.keymap.set('o', 'gm', better_gm, { silent = true, desc = 'Go to middle of line' })
+```
 ***
 # Title: Keep cursor centered
 # Category: Window Management
@@ -137,6 +162,7 @@ onoremap <silent> gm :call <SID>Gm()<CR>
 Keep cursor centered vertically on screen for better visibility while editing.
 
 ```vim
+" Vimscript:
 " Keep cursor centered when scrolling
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
@@ -146,6 +172,18 @@ nnoremap N Nzz
 " Or automatic centering
 set scrolloff=999
 ```
+
+```lua
+-- Lua:
+-- Keep cursor centered when scrolling
+vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Scroll down and center' })
+vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Scroll up and center' })
+vim.keymap.set('n', 'n', 'nzz', { desc = 'Next search result and center' })
+vim.keymap.set('n', 'N', 'Nzz', { desc = 'Previous search result and center' })
+
+-- Or automatic centering
+vim.opt.scrolloff = 999
+```
 ***
 # Title: Change cursor shape in modes
 # Category: Window Management
@@ -154,8 +192,15 @@ set scrolloff=999
 Configure different cursor shapes for different modes to provide visual feedback.
 
 ```vim
+" Vimscript:
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 " Block in normal, vertical bar in insert, horizontal in replace
+```
+
+```lua
+-- Lua:
+vim.opt.guicursor = 'n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50'
+-- Block in normal, vertical bar in insert, horizontal in replace
 ```
 ***
 # Title: Keep window when closing buffer

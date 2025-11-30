@@ -48,9 +48,17 @@ zr  " reduce fold level
 Automatically fold code based on indentation levels using foldmethod=indent.
 
 ```vim
+" Vimscript:
 set foldmethod=indent   " fold based on indentation
 set foldlevelstart=1    " start with some folds open
 set foldnestmax=3       " limit nested fold depth
+```
+
+```lua
+-- Lua:
+vim.opt.foldmethod = 'indent'  -- fold based on indentation
+vim.opt.foldlevelstart = 1     -- start with some folds open
+vim.opt.foldnestmax = 3        -- limit nested fold depth
 ```
 ***
 # Title: Syntax-based folding
@@ -60,8 +68,15 @@ set foldnestmax=3       " limit nested fold depth
 Use syntax-aware folding for programming languages that support fold markers in syntax files.
 
 ```vim
+" Vimscript:
 set foldmethod=syntax   " fold based on file syntax
 set foldlevel=2         " set initial fold level
+```
+
+```lua
+-- Lua:
+vim.opt.foldmethod = 'syntax'  -- fold based on file syntax
+vim.opt.foldlevel = 2          -- set initial fold level
 ```
 ***
 # Title: Keep folds when inserting
@@ -71,12 +86,23 @@ set foldlevel=2         " set initial fold level
 Configure Vim to maintain fold state when entering insert mode.
 
 ```vim
+" Vimscript:
 " Prevent folds from opening when inserting
 set foldopen-=insert
 
 " Mapping to toggle fold with F9
 nnoremap <F9> za
 vnoremap <F9> zf
+```
+
+```lua
+-- Lua:
+-- Prevent folds from opening when inserting
+vim.opt.foldopen:remove('insert')
+
+-- Mapping to toggle fold with F9
+vim.keymap.set('n', '<F9>', 'za', { desc = 'Toggle fold' })
+vim.keymap.set('v', '<F9>', 'zf', { desc = 'Create fold from selection' })
 ```
 ***
 # Title: Z-commands - create folds
