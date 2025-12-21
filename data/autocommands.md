@@ -47,7 +47,7 @@ vim.api.nvim_create_autocmd('BufWritePre', {
             vim.fn.mkdir(dir, 'p')
         end
     end,
-    desc = 'Creates parent directories if they don\'t exist' 
+    desc = 'Creates parent directories if they don\'t exist'
 })
 ```
 
@@ -61,7 +61,7 @@ Use `BufReadPost` to automatically jump to the last known cursor position when r
 Or:
 
 ```vim
-:autocmd BufReadPost * 
+:autocmd BufReadPost *
     \ if line("'\"") > 0 && line("'\"") <= line("$") |
     \   exe "normal! g`\"" |
     \ endif
@@ -90,7 +90,7 @@ Or:
 
 ```vim
 :autocmd BufRead,BufNewFile *.conf set filetype=conf
-:autocmd BufRead,BufNewFile Jenkinsfile set filetype=groovy  
+:autocmd BufRead,BufNewFile Jenkinsfile set filetype=groovy
 :autocmd BufRead * if getline(1) =~ '^#!/usr/bin/env python' | set ft=python | endif
 ```
 
@@ -194,7 +194,7 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
 vim.api.nvim_create_autocmd({ 'FileType' }, {
     pattern = 'gitcommit',
     callback = function()
-        vim.bo.colorcolumn = 72 
+        vim.bo.colorcolumn = 72
     end,
 })
 ```
@@ -408,7 +408,7 @@ Or:
 
 ```vim
 :autocmd TextYankPost * silent! lua vim.highlight.on_yank()
-" In vimscript: 
+" In vimscript:
 :autocmd TextYankPost * silent! call matchadd('Search', @", 86400)
 :autocmd TextYankPost * silent! call timer_start(150, {-> clearmatches()})
 ```
@@ -442,7 +442,7 @@ Use `BufWritePre` to create timestamped backups of important configuration files
 Or:
 
 ```vim
-:autocmd BufWritePre .vimrc,init.lua,init.vim 
+:autocmd BufWritePre .vimrc,init.lua,init.vim
     \ execute 'write! ' . expand('%') . '.backup.' . strftime('%Y%m%d_%H%M%S')
 " Creates timestamped backups of config files
 ```
@@ -818,7 +818,7 @@ vim.api.nvim_create_autocmd('BufWriteCmd', {
       local pn = vim.fn.shellescape(vim.fn.expand('%:p:h'))
       local fnm = vim.fn.expand('%:r.js')
       local cpa = '/home/username/closure/compiler.jar'
-      vim.fn.system(string.format('java -jar %s --js=%s --js_output_file=%s/%s.min.js', 
+      vim.fn.system(string.format('java -jar %s --js=%s --js_output_file=%s/%s.min.js',
         cpa, fn, pn, fnm))
     end
   end
@@ -912,14 +912,14 @@ function InsertJavaPackage()
   local cwd = vim.fn.getcwd()
   local dir = cwd:gsub("^.*\/src\/", ""):gsub("\/", ".")
   local filename = vim.fn.expand('%:t:r')
-  
+
   local lines = {
     "package " .. dir .. ";",
     "",
     "public class " .. filename .. " {",
     "}"
   }
-  
+
   vim.api.nvim_buf_set_lines(0, 0, 0, false, lines)
 end
 
@@ -1388,7 +1388,7 @@ autocmd! QuickfixCmdPost * call s:SortUniqQFList()
 local function compare_quickfix_entries(i1, i2)
   local buf1 = vim.fn.bufname(i1.bufnr)
   local buf2 = vim.fn.bufname(i2.bufnr)
-  
+
   if buf1 == buf2 then
     return i1.lnum < i2.lnum
   else
@@ -1399,10 +1399,10 @@ end
 local function sort_uniq_qf_list()
   local qf_list = vim.fn.getqflist()
   table.sort(qf_list, compare_quickfix_entries)
-  
+
   local uniqed_list = {}
   local last = ''
-  
+
   for _, item in ipairs(qf_list) do
     local current = vim.fn.bufname(item.bufnr) .. '\t' .. item.lnum
     if current ~= last then
@@ -1410,7 +1410,7 @@ local function sort_uniq_qf_list()
       last = current
     end
   end
-  
+
   vim.fn.setqflist(uniqed_list)
 end
 
@@ -1725,7 +1725,7 @@ vim.api.nvim_create_autocmd({'BufEnter', 'BufLeave'}, {
   callback = function(event)
     local buffer_enter = vim.b[event.buf].BuffEnter
     local buffer_leave = vim.b[event.buf].BuffLeave
-    
+
     if event.event == 'BufEnter' and buffer_enter then
       vim.cmd(buffer_enter)
     elseif event.event == 'BufLeave' and buffer_leave then
@@ -1781,7 +1781,7 @@ vim.api.nvim_create_autocmd('BufReadCmd', {
     local file = vim.fn.expand('<afile>')
     local dir = vim.fn.expand('<afile>:p:h')
     local classname = vim.fn.expand('<afile>:t:r')
-    
+
     vim.cmd('cd ' .. dir)
     vim.cmd('0read !javap -c ' .. classname)
     vim.cmd('1')
@@ -2363,12 +2363,12 @@ vim.api.nvim_create_autocmd({'BufWritePre'}, {
     if vim.b.edit_hex and vim.o.binary then
       local readonly = vim.o.readonly
       local modifiable = vim.bo.modifiable
-      
+
       vim.o.readonly = false
       vim.bo.modifiable = true
-      
+
       vim.cmd('%!xxd -r')
-      
+
       vim.o.readonly = readonly
       vim.bo.modifiable = modifiable
     end
@@ -2428,6 +2428,8 @@ vim.api.nvim_create_autocmd('WinEnter', {
   end
 })
 ```
+
+**WARNING**: This tip reuqires ScrollColors plugin to be installed. Popular pickers like **Fzf-lua** or **Telescope** already have this  functionality built in.
 
 **Source:** [vim.fandom.com](https://vim.fandom.com/wiki/How_to_Have_a_Vim_Rave)
 ***
@@ -2518,7 +2520,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     if modified then
       local save_cursor = vim.fn.getpos(".")
       local last_line = math.min(20, vim.fn.line("$"))
-      vim.cmd(string.format('1,%ds#^\(.*Last modified: \).*#\1%s#e', 
+      vim.cmd(string.format('1,%ds#^\(.*Last modified: \).*#\1%s#e',
         last_line, os.date("%a %b %d, %Y  %I:%M%p")))
       vim.fn.setpos(".", save_cursor)
     end
@@ -2558,7 +2560,7 @@ local function perl_image_size()
   vim.cmd('g/src')
   vim.cmd('normal! $N2w')
   local file = vim.fn.expand('<cfile>')
-  
+
   -- This would require a Lua equivalent or external command
   -- Recommended to use a Lua image library or external command instead
 end
@@ -2620,7 +2622,7 @@ vim.api.nvim_create_autocmd({'BufWritePost', 'FileWritePost'}, {
     local file = vim.fn.expand('<afile>')
     local backup = file .. '~'
     local diff_cmd = string.format('diff -d %s %s &> /dev/null', file, backup)
-    
+
     if vim.fn.system(diff_cmd) ~= 0 then
       vim.fn.system(string.format('touch %s && mv %s $(mktemp ~/Desktop/Trash/%s.XXXXXX)', backup, backup, file))
     end
@@ -2774,13 +2776,13 @@ function M.make_view_check()
   if vim.wo.buftype:match('nofile') then
     return false
   end
-  
+
   -- Skip non-existent files
   local filename = vim.fn.expand('%:p')
   if vim.fn.empty(vim.fn.glob(filename)) == 1 then
     return false
   end
-  
+
   -- Skip files in skip list
   local current_file = vim.fn.expand('%')
   for _, skip_file in ipairs(M.skipview_files) do
@@ -2788,7 +2790,7 @@ function M.make_view_check()
       return false
     end
   end
-  
+
   return true
 end
 
@@ -2960,7 +2962,7 @@ Prevent performance slowdowns by limiting how often autocommands are triggered d
 function! LongEnough(timer, delay, ...)
   let result = 0
   let suppressionCount = a:0 ? a:1 : 0
-  
+
   if (!exists(a:timer))
     let result = 1
   else
@@ -2974,7 +2976,7 @@ function! LongEnough(timer, delay, ...)
       endif
     endif
   endif
-  
+
   if (result)
     let {a:timer} = localtime()
     let {a:timer}_callCount = 0
@@ -2991,23 +2993,23 @@ local function long_enough(timer, delay, suppression_count)
   suppression_count = suppression_count or 0
   local timer_var = vim.g[timer]
   local call_count_var = vim.g[timer .. '_callCount'] or 0
-  
+
   if not timer_var then
     return true
   end
-  
+
   local time_elapsed = os.time() - timer_var
   if time_elapsed >= delay then
     return true
   end
-  
+
   if suppression_count > 0 then
     call_count_var = call_count_var + 1
     if call_count_var >= suppression_count then
       return true
     end
   end
-  
+
   return false
 end
 
@@ -3050,10 +3052,10 @@ vim.api.nvim_create_autocmd('BufWriteCmd', {
   callback = function()
     if vim.bo.modified then
       vim.cmd('write')
-      vim.fn.system("echo 'vimYo = content.window.pageYOffset; " .. 
-                    "vimXo = content.window.pageXOffset; " .. 
-                    "BrowserReload(); " .. 
-                    "content.window.scrollTo(vimXo,vimYo); " .. 
+      vim.fn.system("echo 'vimYo = content.window.pageYOffset; " ..
+                    "vimXo = content.window.pageXOffset; " ..
+                    "BrowserReload(); " ..
+                    "content.window.scrollTo(vimXo,vimYo); " ..
                     "repl.quit();' | nc -w 1 localhost 4242 2>&1 > /dev/null")
     end
   end
@@ -3119,7 +3121,7 @@ vim.api.nvim_create_autocmd('BufWinEnter', {
   callback = function()
     -- Go to first line
     vim.cmd('normal! gg')
-    
+
     -- Or go to a specific line (e.g., 6th line)
     -- vim.cmd('normal! 6gg')
   end
