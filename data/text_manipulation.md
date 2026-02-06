@@ -144,7 +144,7 @@ Swap adjacent characters or transpose text elements efficiently.
 xp              " transpose characters (delete and paste)
 
 " For words: dawbP (delete word, back, paste)
-daw             " delete a word  
+daw             " delete a word
 b               " go back one word
 P               " paste before cursor
 ```
@@ -271,5 +271,84 @@ Use `g Ctrl+a` in visual block mode to create incremental number sequences inste
 " Select multiple lines with numbers, then:
 g<C-a>    " creates 1,2,3,4... sequence
 <C-a>     " would increment all by 1
+```
+***
+# Title: Uppercase and lowercase
+# Category: Text Manupulation
+# Tags: uppercase, lowercase
+---
+Here are some practical examples how to uppercase/lowercase various text parts:
+
+**Normal mode (no selection needed)**
+
+_Word-based_
+
+```
+gUiw    " UPPERCASE word under cursor
+guiw    " lowercase word under cursor
+g~iw    " toggle case of word
+````
+
+_From cursor_
+
+```
+gUe     " uppercase to end of word
+gue     " lowercase to end of word
+g~e     " toggle case to end of word
+```
+
+_Line-based_
+
+```
+gUU     " UPPERCASE entire line
+guu     " lowercase entire line
+g~~     " toggle case of entire line
+```
+
+**Visual mode (most intuitive)**
+
+_Select text:_
+
+```
+v       " character-wise
+V       " line-wise
+<C-v>   " block-wise
+```
+
+_Then apply:_
+
+```
+U       " UPPERCASE selection
+u       " lowercase selection
+~       " toggle case
+```
+
+Works beautifully with `viw`, `vip`, `va{`, etc.
+
+Text objects you’ll use 99% of the time
+
+```
+iw	            " inner word
+aw	            " a word (includes punctuation)
+ip	            " inner paragraph
+i"	            " inside quotes
+i( / i[ / i{	" inside brackets
+```
+
+More examples:
+
+```
+gUi"        " UPPERCASE text inside quotes
+gU$         " uppercase to end of line
+gu0         " lowercase to start of line
+g~ap        " toggle case of paragraph
+```
+
+Provide keyboard mappings for most used commands:
+
+```
+vim.keymap.set("n", "<leader>u", "gUiw", { desc = "Uppercase word" })
+vim.keymap.set("n", "<leader>l", "guiw", { desc = "Lowercase word" })
+vim.keymap.set("n", "<leader>~", "g~iw", { desc = "Toggle case word" })
 ```
 ***
