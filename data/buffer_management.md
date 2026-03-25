@@ -1740,9 +1740,9 @@ end, { nargs = '?' })
 
 **Source:** [vim.fandom.com](https://vim.fandom.com/wiki/How_to_store_grep_results_in_a_buffer_in_Vim%3F)
 ***
-# Title: Improved Hex Mode Editing in Vim
+# Title: Switch between buffers, with tab support
 # Category: buffer_management
-# Tags: hex-editing, binary-files, file-manipulation
+# Tags: buffers, buffer-switching, tabs
 ---
 Flexible buffer switching with tab support, allowing easy navigation between buffers across tabs
 
