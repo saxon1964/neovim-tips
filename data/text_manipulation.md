@@ -18,7 +18,7 @@ Use `gqap` to format/wrap a paragraph according to textwidth.
 gqap  " format around paragraph
 ```
 ***
-# Title: Remove trailing whitespace
+# Title: Delete all lines that do NOT match the pattern
 # Category: Text Manipulation
 # Tags: whitespace, trailing, clean
 ---
