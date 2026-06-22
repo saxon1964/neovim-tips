@@ -408,7 +408,7 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 # Category: clipboard
 # Tags: linux, clipboard, external-tool
 ---
-Easily copy and paste between Vim and system clipboard using xclip, which is particularly useful for handling large amounts of text
+On X11, easily copy and paste between Vim and system clipboard using xclip, which is particularly useful for handling large amounts of text
 
 ```vim
 " Mapping to copy entire buffer to clipboard

@@ -1417,7 +1417,7 @@ vim.opt.joinspaces = false
 # Category: editing
 # Tags: clipboard, cursor-preservation
 ---
-Use a mark to maintain cursor position when pasting from clipboard
+Use a mark to maintain cursor position when pasting from clipboard using xclip on X11.
 
 ```vim
 map <F7> mz:-1r !xclip -o -sel clip<CR>`z
